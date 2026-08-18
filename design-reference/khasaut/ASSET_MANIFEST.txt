@@ -1,0 +1,47 @@
+KHASAUT TOUR — CODEX ASSET PACK
+
+reference/
+  full-page-reference.png
+    Main target screenshot. REFERENCE ONLY — never use as webpage background.
+
+  hero-collage-user-reference.png
+    Composition target showing the desired overlapping photo-stack.
+
+  hero-collage-generated-reference.png
+    Additional generated collage reference.
+
+assets/hero/
+  hero-background-caucasus.png
+    Hero mountain background.
+
+  photo-01-elbrus-bermamyt.png
+  photo-02-rock-arch-sunset.png
+  photo-03-caucasus-lake.png
+  photo-04-jeep-elbrus.png
+    FOUR INDEPENDENT TRANSPARENT PHOTO-CARD LAYERS.
+    Animate and position separately.
+
+  khasaut-hanging-tag.png
+    Independent foreground tag layer.
+
+assets/services/
+  service-icons-strip.png
+    Visual/icon source. Prefer SVG recreation if cleaner.
+
+assets/routes/
+  route-cards-strip-reference.png
+    Route-card visual reference; keep actual titles as HTML text.
+
+assets/decor/
+  footer-mountain-ridge.png
+    Transparent mountain foreground/footer layer.
+
+prompt/
+  CODEX_PROMPT.txt
+    Full implementation + responsive + Playwright visual-QA instructions.
+
+IMPORTANT:
+- The separated hero cards are intentionally individual files.
+- Build responsive layout in React/CSS.
+- Recreate torn paper and minor engraving/doodle details with CSS/SVG as needed.
+- Do not flatten the page or hero into a single raster image.

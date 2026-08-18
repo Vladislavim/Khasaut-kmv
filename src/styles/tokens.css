@@ -1,0 +1,29 @@
+:root {
+  --paper: #f1ecdf;
+  --paper-deep: #e4dac9;
+  --paper-cream: #f7f2e7;
+  --forest: #173d2b;
+  --forest-deep: #102e21;
+  --ink: #26362d;
+  --muted-ink: #6c695e;
+  --sand: #ad9270;
+  --line: rgba(38, 54, 45, 0.25);
+  --line-light: rgba(241, 236, 223, 0.36);
+  --shadow-paper: 0 18px 42px rgba(24, 36, 27, 0.15);
+  --shadow-photo: 0 20px 34px rgba(18, 28, 23, 0.26);
+  --serif-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --serif-body: 'Lora', Georgia, 'Times New Roman', serif;
+  --script: 'Caveat', 'Brush Script MT', cursive;
+  --container: 1320px;
+  --gutter: clamp(1.15rem, 4vw, 4.75rem);
+  --section-y: clamp(4.6rem, 8vw, 8rem);
+  --ease-settle: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-fast: 180ms;
+  --motion-normal: 420ms;
+  --motion-slow: 880ms;
+  --z-base: 1;
+  --z-content: 4;
+  --z-photos: 8;
+  --z-tag: 12;
+}

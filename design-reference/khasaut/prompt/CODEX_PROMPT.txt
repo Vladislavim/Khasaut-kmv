@@ -1,0 +1,486 @@
+# KHASAUT TOUR — SENIOR REACT IMPLEMENTATION TASK
+
+You are a senior frontend engineer and UI motion engineer.
+
+Your job is to reproduce the supplied Khasaut Tour landing page as a real responsive React interface with strong architecture, tasteful motion, accessibility and visual QA.
+
+The archive contains:
+
+REFERENCE
+- `reference/full-page-reference.png` — main page visual target.
+- `reference/hero-collage-user-reference.png` — target layering/composition for the hero collage.
+- `reference/hero-collage-generated-reference.png` — additional visual reference for spacing and overlap.
+
+SEPARATE HERO LAYERS
+- `assets/hero/hero-background-caucasus.png`
+- `assets/hero/photo-01-elbrus-bermamyt.png`
+- `assets/hero/photo-02-rock-arch-sunset.png`
+- `assets/hero/photo-03-caucasus-lake.png`
+- `assets/hero/photo-04-jeep-elbrus.png`
+- `assets/hero/khasaut-hanging-tag.png`
+
+OTHER ASSETS
+- `assets/services/service-icons-strip.png`
+- `assets/routes/route-cards-strip-reference.png`
+- `assets/decor/footer-mountain-ridge.png`
+
+IMPORTANT:
+- Do NOT use the full-page screenshot as a background.
+- Do NOT flatten the hero collage into one raster image.
+- Every hero card/tag must remain an independent DOM layer so it can animate independently.
+- Raster assets are visual building blocks, not replacements for HTML text/UI.
+- Recreate paper tears, subtle textures, note cards, icons and separators with CSS/SVG where this gives a cleaner responsive result.
+
+======================================================================
+0. MANDATORY: DEFINE THE GOAL BEFORE IMPLEMENTING UI
+======================================================================
+
+Before writing page UI code, create:
+
+`DEFINE_GOAL.md`
+
+It must include:
+1. visual goal;
+2. sections;
+3. component architecture;
+4. responsive behavior;
+5. animation behavior;
+6. asset mapping;
+7. accessibility targets;
+8. performance targets;
+9. Playwright visual-QA plan;
+10. acceptance criteria.
+
+Do NOT begin actual page rendering before `DEFINE_GOAL.md` exists.
+
+======================================================================
+1. INSPECT THE REPOSITORY FIRST
+======================================================================
+
+Before changing code:
+- inspect package.json;
+- detect package manager;
+- inspect existing framework and routing;
+- inspect TypeScript configuration;
+- inspect CSS strategy;
+- inspect existing component structure;
+- inspect fonts/assets;
+- inspect lint/typecheck/test scripts;
+- inspect whether Playwright is already configured.
+
+Preserve working infrastructure.
+Do not replace the app scaffold without a clear reason.
+
+Prefer React + TypeScript.
+If the project is already Vite/Next/React, work within that setup.
+
+======================================================================
+2. SENIOR-LEVEL STRUCTURE
+======================================================================
+
+Do not build one giant component.
+
+Recommended conceptual structure:
+
+src/
+  components/
+    layout/
+      Container.tsx
+      Section.tsx
+    ui/
+      Reveal.tsx
+      PaperSurface.tsx
+      TornDivider.tsx
+      SocialButton.tsx
+    sections/
+      HeroSection.tsx
+      ServicesSection.tsx
+      RoutesSection.tsx
+      AboutSection.tsx
+      ValuesSection.tsx
+      FooterSection.tsx
+  data/
+    services.ts
+    routes.ts
+    contacts.ts
+  styles/
+    tokens.css
+    globals.css
+  pages/
+    HomePage.tsx
+
+Adapt this to the repository instead of forcing it literally.
+
+Requirements:
+- semantic components;
+- content separated from presentation where useful;
+- shared design tokens;
+- no duplicated magic numbers everywhere;
+- centralized contacts/social URLs;
+- readable maintainable code.
+
+======================================================================
+3. DESIGN SYSTEM
+======================================================================
+
+Match the reference:
+- warm cream/off-white paper background;
+- dark forest green;
+- elegant editorial travel-journal look;
+- large serif display typography;
+- restrained handwritten accent;
+- scrapbook photography;
+- vintage print texture;
+- torn-paper transitions;
+- subtle mountain/botanical illustrations.
+
+Create CSS variables for:
+- colors;
+- typography;
+- section spacing;
+- container widths;
+- shadows;
+- border radii;
+- z-index layers;
+- motion timings/easing.
+
+Use `clamp()` for responsive typography and spacing where appropriate.
+
+Do not make it look like a generic Tailwind/card-grid landing page.
+
+======================================================================
+4. HERO — MOST IMPORTANT SECTION
+======================================================================
+
+Use:
+- `assets/hero/hero-background-caucasus.png`
+- `photo-01-elbrus-bermamyt.png`
+- `photo-02-rock-arch-sunset.png`
+- `photo-03-caucasus-lake.png`
+- `photo-04-jeep-elbrus.png`
+- `khasaut-hanging-tag.png`
+
+Each photo/tag MUST be a separate element/layer.
+
+Desktop composition:
+- navigation across top;
+- left editorial headline/body;
+- layered photo stack on right;
+- mountain background behind everything;
+- overlaps and rotations similar to reference;
+- tag overlaps front/lower collage.
+
+Do not hardcode one fixed 1440px composition.
+Use a bounded collage container with responsive scale/positions.
+
+Recommended hero layer behavior:
+- photo 1: enters first from upper-right;
+- photo 2: enters from left/lower-left;
+- photo 3: enters from lower-center;
+- photo 4: enters from right;
+- tag enters last with a slightly stronger rotational settle.
+
+Motion:
+- staggered transform + opacity;
+- tasteful spring/cubic-bezier;
+- tiny pointer parallax on desktop;
+- tag can lag a little behind pointer;
+- use transform only where possible;
+- no layout thrashing;
+- respect `prefers-reduced-motion`.
+
+Keep motion premium and restrained.
+No excessive bouncing, wobbling or perpetual movement.
+
+======================================================================
+5. SERVICES
+======================================================================
+
+Services:
+- Трансфер
+- Экскурсии
+- Джип-туры
+- Необычные маршруты
+- Конные прогулки
+- Термальные источники
+
+You may use `assets/services/service-icons-strip.png` as a visual reference/source.
+
+Prefer recreating icons as crisp SVG components if practical.
+Do not rasterize the text labels.
+
+Responsive:
+- desktop: 6 columns;
+- tablet: 3x2;
+- mobile: 2 columns or a carefully designed horizontal layout.
+
+Add restrained in-view reveal.
+
+======================================================================
+6. ROUTES
+======================================================================
+
+Dark forest-green section.
+
+Create 3 real HTML route cards:
+- Необычные маршруты
+- Конные прогулки
+- Термальные источники
+
+Use:
+`assets/routes/route-cards-strip-reference.png`
+as a visual reference.
+
+Do not bake route labels into the image.
+
+Desktop hover:
+- slight image zoom;
+- subtle card lift;
+- arrow/text movement;
+- shadow/contrast refinement.
+
+Touch devices must not depend on hover.
+
+======================================================================
+7. ABOUT
+======================================================================
+
+Reproduce the asymmetrical editorial composition from the reference:
+- decorative mountain artwork on the left;
+- text block center;
+- paper/note “Наша цель” on the right.
+
+For missing fine decorations:
+- recreate with SVG/CSS;
+- use subtle engraving-style line work;
+- do not add generic stock UI cards.
+
+Keep large areas of paper/negative space.
+
+======================================================================
+8. VALUES
+======================================================================
+
+Dark green strip with four values:
+- безопасность и ответственность
+- честность и открытость
+- уважение к культуре и традициям
+- искренний сервис без формальностей
+
+Use real text and SVG line icons.
+Keep icon weights consistent.
+
+======================================================================
+9. FOOTER
+======================================================================
+
+Use:
+`assets/decor/footer-mountain-ridge.png`
+
+Create real interactive:
+- phone;
+- WhatsApp;
+- Telegram;
+- email;
+- other contact/social controls visible in the reference.
+
+All controls:
+- keyboard accessible;
+- have aria-labels;
+- have visible focus states.
+
+======================================================================
+10. RESPONSIVE — REQUIRED
+======================================================================
+
+The implementation must be checked at:
+
+- 320 x 700
+- 360 x 800
+- 390 x 844
+- 430 x 932
+- 768 x 1024
+- 1024 x 768
+- 1280 x 900
+- 1440 x 1000
+- 1920 x 1080
+
+No horizontal overflow.
+
+Hero behavior:
+- desktop: 2-column composition;
+- tablet: preserve collage without covering text;
+- mobile: text first, collage below;
+- retain scrapbook layering on mobile but simplify/scale it;
+- do not simply shrink desktop absolute coordinates.
+
+Typography:
+- responsive with clamp;
+- avoid tiny body text;
+- keep readable line length.
+
+Images:
+- object-fit;
+- preserve focal points;
+- declare aspect ratios/dimensions to prevent CLS.
+
+======================================================================
+11. PERFORMANCE
+======================================================================
+
+- Hero LCP image should not be lazy-loaded.
+- Below-fold images should be lazy-loaded.
+- Avoid unnecessary animation libraries.
+- If Framer Motion is already installed, use it.
+- If not installed, prefer CSS/Web Animations unless genuinely needed.
+- Use requestAnimationFrame for pointer-parallax logic if custom.
+- No constant expensive scroll handlers.
+- Prevent layout shifts.
+- Avoid giant duplicated image assets where not needed.
+
+======================================================================
+12. ACCESSIBILITY
+======================================================================
+
+Required:
+- semantic landmarks;
+- proper heading hierarchy;
+- useful alt text;
+- decorative images ignored by screen readers;
+- keyboard accessibility;
+- visible focus indicators;
+- sufficient color contrast;
+- `prefers-reduced-motion`;
+- no hover-only actions.
+
+======================================================================
+13. CONTENT
+======================================================================
+
+Use the Russian copy visible in the reference where legible.
+Do NOT invent new business claims.
+
+Contact details and social URLs should live in one config/data file.
+
+======================================================================
+14. VISUAL QA WITH PLAYWRIGHT — MANDATORY
+======================================================================
+
+You MUST use Playwright to visually inspect the page.
+
+If Playwright is not installed:
+- add it in the least invasive way appropriate for the repo.
+
+Start the app and verify it in a real browser.
+
+Create:
+`artifacts/visual-check/`
+
+SCREENSHOT EACH BLOCK separately at desktop width:
+
+- `01-hero.png`
+- `02-services.png`
+- `03-routes.png`
+- `04-about.png`
+- `05-values.png`
+- `06-footer.png`
+
+Also create:
+- `desktop-full-page.png`
+- `tablet-full-page.png`
+- `mobile-full-page.png`
+
+Use element screenshots for individual sections.
+
+======================================================================
+15. SECTION-BY-SECTION ITERATION
+======================================================================
+
+Do NOT implement the whole page blindly and check only at the end.
+
+For each section:
+1. implement it;
+2. run it;
+3. screenshot that exact section with Playwright;
+4. inspect the screenshot;
+5. compare to `reference/full-page-reference.png`;
+6. identify spacing, proportion, type, color, overlap and alignment issues;
+7. fix them;
+8. screenshot again;
+9. only then move on.
+
+This is mandatory.
+
+======================================================================
+16. PLAYWRIGHT FUNCTIONAL CHECKS
+======================================================================
+
+Verify at minimum:
+- no horizontal overflow;
+- hero layers do not clip incorrectly;
+- hero collage does not cover text on tablet/mobile;
+- nav links work;
+- contact links are clickable;
+- page has no console errors;
+- no uncaught exceptions;
+- images successfully load;
+- page survives refresh/direct load;
+- reduced-motion mode is usable;
+- 390px mobile viewport has no overlapping text;
+- 1440px desktop view matches the supplied reference composition closely.
+
+Add Playwright assertions where useful.
+
+======================================================================
+17. FINAL ENGINEERING CHECK
+======================================================================
+
+Before declaring completion:
+- run TypeScript/typecheck;
+- run lint if configured;
+- run tests if configured;
+- run production build;
+- fix all errors introduced by your changes;
+- rerun Playwright after final fixes.
+
+Do not suppress errors just to make CI green.
+
+======================================================================
+18. FINAL RESPONSE FORMAT
+======================================================================
+
+When finished, report:
+
+1. files/components changed;
+2. architecture used;
+3. responsive strategy;
+4. animations implemented;
+5. Playwright checks performed;
+6. screenshot paths;
+7. build/typecheck/lint/test results;
+8. any known caveats.
+
+Do NOT claim completion until:
+- desktop screenshot was inspected;
+- mobile screenshot was inspected;
+- every major block was screenshotted;
+- visual discrepancies were fixed;
+- build passes.
+
+======================================================================
+19. QUALITY BAR
+======================================================================
+
+The final page should feel like:
+- a real premium regional travel brand;
+- an editorial adventure journal;
+- tactile paper and photography;
+- visually layered and alive;
+- senior-level responsive frontend work.
+
+It should NOT feel like:
+- a generic AI landing page;
+- a set of stock cards;
+- a raster screenshot hacked into HTML;
+- a desktop-only mockup;
+- a page with animations added randomly after the fact.
