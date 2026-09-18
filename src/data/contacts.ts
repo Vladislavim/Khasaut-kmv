@@ -1,13 +1,19 @@
+import { innerContacts } from './innerContacts'
+
 export const contacts = {
   email: {
     label: 'E-mail',
-    value: 'Eldar090807@yandex.ru',
-    href: 'mailto:Eldar090807@yandex.ru',
+    value: innerContacts.email.label,
+    href: innerContacts.email.href,
   },
   links: [
-    { label: 'Телефон', icon: 'phone', href: '#contact', placeholder: true },
-    { label: 'WhatsApp', icon: 'whatsapp', href: '#contact', placeholder: true },
-    { label: 'Telegram', icon: 'telegram', href: '#contact', placeholder: true },
-    { label: 'Pinterest', icon: 'pinterest', href: '#contact', placeholder: true },
+    { label: 'Телефон', icon: 'phone', href: innerContacts.primaryPhone.href },
+    { label: 'WhatsApp', icon: 'whatsapp', href: innerContacts.whatsapp.href },
+    { label: 'Instagram', icon: 'instagram', href: 'https://www.instagram.com/eldar_e_7212?igsi=MWltZzl1Y2luejN5bw==' },
+  ] as const,
+  footerLinks: [
+    { label: 'Телефон', icon: 'phone', href: innerContacts.primaryPhone.href },
+    { label: 'WhatsApp', icon: 'whatsapp', href: innerContacts.whatsapp.href },
+    { label: 'Instagram', icon: 'instagram', href: 'https://www.instagram.com/eldar_e_7212?igsi=MWltZzl1Y2luejN5bw==' },
   ] as const,
 }

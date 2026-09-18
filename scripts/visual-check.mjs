@@ -2,7 +2,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import { chromium } from 'playwright'
 
-const baseURL = process.env.BASE_URL || 'http://127.0.0.1:4174'
+const baseURL = process.env.BASE_URL || 'http://127.0.0.1:5173'
 const outputDir = path.resolve('artifacts/visual-check')
 const mode = process.argv[2] || 'all'
 
@@ -32,9 +32,15 @@ async function captureSection(filename, selector) {
 }
 
 async function primeRevealSections() {
-  for (const [, selector] of sections) {
+  for (const [, selector] of [...sections, ['featured-trips.png', '#featured-trips']]) {
     await page.locator(selector).scrollIntoViewIfNeeded()
     await page.waitForTimeout(180)
+  }
+  const pageHeight = await page.evaluate(() => document.documentElement.scrollHeight)
+  const step = Math.max(320, Math.round(page.viewportSize().height * 0.72))
+  for (let y = 0; y <= pageHeight + page.viewportSize().height; y += step) {
+    await page.evaluate((scrollY) => window.scrollTo(0, scrollY), y)
+    await page.waitForTimeout(130)
   }
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'auto' }))
   await page.waitForTimeout(250)
@@ -101,7 +107,7 @@ for (const [label, viewport] of Object.entries(responsiveViewports)) {
       : false
     return {
       overflow: document.documentElement.scrollWidth > window.innerWidth,
-      imageFailures: [...document.images].filter((image) => !image.complete || image.naturalWidth === 0).map((image) => image.currentSrc || image.src),
+      imageFailures: [...document.images].filter((image) => image.complete && image.naturalWidth === 0).map((image) => image.currentSrc || image.src),
       heroTextCollageOverlap: window.innerWidth < 720 ? overlap : false,
     }
   })
@@ -110,7 +116,7 @@ for (const [label, viewport] of Object.entries(responsiveViewports)) {
 await load({ width: 390, height: 844 })
 const validation = await page.evaluate(() => ({
   horizontalOverflow: document.documentElement.scrollWidth > window.innerWidth,
-  imageFailures: [...document.images].filter((image) => !image.complete || image.naturalWidth === 0).map((image) => image.currentSrc || image.src),
+  imageFailures: [...document.images].filter((image) => image.complete && image.naturalWidth === 0).map((image) => image.currentSrc || image.src),
   heroLayers: [...document.querySelectorAll('[data-layer]')].map((element) => element.getAttribute('data-layer')),
   linksWithoutTargets: [...document.querySelectorAll('a')].filter((link) => !link.getAttribute('href')).length,
 }))

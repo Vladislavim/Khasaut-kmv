@@ -147,6 +147,13 @@
   height: 20px;
 }
 
+.contact-button__image {
+  display: block;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
 .menu-toggle {
   display: none;
   align-items: center;
@@ -209,11 +216,55 @@
 }
 
 .hero-rule {
+  position: relative;
   width: 1px;
   height: 66px;
   margin: 1.35rem 0 0.9rem;
   background: var(--forest);
   opacity: 0.55;
+}
+
+.hero-rule__arrow {
+  position: absolute;
+  bottom: -0.55rem;
+  left: 50%;
+  width: 14px;
+  height: 18px;
+  color: var(--forest);
+  opacity: 0.88;
+  transform: translateX(-50%);
+  animation: scroll-cue 3.2s var(--ease-soft) infinite;
+  transform-origin: 50% 0;
+}
+
+.hero-rule__arrow svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.15;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes scroll-cue {
+  0%,
+  68%,
+  100% {
+    opacity: 0.36;
+    transform: translate(-50%, 0);
+  }
+
+  78% {
+    opacity: 0.92;
+    transform: translate(-50%, 3px);
+  }
+
+  88% {
+    opacity: 0.52;
+    transform: translate(-50%, 1px);
+  }
 }
 
 .hero-location {
@@ -270,7 +321,7 @@
   height: auto;
   max-width: none;
   opacity: 0;
-  filter: drop-shadow(var(--shadow-photo));
+  filter: saturate(1) sepia(0.03) contrast(1.04) brightness(0.98) drop-shadow(var(--shadow-photo));
   animation: collage-enter 1.15s var(--ease-settle) forwards;
 }
 
@@ -401,6 +452,20 @@
   border-left: 0;
 }
 
+.service-item__link {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.service-item__link:hover h3,
+.service-item__link:focus-visible h3 {
+  color: var(--sand);
+}
+
 .service-icon {
   display: grid;
   min-height: 63px;
@@ -496,8 +561,8 @@
 }
 
 .routes-heading em {
-  color: rgba(241, 236, 223, 0.74);
-  font-style: italic;
+  color: rgba(238, 230, 217, 0.9);
+  font-style: normal;
 }
 
 .routes-stamp {
@@ -547,7 +612,8 @@
 
 .route-card__media {
   background-repeat: no-repeat;
-  background-size: 300% 135%;
+  background-size: cover;
+  background-position: center;
   filter: saturate(0.8) sepia(0.1);
   transition: background-size 800ms var(--ease-soft), filter 500ms ease;
 }
@@ -558,7 +624,7 @@
 
 .route-card:hover .route-card__media {
   filter: saturate(1) sepia(0.04);
-  background-size: 318% 142%;
+  background-size: 106% 106%;
 }
 
 .route-card__content {
@@ -911,6 +977,219 @@
   }
 }
 
+/* The home hero keeps both primary paths visible without turning the copy
+   into a generic button stack. */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem 1.15rem;
+}
+
+.hero-actions .hero-cta {
+  margin-top: 1.35rem;
+}
+
+.hero-cta--secondary {
+  border-bottom-color: var(--sand);
+}
+
+@media (max-width: 719px) {
+  .hero-actions {
+    align-items: flex-start;
+    gap: 0.1rem;
+  }
+
+  .hero-actions .hero-cta {
+    margin-top: 1.05rem;
+  }
+}
+
+/* Concrete price-led trips sit between the calculator and broad categories. */
+.featured-trips-section {
+  padding-block: clamp(3.5rem, 7vw, 7rem);
+  background: var(--paper-cream);
+}
+
+.featured-trips-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.7fr);
+  align-items: end;
+  gap: clamp(1.5rem, 5vw, 5rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.featured-trips-heading h2 {
+  max-width: 14ch;
+  margin: 0.55rem 0 0;
+  color: var(--forest);
+  font-family: var(--serif-display);
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 0.88;
+  text-wrap: balance;
+}
+
+.featured-trips-heading > p {
+  max-width: 31rem;
+  margin: 0;
+  color: var(--muted-ink);
+  line-height: 1.5;
+}
+
+.featured-trips-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.featured-trip-card {
+  display: flex;
+  min-width: 0;
+  height: 100%;
+  flex-direction: column;
+  border: 1px solid rgba(38, 54, 45, 0.2);
+  background: rgba(245, 238, 226, 0.7);
+}
+
+.featured-trip-card__media {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  overflow: hidden;
+  aspect-ratio: 1.08;
+  padding: 1rem;
+  color: var(--paper);
+}
+
+.featured-trip-card__media img,
+.featured-trip-card__veil {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.featured-trip-card__media img {
+  object-fit: cover;
+  transition: transform 700ms var(--ease-soft), filter 700ms var(--ease-soft);
+}
+
+.featured-trip-card__veil {
+  background: linear-gradient(180deg, rgba(16, 46, 33, 0.02) 38%, rgba(16, 46, 33, 0.8) 100%);
+}
+
+.featured-trip-card__media:hover img,
+.featured-trip-card__media:focus-visible img {
+  filter: saturate(1.04);
+  transform: scale(1.035);
+}
+
+.featured-trip-card__kicker,
+.featured-trip-card__media h3 {
+  position: relative;
+  right: auto;
+  left: auto;
+  width: 100%;
+  z-index: 1;
+}
+
+.featured-trip-card__kicker {
+  margin: 0 0 0.35rem;
+  color: rgba(241, 236, 223, 0.76);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.featured-trip-card__media h3 {
+  margin: 0;
+  font-family: var(--serif-display);
+  font-size: clamp(1.25rem, 1.85vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.featured-trip-card__body {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  padding: 0.85rem 1rem 1rem;
+}
+
+.featured-trip-card__body > p {
+  margin: 0;
+  color: var(--muted-ink);
+  font-size: 0.82rem;
+  line-height: 1.42;
+}
+
+.featured-trip-card .price-badge {
+  margin-top: auto;
+  padding-top: 0.7rem;
+  border-top-color: rgba(38, 54, 45, 0.18);
+  color: var(--forest);
+}
+
+.featured-trip-card .price-badge__label,
+.featured-trip-card .price-badge__unit {
+  color: var(--muted-ink);
+}
+
+.featured-trip-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.8rem;
+}
+
+.featured-trip-card__actions .inner-button {
+  min-height: 2rem;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid rgba(38, 54, 45, 0.3);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+}
+
+.featured-trip-card__actions .inner-button--solid {
+  background: var(--forest);
+  color: var(--paper);
+}
+
+.featured-trip-card__actions .inner-button--outline {
+  color: var(--forest);
+}
+
+@media (max-width: 1199px) {
+  .featured-trips-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 719px) {
+  .featured-trips-heading {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .featured-trips-heading h2 {
+    max-width: 12ch;
+  }
+
+  .featured-trips-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-trip-card__media {
+    aspect-ratio: 1.35;
+  }
+}
+
 @media (max-width: 1019px) {
   .site-header {
     grid-template-columns: 1fr auto;
@@ -1047,6 +1326,12 @@
     margin-top: 1rem;
   }
 
+  .hero-rule__arrow {
+    bottom: -0.45rem;
+    width: 12px;
+    height: 16px;
+  }
+
   .desktop-only {
     display: none;
   }
@@ -1057,39 +1342,39 @@
 
   .hero-collage {
     width: min(100%, 440px);
-    min-height: min(122vw, 530px);
+    min-height: min(136vw, 590px);
     margin: 1.2rem auto 0;
     transform: none;
   }
 
   .hero-layer--elbrus {
     top: 0;
-    left: 33%;
-    width: 59%;
+    left: 30%;
+    width: 68%;
   }
 
   .hero-layer--arch {
     top: 22%;
-    left: 3%;
-    width: 48%;
+    left: 1%;
+    width: 56%;
   }
 
   .hero-layer--lake {
-    top: 48%;
-    left: 25%;
-    width: 59%;
+    top: 49%;
+    left: 22%;
+    width: 68%;
   }
 
   .hero-layer--jeep {
     top: 35%;
-    right: -3%;
-    width: 39%;
+    right: -4%;
+    width: 46%;
   }
 
   .hero-layer--tag {
     bottom: 0;
-    left: 7%;
-    width: 35%;
+    left: 5%;
+    width: 40%;
   }
 
   .collage-caption {
@@ -1268,5 +1553,3285 @@
     width: 100%;
     bottom: -10px;
     opacity: 0.72;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Reference fidelity pass
+   The original rules above stay as a readable fallback; this final layer
+   maps the page to the supplied 941 x 1672 editorial composition.
+   ------------------------------------------------------------------------- */
+
+.hero-section {
+  isolation: isolate;
+  min-height: clamp(570px, 63.2vw, 910px);
+  background: #c9c7b8;
+}
+
+.hero-background {
+  z-index: -2;
+  object-position: center center;
+  filter: saturate(0.82) sepia(0.08) contrast(0.96) brightness(0.94);
+}
+
+.hero-atmosphere {
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(246, 239, 224, 0.98) 0%, rgba(246, 239, 224, 0.94) 22%, rgba(246, 239, 224, 0.72) 34%, rgba(246, 239, 224, 0.22) 54%, rgba(20, 44, 31, 0.03) 72%),
+    linear-gradient(0deg, rgba(24, 46, 34, 0.16), transparent 34%);
+}
+
+.site-header {
+  min-height: 106px;
+  padding-top: 20px;
+  grid-template-columns: minmax(250px, 1fr) auto minmax(220px, 1fr);
+  gap: 1rem;
+}
+
+.brand-lockup {
+  gap: 0.85rem;
+}
+
+.brand-mark svg {
+  width: 62px;
+  height: 76px;
+  fill: none;
+  stroke: var(--forest);
+  stroke-width: 1.6;
+}
+
+.brand-mark__paper {
+  fill: rgba(247, 242, 231, 0.94);
+  stroke: rgba(112, 101, 78, 0.48);
+}
+
+.brand-mark__trees,
+.brand-mark__rule {
+  fill: none;
+  stroke: var(--forest);
+  stroke-width: 2;
+}
+
+.brand-mark__shield {
+  fill: var(--forest);
+  stroke: var(--forest);
+  stroke-width: 1.5;
+}
+
+.brand-mark svg text {
+  fill: var(--forest);
+  stroke: none;
+  font-family: Arial Narrow, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.45px;
+}
+
+.brand-mark svg .brand-mark__small {
+  font-size: 7px;
+  letter-spacing: 1.4px;
+}
+
+.brand-mark svg .brand-mark__inverse {
+  fill: var(--paper);
+}
+
+.brand-lockup__name {
+  font-size: clamp(1.05rem, 1.55vw, 1.45rem);
+  letter-spacing: 0.08em;
+}
+
+.header-contacts .contact-button,
+.footer-socials .contact-button {
+  border: 0;
+  color: var(--paper);
+  background: var(--forest);
+}
+
+.header-contacts .contact-button:hover,
+.footer-socials .contact-button:hover {
+  color: var(--paper);
+  background: var(--forest-deep);
+  box-shadow: inset 0 0 0 1px var(--paper);
+}
+
+.hero-content {
+  grid-template-columns: minmax(330px, 0.78fr) minmax(560px, 1.22fr);
+  min-height: calc(clamp(570px, 63.2vw, 910px) - 106px);
+  align-items: start;
+  padding: 0 0 2.8rem;
+}
+
+.hero-copy {
+  padding-top: clamp(1.5rem, 2.2vw, 3rem);
+}
+
+.hero-copy h1 {
+  font-size: clamp(4.4rem, 7.9vw, 8.25rem);
+  line-height: 0.73;
+}
+
+.hero-script {
+  width: clamp(215px, 25vw, 360px);
+  margin: 0.95rem 0 0.9rem;
+  transform: rotate(-3deg);
+}
+
+.hero-script img {
+  width: 100%;
+  height: auto;
+  opacity: 0.46;
+  filter: sepia(0.42) saturate(0.58) brightness(1.08);
+}
+
+.hero-intro {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+  max-width: 300px;
+}
+
+.hero-description {
+  max-width: 270px;
+  font-size: clamp(0.82rem, 1vw, 0.98rem);
+  line-height: 1.52;
+}
+
+.hero-rule {
+  flex: 0 0 1px;
+  width: 1px;
+  height: auto;
+  min-height: 78px;
+  margin: 0;
+}
+
+.hero-location {
+  margin-top: 1rem;
+  padding-left: 0.4rem;
+  font-size: clamp(0.65rem, 0.82vw, 0.78rem);
+}
+
+.hero-collage {
+  min-height: min(48vw, 540px);
+  margin: 2rem -3.8rem 0 -1.5rem;
+}
+
+.hero-layer--elbrus {
+  top: 0;
+  left: 51%;
+  width: 42%;
+}
+
+.hero-layer--arch {
+  top: 25.5%;
+  left: 24%;
+  width: 34%;
+}
+
+.hero-layer--lake {
+  top: 53%;
+  left: 32%;
+  width: 47%;
+}
+
+.hero-layer--jeep {
+  top: 35%;
+  right: 0;
+  width: 34%;
+}
+
+.hero-layer--tag {
+  bottom: -18%;
+  left: 14%;
+  width: 28%;
+}
+
+.hero-tear {
+  bottom: -16px;
+  height: 40px;
+}
+
+.services-section {
+  min-height: 0;
+  padding: clamp(2.2rem, 3.8vw, 3.6rem) 0 2.4rem;
+}
+
+.services-section .section-heading {
+  gap: 0.2rem;
+}
+
+.services-section .section-kicker {
+  order: 1;
+  font-size: 0.54rem;
+  letter-spacing: 0.12em;
+}
+
+.services-section .torn-divider {
+  order: 2;
+  width: min(100%, 720px);
+  margin-top: -0.05rem;
+}
+
+.services-section .section-heading h2 {
+  order: 3;
+  z-index: 1;
+  margin-top: -1.35rem;
+  padding: 0 1rem;
+  background: var(--paper);
+  font-size: clamp(1.8rem, 3.1vw, 3.3rem);
+  line-height: 1;
+}
+
+.services-grid {
+  margin-top: clamp(1.45rem, 2.7vw, 2.55rem);
+}
+
+.service-item {
+  padding: 0 clamp(0.45rem, 1.25vw, 1.2rem);
+}
+
+.service-icon {
+  min-height: 48px;
+}
+
+.service-icon--strip {
+  width: 74px;
+  height: 52px;
+  min-height: 52px;
+  background-repeat: no-repeat;
+  background-size: 600% auto;
+  background-position: calc(var(--service-index) * 20%) center;
+  filter: sepia(0.14) saturate(0.78);
+}
+
+.service-item h3 {
+  max-width: 130px;
+  margin: 0.35rem 0 0.32rem;
+  font-size: clamp(0.9rem, 1.25vw, 1.18rem);
+}
+
+.service-item p {
+  max-width: 145px;
+  min-height: 33px;
+  font-size: clamp(0.55rem, 0.7vw, 0.68rem);
+  line-height: 1.35;
+}
+
+.service-item:nth-child(n + 4) p {
+  display: none;
+  min-height: 0;
+}
+
+.service-link {
+  margin-top: 0.45rem;
+  font-size: 0.56rem;
+}
+
+.services-compass {
+  top: 0;
+  left: 0;
+  width: 130px;
+  height: 130px;
+  opacity: 0.72;
+}
+
+.services-botanical {
+  right: 0.6%;
+  bottom: 0;
+  width: 88px;
+  height: 158px;
+  opacity: 0.8;
+}
+
+.routes-section {
+  padding: clamp(2rem, 3.2vw, 3.2rem) 0 clamp(1.2rem, 2.2vw, 2.2rem);
+}
+
+.routes-heading {
+  display: block;
+  margin-bottom: clamp(1.1rem, 2vw, 1.75rem);
+}
+
+.routes-heading h2 {
+  font-size: clamp(1.95rem, 3.3vw, 3.5rem);
+  line-height: 0.95;
+  white-space: nowrap;
+}
+
+.routes-stamp {
+  display: none;
+}
+
+.routes-grid {
+  gap: clamp(0.45rem, 0.8vw, 0.8rem);
+}
+
+.route-card {
+  height: clamp(175px, 19.2vw, 285px);
+  border-radius: 7px;
+}
+
+.route-card__content {
+  right: 1rem;
+  bottom: 0.8rem;
+  left: 1rem;
+}
+
+.route-card__content > span {
+  display: none;
+}
+
+.route-card h3 {
+  font-size: clamp(1rem, 1.6vw, 1.7rem);
+}
+
+.route-card__content p {
+  margin-top: 0.25rem;
+  font-size: 0.56rem;
+}
+
+.about-section {
+  padding: clamp(1.7rem, 3vw, 3.2rem) 0 clamp(2rem, 3.4vw, 3.6rem);
+}
+
+.about-grid {
+  grid-template-columns: 0.78fr 1fr 1.08fr;
+  gap: clamp(1.1rem, 3.5vw, 3.8rem);
+  align-items: start;
+}
+
+.about-art {
+  min-height: clamp(190px, 23vw, 320px);
+  padding-top: 0;
+}
+
+.about-art .torn-divider {
+  width: 145px;
+}
+
+.about-art h2 {
+  margin-top: 0.8rem;
+  font-size: clamp(2.6rem, 4.5vw, 4.8rem);
+}
+
+.about-etching {
+  bottom: -3.2rem;
+  left: -6.8rem;
+  z-index: -1;
+  width: 190%;
+  max-width: none;
+  opacity: 0.68;
+  mix-blend-mode: multiply;
+}
+
+.about-copy {
+  max-width: 360px;
+  font-size: clamp(0.56rem, 0.65vw, 0.7rem);
+  line-height: 1.38;
+}
+
+.about-copy p {
+  margin-bottom: 0.65rem;
+}
+
+.goal-note {
+  width: 100%;
+  min-height: 0;
+  aspect-ratio: 1.52;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: rotate(0.8deg);
+}
+
+.goal-note__paper {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.goal-note p {
+  position: absolute;
+  top: 43%;
+  left: 14%;
+  width: 67%;
+  margin: 0;
+  font-size: clamp(0.62rem, 0.82vw, 0.8rem);
+  line-height: 1.5;
+}
+
+.values-section {
+  padding: clamp(1.4rem, 2.6vw, 2.4rem) 0 clamp(1.4rem, 2.2vw, 2.2rem);
+}
+
+.values-heading {
+  width: min(100%, 720px);
+  gap: 0.8rem;
+}
+
+.values-heading h2 {
+  font-size: clamp(1.8rem, 3.2vw, 3.3rem);
+}
+
+.values-grid {
+  margin-top: clamp(1.15rem, 2vw, 1.8rem);
+}
+
+.value-item {
+  min-height: 70px;
+  padding: 0 clamp(0.35rem, 1.2vw, 1.2rem);
+  gap: 0.35rem;
+}
+
+.value-item .icon {
+  width: clamp(30px, 3.2vw, 45px);
+  height: clamp(30px, 3.2vw, 45px);
+}
+
+.value-item .value-icon {
+  display: block;
+  width: clamp(30px, 3.2vw, 45px);
+  height: clamp(30px, 3.2vw, 45px);
+  object-fit: contain;
+}
+
+.value-item p {
+  max-width: 145px;
+  font-size: clamp(0.58rem, 0.78vw, 0.76rem);
+  line-height: 1.25;
+}
+
+.footer-section {
+  min-height: clamp(76px, 5vw, 94px);
+  padding: 0.4rem 0 0.4rem;
+}
+
+.footer-ridge-wrap {
+  right: auto;
+  bottom: -1px;
+  left: 0;
+  width: min(61%, 900px);
+  opacity: 0.94;
+}
+
+.footer-ridge-wrap img {
+  width: 100%;
+  object-fit: contain;
+  object-position: left bottom;
+}
+
+.footer-content {
+  grid-template-columns: 1fr 1fr 0.45fr;
+  gap: 1.5rem;
+  min-height: 42px;
+  align-items: end;
+}
+
+@media (min-width: 840px) {
+  :root {
+    --gutter: clamp(2.4rem, 5.8vw, 5rem);
+  }
+
+  .about-grid {
+    grid-template-columns: 0.72fr 0.94fr 1.25fr;
+  }
+
+  .brand-lockup {
+    margin-left: -0.75rem;
+    gap: 1.3rem;
+  }
+
+  .brand-mark svg {
+    width: 72px;
+    height: 88px;
+  }
+
+  .about-section {
+    padding-top: 1.2rem;
+    padding-bottom: 1.3rem;
+  }
+
+  .about-art h2 {
+    margin-left: 3rem;
+  }
+
+  .about-copy {
+    transform: translate(-2rem, 1.15rem);
+  }
+
+  .goal-note {
+    width: 106%;
+    transform: translate(-0.15rem, -1.7rem) rotate(0.8deg);
+  }
+
+  .goal-note p {
+    top: 48%;
+  }
+
+  .values-section {
+    padding-bottom: calc(clamp(1.4rem, 2.2vw, 2.2rem) + 0.2rem);
+  }
+
+  .footer-brand,
+  .footer-nav,
+  .footer-bottom {
+    display: none;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr auto 1fr;
+    min-height: 52px;
+  }
+
+  .footer-contacts {
+    grid-column: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section {
+    min-height: 75px;
+    padding: 0.35rem 0;
+  }
+
+  .footer-content {
+    min-height: 0;
+  }
+
+  .footer-contacts .section-kicker {
+    display: none;
+  }
+
+  .footer-socials {
+    order: 1;
+    justify-content: center;
+  }
+
+  .footer-email {
+    order: 2;
+    margin: 0.45rem 0 0;
+  }
+
+  .footer-contacts .footer-email {
+    margin: 0.2rem 0 0;
+  }
+}
+
+.footer-brand {
+  gap: 0.5rem;
+}
+
+.footer-brand .brand-mark svg {
+  width: 42px;
+  height: 52px;
+}
+
+.footer-brand p {
+  max-width: 110px;
+  font-size: 0.8rem;
+}
+
+.footer-contacts .section-kicker {
+  font-size: 0.5rem;
+}
+
+.footer-email {
+  margin: 0.25rem 0 0.35rem;
+  font-size: 0.65rem;
+}
+
+.footer-socials {
+  gap: 0.35rem;
+}
+
+.footer-socials .contact-button {
+  width: 27px;
+  height: 27px;
+}
+
+.footer-socials .contact-button .icon {
+  width: 14px;
+  height: 14px;
+}
+
+.footer-nav {
+  gap: 0.1rem;
+  font-size: 0.6rem;
+}
+
+.footer-bottom {
+  margin-top: 0.2rem;
+  padding-top: 0.35rem;
+  font-size: 0.5rem;
+}
+
+.footer-bottom span:last-child {
+  display: none;
+}
+
+.collage-caption {
+  display: none;
+}
+
+/* Final type and icon sizing: preserve the editorial hierarchy without letting body copy collapse at wide layouts. */
+.service-item p {
+  font-size: clamp(0.55rem, 0.7vw, 0.68rem);
+}
+
+.about-copy {
+  font-size: clamp(0.56rem, 0.65vw, 0.7rem);
+}
+
+.route-card__content p {
+  font-size: clamp(0.6rem, 0.62vw, 0.68rem);
+}
+
+.footer-email {
+  font-size: clamp(0.68rem, 0.72vw, 0.8rem);
+}
+
+.footer-socials .contact-button__image {
+  width: 14px;
+  height: 14px;
+}
+
+@media (min-width: 840px) {
+  .footer-ridge-wrap {
+    width: min(43%, 900px);
+  }
+
+  .footer-content {
+    min-height: 52px;
+  }
+
+  .footer-contacts {
+    position: absolute;
+    top: 0.45rem;
+    left: 72.25%;
+    z-index: 2;
+    grid-column: auto;
+    transform: translateX(-50%);
+  }
+
+  .footer-socials {
+    gap: 1.3rem;
+  }
+
+  .footer-socials .contact-button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .footer-socials .contact-button__image {
+    width: 16px;
+    height: 16px;
+  }
+
+  .footer-email {
+    margin-top: 0.45rem;
+    font-size: 0.94rem;
+    line-height: 1.1;
+  }
+}
+
+@media (max-width: 1019px) and (min-width: 720px) {
+  .hero-content {
+    grid-template-columns: minmax(280px, 0.78fr) minmax(430px, 1.22fr);
+  }
+
+  .hero-collage {
+    min-height: min(48vw, 540px);
+    margin-right: -2rem;
+  }
+
+  .routes-heading h2 {
+    font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  }
+}
+
+@media (min-width: 840px) {
+  .site-header {
+    grid-template-columns: minmax(250px, 1fr) auto minmax(220px, 1fr);
+  }
+
+  .main-nav {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center;
+  }
+
+  .header-contacts {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    row-gap: 0;
+  }
+
+  .service-item:nth-child(4) {
+    border-left: 1px solid var(--line);
+  }
+
+  .about-copy {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .goal-note {
+    grid-column: auto;
+    grid-row: auto;
+    max-width: none;
+    justify-self: stretch;
+  }
+}
+
+@media (max-width: 839px) and (min-width: 720px) {
+  .about-grid {
+    grid-template-columns: 0.82fr 1fr;
+  }
+
+  .about-copy {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .goal-note {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    max-width: 520px;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 719px) {
+  .hero-section {
+    min-height: 720px;
+  }
+
+  .site-header {
+    min-height: 78px;
+    padding-top: 12px;
+  }
+
+  .brand-mark svg {
+    width: 48px;
+    height: 60px;
+  }
+
+  .hero-content {
+    min-height: 0;
+    padding: 1.2rem 0 2.5rem;
+  }
+
+  .hero-copy {
+    padding-top: 0;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(4rem, 19vw, 6rem);
+  }
+
+  .hero-script {
+    width: min(76vw, 285px);
+    margin: 1.1rem 0 1.2rem;
+  }
+
+  .hero-intro {
+    max-width: 280px;
+  }
+
+  .hero-description {
+    max-width: 250px;
+    font-size: 0.82rem;
+  }
+
+  .hero-location {
+    font-size: 0.62rem;
+  }
+
+  .hero-collage {
+    width: min(100%, 420px);
+    min-height: min(128vw, 540px);
+    margin: 1.2rem auto 0;
+  }
+
+  .hero-layer--elbrus { top: 0; left: 32%; width: 67%; }
+  .hero-layer--arch { top: 24%; left: -1%; width: 55%; }
+  .hero-layer--lake { top: 50%; left: 21%; width: 68%; }
+  .hero-layer--jeep { top: 37%; right: -3%; width: 46%; }
+  .hero-layer--tag { bottom: -1%; left: 5%; width: 40%; }
+
+  .services-section {
+    padding: 2.6rem 0 3.1rem;
+  }
+
+  .services-section .section-heading h2 {
+    font-size: 2.05rem;
+  }
+
+  .services-grid {
+    margin-top: 1.55rem;
+    gap: 1.65rem 0;
+  }
+
+  .service-icon--strip {
+    width: 64px;
+    height: 45px;
+    min-height: 45px;
+  }
+
+  .service-item h3 {
+    font-size: 0.94rem;
+  }
+
+  .service-item p {
+    max-width: 125px;
+    font-size: 0.58rem;
+  }
+
+  .routes-section {
+    padding: 2.8rem 0 3.2rem;
+  }
+
+  .routes-heading h2 {
+    white-space: normal;
+    font-size: clamp(2rem, 9.5vw, 3rem);
+  }
+
+  .route-card {
+    height: 210px;
+  }
+
+  .about-section {
+    padding: 3.4rem 0 3.8rem;
+  }
+
+  .about-grid {
+    gap: 1.8rem;
+  }
+
+  .about-art {
+    min-height: 215px;
+  }
+
+  .about-etching {
+    bottom: -2.3rem;
+    left: -1.5rem;
+    width: 112%;
+  }
+
+  .about-copy {
+    font-size: 0.72rem;
+  }
+
+  .goal-note {
+    width: 100%;
+    max-width: 360px;
+    align-self: center;
+  }
+
+  .goal-note p {
+    font-size: 0.7rem;
+  }
+
+  .values-section {
+    padding: 2rem 0 2.55rem;
+  }
+
+  .values-heading h2 {
+    font-size: 2.15rem;
+  }
+
+  .values-grid {
+    gap: 1.4rem 0;
+  }
+
+  .footer-section {
+    min-height: 250px;
+    padding: 3.5rem 0 0.8rem;
+  }
+
+  .footer-content {
+    min-height: 180px;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .footer-brand {
+    justify-content: center;
+  }
+
+  .footer-ridge-wrap {
+    width: 100%;
+    opacity: 0.8;
+  }
+
+  .footer-nav {
+    grid-template-columns: repeat(2, auto);
+    justify-items: center;
+    gap: 0.45rem 1rem;
+  }
+
+  /* The mobile footer keeps the reference's quiet handoff: ridge, contacts, no duplicate nav block. */
+  .footer-section {
+    min-height: 170px;
+    padding: 1rem 0 0.5rem;
+  }
+
+  .footer-content {
+    display: block;
+    min-height: 0;
+  }
+
+  .footer-brand,
+  .footer-nav,
+  .footer-bottom {
+    display: none;
+  }
+
+  .footer-contacts {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-socials {
+    order: 1;
+    justify-content: center;
+  }
+
+  .footer-email {
+    order: 2;
+    margin-top: 0.35rem;
+  }
+
+  .footer-ridge-wrap {
+    bottom: -1px;
+    width: 72%;
+    opacity: 0.92;
+  }
+}
+
+/* Final composition pass: let the footer mountain breathe into the upper edge,
+   then keep the contact block readable and visually balanced against it. */
+.footer-section {
+  overflow: visible;
+  z-index: 5;
+}
+
+.footer-mountain {
+  left: -1.5%;
+  bottom: 0;
+  width: clamp(520px, 48vw, 800px);
+  z-index: 0;
+}
+
+@media (min-width: 840px) {
+  .footer-section {
+    min-height: 182px;
+  }
+
+  .footer-contacts {
+    top: 50%;
+    transform: translate(-70px, clamp(0.8rem, 0.75vw, 0.95rem));
+  }
+
+  .footer-socials {
+    gap: 1.05rem;
+  }
+
+  .footer-socials .contact-button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .footer-socials .contact-button__image {
+    width: 20px;
+    height: 20px;
+  }
+
+  .footer-email {
+    margin-top: 0.55rem;
+    font-size: clamp(1rem, 1.05vw, 1.15rem);
+  }
+
+  .reveal.about-copy {
+    transform: translateX(clamp(0.8rem, 1.6vw, 1.5rem));
+  }
+
+  .reveal.goal-note {
+    transform: translateX(clamp(0.6rem, 0.8vw, 0.9rem)) rotate(0.8deg);
+  }
+
+  .goal-note p {
+    left: 16%;
+    width: 68%;
+    text-align: center;
+  }
+}
+
+@media (min-width: 720px) and (max-width: 839px) {
+  .footer-mountain {
+    left: -1.5%;
+    bottom: 0;
+    width: 48vw;
+  }
+
+  .footer-socials .contact-button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .footer-socials .contact-button__image {
+    width: 17px;
+    height: 17px;
+  }
+
+  .footer-email {
+    font-size: 0.88rem;
+  }
+
+  .reveal.about-copy {
+    transform: translateX(clamp(0.6rem, 2vw, 1.25rem));
+  }
+
+  .reveal.goal-note {
+    transform: translateX(clamp(0.35rem, 1vw, 0.8rem)) rotate(0.8deg);
+  }
+
+  .goal-note p {
+    left: 16%;
+    width: 68%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 719px) {
+  .footer-section {
+    overflow: hidden;
+  }
+
+  .footer-contacts {
+    transform: translateY(2.6rem);
+  }
+
+  .footer-mountain {
+    left: -5%;
+    bottom: 0;
+    width: 78vw;
+  }
+
+  .footer-socials {
+    gap: 0.48rem;
+  }
+
+  .footer-socials .contact-button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .footer-socials .contact-button__image {
+    width: 16px;
+    height: 16px;
+  }
+
+  .footer-email {
+    margin-top: 0.45rem;
+    font-size: 0.9rem;
+  }
+
+  .goal-note p {
+    left: 16%;
+    width: 68%;
+    text-align: center;
+  }
+}
+
+/* Final composition pass: let the footer mountain breathe into the upper edge,
+   then keep the contact block readable and visually balanced against it. */
+.footer-section {
+  overflow: visible;
+}
+
+.footer-mountain {
+  left: -1.5%;
+  bottom: 0;
+  width: clamp(520px, 44vw, 720px);
+  z-index: 0;
+}
+
+@media (min-width: 840px) {
+  .footer-contacts {
+    transform: translateX(clamp(0.85rem, 1.5vw, 1.5rem)) translateY(0.3rem);
+  }
+
+  .footer-socials {
+    gap: 1.05rem;
+  }
+
+  .footer-socials .contact-button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .footer-socials .contact-button__image {
+    width: 20px;
+    height: 20px;
+  }
+
+  .footer-email {
+    margin-top: 0.55rem;
+    font-size: clamp(1rem, 1.05vw, 1.15rem);
+  }
+
+  .about-copy {
+    transform: translateX(clamp(2rem, 4vw, 4rem));
+  }
+
+  .goal-note {
+    transform: translateX(clamp(0.9rem, 1.6vw, 1.6rem)) rotate(0.8deg);
+  }
+
+  .goal-note p {
+    left: 16%;
+    width: 68%;
+    text-align: center;
+  }
+}
+
+@media (min-width: 720px) and (max-width: 839px) {
+  .footer-mountain {
+    left: -1.5%;
+    bottom: 0;
+    width: 48vw;
+  }
+
+  .footer-socials .contact-button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .footer-socials .contact-button__image {
+    width: 17px;
+    height: 17px;
+  }
+
+  .footer-email {
+    font-size: 0.88rem;
+  }
+
+  .about-copy {
+    transform: translateX(clamp(0.6rem, 2vw, 1.25rem));
+  }
+
+  .goal-note {
+    transform: translateX(clamp(0.35rem, 1vw, 0.8rem)) rotate(0.8deg);
+  }
+
+  .goal-note p {
+    left: 16%;
+    width: 68%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 719px) {
+  .footer-section {
+    overflow: hidden;
+  }
+
+  .footer-mountain {
+    left: -5%;
+    bottom: 0;
+    width: 78vw;
+  }
+
+  .footer-socials {
+    gap: 0.48rem;
+  }
+
+  .footer-socials .contact-button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .footer-socials .contact-button__image {
+    width: 16px;
+    height: 16px;
+  }
+
+  .footer-email {
+    margin-top: 0.45rem;
+    font-size: 0.9rem;
+  }
+
+  .goal-note p {
+    left: 16%;
+    width: 68%;
+    text-align: center;
+  }
+}
+
+/* Stronger torn paper: deeper irregular masks create a visible overlap between sheets. */
+.hero-section,
+.services-section,
+.routes-section,
+.about-section,
+.values-section,
+.footer-section {
+  --edge-height: clamp(28px, 2.7vw, 44px);
+}
+
+.hero-section::after {
+  bottom: -0.55rem;
+  height: clamp(30px, 3vw, 48px);
+}
+
+.services-section::before,
+.services-section::after,
+.routes-section::before,
+.routes-section::after,
+.about-section::before,
+.about-section::after,
+.values-section::before,
+.values-section::after,
+.footer-section::before {
+  top: -1rem;
+  bottom: auto;
+  height: var(--edge-height);
+}
+
+.services-section::after,
+.routes-section::after,
+.about-section::after,
+.values-section::after {
+  top: auto;
+  bottom: -1rem;
+}
+
+/* Section reveal: paper is uncovered like a sheet sliding across the page. */
+.section-reveal {
+  --reveal-surface: var(--paper);
+}
+
+.routes-section.section-reveal,
+.values-section.section-reveal {
+  --reveal-surface: var(--forest-surface);
+}
+
+.section-reveal__veil {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  background: var(--reveal-surface);
+  pointer-events: none;
+  transform: scaleX(1);
+  transform-origin: left center;
+  transition: transform 980ms cubic-bezier(0.2, 0, 0, 1);
+  will-change: transform;
+}
+
+.section-reveal--right > .section-reveal__veil {
+  transform-origin: right center;
+}
+
+.section-reveal.is-visible > .section-reveal__veil {
+  transform: scaleX(0);
+}
+
+.section-reveal::before,
+.section-reveal::after {
+  z-index: 5;
+}
+
+.section-reveal--fade {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+  transition: opacity 760ms cubic-bezier(0.2, 0, 0, 1), transform 760ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.section-reveal--fade.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.footer-section.section-reveal > .section-reveal__veil {
+  background: var(--paper);
+}
+
+.footer-section .footer-mountain {
+  z-index: 0;
+}
+
+@media (max-width: 719px) {
+  .hero-section,
+  .services-section,
+  .routes-section,
+  .about-section,
+  .values-section,
+  .footer-section {
+    --edge-height: 23px;
+  }
+
+  .hero-section::after {
+    bottom: -0.35rem;
+    height: 26px;
+  }
+
+  .services-section::before,
+  .services-section::after,
+  .routes-section::before,
+  .routes-section::after,
+  .about-section::before,
+  .about-section::after,
+  .values-section::before,
+  .values-section::after,
+  .footer-section::before {
+    height: 23px;
+  }
+
+  .services-section::before,
+  .routes-section::before,
+  .about-section::before,
+  .values-section::before,
+  .footer-section::before {
+    top: -0.55rem;
+  }
+
+  .services-section::after,
+  .routes-section::after,
+  .about-section::after,
+  .values-section::after {
+    bottom: -0.55rem;
+  }
+
+  .section-reveal__veil {
+    transition-duration: 820ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-reveal,
+  .section-reveal--fade,
+  .section-reveal--fade.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .section-reveal__veil,
+  .section-reveal.is-visible > .section-reveal__veil {
+    transform: scaleX(0);
+    transition: none;
+  }
+}
+
+/* Final visual corrections from the browser review. */
+.hero-tear {
+  display: none;
+}
+
+@media (min-width: 720px) {
+  .services-compass {
+    top: 1%;
+    left: clamp(1.6rem, 4vw, 4.5rem);
+    width: 198px;
+    height: 198px;
+  }
+
+  .services-botanical {
+    right: clamp(1rem, 1.8vw, 2.2rem);
+    bottom: -0.4rem;
+    width: 180px;
+    height: 328px;
+  }
+}
+
+@media (min-width: 840px) {
+  .about-grid {
+    align-items: center;
+  }
+
+  .about-art {
+    position: relative;
+    min-height: clamp(285px, 25vw, 370px);
+    z-index: 0;
+  }
+
+  .about-art h2,
+  .about-art .torn-divider {
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-etching {
+    bottom: -2.1rem;
+    left: -5.2rem;
+    width: 154%;
+    z-index: 0;
+  }
+
+  .about-copy {
+    position: relative;
+    z-index: 2;
+    padding-top: 0.35rem;
+    transform: none;
+  }
+
+  .goal-note {
+    position: relative;
+    z-index: 2;
+    align-self: center;
+    width: 100%;
+    transform: rotate(0.8deg);
+  }
+
+  .footer-section {
+    min-height: 132px;
+    padding: 1rem 0 0.75rem;
+  }
+
+  .footer-content {
+    min-height: 86px;
+    align-items: center;
+  }
+
+  .footer-ridge-wrap {
+    bottom: -2px;
+    width: min(58%, 860px);
+  }
+
+  .footer-contacts {
+    transform: translateY(0.3rem);
+  }
+}
+
+@media (min-width: 720px) and (max-width: 839px) {
+  .about-grid {
+    align-items: start;
+  }
+
+  .about-art {
+    position: relative;
+    min-height: 245px;
+    z-index: 0;
+  }
+
+  .about-art h2,
+  .about-art .torn-divider,
+  .about-copy,
+  .goal-note {
+    position: relative;
+    z-index: 2;
+  }
+
+  .about-etching {
+    left: -2.5rem;
+    bottom: -2rem;
+    width: 145%;
+    z-index: 0;
+  }
+
+  .about-copy {
+    transform: none;
+    padding-top: 0.25rem;
+  }
+}
+
+@media (min-width: 840px) and (max-width: 1100px) {
+  .footer-mountain {
+    bottom: -5%;
+  }
+}
+
+@media (max-width: 719px) {
+  .services-compass {
+    left: 0;
+    top: 1%;
+    width: 112px;
+    height: 112px;
+  }
+
+  .services-botanical {
+    right: -0.5rem;
+    bottom: 0;
+    width: 112px;
+    height: 204px;
+  }
+}
+
+/* Final visual corrections from the browser review. */
+.hero-tear {
+  display: none;
+}
+
+@media (min-width: 720px) {
+  .services-compass {
+    top: 1%;
+    left: clamp(1.6rem, 4vw, 4.5rem);
+    width: 198px;
+    height: 198px;
+  }
+
+  .services-botanical {
+    right: clamp(1rem, 1.8vw, 2.2rem);
+    bottom: -0.4rem;
+    width: 180px;
+    height: 328px;
+  }
+}
+
+@media (min-width: 840px) {
+  .about-grid {
+    align-items: center;
+  }
+
+  .about-art {
+    position: relative;
+    min-height: clamp(285px, 25vw, 370px);
+    z-index: 0;
+  }
+
+  .about-art h2,
+  .about-art .torn-divider {
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-etching {
+    bottom: -2.1rem;
+    left: -5.2rem;
+    width: 154%;
+    z-index: 0;
+  }
+
+  .about-copy {
+    position: relative;
+    z-index: 2;
+    padding-top: 0.35rem;
+    transform: none;
+  }
+
+  .goal-note {
+    position: relative;
+    z-index: 2;
+    align-self: center;
+    width: 100%;
+    transform: rotate(0.8deg);
+  }
+
+  .footer-section {
+    min-height: 132px;
+    padding: 1rem 0 0.75rem;
+  }
+
+  .footer-content {
+    min-height: 86px;
+    align-items: center;
+  }
+
+  .footer-ridge-wrap {
+    bottom: -2px;
+    width: min(58%, 860px);
+  }
+
+  .footer-contacts {
+    transform: translateY(0.3rem);
+  }
+}
+
+@media (min-width: 720px) and (max-width: 839px) {
+  .about-grid {
+    align-items: start;
+  }
+
+  .about-art {
+    position: relative;
+    min-height: 245px;
+    z-index: 0;
+  }
+
+  .about-art h2,
+  .about-art .torn-divider,
+  .about-copy,
+  .goal-note {
+    position: relative;
+    z-index: 2;
+  }
+
+  .about-etching {
+    left: -2.5rem;
+    bottom: -2rem;
+    width: 145%;
+    z-index: 0;
+  }
+
+  .about-copy {
+    transform: none;
+    padding-top: 0.25rem;
+  }
+}
+
+@media (max-width: 719px) {
+  .services-compass {
+    left: 0;
+    top: 1%;
+    width: 112px;
+    height: 112px;
+  }
+
+  .services-botanical {
+    right: -0.5rem;
+    bottom: 0;
+    width: 112px;
+    height: 204px;
+  }
+}
+
+/* Route cards are photographs, not panels: keep only the printed card edge. */
+.route-card {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.route-card__media {
+  --route-radius: 8px;
+  background-position: center;
+  background-size: cover;
+  border-radius: var(--route-radius);
+  overflow: hidden;
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 650ms var(--ease-soft), filter 500ms ease;
+  will-change: transform;
+}
+
+.route-card__veil {
+  border-radius: var(--route-radius);
+}
+
+.route-card-wrap:nth-child(3) .route-card__media {
+  background-size: 145% auto;
+  background-position: 50% 86%;
+}
+
+.route-card-wrap:nth-child(3) .route-card:hover .route-card__media,
+.route-card-wrap:nth-child(3) .route-card:focus-visible .route-card__media {
+  background-size: 152% auto;
+  background-position: 50% 86%;
+}
+
+.route-card:hover .route-card__media,
+.route-card:focus-visible .route-card__media {
+  background-size: cover;
+  transform: scale(1.035);
+}
+
+@media (max-width: 719px) {
+  .routes-section,
+  .values-section {
+    clip-path: polygon(
+      0 0.92%, 4.8% 1.1%, 9.6% 0.76%, 14.4% 1.2%, 19.2% 0.88%,
+      24.1% 1.28%, 29.0% 0.8%, 34.0% 1.04%, 39.1% 1.16%, 44.2% 0.74%,
+      49.2% 1.12%, 54.3% 0.84%, 59.4% 1.24%, 64.5% 0.78%, 69.5% 1.08%,
+      74.6% 0.86%, 79.7% 1.18%, 84.8% 0.8%, 89.9% 1.1%, 95.0% 0.76%, 100% 1.04%,
+      100% 99.15%, 95.0% 98.92%, 89.9% 99.2%, 84.8% 98.86%, 79.7% 99.12%,
+      74.6% 98.82%, 69.5% 99.18%, 64.5% 98.9%, 59.4% 99.24%, 54.3% 98.86%,
+      49.2% 99.16%, 44.2% 98.84%, 39.1% 99.2%, 34.0% 98.88%, 29.0% 99.18%,
+      24.1% 98.86%, 19.2% 99.22%, 14.4% 98.9%, 9.6% 99.14%, 4.8% 98.84%, 0 99.1%
+    );
+  }
+}
+
+.services-compass,
+.services-botanical {
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  mix-blend-mode: multiply;
+  stroke: none;
+}
+
+.services-compass {
+  top: 4%;
+  left: 0;
+  width: 132px;
+  height: 132px;
+  opacity: 0.28;
+  transform: rotate(8deg);
+}
+
+.services-botanical {
+  right: 0.5%;
+  bottom: 0;
+  width: 90px;
+  height: 164px;
+  opacity: 0.28;
+  transform: rotate(-8deg);
+}
+
+.routes-heading__label {
+  position: relative;
+  display: inline-block;
+}
+
+.routes-heading__underline {
+  position: absolute;
+  right: 0.12em;
+  bottom: -0.34em;
+  left: -0.02em;
+  height: 0.42em;
+  color: rgba(241, 236, 223, 0.82);
+  pointer-events: none;
+  transform: rotate(-1deg);
+}
+
+.routes-heading__underline svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+
+/* Reference-locked paper edges: organic torn fibers, never a regular sawtooth. */
+.hero-tear {
+  bottom: -18px;
+  height: clamp(28px, 3.2vw, 44px);
+  background: url('../../design-reference/khasaut/assets/attached/torn-edges/torn-bottom-edge.png') center / 100% 100% no-repeat;
+  clip-path: none;
+}
+
+.routes-section,
+.values-section {
+  position: relative;
+  overflow: visible;
+  clip-path: polygon(
+    0 1.2%, 4.7% 1.65%, 8.1% 0.82%, 12.6% 1.44%, 16.1% 2.42%,
+    20.8% 1.2%, 24.4% 0.96%, 28.6% 1.84%, 33.2% 0.65%, 38.0% 1.96%,
+    42.2% 1.28%, 46.3% 2.36%, 51.1% 0.92%, 55.0% 1.7%, 60.2% 0.76%,
+    65.0% 1.58%, 69.4% 2.28%, 74.5% 1.06%, 79.2% 1.5%, 83.8% 0.72%,
+    88.9% 2.06%, 94.1% 1.12%, 100% 1.6%,
+    100% 98.42%, 95.4% 98.82%, 91.1% 98.08%, 86.3% 98.64%, 81.7% 97.96%,
+    76.8% 98.7%, 72.5% 98.14%, 67.4% 98.52%, 63.0% 97.92%, 58.3% 98.76%,
+    53.6% 98.18%, 49.1% 98.62%, 44.3% 97.98%, 39.6% 98.7%, 35.1% 98.1%,
+    30.4% 98.56%, 25.6% 97.9%, 21.2% 98.72%, 16.0% 98.14%, 11.3% 98.6%,
+    6.4% 98.0%, 2.8% 98.68%, 0 98.3%
+  );
+  background-color: var(--forest-surface);
+}
+
+.routes-section,
+.values-section {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.018), rgba(0, 0, 0, 0.025));
+  background-size: 100% 100%;
+}
+
+.routes-section::before,
+.routes-section::after,
+.values-section::before,
+.values-section::after {
+  display: none;
+}
+
+/* Reference full-page lock: the supplied 941px composition is the source of truth. */
+.hero-section {
+  height: auto;
+  min-height: clamp(570px, 63.2vw, 910px);
+  overflow: hidden;
+}
+
+.hero-content {
+  min-height: calc(clamp(570px, 63.2vw, 910px) - 106px);
+  box-sizing: border-box;
+}
+
+.hero-tear {
+  bottom: -18px;
+}
+
+@media (max-width: 719px) {
+  .hero-section {
+    height: auto;
+    min-height: 720px;
+  }
+
+  .site-header {
+    grid-template-columns: 1fr auto;
+    gap: 0;
+  }
+
+  .hero-content {
+    min-height: 0;
+  }
+}
+
+/* Final visual corrections from the browser review. */
+.hero-tear {
+  display: none;
+}
+
+@media (min-width: 720px) {
+  .services-compass {
+    top: 1%;
+    left: clamp(1.6rem, 4vw, 4.5rem);
+    width: 198px;
+    height: 198px;
+  }
+
+  .services-botanical {
+    right: clamp(1rem, 1.8vw, 2.2rem);
+    bottom: -0.4rem;
+    width: 180px;
+    height: 328px;
+  }
+}
+
+@media (min-width: 840px) {
+  .about-grid {
+    align-items: center;
+  }
+
+  .about-art {
+    position: relative;
+    min-height: clamp(285px, 25vw, 370px);
+    z-index: 0;
+  }
+
+  .about-art h2,
+  .about-art .torn-divider {
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-etching {
+    bottom: -2.1rem;
+    left: -5.2rem;
+    width: 154%;
+    z-index: 0;
+  }
+
+  .about-copy {
+    position: relative;
+    z-index: 2;
+    padding-top: 0.35rem;
+    transform: none;
+  }
+
+  .goal-note {
+    position: relative;
+    z-index: 2;
+    align-self: center;
+    width: 100%;
+    transform: rotate(0.8deg);
+  }
+
+  .footer-section {
+    min-height: 132px;
+    padding: 1rem 0 0.75rem;
+  }
+
+  .footer-content {
+    min-height: 86px;
+    align-items: center;
+  }
+
+  .footer-ridge-wrap {
+    bottom: -2px;
+    width: min(58%, 860px);
+  }
+
+  .footer-contacts {
+    transform: translateY(0.3rem);
+  }
+}
+
+@media (min-width: 720px) and (max-width: 839px) {
+  .about-grid {
+    align-items: start;
+  }
+
+  .about-art {
+    position: relative;
+    min-height: 245px;
+    z-index: 0;
+  }
+
+  .about-art h2,
+  .about-art .torn-divider,
+  .about-copy,
+  .goal-note {
+    position: relative;
+    z-index: 2;
+  }
+
+  .about-etching {
+    left: -2.5rem;
+    bottom: -2rem;
+    width: 145%;
+    z-index: 0;
+  }
+
+  .about-copy {
+    transform: none;
+    padding-top: 0.25rem;
+  }
+}
+
+@media (max-width: 719px) {
+  .services-compass {
+    left: 0;
+    top: 1%;
+    width: 112px;
+    height: 112px;
+  }
+
+  .services-botanical {
+    right: -0.5rem;
+    bottom: 0;
+    width: 112px;
+    height: 204px;
+  }
+}
+
+/* Provided footer mountain: one transparent composition layer, anchored to the footer. */
+.footer-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-mountain {
+  position: absolute;
+  left: -1.5%;
+  bottom: -35%;
+  z-index: 1;
+  width: clamp(420px, 42vw, 680px);
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 720px) and (max-width: 839px) {
+  .footer-mountain {
+    left: -1.5%;
+    bottom: -34%;
+    width: 48vw;
+  }
+}
+
+@media (max-width: 719px) {
+  .footer-mountain {
+    left: -5%;
+    bottom: -44%;
+    width: 76vw;
+  }
+}
+
+@media (min-width: 840px) and (max-width: 1100px) {
+  .footer-mountain {
+    bottom: -5%;
+  }
+}
+
+/* Paper edge system: every sheet owns a deterministic top/bottom mask. */
+.hero-section,
+.services-section,
+.routes-section,
+.about-section,
+.values-section,
+.footer-section {
+  --edge-height-top: clamp(26px, 2vw, 36px);
+  --edge-height-bottom: clamp(26px, 2vw, 36px);
+  --edge-color-top: var(--paper);
+  --edge-color-bottom: var(--paper);
+  position: relative;
+}
+
+.hero-section {
+  z-index: 1;
+}
+
+.services-section,
+.about-section {
+  z-index: 2;
+}
+
+.routes-section,
+.footer-section {
+  z-index: 3;
+}
+
+.values-section {
+  z-index: 4;
+}
+
+.services-section,
+.about-section,
+.footer-section {
+  --edge-color-top: var(--paper);
+  --edge-color-bottom: var(--paper);
+}
+
+.routes-section,
+.values-section {
+  --edge-color-top: var(--forest-surface);
+  --edge-color-bottom: var(--forest-surface);
+  clip-path: none;
+  overflow: visible;
+}
+
+.hero-section {
+  --edge-mask-bottom: url('../assets/torn-edges/edge-hero-bottom.svg');
+  --edge-height-bottom: clamp(27px, 2vw, 38px);
+  --edge-color-bottom: var(--paper);
+}
+
+.services-section {
+  --edge-mask-top: url('../assets/torn-edges/edge-services-top.svg');
+  --edge-mask-bottom: url('../assets/torn-edges/edge-services-bottom.svg');
+  --edge-height-top: clamp(26px, 1.9vw, 34px);
+  --edge-height-bottom: clamp(28px, 2.1vw, 38px);
+}
+
+.routes-section {
+  --edge-mask-top: url('../assets/torn-edges/edge-routes-top.svg');
+  --edge-mask-bottom: url('../assets/torn-edges/edge-routes-bottom.svg');
+  --edge-height-top: clamp(29px, 2.2vw, 40px);
+  --edge-height-bottom: clamp(27px, 2vw, 37px);
+  --edge-color-top: var(--paper);
+}
+
+.about-section {
+  --edge-mask-top: url('../assets/torn-edges/edge-about-top.svg');
+  --edge-mask-bottom: url('../assets/torn-edges/edge-about-bottom.svg');
+  --edge-height-top: clamp(26px, 1.85vw, 34px);
+  --edge-height-bottom: clamp(28px, 2vw, 37px);
+  --edge-color-top: var(--forest-deep);
+}
+
+.values-section {
+  --edge-mask-top: url('../assets/torn-edges/edge-values-top.svg');
+  --edge-mask-bottom: url('../assets/torn-edges/edge-values-bottom.svg');
+  --edge-height-top: clamp(28px, 2.1vw, 39px);
+  --edge-height-bottom: clamp(30px, 2.3vw, 42px);
+  --edge-color-top: var(--paper);
+}
+
+.footer-section {
+  --edge-mask-top: url('../assets/torn-edges/edge-footer-top.svg');
+  --edge-height-top: clamp(27px, 2vw, 36px);
+  --edge-color-top: var(--forest-surface);
+}
+
+.services-section > .container,
+.routes-section > .container,
+.about-section > .container,
+.values-section > .container,
+.footer-section > .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-section::after,
+.services-section::before,
+.services-section::after,
+.routes-section::before,
+.routes-section::after,
+.about-section::before,
+.about-section::after,
+.values-section::before,
+.values-section::after,
+.footer-section::before {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 3;
+  pointer-events: none;
+  content: '';
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  transform: none;
+  clip-path: none;
+}
+
+.hero-section::after {
+  bottom: 0;
+  height: var(--edge-height-bottom);
+  background: var(--edge-color-bottom);
+  -webkit-mask-image: var(--edge-mask-bottom);
+  mask-image: var(--edge-mask-bottom);
+}
+
+.services-section::before {
+  top: 0;
+  height: var(--edge-height-top);
+  background: var(--edge-color-top);
+  -webkit-mask-image: var(--edge-mask-top);
+  mask-image: var(--edge-mask-top);
+}
+
+.services-section::after {
+  bottom: calc(var(--edge-height-bottom) * -0.46);
+  height: var(--edge-height-bottom);
+  background: var(--edge-color-bottom);
+  -webkit-mask-image: var(--edge-mask-bottom);
+  mask-image: var(--edge-mask-bottom);
+}
+
+.routes-section::before {
+  top: 0;
+  height: var(--edge-height-top);
+  background: var(--edge-color-top);
+  -webkit-mask-image: var(--edge-mask-top);
+  mask-image: var(--edge-mask-top);
+}
+
+.routes-section::after {
+  bottom: calc(var(--edge-height-bottom) * -0.46);
+  height: var(--edge-height-bottom);
+  background: var(--edge-color-bottom);
+  -webkit-mask-image: var(--edge-mask-bottom);
+  mask-image: var(--edge-mask-bottom);
+}
+
+.about-section::before {
+  top: 0;
+  height: var(--edge-height-top);
+  background: var(--edge-color-top);
+  -webkit-mask-image: var(--edge-mask-top);
+  mask-image: var(--edge-mask-top);
+}
+
+.about-section::after {
+  bottom: calc(var(--edge-height-bottom) * -0.46);
+  height: var(--edge-height-bottom);
+  background: var(--edge-color-bottom);
+  -webkit-mask-image: var(--edge-mask-bottom);
+  mask-image: var(--edge-mask-bottom);
+}
+
+.values-section::before {
+  top: 0;
+  height: var(--edge-height-top);
+  background: var(--edge-color-top);
+  -webkit-mask-image: var(--edge-mask-top);
+  mask-image: var(--edge-mask-top);
+}
+
+.values-section::after {
+  bottom: calc(var(--edge-height-bottom) * -0.46);
+  height: var(--edge-height-bottom);
+  background: var(--edge-color-bottom);
+  -webkit-mask-image: var(--edge-mask-bottom);
+  mask-image: var(--edge-mask-bottom);
+}
+
+.footer-section::before {
+  top: 0;
+  height: var(--edge-height-top);
+  background: var(--edge-color-top);
+  -webkit-mask-image: var(--edge-mask-top);
+  mask-image: var(--edge-mask-top);
+}
+
+.routes-section::before,
+.routes-section::after,
+.values-section::before,
+.values-section::after {
+  display: block;
+}
+
+.routes-section,
+.values-section {
+  background-image:
+    radial-gradient(circle at 20% 12%, rgba(247, 239, 220, 0.035), transparent 28%),
+    radial-gradient(circle at 78% 88%, rgba(8, 26, 18, 0.05), transparent 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.018), rgba(0, 0, 0, 0.025));
+  background-size: auto, auto, 100% 100%;
+}
+
+@media (max-width: 719px) {
+  .hero-section,
+  .services-section,
+  .routes-section,
+  .about-section,
+  .values-section,
+  .footer-section {
+    --edge-height-top: 22px;
+    --edge-height-bottom: 22px;
+  }
+
+  .hero-section::after {
+    height: 23px;
+  }
+
+  .services-section::before,
+  .services-section::after,
+  .routes-section::before,
+  .routes-section::after,
+  .about-section::before,
+  .about-section::after,
+  .values-section::before,
+  .values-section::after,
+  .footer-section::before {
+    height: var(--edge-height-top);
+  }
+
+  .services-section::after,
+  .routes-section::after,
+  .about-section::after,
+  .values-section::after {
+    height: var(--edge-height-bottom);
+  }
+}
+
+/* Final mobile polish: keep the collage airy, copy readable, and the footer quiet. */
+@media (max-width: 719px) {
+  .service-item p {
+    font-size: 0.62rem;
+  }
+
+  .about-etching {
+    bottom: -2.6rem;
+    left: -2.5rem;
+    width: 136%;
+  }
+
+  .about-copy {
+    font-size: 0.75rem;
+    line-height: 1.45;
+  }
+
+  .value-item p {
+    font-size: 0.64rem;
+  }
+
+  .footer-section {
+    min-height: 170px;
+    padding: 1rem 0 0.5rem;
+  }
+
+  .footer-content {
+    display: block;
+    min-height: 0;
+  }
+
+  .footer-brand,
+  .footer-nav,
+  .footer-bottom {
+    display: none;
+  }
+
+  .footer-contacts {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-socials {
+    order: 1;
+    justify-content: center;
+  }
+
+  .footer-email {
+    order: 2;
+    margin-top: 0.35rem;
+  }
+
+  .footer-ridge-wrap {
+    bottom: -1px;
+    width: 72%;
+    opacity: 0.92;
+  }
+}
+
+/* Latest reference alignment: keep the mountain visible, lift it to the
+   footer edge, and give the contact and editorial copy more breathing room. */
+.footer-section {
+  overflow: hidden;
+  z-index: 5;
+}
+
+.footer-mountain {
+  left: -1.5%;
+  bottom: -30px;
+  width: clamp(520px, 52vw, 920px);
+  z-index: 0;
+}
+
+@media (min-width: 840px) {
+  .footer-section {
+    min-height: 182px;
+  }
+
+  .footer-contacts {
+    top: 50%;
+    transform: translate(-70px, clamp(0.8rem, 0.75vw, 0.95rem));
+  }
+
+  .footer-socials {
+    gap: 1.05rem;
+  }
+
+  .footer-socials .contact-button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .footer-socials .contact-button__image {
+    width: 20px;
+    height: 20px;
+  }
+
+  .footer-email {
+    margin-top: 0.55rem;
+    font-size: clamp(1rem, 1.05vw, 1.15rem);
+  }
+
+  .reveal.about-copy {
+    transform: translateX(clamp(0.8rem, 1.6vw, 1.5rem));
+  }
+
+  .reveal.goal-note {
+    transform: translateX(clamp(0.6rem, 0.8vw, 0.9rem)) rotate(0.8deg);
+  }
+
+  .goal-note p {
+    left: 16%;
+    width: 68%;
+    text-align: center;
+  }
+}
+
+@media (min-width: 720px) and (max-width: 839px) {
+  .footer-mountain {
+    left: -1.5%;
+    bottom: -30px;
+    width: 48vw;
+  }
+
+  .footer-socials .contact-button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .footer-socials .contact-button__image {
+    width: 17px;
+    height: 17px;
+  }
+
+  .footer-email {
+    font-size: 0.88rem;
+  }
+
+  .reveal.about-copy {
+    transform: translateX(clamp(0.6rem, 2vw, 1.25rem));
+  }
+
+  .reveal.goal-note {
+    transform: translateX(clamp(0.35rem, 1vw, 0.8rem)) rotate(0.8deg);
+  }
+
+  .goal-note p {
+    left: 16%;
+    width: 68%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 719px) {
+  .footer-section {
+    overflow: hidden;
+  }
+
+  .footer-mountain {
+    left: -5%;
+    bottom: -62px;
+    width: 78vw;
+  }
+
+  .footer-socials {
+    gap: 0.48rem;
+  }
+
+  .footer-socials .contact-button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .footer-socials .contact-button__image {
+    width: 16px;
+    height: 16px;
+  }
+
+  .footer-email {
+    margin-top: 0.45rem;
+    font-size: 0.9rem;
+  }
+
+  .goal-note p {
+    left: 16%;
+    width: 68%;
+    text-align: center;
+  }
+}
+
+@media (min-width: 840px) and (max-width: 1199px) {
+  .footer-section {
+    min-height: 132px;
+  }
+
+  .footer-contacts {
+    top: 0.45rem;
+    transform: translateX(clamp(0.85rem, 1.5vw, 1.5rem)) translateY(clamp(1.4rem, 1.5vw, 1.65rem));
+  }
+}
+
+/* Keep the forest sheets and their torn silhouettes on one exact color. */
+.routes-section,
+.values-section {
+  background-color: var(--forest-surface) !important;
+  background-image: none !important;
+}
+
+/* Let the mountain cross the footer seam by a few pixels on wide screens.
+   Its geometry stays below the values copy and the contact content remains
+   in the foreground, so the overlap reads as a layered paper composition. */
+@media (min-width: 1200px) {
+  .footer-section {
+    overflow: visible;
+  }
+
+  .footer-mountain {
+    bottom: calc(200px - 15vw);
+    width: clamp(520px, 45vw, 900px);
+  }
+}
+
+@media (min-width: 720px) and (max-width: 839px) {
+  .footer-contacts {
+    transform: translateY(-0.75rem);
+  }
+}
+
+/* Keep the message on the clean left side of the paper note. The engraving,
+   flowers and seal stay unobstructed; on wide cards the short copy balances
+   into two quiet editorial columns. */
+.goal-note p {
+  top: 46%;
+  left: 13%;
+  width: 55%;
+  text-align: left;
+  column-count: 1;
+}
+
+@media (min-width: 720px) and (max-width: 1199px) {
+  .goal-note p {
+    left: 13%;
+    width: 56%;
+    column-count: 1;
+  }
+}
+
+@media (max-width: 719px) {
+  .goal-note p {
+    top: 47%;
+    left: 14%;
+    width: 55%;
+    column-count: 1;
+    text-align: left;
+  }
+}
+
+/* Final mobile composition: keep the artwork centred and make the menu a
+   calm, opaque paper sheet instead of a small card over the collage. */
+@media (max-width: 719px) {
+  .hero-section .main-nav {
+    top: calc(100% - 1px);
+    right: 0;
+    left: 0;
+    width: auto;
+    min-width: 0;
+    z-index: 40;
+    justify-self: stretch;
+    gap: 0.25rem;
+    padding: 0.8rem;
+    border: 1px solid rgba(23, 61, 43, 0.2);
+    border-top: 0;
+    border-radius: 0 0 0.35rem 0.35rem;
+    background: var(--paper);
+    box-shadow: 0 18px 32px rgba(24, 36, 27, 0.16);
+  }
+
+  .hero-section .main-nav a {
+    display: block;
+    padding: 0.8rem 0.9rem;
+    border-bottom: 1px solid rgba(38, 54, 45, 0.12);
+    color: var(--forest);
+    font-size: 1rem;
+  }
+
+  .hero-section .main-nav a:last-child {
+    border-bottom: 0;
+  }
+
+  .hero-section .menu-toggle {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(23, 61, 43, 0.28);
+    border-radius: 50%;
+    background: rgba(245, 238, 226, 0.82);
+  }
+
+  .hero-section .menu-toggle:hover,
+  .hero-section .menu-toggle:focus-visible {
+    color: var(--paper);
+    background: var(--forest);
+  }
+
+  .about-art {
+    min-height: 236px;
+    overflow: visible;
+  }
+
+  .about-grid {
+    align-items: stretch;
+  }
+
+  .about-etching {
+    bottom: -2.1rem;
+    left: 50%;
+    width: 112%;
+    max-width: none;
+    transform: translateX(-50%);
+  }
+
+  .footer-mountain {
+    left: 50%;
+    bottom: -20px;
+    width: min(94vw, 420px);
+    max-width: none;
+    transform: translateX(-50%);
+  }
+}
+
+/* Footer navigation stays available on every page, including narrow phones.
+   Keep it compact and above the decorative mountain so links never collide
+   with the contact details or the image layer. */
+@media (max-width: 719px) {
+  .footer-section {
+    min-height: 250px;
+    padding: 1rem 0 1.1rem;
+  }
+
+  .footer-content {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .footer-contacts {
+    transform: none;
+  }
+
+  .footer-nav {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    max-width: 22rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem 0.85rem;
+    margin-top: 0.75rem;
+    color: var(--forest);
+    font-size: 0.66rem;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .footer-nav a {
+    display: inline-block;
+    padding: 0.2rem 0;
+  }
+
+  .footer-mountain {
+    bottom: -30px;
+  }
+}
+
+/* The compact footer navigation is intentionally present on desktop and
+   tablet too; the earlier reference-only layout hid it at larger widths. */
+@media (min-width: 720px) {
+  .footer-nav {
+    display: flex;
+    max-width: 24rem;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem 0.85rem;
+    justify-content: flex-start;
+    align-self: center;
+    font-size: 0.72rem;
+    line-height: 1.25;
+  }
+}
+
+@media (min-width: 840px) {
+  .footer-nav {
+    grid-column: 3;
+    justify-self: end;
+  }
+}
+
+/* Final footer polish: keep the contact cluster and route navigation in
+   separate editorial columns. The earlier responsive rules intentionally
+   remain above this block; these are the last, bounded overrides for the
+   shared footer used by home and inner pages. */
+@media (min-width: 720px) {
+  .footer-section {
+    min-height: 182px;
+    padding: 0.9rem 0 1rem;
+  }
+
+  .footer-content {
+    z-index: 2;
+    grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.9fr) minmax(19rem, 1.15fr);
+    align-items: center;
+    gap: clamp(1.25rem, 3vw, 3.5rem);
+    min-height: 132px;
+  }
+
+  .footer-contacts {
+    position: static;
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    text-align: center;
+    /* Keep the contact cluster clear of the mountain silhouette at tablet
+       and desktop widths while leaving a quiet gap before the route links. */
+    transform: translateX(6rem);
+  }
+
+  .footer-contacts .section-kicker {
+    display: none;
+  }
+
+  .footer-socials {
+    order: 1;
+    gap: clamp(0.55rem, 1.1vw, 1rem);
+    justify-content: center;
+  }
+
+  .footer-email {
+    order: 2;
+    margin: 0.55rem 0 0;
+    color: var(--forest);
+    font-size: clamp(0.82rem, 0.95vw, 1rem);
+    line-height: 1.2;
+    white-space: nowrap;
+    transition: color 260ms var(--ease-soft), transform 260ms var(--ease-soft);
+  }
+
+  .footer-email:hover,
+  .footer-email:focus-visible {
+    color: var(--sand);
+    transform: translateY(-1px);
+  }
+
+  .footer-nav {
+    grid-column: 3;
+    grid-row: 1;
+    align-self: center;
+    justify-self: stretch;
+    display: flex;
+    max-width: none;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.45rem 1rem;
+    color: var(--forest);
+    font-size: clamp(0.68rem, 0.75vw, 0.8rem);
+    letter-spacing: 0.035em;
+    line-height: 1.3;
+  }
+
+  .footer-nav a {
+    min-height: 1.7rem;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.05rem;
+    border-bottom: 1px solid transparent;
+    color: inherit;
+    text-decoration: none;
+    text-underline-offset: 0.25rem;
+    touch-action: manipulation;
+    transition: color 240ms var(--ease-soft), border-color 240ms var(--ease-soft), transform 240ms var(--ease-soft);
+  }
+
+  .footer-nav a:hover,
+  .footer-nav a:focus-visible {
+    border-color: var(--sand);
+    color: var(--forest-deep);
+    transform: translateY(-1px);
+  }
+
+  .footer-nav a:focus-visible,
+  .footer-email:focus-visible {
+    outline: 2px solid var(--sand);
+    outline-offset: 3px;
+  }
+
+  .footer-bottom {
+    display: none;
+  }
+}
+
+@media (min-width: 720px) and (max-width: 1199px) {
+  .footer-content {
+    grid-template-columns: minmax(0, 1fr) minmax(14rem, 1fr) minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .footer-socials {
+    gap: 0.55rem;
+  }
+
+  .footer-nav {
+    max-width: 15rem;
+    justify-self: end;
+    gap: 0.35rem 0.7rem;
+    font-size: 0.68rem;
+  }
+}
+
+@media (max-width: 719px) {
+  .footer-section {
+    min-height: 260px;
+    padding: 1.15rem 0 1.2rem;
+  }
+
+  .footer-content {
+    z-index: 2;
+    gap: 0;
+  }
+
+  .footer-email {
+    font-size: clamp(0.76rem, 2.8vw, 0.9rem);
+    white-space: nowrap;
+    transition: color 240ms var(--ease-soft), transform 240ms var(--ease-soft);
+  }
+
+  .footer-nav {
+    max-width: min(20rem, calc(100vw - 2rem));
+    gap: 0.4rem 0.7rem;
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+  }
+
+  .footer-nav a {
+    min-height: 1.55rem;
+    padding: 0.16rem 0.1rem;
+    border-bottom: 1px solid transparent;
+    color: var(--forest);
+    touch-action: manipulation;
+    transition: color 220ms var(--ease-soft), border-color 220ms var(--ease-soft), transform 220ms var(--ease-soft);
+  }
+
+  .footer-nav a:hover,
+  .footer-nav a:focus-visible,
+  .footer-email:hover,
+  .footer-email:focus-visible {
+    border-color: var(--sand);
+    color: var(--forest-deep);
+    transform: translateY(-1px);
+  }
+
+  .footer-nav a:focus-visible,
+  .footer-email:focus-visible {
+    outline: 2px solid var(--sand);
+    outline-offset: 3px;
+  }
+
+  .footer-mountain {
+    bottom: -50px;
+  }
+}
+
+/* At the narrow tablet width keep the contact cluster and the five route
+   links in two calm rows. This prevents the email from colliding with the
+   navigation while preserving a visible mountain edge below them. */
+@media (min-width: 720px) and (max-width: 839px) {
+  .footer-content {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    align-items: start;
+    gap: 0.25rem 1rem;
+    min-height: 132px;
+  }
+
+  .footer-contacts {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    justify-self: end;
+    padding-top: 0.25rem;
+    transform: none;
+  }
+
+  .footer-nav {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    justify-self: end;
+    max-width: 15rem;
+    margin-top: 0.25rem;
+  }
+
+  .footer-mountain {
+    bottom: -62px;
+  }
+}
+
+/* Editorial footer composition: the route index owns the middle column and
+   the contact cluster sits quietly on the right. The mountain remains a
+   separate left-hand layer, never a background behind text. */
+@media (min-width: 840px) {
+  .footer-brand {
+    display: none;
+  }
+
+  .footer-content {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.18fr) minmax(14rem, 0.9fr);
+    align-items: center;
+    gap: clamp(0.75rem, 2vw, 2rem);
+  }
+
+  .footer-nav {
+    grid-column: 2;
+    grid-row: 1;
+    width: max-content;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem 0.9rem;
+    justify-self: center;
+    transform: translateX(4rem);
+    font-size: clamp(0.67rem, 0.72vw, 0.78rem);
+  }
+
+  .footer-contacts {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    align-items: flex-end;
+    transform: none;
+  }
+
+  .footer-socials {
+    justify-content: flex-end;
+  }
+
+  .footer-email {
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: 840px) and (max-width: 1199px) {
+  .footer-mountain {
+    width: clamp(360px, 44vw, 520px);
+  }
+
+  .footer-nav {
+    transform: translateX(6rem);
+  }
+}
+
+@media (min-width: 720px) and (max-width: 839px) {
+  .footer-brand {
+    display: none;
+  }
+
+  .footer-content {
+    grid-template-columns: minmax(0, 1fr) minmax(14rem, 1fr);
+    grid-template-rows: auto auto;
+    align-items: start;
+    gap: 0.35rem 1rem;
+  }
+
+  .footer-nav {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+    width: auto;
+    max-width: 29rem;
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    justify-content: center;
+    gap: 0.35rem 1rem;
+    transform: none;
+  }
+
+  .footer-contacts {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+    align-self: start;
+    padding-top: 0.25rem;
+    transform: none;
+  }
+}
+
+@media (max-width: 719px) {
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-nav {
+    order: 1;
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    justify-content: center;
+    gap: 0.35rem 0.8rem;
+    width: auto;
+    max-width: calc(100vw - 2rem);
+    margin-top: 0;
+  }
+
+  .footer-contacts {
+    order: 2;
+    margin-top: 1rem;
+    transform: none;
+  }
+
+  .footer-mountain {
+    bottom: -70px;
+  }
+}
+
+/*
+ * Hero collage depth choreography.
+ * The photos keep their physical positions; only depth, scale, a tiny offset
+ * and shadow change so the stack feels like printed photographs being moved.
+ */
+.hero-layer--photo {
+  display: block;
+  padding: clamp(4px, 0.45vw, 8px);
+  background: rgba(247, 242, 228, 0.96);
+  border: 1px solid rgba(255, 253, 245, 0.82);
+  border-radius: 1px;
+  --carousel-scale: 0.985;
+  --carousel-x: 0px;
+  --carousel-y: 0px;
+  --carousel-rotate-offset: 0deg;
+  --carousel-shadow: 0 14px 24px rgba(18, 28, 23, 0.18);
+  --photo-hover-x: 0px;
+  --photo-hover-y: 0px;
+  --photo-hover-rotate: 0deg;
+  --photo-hover-lift: 0px;
+  --photo-front-x: 0px;
+  --photo-front-y: -4px;
+  --photo-incoming-x: 0px;
+  --photo-incoming-y: -3px;
+  --photo-retreat-x: -6px;
+  --photo-retreat-y: 7px;
+}
+
+.hero-layer--elbrus {
+  --photo-front-x: 9px;
+  --photo-incoming-x: 8px;
+  --photo-retreat-x: -9px;
+}
+
+.hero-layer--arch {
+  --photo-front-x: -7px;
+  --photo-incoming-x: -6px;
+  --photo-retreat-x: 8px;
+  --photo-front-y: -2px;
+  --photo-incoming-y: -2px;
+  --photo-retreat-y: 8px;
+}
+
+.hero-layer--lake {
+  --photo-front-x: 8px;
+  --photo-incoming-x: 7px;
+  --photo-retreat-x: -8px;
+  --photo-front-y: -5px;
+  --photo-incoming-y: -4px;
+}
+
+.hero-layer--jeep {
+  --photo-front-x: -9px;
+  --photo-incoming-x: -8px;
+  --photo-retreat-x: 8px;
+  --photo-front-y: -3px;
+  --photo-incoming-y: -2px;
+}
+
+.hero-collage.is-ready .hero-layer--photo {
+  animation: none;
+  opacity: 1;
+  filter: saturate(1) sepia(0.03) contrast(1.04) brightness(0.98) drop-shadow(var(--carousel-shadow));
+  transform: translate3d(calc(var(--carousel-x) + var(--photo-hover-x)), calc(var(--carousel-y) + var(--photo-hover-y) + var(--photo-hover-lift)), 0) rotate(calc(var(--layer-rotate) + var(--carousel-rotate-offset) + var(--photo-hover-rotate))) scale(var(--carousel-scale));
+  transform-origin: center 72%;
+  transition: transform 760ms var(--ease-settle), filter 760ms var(--ease-settle);
+  will-change: transform, filter;
+}
+
+.hero-collage.is-ready .hero-layer--photo[data-carousel-state='active'] {
+  --carousel-scale: 1.045;
+  --carousel-x: var(--photo-front-x);
+  --carousel-y: var(--photo-front-y);
+  --carousel-rotate-offset: 0.4deg;
+  --carousel-shadow: 0 25px 38px rgba(18, 28, 23, 0.34);
+}
+
+.hero-collage.is-ready .hero-layer--photo[data-carousel-state='incoming'] {
+  --carousel-scale: 1.045;
+  --carousel-x: var(--photo-incoming-x);
+  --carousel-y: var(--photo-incoming-y);
+  --carousel-rotate-offset: 0.7deg;
+  --carousel-shadow: 0 25px 38px rgba(18, 28, 23, 0.32);
+}
+
+.hero-collage.is-ready .hero-layer--photo[data-carousel-state='retreating'] {
+  --carousel-scale: 0.97;
+  --carousel-x: var(--photo-retreat-x);
+  --carousel-y: var(--photo-retreat-y);
+  --carousel-rotate-offset: -0.35deg;
+  --carousel-shadow: 0 10px 18px rgba(18, 28, 23, 0.14);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-collage.is-ready .hero-layer--photo[data-hovered='true'] {
+    --carousel-scale: 1.075;
+    --photo-hover-lift: -8px;
+    --carousel-shadow: 0 32px 46px rgba(18, 28, 23, 0.38);
+    cursor: grab;
+  }
+
+  .hero-collage.is-ready .hero-layer--photo[data-hovered='true']:active {
+    cursor: grabbing;
+  }
+}
+
+@media (max-width: 719px) {
+  .hero-collage.is-ready .hero-layer--photo {
+    transition-duration: 980ms;
+  }
+
+  .hero-collage.is-ready .hero-layer--photo[data-carousel-state='active'],
+  .hero-collage.is-ready .hero-layer--photo[data-carousel-state='incoming'] {
+    --carousel-scale: 1.025;
+    --carousel-x: 4px;
+    --carousel-y: -2px;
+  }
+
+  .hero-collage.is-ready .hero-layer--photo[data-carousel-state='retreating'] {
+    --carousel-scale: 0.985;
+    --carousel-x: -3px;
+    --carousel-y: 4px;
+  }
+
+  .hero-collage.is-ready .hero-layer--photo {
+    --photo-hover-x: 0px;
+    --photo-hover-y: 0px;
+    --photo-hover-rotate: 0deg;
+    --photo-hover-lift: 0px;
+    will-change: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-collage .hero-layer--photo {
+    animation: none;
+    opacity: 1;
+    filter: saturate(1) sepia(0.03) contrast(1.04) brightness(0.98) drop-shadow(var(--shadow-photo));
+    transform: translate3d(0, 0, 0) rotate(var(--layer-rotate)) scale(1);
+    transition: none;
+    will-change: auto;
+  }
+}
+
+/* Mobile-only composition tuning: scale the collage as one physical sheet.
+   Slot percentages and the JS carousel choreography stay unchanged, so the
+   overlaps remain identical while the orbit gets a little more breathing room. */
+@media (max-width: 719px) {
+  .hero-background {
+    object-position: 60% center;
+  }
+
+  .hero-collage {
+    width: min(88%, 370px);
+    min-height: min(114vw, 480px);
+    margin-top: 1.05rem;
+    margin-bottom: 1rem;
+    overflow: visible;
+  }
+}
+
+/* On narrow screens the editorial reading order is copy -> collage -> actions.
+   The collage remains the same physical slot system; only the surrounding
+   mobile layout changes so both CTAs land beneath the photographs. */
+@media (max-width: 719px) {
+  .hero-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: stretch;
+    padding-bottom: 0.5rem;
+  }
+
+  .hero-copy {
+    display: contents;
+  }
+
+  .hero-copy > * {
+    position: relative;
+    z-index: var(--z-content);
+  }
+
+  .hero-copy h1 { order: 1; }
+  .hero-script { order: 2; }
+  .hero-intro,
+  .hero-location {
+    display: none;
+  }
+
+  .hero-collage { order: 3; }
+
+  .hero-actions {
+    order: 4;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.1rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .hero-actions .hero-cta {
+    margin-top: 0.75rem;
+  }
+}
+
+/* Short mobile viewports (including 390x844 and 430x844): give the whole
+   collage less vertical space, never resize its slots independently. */
+@media (max-width: 719px) and (max-height: 880px) {
+  .hero-collage {
+    min-height: min(101vw, max(300px, calc(100svh - 474px)), 427px);
+  }
+}
+
+/* Final mobile hero fit: the collage and both CTAs must share the first
+   viewport even on short 320px phones. The handwritten subtitle is a desktop
+   editorial accent; hiding it on mobile gives the photographs their intended
+   reading priority without changing desktop composition. */
+@media (max-width: 719px) {
+  .hero-script {
+    display: none;
+  }
+
+  .hero-content {
+    padding-top: 1.2rem;
+    padding-bottom: 0.4rem;
+  }
+
+  .hero-collage {
+    min-height: clamp(260px, calc(100svh - 308px), 370px);
+    margin-top: 1rem;
+    margin-bottom: 0.25rem;
+    transform: scale(0.85);
+    transform-origin: top center;
+  }
+
+  .hero-actions {
+    margin-top: 0;
+    gap: 0.25rem;
+    padding-top: 0.35rem;
+  }
+
+  .hero-actions .hero-cta {
+    min-height: 32px;
+    margin-top: 0.25rem;
+    padding: 0.38rem 0.6rem;
+    border: 1px solid var(--forest);
+    background: rgba(246, 239, 224, 0.94);
+    box-shadow: 0 4px 12px rgba(18, 28, 23, 0.12);
+    font-size: 0.68rem;
+    line-height: 1.1;
+  }
+
+  .hero-actions .hero-cta:first-child {
+    color: var(--paper);
+    background: var(--forest);
+  }
+
+  .hero-actions .hero-cta--secondary {
+    color: var(--forest);
+    border-bottom-color: var(--forest);
+  }
+}
+
+/* Hero CTAs keep one clear button language across desktop and mobile. */
+.hero-actions .hero-cta {
+  min-height: 36px;
+  padding: 0.52rem 0.78rem;
+  border: 1px solid var(--forest);
+  background: rgba(246, 239, 224, 0.94);
+  box-shadow: 0 4px 12px rgba(18, 28, 23, 0.12);
+}
+
+.hero-actions .hero-cta:first-child {
+  color: var(--paper);
+  background: var(--forest);
+}
+
+.hero-actions .hero-cta--secondary {
+  color: var(--forest);
+  border-color: var(--forest);
+  border-bottom-color: var(--forest);
+}
+
+@media (max-width: 719px) {
+  .hero-actions .hero-cta {
+    min-height: 32px;
+    padding: 0.38rem 0.6rem;
+    font-size: 0.68rem;
+    line-height: 1.1;
   }
 }

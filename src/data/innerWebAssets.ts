@@ -1,0 +1,97 @@
+import aktoprak01 from '../../design-reference/khasaut/assets/inner-web/aktoprak-01-optimized.webp'
+import aktoprak02 from '../../design-reference/khasaut/assets/inner-web/aktoprak-02.jpg'
+import aktoprak03 from '../../design-reference/khasaut/assets/inner-web/aktoprak-03-optimized.webp'
+import arkhyz01 from '../../design-reference/khasaut/assets/inner-web/arkhyz-01-optimized.webp'
+import arkhyz02 from '../../design-reference/khasaut/assets/inner-web/arkhyz-02-optimized.webp'
+import arkhyz03 from '../../design-reference/khasaut/assets/inner-web/arkhyz-03-optimized.webp'
+import aushiger01 from '../../design-reference/khasaut/assets/inner-web/aushiger-01-optimized.webp'
+import aushiger02 from '../../design-reference/khasaut/assets/inner-web/aushiger-02-optimized.webp'
+import aushiger03 from '../../design-reference/khasaut/assets/inner-web/aushiger-03.jpg'
+import badukLakes01 from '../../design-reference/khasaut/assets/inner-web/baduk-lakes-01.jpg'
+import badukLakes02 from '../../design-reference/khasaut/assets/inner-web/baduk-lakes-02.jpg'
+import badukLakes03 from '../../design-reference/khasaut/assets/inner-web/baduk-lakes-03.jpg'
+import balkaria01 from '../../design-reference/khasaut/assets/inner-web/balkaria-01-optimized.webp'
+import balkaria02 from '../../design-reference/khasaut/assets/inner-web/balkaria-02-optimized.webp'
+import balkaria03 from '../../design-reference/khasaut/assets/inner-web/balkaria-03-optimized.webp'
+import bermamyt01 from '../../design-reference/khasaut/assets/inner-web/bermamyt-01-optimized.webp'
+import bermamyt02 from '../../design-reference/khasaut/assets/inner-web/bermamyt-02-optimized.webp'
+import bermamyt03 from '../../design-reference/khasaut/assets/inner-web/bermamyt-03-optimized.webp'
+import dombay01 from '../../design-reference/khasaut/assets/inner-web/dombay-01-optimized.webp'
+import dombay02 from '../../design-reference/khasaut/assets/inner-web/dombay-02.jpg'
+import dombay03 from '../../design-reference/khasaut/assets/inner-web/dombay-03-optimized.webp'
+import dzhilySu01 from '../../design-reference/khasaut/assets/inner-web/dzhily-su-01-optimized.webp'
+import dzhilySu02 from '../../design-reference/khasaut/assets/inner-web/dzhily-su-02-optimized.webp'
+import dzhilySu03 from '../../design-reference/khasaut/assets/inner-web/dzhily-su-03-optimized.webp'
+import dzhilySuBermamyt01 from '../../design-reference/khasaut/assets/inner-web/dzhily-su-bermamyt-01.jpg'
+import dzhilySuBermamyt02 from '../../design-reference/khasaut/assets/inner-web/dzhily-su-bermamyt-02.jpg'
+import dzhilySuBermamyt03 from '../../design-reference/khasaut/assets/inner-web/dzhily-su-bermamyt-03.jpg'
+import elbrus01 from '../../design-reference/khasaut/assets/inner-web/elbrus-01-optimized.webp'
+import elbrus02 from '../../design-reference/khasaut/assets/inner-web/elbrus-02-optimized.webp'
+import elbrus03 from '../../design-reference/khasaut/assets/inner-web/elbrus-03-optimized.webp'
+import geduko01 from '../../design-reference/khasaut/assets/inner-web/geduko-01-optimized.webp'
+import geduko02 from '../../design-reference/khasaut/assets/inner-web/geduko-02-optimized.webp'
+import geduko03 from '../../design-reference/khasaut/assets/inner-web/geduko-03-optimized.webp'
+import grozny01 from '../../design-reference/khasaut/assets/inner-web/grozny-01.jpg'
+import grozny02 from '../../design-reference/khasaut/assets/inner-web/grozny-02-optimized.webp'
+import grozny03 from '../../design-reference/khasaut/assets/inner-web/grozny-03-optimized.webp'
+import honey01 from '../../design-reference/khasaut/assets/inner-web/honey-01.jpg'
+import honey02 from '../../design-reference/khasaut/assets/inner-web/honey-02.jpg'
+import honey03 from '../../design-reference/khasaut/assets/inner-web/honey-03-optimized.webp'
+import ingushetia01 from '../../design-reference/khasaut/assets/inner-web/ingushetia-01-optimized.webp'
+import ingushetia02 from '../../design-reference/khasaut/assets/inner-web/ingushetia-02.jpg'
+import ingushetia03 from '../../design-reference/khasaut/assets/inner-web/ingushetia-03.jpg'
+import khudesLabyrinth01 from '../../design-reference/khasaut/assets/inner-web/khudes-labyrinth-01-optimized.webp'
+import khudesLabyrinth02 from '../../design-reference/khasaut/assets/inner-web/khudes-labyrinth-02-optimized.webp'
+import khudesLabyrinth03 from '../../design-reference/khasaut/assets/inner-web/khudes-labyrinth-03.jpg'
+import khurlaKol01 from '../../design-reference/khasaut/assets/inner-web/khurla-kol-01-optimized.webp'
+import khurlaKol02 from '../../design-reference/khasaut/assets/inner-web/khurla-kol-02.jpeg'
+import khurlaKol03 from '../../design-reference/khasaut/assets/inner-web/khurla-kol-03-optimized.webp'
+import makhar01 from '../../design-reference/khasaut/assets/inner-web/makhar-01-optimized.webp'
+import makhar02 from '../../design-reference/khasaut/assets/inner-web/makhar-02-optimized.webp'
+import makhar03 from '../../design-reference/khasaut/assets/inner-web/makhar-03-optimized.webp'
+import mukhinskoeGorge01 from '../../design-reference/khasaut/assets/inner-web/mukhinskoe-gorge-01.jpeg'
+import mukhinskoeGorge02 from '../../design-reference/khasaut/assets/inner-web/mukhinskoe-gorge-02-optimized.webp'
+import mukhinskoeGorge03 from '../../design-reference/khasaut/assets/inner-web/mukhinskoe-gorge-03.jpg'
+import narzan01 from '../../design-reference/khasaut/assets/inner-web/narzan-01.jpg'
+import narzan02 from '../../design-reference/khasaut/assets/inner-web/narzan-02-optimized.webp'
+import narzan03 from '../../design-reference/khasaut/assets/inner-web/narzan-03-optimized.webp'
+import ossetia01 from '../../design-reference/khasaut/assets/inner-web/ossetia-01.jpg'
+import ossetia02 from '../../design-reference/khasaut/assets/inner-web/ossetia-02.webp'
+import ossetia03 from '../../design-reference/khasaut/assets/inner-web/ossetia-03.jpg'
+import pearl01 from '../../design-reference/khasaut/assets/inner-web/pearl-01-optimized.webp'
+import pearl02 from '../../design-reference/khasaut/assets/inner-web/pearl-02.jpg'
+import pearl03 from '../../design-reference/khasaut/assets/inner-web/pearl-03.webp'
+import suvorovskie01 from '../../design-reference/khasaut/assets/inner-web/suvorovskie-01-optimized.webp'
+import suvorovskie02 from '../../design-reference/khasaut/assets/inner-web/suvorovskie-02.webp'
+import suvorovskie03 from '../../design-reference/khasaut/assets/inner-web/suvorovskie-03-optimized.webp'
+import horseWeb01 from '../../design-reference/khasaut/assets/inner-web/horse-web-01-optimized.webp'
+import horseWeb02 from '../../design-reference/khasaut/assets/inner-web/horse-web-02.jpg'
+import horseWeb03 from '../../design-reference/khasaut/assets/inner-web/horse-web-03.jpg'
+
+export type InnerWebAssetSet = readonly [string, string, string]
+
+export const innerWebAssets: Record<string, InnerWebAssetSet> = {
+  'dzhily-su': [dzhilySu01, dzhilySu02, dzhilySu03],
+  'dzhily-su-bermamyt': [dzhilySuBermamyt01, dzhilySuBermamyt02, dzhilySuBermamyt03],
+  bermamyt: [bermamyt01, bermamyt02, bermamyt03],
+  dombay: [dombay01, dombay02, dombay03],
+  arkhyz: [arkhyz01, arkhyz02, arkhyz03],
+  elbrus: [elbrus01, elbrus02, elbrus03],
+  aktoprak: [aktoprak01, aktoprak02, aktoprak03],
+  balkaria: [balkaria01, balkaria02, balkaria03],
+  ossetia: [ossetia01, ossetia02, ossetia03],
+  ingushetia: [ingushetia01, ingushetia02, ingushetia03],
+  grozny: [grozny01, grozny02, grozny03],
+  honey: [honey01, honey02, honey03],
+  narzan: [narzan01, narzan02, narzan03],
+  'khurla-kol': [khurlaKol01, khurlaKol02, khurlaKol03],
+  'khudes-labyrinth': [khudesLabyrinth01, khudesLabyrinth02, khudesLabyrinth03],
+  'mukhinskoe-gorge': [mukhinskoeGorge01, mukhinskoeGorge02, mukhinskoeGorge03],
+  makhar: [makhar01, makhar02, makhar03],
+  'baduk-lakes': [badukLakes01, badukLakes02, badukLakes03],
+  suvorovskie: [suvorovskie01, suvorovskie02, suvorovskie03],
+  pearl: [pearl01, pearl02, pearl03],
+  geduko: [geduko01, geduko02, geduko03],
+  aushiger: [aushiger01, aushiger02, aushiger03],
+  'horse-rides': [horseWeb01, horseWeb02, horseWeb03],
+}

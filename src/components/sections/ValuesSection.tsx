@@ -1,8 +1,8 @@
 import { Container } from '../layout/Container'
 import { Section } from '../layout/Section'
 import { Reveal } from '../ui/Reveal'
-import { Icon, type IconName } from '../ui/Icon'
 import { values } from '../../data/values'
+import { iconAssets } from '../../data/iconAssets'
 
 export function ValuesSection() {
   return (
@@ -16,7 +16,7 @@ export function ValuesSection() {
         <div className="values-grid">
           {values.map((value, index) => (
             <Reveal key={value.title} delay={index * 75} className="value-item">
-              <Icon name={value.icon as IconName} size={52} />
+              <img className="value-icon" src={iconAssets[value.icon as keyof typeof iconAssets]} alt="" aria-hidden="true" />
               <p>{value.title}</p>
             </Reveal>
           ))}

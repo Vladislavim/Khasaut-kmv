@@ -5,6 +5,30 @@
 html {
   scroll-behavior: smooth;
   background: var(--paper);
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  scrollbar-color: var(--forest) var(--paper-deep);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  min-height: 48px;
+  border: 3px solid var(--paper-deep);
+  border-radius: 999px;
+  background: var(--forest);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--forest-deep);
 }
 
 body {
@@ -14,6 +38,7 @@ body {
   color: var(--ink);
   font-family: var(--serif-body);
   font-size: 16px;
+  font-synthesis: none;
   line-height: 1.55;
   overflow-x: hidden;
 }
@@ -104,6 +129,21 @@ img {
   font-family: var(--serif-display);
   font-weight: 500;
   line-height: 0.9;
+  text-wrap: balance;
+}
+
+.hero-copy h1,
+.inner-hero h1,
+.inner-section__intro h2,
+.inner-note h2,
+.inner-editorial-grid__heading h2,
+.inner-detail-layout__heading h2,
+.inner-detail-practical h2,
+.inner-contact-layout h2,
+.inner-route-card h3,
+.inner-detail-highlight h3,
+.inner-photo-slider__rail h3 {
+  text-wrap: balance;
 }
 
 .section-heading h2 {
@@ -136,10 +176,22 @@ img {
 }
 
 .torn-divider b {
-  font-size: 1.6rem;
-  font-weight: 400;
-  line-height: 1;
+  display: block;
+  width: 34px;
+  height: 16px;
+  background: var(--divider-pattern) center / 100% 100% no-repeat;
   transform: rotate(-7deg);
+}
+
+.torn-divider b svg {
+  display: none;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .torn-divider--paper {
@@ -185,5 +237,11 @@ img {
     opacity: 1 !important;
     animation: none !important;
     transform: none !important;
+  }
+
+  .hero-rule__arrow {
+    opacity: 0.72 !important;
+    animation: none !important;
+    transform: translateX(-50%) !important;
   }
 }

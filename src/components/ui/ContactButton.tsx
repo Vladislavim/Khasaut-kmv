@@ -1,4 +1,4 @@
-import { Icon, type IconName } from './Icon'
+import { iconAssets } from '../../data/iconAssets'
 
 export function ContactButton({ label, icon, href, placeholder = false }: { label: string; icon: string; href: string; placeholder?: boolean }) {
   return (
@@ -9,7 +9,7 @@ export function ContactButton({ label, icon, href, placeholder = false }: { labe
       title={placeholder ? `${label}: замените ссылку в src/data/contacts.ts` : label}
       data-placeholder-link={placeholder || undefined}
     >
-      <Icon name={icon as IconName} />
+      <img className="contact-button__image" src={iconAssets[icon as keyof typeof iconAssets]} alt="" aria-hidden="true" />
       <span className="sr-only">{label}</span>
     </a>
   )

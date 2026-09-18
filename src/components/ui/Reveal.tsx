@@ -20,7 +20,7 @@ export function Reveal({ children, className = '', delay = 0 }: RevealProps) {
           observer.disconnect()
         }
       },
-      { threshold: 0.12 },
+      { threshold: 0.01, rootMargin: '120px 0px' },
     )
 
     observer.observe(node)
@@ -30,7 +30,7 @@ export function Reveal({ children, className = '', delay = 0 }: RevealProps) {
   const props = {
     ref,
     className: `reveal ${visible ? 'is-visible' : ''} ${className}`.trim(),
-    style: { '--reveal-delay': `${delay}ms` } as CSSProperties,
+    style: { '--reveal-delay': `${Math.min(delay, 120)}ms` } as CSSProperties,
   }
 
   return <div {...props}>{children}</div>

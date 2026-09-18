@@ -23,3 +23,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Project artifacts & build archives
+artifacts/
+design-reference/
+*.zip
+tmp/
+output/
+src.zip
+DEFINE_GOAL.md
+GPT_SITE_CONTEXT.md
+"ИНСТРУКЦИЯ_ПО_ЗАГРУЗКЕ.md"
+README_ХОСТИНГ.txt
+.htaccess
