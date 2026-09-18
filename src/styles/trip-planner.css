@@ -89,3 +89,112 @@
 .price-faq details[open] summary span { transform: rotate(45deg); }
 .price-faq details p { margin: 0 0 24px; }
 @media (max-width: 700px) { .price-faq__layout { grid-template-columns: 1fr; } }
+
+@media (max-width: 719px) {
+  .trip-planner {
+    padding: 20px 16px;
+  }
+  .trip-planner .price-configurator__heading {
+    margin-bottom: 18px;
+  }
+  .trip-planner .price-configurator__heading h2 {
+    font-size: clamp(28px, 8vw, 38px);
+  }
+  .trip-planner .price-configurator__heading p {
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  .trip-planner__step {
+    margin-bottom: 12px;
+    font-size: 13px;
+  }
+  .trip-planner .price-configurator__fields {
+    gap: 12px 12px;
+  }
+  .trip-planner .price-field select,
+  .trip-planner .price-field input {
+    min-height: 44px;
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  .trip-planner .price-format-options {
+    gap: 6px;
+  }
+  .trip-planner .price-format-options button {
+    min-height: 58px;
+    padding: 10px 12px 10px 36px;
+  }
+  .trip-planner .price-format-options button::before {
+    top: 18px;
+    left: 12px;
+  }
+  .trip-planner .price-format-options button span {
+    font-size: 13px;
+  }
+  .trip-planner .price-format-options button small {
+    font-size: 10px;
+  }
+  .trip-planner .price-format-options button b {
+    font-size: 14px;
+  }
+  .trip-planner__stepper {
+    min-height: 44px;
+  }
+  .trip-planner__stepper button {
+    min-height: 42px;
+    width: 40px;
+  }
+  .trip-planner__stepper output {
+    font-size: 16px;
+  }
+  .trip-planner__hint {
+    font-size: 11px;
+    margin: 10px 0;
+  }
+  .trip-ticket {
+    padding: 18px 16px;
+    margin-top: 0;
+  }
+  .trip-ticket h3 {
+    font-size: clamp(20px, 6vw, 28px);
+    line-height: 1.1;
+    margin: 8px 0 6px;
+  }
+  .trip-ticket__departure {
+    font-size: 12px;
+  }
+  .trip-ticket__details {
+    font-size: 12px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .trip-ticket__total {
+    margin: 14px 0 10px;
+  }
+  .trip-ticket__total strong {
+    font-size: clamp(26px, 8vw, 36px);
+  }
+  .trip-ticket__note {
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
+  .trip-ticket__cta {
+    min-height: 44px;
+    font-size: 13px;
+  }
+  .trip-ticket__micro {
+    font-size: 10px;
+    margin: 8px 0 12px;
+  }
+  .trip-ticket__save {
+    font-size: 11px;
+    padding: 10px;
+  }
+  .trip-planner__footer {
+    padding-top: 14px;
+    margin-top: 16px;
+  }
+  .trip-planner__footer p {
+    font-size: 11px;
+  }
+}

@@ -1,5 +1,6 @@
 export type AnalyticsEvent =
   | 'hero_price_click'
+  | 'hero_photo_click'
   | 'catalog_open'
   | 'quick_calculator_open'
   | 'price_selection_change'

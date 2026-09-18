@@ -1,4 +1,4 @@
-import { type PointerEvent as ReactPointerEvent, useCallback, useEffect, useRef, useState } from 'react'
+import { type PointerEvent as ReactPointerEvent, type TouchEvent as ReactTouchEvent, useCallback, useEffect, useRef, useState } from 'react'
 import { Container } from '../layout/Container'
 import { BrandMark } from '../ui/BrandMark'
 import { ContactButton } from '../ui/ContactButton'
@@ -6,6 +6,14 @@ import { Icon } from '../ui/Icon'
 import { assets } from '../../data/assets'
 import { contacts } from '../../data/contacts'
 import { track } from '../../lib/analytics'
+
+// Маршруты привязанные к каждой фотографии в коллаже
+const photoLinks = [
+  { href: '/detail/bermamyt',         label: 'Плато Бермамыт' },
+  { href: '/detail/dzhily-su',        label: 'Джилы-Су' },
+  { href: '/detail/khurla-kol',       label: 'Озеро Хурла-Кёль' },
+  { href: '/detail/dzhily-su-bermamyt', label: 'Джилы-Су и Бермамыт' },
+]
 
 const navItems = [
   { label: 'Главная', href: '/' },
@@ -27,6 +35,10 @@ export function HeroSection() {
   const transitionTimerRef = useRef<number | null>(null)
   const resumeTimerRef = useRef<number | null>(null)
   const autoplayPausedRef = useRef(false)
+  // touch swipe tracking
+  const touchStartXRef = useRef<number | null>(null)
+  const touchStartYRef = useRef<number | null>(null)
+  const touchMovedRef = useRef(false)
 
   const advanceTo = useCallback((nextIndex: number) => {
     if (transitioningRef.current || nextIndex === activePhotoRef.current) return
@@ -164,6 +176,58 @@ export function HeroSection() {
     }, 1900)
   }
 
+  // Touch swipe: left → next photo, right → previous photo
+  const handleTouchStart = (event: ReactTouchEvent<HTMLDivElement>) => {
+    touchStartXRef.current = event.touches[0].clientX
+    touchStartYRef.current = event.touches[0].clientY
+    touchMovedRef.current = false
+    autoplayPausedRef.current = true
+  }
+
+  const handleTouchMove = (event: ReactTouchEvent<HTMLDivElement>) => {
+    if (touchStartXRef.current === null || touchStartYRef.current === null) return
+    const dx = Math.abs(event.touches[0].clientX - touchStartXRef.current)
+    const dy = Math.abs(event.touches[0].clientY - touchStartYRef.current)
+    if (dx > 8 || dy > 8) touchMovedRef.current = true
+    // prevent page scroll when swiping horizontally
+    if (dx > dy && dx > 10) event.preventDefault()
+  }
+
+  const handleTouchEnd = (event: ReactTouchEvent<HTMLDivElement>) => {
+    if (touchStartXRef.current === null) return
+    const dx = event.changedTouches[0].clientX - touchStartXRef.current
+    const dy = Math.abs(event.changedTouches[0].clientY - (touchStartYRef.current ?? 0))
+
+    if (touchMovedRef.current && Math.abs(dx) > 40 && Math.abs(dx) > dy) {
+      // horizontal swipe
+      if (dx < 0) {
+        // swipe left → next
+        advanceTo((activePhotoRef.current + 1) % 4)
+      } else {
+        // swipe right → previous
+        advanceTo((activePhotoRef.current + 3) % 4)
+      }
+    }
+
+    touchStartXRef.current = null
+    touchStartYRef.current = null
+    if (resumeTimerRef.current) window.clearTimeout(resumeTimerRef.current)
+    resumeTimerRef.current = window.setTimeout(() => {
+      autoplayPausedRef.current = false
+      resumeTimerRef.current = null
+    }, 2500)
+  }
+
+  // Tap on photo: navigate to route page
+  const handlePhotoClick = (index: number) => {
+    if (index !== activePhotoRef.current) {
+      advanceTo(index)
+      return
+    }
+    track('hero_photo_click', { slug: photoLinks[index].href })
+    window.location.href = photoLinks[index].href
+  }
+
   return (
     <header id="top" className="hero-section">
       <a className="inner-skip" href="#home-main">К содержанию</a>
@@ -225,11 +289,11 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div ref={collageRef} className={`hero-collage ${collageReady ? 'is-ready' : ''}`} aria-label="Фотографии путешествий по Северному Кавказу">
-            <img className="hero-layer hero-layer--photo hero-layer--elbrus" data-layer="photo-01-elbrus-bermamyt" data-carousel-state={getPhotoState(0)} data-selected={activePhotoIndex === 0} data-hovered={hoveredPhotoIndex === 0} style={{ zIndex: 10 + (3 - stackOrder.indexOf(0)) * 10 }} onPointerEnter={(event) => handlePhotoEnter(0, event)} onPointerMove={handlePhotoMove} onPointerLeave={handlePhotoLeave} src={assets.photoElbrus} alt="Скалы плато Бермамыт и вид на Эльбрус" width="1122" height="1402" />
-            <img className="hero-layer hero-layer--photo hero-layer--arch" data-layer="photo-02-rock-arch-sunset" data-carousel-state={getPhotoState(1)} data-selected={activePhotoIndex === 1} data-hovered={hoveredPhotoIndex === 1} style={{ zIndex: 10 + (3 - stackOrder.indexOf(1)) * 10 }} onPointerEnter={(event) => handlePhotoEnter(1, event)} onPointerMove={handlePhotoMove} onPointerLeave={handlePhotoLeave} src={assets.photoArch} alt="Закат над плато Бермамыт" width="1122" height="1402" />
-            <img className="hero-layer hero-layer--photo hero-layer--lake" data-layer="photo-03-caucasus-lake" data-carousel-state={getPhotoState(2)} data-selected={activePhotoIndex === 2} data-hovered={hoveredPhotoIndex === 2} style={{ zIndex: 10 + (3 - stackOrder.indexOf(2)) * 10 }} onPointerEnter={(event) => handlePhotoEnter(2, event)} onPointerMove={handlePhotoMove} onPointerLeave={handlePhotoLeave} src={assets.photoLake} alt="Горное озеро среди хвойного леса" width="1122" height="1402" />
-            <img className="hero-layer hero-layer--photo hero-layer--jeep" data-layer="photo-04-jeep-elbrus" data-carousel-state={getPhotoState(3)} data-selected={activePhotoIndex === 3} data-hovered={hoveredPhotoIndex === 3} style={{ zIndex: 10 + (3 - stackOrder.indexOf(3)) * 10 }} onPointerEnter={(event) => handlePhotoEnter(3, event)} onPointerMove={handlePhotoMove} onPointerLeave={handlePhotoLeave} src={assets.photoJeep} alt="Зелёные скалы среди гор Джилы-Суу" width="1122" height="1402" />
+          <div ref={collageRef} className={`hero-collage ${collageReady ? 'is-ready' : ''}`} aria-label="Фотографии путешествий по Северному Кавказу" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
+            <img className="hero-layer hero-layer--photo hero-layer--elbrus" data-layer="photo-01-elbrus-bermamyt" data-carousel-state={getPhotoState(0)} data-selected={activePhotoIndex === 0} data-hovered={hoveredPhotoIndex === 0} style={{ zIndex: 10 + (3 - stackOrder.indexOf(0)) * 10, cursor: 'pointer' }} onPointerEnter={(event) => handlePhotoEnter(0, event)} onPointerMove={handlePhotoMove} onPointerLeave={handlePhotoLeave} onClick={() => handlePhotoClick(0)} src={assets.photoElbrus} alt={`Перейти: ${photoLinks[0].label}`} width="1122" height="1402" />
+            <img className="hero-layer hero-layer--photo hero-layer--arch" data-layer="photo-02-rock-arch-sunset" data-carousel-state={getPhotoState(1)} data-selected={activePhotoIndex === 1} data-hovered={hoveredPhotoIndex === 1} style={{ zIndex: 10 + (3 - stackOrder.indexOf(1)) * 10, cursor: 'pointer' }} onPointerEnter={(event) => handlePhotoEnter(1, event)} onPointerMove={handlePhotoMove} onPointerLeave={handlePhotoLeave} onClick={() => handlePhotoClick(1)} src={assets.photoArch} alt={`Перейти: ${photoLinks[1].label}`} width="1122" height="1402" />
+            <img className="hero-layer hero-layer--photo hero-layer--lake" data-layer="photo-03-caucasus-lake" data-carousel-state={getPhotoState(2)} data-selected={activePhotoIndex === 2} data-hovered={hoveredPhotoIndex === 2} style={{ zIndex: 10 + (3 - stackOrder.indexOf(2)) * 10, cursor: 'pointer' }} onPointerEnter={(event) => handlePhotoEnter(2, event)} onPointerMove={handlePhotoMove} onPointerLeave={handlePhotoLeave} onClick={() => handlePhotoClick(2)} src={assets.photoLake} alt={`Перейти: ${photoLinks[2].label}`} width="1122" height="1402" />
+            <img className="hero-layer hero-layer--photo hero-layer--jeep" data-layer="photo-04-jeep-elbrus" data-carousel-state={getPhotoState(3)} data-selected={activePhotoIndex === 3} data-hovered={hoveredPhotoIndex === 3} style={{ zIndex: 10 + (3 - stackOrder.indexOf(3)) * 10, cursor: 'pointer' }} onPointerEnter={(event) => handlePhotoEnter(3, event)} onPointerMove={handlePhotoMove} onPointerLeave={handlePhotoLeave} onClick={() => handlePhotoClick(3)} src={assets.photoJeep} alt={`Перейти: ${photoLinks[3].label}`} width="1122" height="1402" />
             <img className="hero-layer hero-layer--tag" data-layer="khasaut-hanging-tag" src={assets.heroTag} alt="Бирка Khasaut Jeep Tour 2022" width="1086" height="1448" />
             <span className="collage-caption collage-caption--top" aria-hidden="true">where the road ends</span>
             <span className="collage-caption collage-caption--bottom" aria-hidden="true">Caucasus / 44°</span>
