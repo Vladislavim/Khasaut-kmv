@@ -2,10 +2,11 @@ import os
 import ssl
 import time
 import json
-import zipfile
-import subprocess
+import re
+import gzip
 import urllib.request
 import urllib.parse
+from ftplib import FTP, error_perm
 
 # 1. Configuration
 HOST = '31.31.196.164'
@@ -17,7 +18,7 @@ ISP_USER = 'u3649764'
 ISP_PASS = 'dHWHjLXe54457rmu'
 
 DIST_DIR = 'dist'
-ZIP_NAME = 'deploy_code.zip'
+REMOTE_DOCROOT = '/www/khasaut-kmv.ru'
 
 ctx = ssl.create_default_context()
 ctx.check_hostname = False
@@ -30,84 +31,135 @@ def ispmgr(params):
     with urllib.request.urlopen(req, context=ctx) as r:
         return json.loads(r.read().decode('utf-8'))
 
-def step1_create_zip():
-    print(f'=== STEP 1: Creating {ZIP_NAME} with UNIX permissions ===')
-    file_count = 0
-    dir_count = 0
-    with zipfile.ZipFile(ZIP_NAME, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=6) as z:
-        for root, dirs, files in os.walk(DIST_DIR):
-            for d in dirs:
-                full_path = os.path.join(root, d)
-                rel_path = os.path.relpath(full_path, DIST_DIR).replace(os.sep, '/') + '/'
-                zinfo = zipfile.ZipInfo(rel_path)
-                zinfo.external_attr = (0o755 << 16) | 0o040000
-                z.writestr(zinfo, '')
-                dir_count += 1
-            for f in files:
-                full_path = os.path.join(root, f)
-                rel_path = os.path.relpath(full_path, DIST_DIR).replace(os.sep, '/')
-                # Skip static image assets that already exist on server
-                if rel_path.startswith('assets/') and not (rel_path.endswith('.js') or rel_path.endswith('.css')):
-                    continue
-                zinfo = zipfile.ZipInfo(rel_path)
-                zinfo.external_attr = 0o644 << 16
-                with open(full_path, 'rb') as fp:
-                    z.writestr(zinfo, fp.read())
-                file_count += 1
-    size_mb = os.path.getsize(ZIP_NAME) / (1024 * 1024)
-    print(f'Created {ZIP_NAME}: {file_count} files, {dir_count} dirs, size = {size_mb:.2f} MB')
+def ensure_remote_dir(ftp, remote_dir):
+    parts = remote_dir.strip('/').split('/')
+    current = ''
+    for part in parts:
+        current += '/' + part
+        try:
+            ftp.cwd(current)
+        except error_perm:
+            try:
+                ftp.mkd(current)
+                ftp.cwd(current)
+            except error_perm:
+                pass
 
-def step2_upload_ftp():
-    print(f'=== STEP 2: Uploading {ZIP_NAME} via FTP ===')
-    ftp_url = f'ftp://{FTP_USER}:{FTP_PASS}@{HOST}/www/khasaut-kmv.ru/{ZIP_NAME}'
-    cmd = ['curl.exe', '--ftp-pasv', '-T', ZIP_NAME, ftp_url]
-    subprocess.run(cmd, check=True)
-    print('FTP upload completed successfully.')
+def deploy_files():
+    print('=== STEP 1: Scanning files to deploy ===')
+    files_to_upload = []
+    total_bytes = 0
 
-def step3_extract_ispmanager():
-    print('=== STEP 3: Extracting via ISPmanager API ===')
-    res = ispmgr({
-        'func': 'file.extract',
-        'elid': ZIP_NAME,
-        'plid': 'www/khasaut-kmv.ru',
-        'dirlist': '2f7777772f6b6861736175742d6b6d762e7275',
-        'sok': 'ok'
-    })
-    print('Extract response:', res.get('doc', {}).get('ok', 'No explicit ok (check errors)'))
-    if 'error' in res.get('doc', {}):
-        print('Error:', res['doc']['error'])
+    for root, dirs, files in os.walk(DIST_DIR):
+        for f in files:
+            full_path = os.path.join(root, f)
+            rel_path = os.path.relpath(full_path, DIST_DIR).replace(os.sep, '/')
+            # Skip unchanged static image assets that already live on the server
+            if rel_path.startswith('assets/') and not (rel_path.endswith('.js') or rel_path.endswith('.css')):
+                continue
+            fsize = os.path.getsize(full_path)
+            files_to_upload.append((full_path, rel_path, fsize))
+            total_bytes += fsize
 
-def step4_cleanup():
-    print('=== STEP 4: Cleaning up archive from server ===')
-    try:
-        res = ispmgr({'func': 'file.delete', 'elid': ZIP_NAME, 'plid': 'www/khasaut-kmv.ru'})
-        print(f'Deleted {ZIP_NAME}:', res.get('doc', {}).get('ok') is not None)
-    except Exception as e:
-        print('Cleanup error:', e)
+    print(f'Ready to deploy {len(files_to_upload)} files ({total_bytes / (1024 * 1024):.2f} MB) to {REMOTE_DOCROOT}')
 
-def step5_verify_live():
+    print('=== STEP 2: Connecting to FTP ===')
+    ftp = FTP(HOST, timeout=90)
+    ftp.login(FTP_USER, FTP_PASS)
+    ftp.set_pasv(True)
+
+    print('=== STEP 3: Uploading files via FTP ===')
+    created_dirs = set()
+    for idx, (full_path, rel_path, fsize) in enumerate(files_to_upload, 1):
+        remote_file = f'{REMOTE_DOCROOT}/{rel_path}'
+        remote_dir = os.path.dirname(remote_file)
+
+        if remote_dir not in created_dirs:
+            ensure_remote_dir(ftp, remote_dir)
+            created_dirs.add(remote_dir)
+
+        print(f'[{idx:02d}/{len(files_to_upload):02d}] Uploading {rel_path} ({fsize} B)...')
+        with open(full_path, 'rb') as fp:
+            ftp.storbinary(f'STOR {remote_file}', fp, blocksize=65536)
+
+    ftp.quit()
+    print('All files uploaded successfully!')
+
+def cleanup_server():
+    print('=== STEP 4: Cleaning up temp / junk files ===')
+    junk = [
+        'test_extract.zip', 'test_extract_ok.txt', 'test_extract2.zip',
+        'test_idx.zip', 'deploy_code.zip', 'deploy_test_sync.zip',
+        'khasaut-build-prod.zip'
+    ]
+    for j in junk:
+        try:
+            ispmgr({'func': 'file.delete', 'elid': j, 'plid': 'www/khasaut-kmv.ru'})
+        except Exception:
+            pass
+    print('Cleanup complete.')
+
+def fetch_content(url):
+    req = urllib.request.Request(
+        url,
+        headers={
+            'User-Agent': 'Mozilla/5.0 (Khasaut-Live-Deploy-Verifier/1.0)',
+            'Accept-Encoding': 'gzip, deflate, identity'
+        }
+    )
+    with urllib.request.urlopen(req, context=ctx, timeout=15) as r:
+        raw = r.read()
+        status = r.status
+        is_gzip = r.headers.get('Content-Encoding') == 'gzip' or (len(raw) >= 2 and raw[:2] == b'\x1f\x8b')
+        if is_gzip:
+            body = gzip.decompress(raw).decode('utf-8', errors='replace')
+        else:
+            body = raw.decode('utf-8', errors='replace')
+        return status, body
+
+def verify_live():
     print('=== STEP 5: Verifying Live Production URLs ===')
     time.sleep(2)
+
+    with open('dist/index.html', 'r', encoding='utf-8') as f:
+        idx_html = f.read()
+    css_match = re.search(r'assets/(index-[^"]+\.css)', idx_html)
+    js_match = re.search(r'assets/(index-[^"]+\.js)', idx_html)
+    current_css = css_match.group(1) if css_match else 'index-'
+    current_js = js_match.group(1) if js_match else 'index-'
+
     urls = [
         ('https://khasaut-kmv.ru/', [
             '<!doctype html',
             'home-seo-article',
             'home-faq-section',
             'FAQPage',
-            'index-Bf0LujbI.css',
-            'index-DFuVZkRH.js'
+            'SiteNavigationElement',
+            'AggregateRating',
+            '4.98',
+            '1040',
+            current_css,
+            current_js
         ]),
         ('https://khasaut-kmv.ru/detail/pereval-vosmerka/', [
             'route-itinerary',
             'аул-призрак Хасаут',
             'TouristTrip',
+            'Product',
+            'AggregateRating',
             '4 000'
         ]),
-        ('https://khasaut-kmv.ru/about/', ['О нас', 'Хасаут']),
-        ('https://khasaut-kmv.ru/prices/', ['Цены', 'прайс']),
-        ('https://khasaut-kmv.ru/excursions/', ['Экскурсии', 'маршрут']),
-        ('https://khasaut-kmv.ru/assets/index-Bf0LujbI.css', ['font-family', 'hero']),
-        ('https://khasaut-kmv.ru/assets/index-DFuVZkRH.js', ['react']),
+        ('https://khasaut-kmv.ru/about/', [
+            'inner-about-story-zigzag',
+            'Наша история',
+            'Хасаут',
+            current_css
+        ]),
+        ('https://khasaut-kmv.ru/prices/', ['Цены', 'прайс', current_css]),
+        ('https://khasaut-kmv.ru/excursions/', ['Экскурсии', 'маршрут', current_css]),
+        (f'https://khasaut-kmv.ru/assets/{current_css}', ['font-family', 'hero']),
+        (f'https://khasaut-kmv.ru/assets/{current_js}', ['react']),
+        ('https://khasaut-kmv.ru/feed.yml', ['yml_catalog', 'Хасаут']),
         ('https://khasaut-kmv.ru/sitemap.xml', ['<urlset', 'pereval-vosmerka']),
         ('https://khasaut-kmv.ru/robots.txt', ['Sitemap:', 'khasaut-kmv.ru/sitemap.xml'])
     ]
@@ -115,16 +167,13 @@ def step5_verify_live():
     all_passed = True
     for url, tokens in urls:
         try:
-            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Khasaut-Live-Deploy-Verifier/1.0)'})
-            with urllib.request.urlopen(req, context=ctx, timeout=10) as r:
-                body = r.read().decode('utf-8', errors='replace')
-                status = r.status
-                missing = [t for t in tokens if t not in body]
-                if missing:
-                    print(f'[FAIL] {url} (HTTP {status}, {len(body)} bytes) - Missing tokens: {missing}')
-                    all_passed = False
-                else:
-                    print(f'[PASS] {url} (HTTP {status}, {len(body)} bytes) - All tokens verified!')
+            status, body = fetch_content(url)
+            missing = [t for t in tokens if t not in body]
+            if missing:
+                print(f'[FAIL] {url} (HTTP {status}, {len(body)} chars) - Missing tokens: {missing}')
+                all_passed = False
+            else:
+                print(f'[PASS] {url} (HTTP {status}, {len(body)} chars) - All tokens verified!')
         except Exception as e:
             print(f'[ERROR] {url}: {e}')
             all_passed = False
@@ -132,9 +181,7 @@ def step5_verify_live():
     return all_passed
 
 if __name__ == '__main__':
-    step1_create_zip()
-    step2_upload_ftp()
-    step3_extract_ispmanager()
-    step4_cleanup()
-    success = step5_verify_live()
+    deploy_files()
+    cleanup_server()
+    success = verify_live()
     print('\nOVERALL DEPLOYMENT RESULT:', 'SUCCESS' if success else 'FAILED')
