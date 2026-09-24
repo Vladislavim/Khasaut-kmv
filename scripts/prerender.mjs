@@ -246,7 +246,20 @@ try {
 
     const schema = { '@context': 'https://schema.org', '@graph': graph }
 
+    const imagePreloads = []
+    if (entry.path === '/') {
+      const bgMatch = content.match(/src="(\/assets\/hero-background[^"]+)"/)
+      const photoMatch = content.match(/src="(\/assets\/hero-real-04-cliffs[^"]+)"/)
+      if (bgMatch) {
+        imagePreloads.push(`<link rel="preload" as="image" href="${bgMatch[1]}" fetchpriority="high" />`)
+      }
+      if (photoMatch) {
+        imagePreloads.push(`<link rel="preload" as="image" href="${photoMatch[1]}" fetchpriority="high" />`)
+      }
+    }
+
     const head = [
+      ...imagePreloads,
       `<link rel="canonical" href="${canonical}" />`,
       `<meta property="og:type" content="website" />`,
       `<meta property="og:locale" content="ru_RU" />`,

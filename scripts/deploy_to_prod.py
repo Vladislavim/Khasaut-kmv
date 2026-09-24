@@ -47,6 +47,14 @@ def ensure_remote_dir(ftp, remote_dir):
 
 def deploy_files():
     print('=== STEP 1: Scanning files to deploy ===')
+    server_assets = set()
+    try:
+        res = ispmgr({'func': 'file', 'plid': 'www/khasaut-kmv.ru/assets'})
+        server_assets = {it.get('name', {}).get('$') for it in res.get('doc', {}).get('elem', [])}
+        print(f'Server currently has {len(server_assets)} assets cached.')
+    except Exception as e:
+        print('Warning getting server assets:', e)
+
     files_to_upload = []
     total_bytes = 0
 
@@ -54,9 +62,11 @@ def deploy_files():
         for f in files:
             full_path = os.path.join(root, f)
             rel_path = os.path.relpath(full_path, DIST_DIR).replace(os.sep, '/')
-            # Skip unchanged static image assets that already live on the server
-            if rel_path.startswith('assets/') and not (rel_path.endswith('.js') or rel_path.endswith('.css')):
-                continue
+            filename = os.path.basename(rel_path)
+            # Skip only unchanged static assets that already live on the server
+            if rel_path.startswith('assets/') and not (filename.endswith('.js') or filename.endswith('.css')):
+                if filename in server_assets:
+                    continue
             fsize = os.path.getsize(full_path)
             files_to_upload.append((full_path, rel_path, fsize))
             total_bytes += fsize
@@ -86,7 +96,7 @@ def deploy_files():
     print('All files uploaded successfully!')
 
 def cleanup_server():
-    print('=== STEP 4: Cleaning up temp / junk files ===')
+    print('=== STEP 4: Cleaning up temp / old bundles ===')
     junk = [
         'test_extract.zip', 'test_extract_ok.txt', 'test_extract2.zip',
         'test_idx.zip', 'deploy_code.zip', 'deploy_test_sync.zip',
@@ -97,6 +107,26 @@ def cleanup_server():
             ispmgr({'func': 'file.delete', 'elid': j, 'plid': 'www/khasaut-kmv.ru'})
         except Exception:
             pass
+
+    # Cleanup old CSS and JS bundles
+    with open('dist/index.html', 'r', encoding='utf-8') as f:
+        idx_html = f.read()
+    current_css = re.search(r'assets/(index-[^"]+\.css)', idx_html)
+    current_js = re.search(r'assets/(index-[^"]+\.js)', idx_html)
+    keep_css = current_css.group(1) if current_css else ''
+    keep_js = current_js.group(1) if current_js else ''
+
+    try:
+        res = ispmgr({'func': 'file', 'plid': 'www/khasaut-kmv.ru/assets'})
+        for it in res.get('doc', {}).get('elem', []):
+            name = it.get('name', {}).get('$')
+            if name and name.startswith('index-'):
+                if (name.endswith('.css') and name != keep_css) or (name.endswith('.js') and name != keep_js):
+                    print(f'Deleting obsolete bundle: {name}')
+                    ispmgr({'func': 'file.delete', 'elid': name, 'plid': 'www/khasaut-kmv.ru/assets'})
+    except Exception as e:
+        print('Cleanup old bundles error:', e)
+
     print('Cleanup complete.')
 
 def fetch_content(url):
@@ -138,6 +168,7 @@ def verify_live():
             'AggregateRating',
             '4.98',
             '1040',
+            'rel="preload" as="image"',
             current_css,
             current_js
         ]),

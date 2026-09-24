@@ -26,7 +26,7 @@ export function FooterSection() {
         <img
           src={assets.footerRidge}
           alt=""
-          loading="eager"
+          loading="lazy"
           decoding="async"
           width="2172"
           height="724"
@@ -37,7 +37,7 @@ export function FooterSection() {
         <div className="footer-grid">
           {/* Col 1: Brand & Identity */}
           <div className="footer-col footer-col--brand">
-            <a href="/" className="footer-brand-header" aria-label="Khasaut Tour на главную">
+            <a href="/" className="footer-brand-header" aria-label="KHASAUT TOUR — на главную">
               <BrandMark compact />
               <div className="footer-brand-title">
                 <span className="footer-brand-name">KHASAUT TOUR</span>
@@ -55,7 +55,7 @@ export function FooterSection() {
 
           {/* Col 2: Routes */}
           <div className="footer-col footer-col--nav">
-            <h4 className="footer-col-title">Маршруты</h4>
+            <h3 className="footer-col-title">Маршруты</h3>
             <ul className="footer-links-list">
               {routeLinks.map((item) => (
                 <li key={item.href}>
@@ -67,7 +67,7 @@ export function FooterSection() {
 
           {/* Col 3: Navigation */}
           <div className="footer-col footer-col--nav">
-            <h4 className="footer-col-title">Информация</h4>
+            <h3 className="footer-col-title">Информация</h3>
             <ul className="footer-links-list">
               {infoLinks.map((item) => (
                 <li key={item.href}>
@@ -79,7 +79,7 @@ export function FooterSection() {
 
           {/* Col 4: Contacts */}
           <div className="footer-col footer-col--contacts">
-            <h4 className="footer-col-title">Связь с гидом</h4>
+            <h3 className="footer-col-title">Связь с гидом</h3>
 
             <div className="footer-phone-list">
               <a href={innerContacts.primaryPhone.href} className="footer-phone-item">

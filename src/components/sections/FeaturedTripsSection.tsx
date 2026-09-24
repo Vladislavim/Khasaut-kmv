@@ -45,7 +45,7 @@ export function FeaturedTripsSection() {
                 style={{ cursor: 'pointer' }}
               >
                 <a className="featured-trip-card__media" href={trip.href} onClick={() => track('route_detail_open', { route: trip.priceKey })}>
-                  <img src={trip.image} alt={trip.alt} loading={index < 2 ? 'eager' : 'lazy'} />
+                  <img src={trip.image} alt={trip.alt} loading="lazy" decoding="async" />
                   <span className="featured-trip-card__veil" aria-hidden="true" />
                   <span className="featured-trip-card__number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
                   <span className="featured-trip-card__kicker">{trip.kicker}</span>

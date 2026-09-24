@@ -321,7 +321,7 @@ export function PriceConfigurator({
               </div>
 
               {/* Popular quick-pick pills */}
-              <div className="trip-planner__quick-routes" role="tablist" aria-label="Популярные направления">
+              <div className="trip-planner__quick-routes" role="group" aria-label="Популярные направления">
                 {popularQuickRoutes.map((item) => (
                   <button
                     key={item.id}

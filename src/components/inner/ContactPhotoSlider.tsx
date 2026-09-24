@@ -287,7 +287,7 @@ export function ContactPhotoSlider() {
                     src={slide.image}
                     alt={`${slide.title} — ${slide.region}`}
                     className="contact-gallery-slider__img"
-                    loading={index < 2 ? 'eager' : 'lazy'}
+                    loading="lazy"
                     decoding="async"
                   />
                 </div>

@@ -127,7 +127,7 @@
 
 .price-field__optional {
   font-size: 11px;
-  color: #8c9783;
+  color: #4a5c43;
   text-transform: lowercase;
 }
 
@@ -135,7 +135,7 @@
   display: block;
   margin-top: 6px;
   font-size: 11px;
-  color: #6a7761;
+  color: #3b4d35;
   line-height: 1.4;
 }
 
@@ -365,7 +365,7 @@
 .format-card__price em {
   font-size: 10px;
   font-style: normal;
-  color: #7b8872;
+  color: #3b4d35;
 }
 
 /* ── Stepper ──────────────────────────────────────────────────────────────── */
