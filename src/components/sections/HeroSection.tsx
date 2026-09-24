@@ -290,7 +290,7 @@ export function HeroSection() {
             <div className="hero-trust-badges" aria-label="Преимущества бронирования">
               <span><Icon name="check" size={13} /> Предоплата всего 1 500 ₽</span>
               <span><Icon name="check" size={13} /> Заберём от отеля</span>
-              <span>⭐ 5.0 (1000+ отзывов)</span>
+              <span>⭐ 4.98 (1000+ отзывов)</span>
             </div>
           </div>
 
