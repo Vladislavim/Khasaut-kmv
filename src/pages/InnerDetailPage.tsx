@@ -24,7 +24,7 @@ export function InnerDetailPage({ page }: InnerDetailPageProps) {
     heroAlt: page.alt,
     heroImages: heroPhotos,
     priceKey: getPriceKeyForRouteSlug(page.slug),
-    heroPrimaryLabel: 'Обсудить поездку',
+    heroPrimaryLabel: 'Забронировать тур в WhatsApp',
     heroPrimaryHref: whatsappHref,
     heroPrimaryIcon: 'whatsapp' as const,
     heroSecondaryLabel: 'Программа экскурсии',

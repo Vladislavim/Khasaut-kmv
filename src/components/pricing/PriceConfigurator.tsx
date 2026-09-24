@@ -627,13 +627,13 @@ export function PriceConfigurator({
               }
             >
               <Icon name="whatsapp" size={20} />
-              <span>Уточнить дату и места</span>
+              <span>Забронировать тур в WhatsApp</span>
               <Icon name="arrow" size={16} />
             </a>
 
             <p className="trip-ticket__micro">
-              Откроется WhatsApp с готовым расчётом.<br />
-              Дату и свободные места подтвердит Эльдар лично.
+              Без предоплаты до подтверждения • Ответ за 5 минут.<br />
+              Дату и места подтвердит Эльдар лично.
             </p>
 
             {/* Secondary actions */}

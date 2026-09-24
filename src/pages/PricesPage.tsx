@@ -108,8 +108,9 @@ export function PricesPage() {
               <span className="inner-kicker">Перед выездом</span>
               <h2 id="detail-practical-title">Условия бронирования</h2>
               <a className="inner-button inner-button--solid" href={innerContacts.whatsapp.href} target="_blank" rel="noreferrer">
-                Обсудить даты в WhatsApp <Icon name="arrow" size={16} />
+                Забронировать даты в WhatsApp <Icon name="arrow" size={16} />
               </a>
+              <p className="prices-cta-micro">Без предоплаты • Ответим за 5 минут</p>
             </Reveal>
             <Reveal className="inner-detail-facts" delay={120}>
               <div className="inner-detail-fact"><span>Выезд</span><strong>Заберём от места проживания.</strong></div>

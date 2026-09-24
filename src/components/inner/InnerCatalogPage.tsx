@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { innerContacts } from '../../data/innerContacts'
 import { detailPages, type CatalogCard, type InnerPageMeta } from '../../data/innerPages'
 import { getPriceKeyForRouteSlug, type PriceRouteKey } from '../../data/prices'
 import { Icon } from '../ui/Icon'
@@ -73,14 +74,14 @@ export function InnerCatalogPage({ meta, cards, sectionTitle, sectionIntro, note
                       <div className="inner-route-card__actions">
                         {priceKey ? (
                           <button className="inner-button inner-button--solid" type="button" onClick={(e) => { e.stopPropagation(); setQuickRouteKey(priceKey) }}>
-                            Рассчитать <Icon name="arrow" size={14} />
+                            Рассчитать тур <Icon name="arrow" size={14} />
                           </button>
                         ) : (
-                          <a className="inner-button inner-button--outline" href="/contact" onClick={(e) => e.stopPropagation()}>Уточнить <Icon name="arrow" size={14} /></a>
+                          <a className="inner-button inner-button--outline" href="/contact" onClick={(e) => e.stopPropagation()}>Свободные даты <Icon name="arrow" size={14} /></a>
                         )}
                       </div>
                       <a className="inner-route-card__detail-link" href={detailHref}>
-                        Подробнее <Icon name="arrow" size={15} />
+                        Программа тура <Icon name="arrow" size={15} />
                       </a>
                     </div>
                   </article>
@@ -105,7 +106,9 @@ export function InnerCatalogPage({ meta, cards, sectionTitle, sectionIntro, note
               <h2 id="inner-note-title">{noteTitle}</h2>
               <p>{noteText}</p>
             </div>
-            <a className="inner-button inner-button--outline" href="/contact">Спросить команду <Icon name="arrow" size={16} /></a>
+            <a className="inner-button inner-button--solid" href={innerContacts.whatsapp.href} target="_blank" rel="noreferrer">
+              <Icon name="whatsapp" size={16} /> Задать вопрос Эльдару
+            </a>
           </div>
         </section>
 

@@ -34,12 +34,12 @@ export function TripCallToAction({ route }: { route?: string }) {
           data-booking-link
           onClick={() => track('conversion_cta_click', { source: 'inline', route, action: 'whatsapp' })}
         >
-          {route ? 'Уточнить дату и маршрут' : 'Помогите выбрать поездку'} <span aria-hidden="true">↗</span>
+          {route ? 'Забронировать тур в WhatsApp' : 'Подобрать маршрут в WhatsApp'} <span aria-hidden="true">↗</span>
         </a>
         <button type="button" onClick={handleFinder}>
           Подобрать по интересам <span aria-hidden="true">→</span>
         </button>
-        <small>Откроется WhatsApp. Бронирование подтвердит организатор.</small>
+        <small>Без предоплаты • Ответим за 5 минут • Подтвердит Эльдар лично</small>
       </div>
     </section>
   )

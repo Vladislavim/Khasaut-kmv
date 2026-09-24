@@ -60,6 +60,6 @@ export function ConversionPrompt() {
       {copyState==='copied' ? (<>Ссылка скопирована <Icon name="check" size={16} /></>) : 'Сохранить ссылку на расчёт'}
     </button>
     {copyState!=='idle' && <label className="conversion-prompt__copy" role="status">{copyState==='copied' ? 'Можно отправить её попутчикам.' : 'Скопируйте ссылку из поля.'}<input aria-label="Ссылка на ваш расчёт" value={url} readOnly onFocus={event=>event.target.select()} /></label>}
-    <a className="conversion-prompt__contact" href={buildWhatsAppBookingUrl(selection)} target="_blank" rel="noreferrer" onClick={() => track('conversion_cta_click',{source:'exit',action:'whatsapp',route:selection.routeKey})}>Обсудить эту поездку в WhatsApp ↗</a><button className="trip-finder__back" type="button" onClick={close}>Продолжить просмотр</button></div>
+    <a className="conversion-prompt__contact" href={buildWhatsAppBookingUrl(selection)} target="_blank" rel="noreferrer" onClick={() => track('conversion_cta_click',{source:'exit',action:'whatsapp',route:selection.routeKey})}>Забронировать поездку в WhatsApp ↗</a><button className="trip-finder__back" type="button" onClick={close}>Продолжить просмотр</button></div>
   </dialog>
 }

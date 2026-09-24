@@ -34,7 +34,7 @@ export function RoutesSection() {
                 <div className="route-card__content">
                   <h3>{route.title}</h3>
                   <PriceBadge />
-                  <p>Перейти <Icon name="arrow" size={19} /></p>
+                  <p>Смотреть программы <Icon name="arrow" size={19} /></p>
                 </div>
               </a>
             </Reveal>

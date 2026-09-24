@@ -113,7 +113,7 @@ export function InnerPageShell({ meta, className = '', heroRight, showHero = tru
                   rel={meta.heroPrimaryHref?.startsWith('http') ? 'noreferrer' : undefined}
                   onClick={() => track(meta.priceKey ? 'hero_price_click' : 'contact_click', { route: meta.priceKey, source: 'inner-hero' })}
                 >
-                  {meta.heroPrimaryLabel ?? (meta.priceKey ? 'Рассчитать стоимость' : 'Обсудить поездку')}{' '}
+                  {meta.heroPrimaryLabel ?? (meta.priceKey ? 'Рассчитать стоимость' : 'Подобрать тур в WhatsApp')}{' '}
                   <Icon name={meta.heroPrimaryIcon ?? 'arrow'} size={16} />
                 </a>
                 {meta.heroSecondaryLabel !== null && meta.heroSecondaryLabel && (
@@ -121,6 +121,11 @@ export function InnerPageShell({ meta, className = '', heroRight, showHero = tru
                     {meta.heroSecondaryLabel} <Icon name="arrow" size={16} />
                   </a>
                 )}
+                <div className="inner-hero-trust-badges inner-hero-trust-badges--desktop" aria-label="Преимущества бронирования">
+                  <span>✓ Без предоплаты</span>
+                  <span>✓ Заберём от отеля</span>
+                  <span>⭐ 5.0 (50+ отзывов)</span>
+                </div>
               </div>
             </div>
             {heroRight ? (
@@ -143,7 +148,7 @@ export function InnerPageShell({ meta, className = '', heroRight, showHero = tru
                 rel={meta.heroPrimaryHref?.startsWith('http') ? 'noreferrer' : undefined}
                 onClick={() => track(meta.priceKey ? 'hero_price_click' : 'contact_click', { route: meta.priceKey, source: 'inner-hero' })}
               >
-                {meta.heroPrimaryLabel ?? (meta.priceKey ? 'Рассчитать стоимость' : 'Обсудить поездку')}{' '}
+                {meta.heroPrimaryLabel ?? (meta.priceKey ? 'Рассчитать стоимость' : 'Подобрать тур в WhatsApp')}{' '}
                 <Icon name={meta.heroPrimaryIcon ?? 'arrow'} size={16} />
               </a>
               {meta.heroSecondaryLabel !== null && meta.heroSecondaryLabel && (
@@ -151,6 +156,11 @@ export function InnerPageShell({ meta, className = '', heroRight, showHero = tru
                   {meta.heroSecondaryLabel} <Icon name="arrow" size={16} />
                 </a>
               )}
+            </div>
+            <div className="inner-hero-trust-badges inner-hero-trust-badges--mobile" aria-label="Преимущества бронирования">
+              <span>✓ Без предоплаты</span>
+              <span>✓ От отеля</span>
+              <span>⭐ 5.0</span>
             </div>
           </div>
         </section>

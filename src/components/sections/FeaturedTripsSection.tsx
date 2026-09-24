@@ -55,8 +55,8 @@ export function FeaturedTripsSection() {
                   <p>{trip.blurb}</p>
                   <PriceBadge priceKey={trip.priceKey} />
                   <div className="featured-trip-card__actions">
-                    <button className="inner-button inner-button--solid" type="button" onClick={(e) => { e.stopPropagation(); setQuickRouteKey(trip.priceKey) }}>Рассчитать <Icon name="arrow" size={14} /></button>
-                    <a className="inner-button inner-button--outline" href={trip.href} onClick={() => track('route_detail_open', { route: trip.priceKey })}>Подробнее <Icon name="arrow" size={14} /></a>
+                    <button className="inner-button inner-button--solid" type="button" onClick={(e) => { e.stopPropagation(); setQuickRouteKey(trip.priceKey) }}>Рассчитать тур <Icon name="arrow" size={14} /></button>
+                    <a className="inner-button inner-button--outline" href={trip.href} onClick={() => track('route_detail_open', { route: trip.priceKey })}>Программа тура <Icon name="arrow" size={14} /></a>
                   </div>
                 </div>
               </article>

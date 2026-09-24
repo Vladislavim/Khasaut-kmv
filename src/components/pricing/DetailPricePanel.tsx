@@ -18,7 +18,7 @@ export function DetailPricePanel({ slug }: DetailPricePanelProps) {
           <h2 id="detail-price-title">Стоимость</h2>
           <p>Уточним город отправления и формат поездки.</p>
         </div>
-        <a className="inner-button inner-button--solid" href="/contact">Уточнить стоимость <span aria-hidden="true">→</span></a>
+        <a className="inner-button inner-button--solid" href="/contact">Выбрать дату выезда <span aria-hidden="true">→</span></a>
       </section>
     )
   }
