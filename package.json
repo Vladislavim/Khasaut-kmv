@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && node scripts/prerender.mjs",
+    "build": "tsc -b && vite build && node scripts/prerender.mjs && node scripts/generate_yandex_feed.mjs",
     "typecheck": "tsc -b",
     "lint": "oxlint",
     "preview": "vite preview"
