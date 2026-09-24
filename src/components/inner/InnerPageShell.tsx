@@ -6,11 +6,14 @@ import { ContactButton } from '../ui/ContactButton'
 import { FooterSection } from '../sections/FooterSection'
 import { Icon } from '../ui/Icon'
 import { PriceBadge } from '../pricing/PriceBadge'
+import { InnerHeroSlider } from './InnerHeroSlider'
 import { track } from '../../lib/analytics'
 
 type InnerPageShellProps = PropsWithChildren<{
   meta: InnerPageMeta
   className?: string
+  heroRight?: React.ReactNode
+  showHero?: boolean
 }>
 
 const navItems = [
@@ -26,7 +29,7 @@ const headerContacts = [
   { label: 'Instagram', icon: 'instagram', href: 'https://www.instagram.com/eldar_e_7212?igsi=MWltZzl1Y2luejN5bw==' },
 ] as const
 
-export function InnerPageShell({ meta, className = '', children }: InnerPageShellProps) {
+export function InnerPageShell({ meta, className = '', heroRight, showHero = true, children }: InnerPageShellProps) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
@@ -86,36 +89,72 @@ export function InnerPageShell({ meta, className = '', children }: InnerPageShel
         </div>
       </header>
 
-      <section className={`inner-hero ${meta.heroVariant ? `inner-hero--${meta.heroVariant}` : ''}`.trim()} aria-labelledby="inner-page-title">
-        <div className="inner-hero__image-wrap">
-          <img className="inner-hero__image" src={meta.heroImage} alt={meta.heroAlt} fetchPriority="high" />
-        </div>
-        <div className="inner-hero__wash" aria-hidden="true" />
-        <div className="container inner-hero__content">
-          <div className="inner-hero__copy">
-            <span className="inner-kicker">{meta.eyebrow}</span>
-            <h1 id="inner-page-title">{meta.title}</h1>
-            <p>{meta.intro}</p>
-            {meta.priceKey !== undefined && <PriceBadge priceKey={meta.priceKey} variant="hero" />}
-            <div className="inner-hero__buttons">
-              <a className="inner-button inner-button--solid" href={meta.heroPrimaryHref ?? (meta.priceKey ? '#detail-price' : '/contact')} onClick={() => track(meta.priceKey ? 'hero_price_click' : 'contact_click', { route: meta.priceKey, source: 'inner-hero' })}>
-                {meta.heroPrimaryLabel ?? (meta.priceKey ? 'Рассчитать стоимость' : 'Обсудить поездку')} <Icon name="arrow" size={16} />
+      {showHero && (
+        <section className={`inner-hero ${meta.heroVariant ? `inner-hero--${meta.heroVariant}` : ''}`.trim()} aria-labelledby="inner-page-title">
+          <div className="inner-hero__image-wrap">
+            {meta.heroImages && meta.heroImages.length > 1 ? (
+              <InnerHeroSlider images={meta.heroImages} alt={meta.heroAlt} />
+            ) : (
+              <img className="inner-hero__image" src={meta.heroImage} alt={meta.heroAlt} fetchPriority="high" />
+            )}
+          </div>
+          <div className="inner-hero__wash" aria-hidden="true" />
+          <div className="container inner-hero__content">
+            <div className="inner-hero__copy">
+              <span className="inner-kicker">{meta.eyebrow}</span>
+              <h1 id="inner-page-title">{meta.title}</h1>
+              <p>{meta.intro}</p>
+              {meta.priceKey !== undefined && <PriceBadge priceKey={meta.priceKey} variant="hero" />}
+              <div className="inner-hero__buttons inner-hero__buttons--desktop">
+                <a
+                  className="inner-button inner-button--solid"
+                  href={meta.heroPrimaryHref ?? (meta.priceKey ? '#detail-price' : '/contact')}
+                  target={meta.heroPrimaryHref?.startsWith('http') ? '_blank' : undefined}
+                  rel={meta.heroPrimaryHref?.startsWith('http') ? 'noreferrer' : undefined}
+                  onClick={() => track(meta.priceKey ? 'hero_price_click' : 'contact_click', { route: meta.priceKey, source: 'inner-hero' })}
+                >
+                  {meta.heroPrimaryLabel ?? (meta.priceKey ? 'Рассчитать стоимость' : 'Обсудить поездку')}{' '}
+                  <Icon name={meta.heroPrimaryIcon ?? 'arrow'} size={16} />
+                </a>
+                {meta.heroSecondaryLabel !== null && meta.heroSecondaryLabel && (
+                  <a className="inner-button inner-button--quiet" href={meta.heroSecondaryHref ?? '#inner-main'}>
+                    {meta.heroSecondaryLabel} <Icon name="arrow" size={16} />
+                  </a>
+                )}
+              </div>
+            </div>
+            {heroRight ? (
+              <div className="inner-hero__right">{heroRight}</div>
+            ) : (
+              <div className="inner-hero__stamp" aria-hidden="true">
+                <span>Северный</span>
+                <strong>Кавказ</strong>
+                <i />
+                <small>Khasaut Tour</small>
+              </div>
+            )}
+          </div>
+          <div className="container inner-hero__mobile-action">
+            <div className="inner-hero__buttons inner-hero__buttons--mobile">
+              <a
+                className="inner-button inner-button--solid"
+                href={meta.heroPrimaryHref ?? (meta.priceKey ? '#detail-price' : '/contact')}
+                target={meta.heroPrimaryHref?.startsWith('http') ? '_blank' : undefined}
+                rel={meta.heroPrimaryHref?.startsWith('http') ? 'noreferrer' : undefined}
+                onClick={() => track(meta.priceKey ? 'hero_price_click' : 'contact_click', { route: meta.priceKey, source: 'inner-hero' })}
+              >
+                {meta.heroPrimaryLabel ?? (meta.priceKey ? 'Рассчитать стоимость' : 'Обсудить поездку')}{' '}
+                <Icon name={meta.heroPrimaryIcon ?? 'arrow'} size={16} />
               </a>
-              {meta.heroSecondaryLabel !== null && (
+              {meta.heroSecondaryLabel !== null && meta.heroSecondaryLabel && (
                 <a className="inner-button inner-button--quiet" href={meta.heroSecondaryHref ?? '#inner-main'}>
-                  {meta.heroSecondaryLabel ?? 'Смотреть маршрут'} <Icon name="arrow" size={16} />
+                  {meta.heroSecondaryLabel} <Icon name="arrow" size={16} />
                 </a>
               )}
             </div>
           </div>
-          <div className="inner-hero__stamp" aria-hidden="true">
-            <span>Северный</span>
-            <strong>Кавказ</strong>
-            <i />
-            <small>Khasaut Tour</small>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {children}
 

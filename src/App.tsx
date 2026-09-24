@@ -13,6 +13,8 @@ import { InnerDetailPage } from './pages/InnerDetailPage'
 import { PricesPage } from './pages/PricesPage'
 import { detailPages } from './data/innerPages'
 
+import { trackHit } from './utils/metrika'
+
 function getPathname() {
   const path = (typeof window === 'undefined' ? '/' : window.location.pathname).replace(/\/+$/, '')
   return path || '/'
@@ -21,6 +23,7 @@ function getPathname() {
 function App({ path }: { path?: string } = {}) {
   const pathname = path ?? getPathname()
   useEffect(() => {
+    trackHit()
     if (!window.location.hash) return
     const frame = requestAnimationFrame(() => {
       let id = window.location.hash.slice(1)

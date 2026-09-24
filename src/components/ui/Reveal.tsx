@@ -20,7 +20,7 @@ export function Reveal({ children, className = '', delay = 0 }: RevealProps) {
           observer.disconnect()
         }
       },
-      { threshold: 0.01, rootMargin: '120px 0px' },
+      { threshold: 0.01, rootMargin: '280px 0px' },
     )
 
     observer.observe(node)

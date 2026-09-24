@@ -22,7 +22,7 @@ export function RoutesSection() {
               </span>
             </span>
           </h2>
-          <span className="routes-stamp" aria-hidden="true">K / 2022</span>
+          <span className="routes-stamp" aria-hidden="true">K / 2026</span>
         </div>
         <div className="routes-grid">
           {routes.map((route, index) => (

@@ -1,0 +1,983 @@
+<?xml version="1.0" encoding="utf-8"?>
+<yml_catalog date="2026-09-24 11:28">
+  <shop>
+    <name>Khasaut Tour</name>
+    <company>Khasaut Tour</company>
+    <url>https://khasaut-kmv.ru</url>
+    <email>Eldar090807@yandex.ru</email>
+    <currencies>
+      <currency id="RUR" rate="1"/>
+    </currencies>
+    <categories>
+      <category id="1">Исполнитель</category>
+      <category id="25" parentId="1">Организация мероприятий</category>
+      <category id="16" parentId="1">Перевозки и курьеры</category>
+      <category id="29" parentId="1">Разное</category>
+    </categories>
+    <sets>
+      <set id="s1">
+        <name>Джип-тур на Джилы-Су из Кисловодска</name>
+        <url>https://khasaut-kmv.ru/detail/dzhily-su</url>
+      </set>
+      <set id="s2">
+        <name>Плато Бермамыт: рассвет и панорама Эльбруса</name>
+        <url>https://khasaut-kmv.ru/detail/bermamyt</url>
+      </set>
+      <set id="s3">
+        <name>Экскурсия в Домбай из Кисловодска и КМВ</name>
+        <url>https://khasaut-kmv.ru/detail/dombay</url>
+      </set>
+      <set id="s4">
+        <name>Верхняя Балкария и Черекская теснина</name>
+        <url>https://khasaut-kmv.ru/detail/balkaria</url>
+      </set>
+      <set id="s5">
+        <name>Эльбрус и поляна Азау: подъём на канатке</name>
+        <url>https://khasaut-kmv.ru/detail/elbrus</url>
+      </set>
+      <set id="s6">
+        <name>Перевал Актопрак и Чегемские водопады</name>
+        <url>https://khasaut-kmv.ru/detail/aktoprak</url>
+      </set>
+      <set id="s7">
+        <name>Горная Северная Осетия: Куртатинское ущелье</name>
+        <url>https://khasaut-kmv.ru/detail/ossetia</url>
+      </set>
+      <set id="s8">
+        <name>Комбо-джип-тур: Джилы-Су и плато Бермамыт за 1 день</name>
+        <url>https://khasaut-kmv.ru/detail/dzhily-su-bermamyt</url>
+      </set>
+      <set id="s9">
+        <name>Архыз: Софийские водопады и древние храмы</name>
+        <url>https://khasaut-kmv.ru/detail/arkhyz</url>
+      </set>
+      <set id="s10">
+        <name>Горная Ингушетия: страна башен и замок Вовнушки</name>
+        <url>https://khasaut-kmv.ru/detail/ingushetia</url>
+      </set>
+      <set id="s11">
+        <name>Грозный и Аргунское ущелье: Сердце Чечни</name>
+        <url>https://khasaut-kmv.ru/detail/grozny</url>
+      </set>
+      <set id="s12">
+        <name>Медовые водопады, гора Кольцо и Чайный домик</name>
+        <url>https://khasaut-kmv.ru/detail/honey</url>
+      </set>
+      <set id="s13">
+        <name>Долина Нарзанов: 11 целебных источников и замок</name>
+        <url>https://khasaut-kmv.ru/detail/narzan</url>
+      </set>
+      <set id="s14">
+        <name>Перевал Восьмёрка и плато Шаджатмаз</name>
+        <url>https://khasaut-kmv.ru/detail/pereval-vosmerka</url>
+      </set>
+      <set id="s15">
+        <name>Озеро Хурла-Кёль: реликтовая жемчужина Кавказа</name>
+        <url>https://khasaut-kmv.ru/detail/khurla-kol</url>
+      </set>
+      <set id="s16">
+        <name>Худесский лабиринт и Каменные грибы</name>
+        <url>https://khasaut-kmv.ru/detail/khudes-labyrinth</url>
+      </set>
+      <set id="s17">
+        <name>Мухинское ущелье и перевал Муху (2764 м)</name>
+        <url>https://khasaut-kmv.ru/detail/mukhinskoe-gorge</url>
+      </set>
+      <set id="s18">
+        <name>Ущелье Махар: первозданные водопады и нарзаны</name>
+        <url>https://khasaut-kmv.ru/detail/makhar</url>
+      </set>
+      <set id="s19">
+        <name>Бадукские озёра: каскад бирюзовых высокогорных озёр</name>
+        <url>https://khasaut-kmv.ru/detail/baduk-lakes</url>
+      </set>
+      <set id="s20">
+        <name>Суворовские термальные источники №1</name>
+        <url>https://khasaut-kmv.ru/detail/suvorovskie</url>
+      </set>
+      <set id="s21">
+        <name>Термальный комплекс «Жемчужина Кавказа»</name>
+        <url>https://khasaut-kmv.ru/detail/pearl</url>
+      </set>
+      <set id="s22">
+        <name>Оздоровительный комплекс «Гедуко»</name>
+        <url>https://khasaut-kmv.ru/detail/geduko</url>
+      </set>
+      <set id="s23">
+        <name>Аушигер: горячие азотно-термальные источники</name>
+        <url>https://khasaut-kmv.ru/detail/aushiger</url>
+      </set>
+      <set id="s_home">
+        <name>Джип-туры и экскурсии по горам Кавказа из Кисловодска</name>
+        <url>https://khasaut-kmv.ru/</url>
+      </set>
+      <set id="s_excursions">
+        <name>Каталог экскурсий и джип-маршрутов по Кавказу</name>
+        <url>https://khasaut-kmv.ru/excursions</url>
+      </set>
+      <set id="s_prices">
+        <name>Цены на джип-туры и аренду внедорожников с водителем</name>
+        <url>https://khasaut-kmv.ru/prices</url>
+      </set>
+      <set id="s_routes">
+        <name>Индивидуальный подбор горных маршрутов джиппинга</name>
+        <url>https://khasaut-kmv.ru/routes</url>
+      </set>
+      <set id="s_thermal">
+        <name>Поездки на горячие термальные источники КМВ</name>
+        <url>https://khasaut-kmv.ru/thermal-springs</url>
+      </set>
+      <set id="s_horse">
+        <name>Конные прогулки в горах Кисловодска</name>
+        <url>https://khasaut-kmv.ru/horse-rides</url>
+      </set>
+      <set id="s_about">
+        <name>Услуги профессионального гида-водителя на Кавказе</name>
+        <url>https://khasaut-kmv.ru/about</url>
+      </set>
+      <set id="s_contact">
+        <name>Бронирование и консультация по джип-турам</name>
+        <url>https://khasaut-kmv.ru/contact</url>
+      </set>
+    </sets>
+    <offers>
+      <offer id="1" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/dzhily-su</url>
+        <price from="true">3700</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s1</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/dzhily-su-01-optimized-bDKggXql.webp</picture>
+        <description>Северное Приэльбрусье: водопады Султан и Каракая-Су, Долина Замков, горячие нарзанные ванны и панорама Эльбруса.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">52</param>
+        <param name="число отзывов">52</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.8</param>
+        <param name="конверсия">2.8</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="2" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/bermamyt</url>
+        <price from="true">4200</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s2</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/bermamyt-01-optimized-d9Ef7g94.webp</picture>
+        <description>Встреча рассвета на высоте 2592 метра: скалы-амфитеатры, скалы Монахи и грандиозный вид на двуглавый Эльбрус.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">46</param>
+        <param name="число отзывов">46</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.7</param>
+        <param name="конверсия">2.7</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="3" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/dombay</url>
+        <price from="true">4200</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s3</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/dombay-01-optimized-Cr7GHhew.webp</picture>
+        <description>Сердце Кавказских гор: ущелье Гоначхир, озеро Туманлы-Кёль, канатные дороги на высоту более 3000 м и пик Мусса-Ачитара.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">39</param>
+        <param name="число отзывов">39</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.4</param>
+        <param name="конверсия">2.4</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="4" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/balkaria</url>
+        <price from="true">4200</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s4</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/balkaria-01-optimized-CNPcno1R.webp</picture>
+        <description>Винный замок Шато-Эркен, Черекское ущелье, скала Язык Дракона, древние башни Амирхановых и Голубые озёра.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">31</param>
+        <param name="число отзывов">31</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.2</param>
+        <param name="конверсия">2.2</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="5" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/elbrus</url>
+        <price from="true">4700</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s5</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/elbrus-01-optimized-BbN8cyvU.webp</picture>
+        <description>Баксанское ущелье, подножие Эльбруса, поляна Чегет, подъём на канатной дороге до станции Гарабаши на 3847 метров.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">44</param>
+        <param name="число отзывов">44</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.6</param>
+        <param name="конверсия">2.6</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="6" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/aktoprak</url>
+        <price from="true">4200</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s6</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/aktoprak-01-optimized-dbMaRQTh.webp</picture>
+        <description>Древний караванный путь через глиняные каньоны, средневековый город мёртвых Эльтюбю, Чегемская теснина и озеро Гижгит.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">28</param>
+        <param name="число отзывов">28</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.1</param>
+        <param name="конверсия">2.1</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="7" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/ossetia</url>
+        <price from="true">5000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s7</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/ossetia-01-CtrV4MsY.jpg</picture>
+        <description>Кармадонское ущелье, древний некрополь Даргавс (Город мёртвых), Фиагдонский монастырь и арт-объект осетинская буква «АЕ».</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">35</param>
+        <param name="число отзывов">35</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.3</param>
+        <param name="конверсия">2.3</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="8" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/dzhily-su-bermamyt</url>
+        <price from="true">6000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s8</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/dzhily-su-bermamyt-01-z85UzSOU.jpg</picture>
+        <description>Максимальный внедорожный маршрут: два главных символа Кавказа за один выезд на подготовленном джипе 4х4.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">29</param>
+        <param name="число отзывов">29</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.5</param>
+        <param name="конверсия">2.5</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="9" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/arkhyz</url>
+        <price from="true">4700</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s9</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/arkhyz-01-optimized-BF8QUYiH.webp</picture>
+        <description>Софийская поляна, ледниковые водопады, древнейшие византийские аланские храмы X века и крупнейшая обсерватория САО РАН.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">37</param>
+        <param name="число отзывов">37</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.4</param>
+        <param name="конверсия">2.4</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="10" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/ingushetia</url>
+        <price from="true">5000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s10</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/ingushetia-01-optimized-as0BT9gE.webp</picture>
+        <description>Джейрахское ущелье, боевые башенные комплексы Таргим и Эгикал, средневековый замок-крепость Вовнушки и храм Тхаба-Ерды.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">26</param>
+        <param name="число отзывов">26</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.0</param>
+        <param name="конверсия">2.0</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="11" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/grozny</url>
+        <price from="true">5000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s11</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/excursion-grozny-optimized-Bh_oRfR8.webp</picture>
+        <description>Мечети «Сердце Чечни» и «Гордость мусульман», башни Грозный-Сити, старинные Ушкалойские башни-близнецы в скале.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">33</param>
+        <param name="число отзывов">33</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.2</param>
+        <param name="конверсия">2.2</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="12" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/honey</url>
+        <price from="true">2500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s12</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/honey-01-C5-c8I8H.jpg</picture>
+        <description>Легкая и живописная экскурсия на полдня: каскады водопадов в Аликоновском ущелье, скала Кольцо, дегустация варенья и мёда.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">58</param>
+        <param name="число отзывов">58</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.9</param>
+        <param name="конверсия">2.9</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="13" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/narzan</url>
+        <price from="true">3000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s13</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/narzan-01-OO92hk-U.jpg</picture>
+        <description>Живописная долина реки Хасаут, дегустация минеральных вод из природных скважин, смотровая площадка на Эльбрус.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">31</param>
+        <param name="число отзывов">31</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.1</param>
+        <param name="конверсия">2.1</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="14" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/pereval-vosmerka</url>
+        <price from="true">4000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s14</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/excursion-vosmerka-optimized-DumTLoOl.webp</picture>
+        <description>Авторский джип-тур по высокогорному серпантину: панорама Эльбруса 360°, аул-призрак Хасаут, Нарзанная долина и плато Шаджатмаз.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">42</param>
+        <param name="число отзывов">42</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.8</param>
+        <param name="конверсия">2.8</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="15" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/khurla-kol</url>
+        <price from="true">5500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s15</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/khurla-kol-01-optimized-DdzraTSH.webp</picture>
+        <description>Тайное горное озеро на высоте 2000 м, реликтовый хвойный лес, чистейшая вода и полное отсутствие туристических толп.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">22</param>
+        <param name="число отзывов">22</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">1.9</param>
+        <param name="конверсия">1.9</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="16" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/khudes-labyrinth</url>
+        <price from="true">5000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s16</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/khudes-labyrinth-01-optimized-aUukeFj9.webp</picture>
+        <description>Уникальные природные песчаные лабиринты, причудливые останцы выветривания и дикие пейзажи урочища Худес.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">20</param>
+        <param name="число отзывов">20</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">1.8</param>
+        <param name="конверсия">1.8</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="17" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/mukhinskoe-gorge</url>
+        <price from="true">5000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s17</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/mukhinskoe-gorge-01-7vjgo_d6.jpeg</picture>
+        <description>Настоящий оффроуд над Тебердой: альпийские луга, панорама Главного Кавказского хребта и спуск к высокогорным озерам.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">24</param>
+        <param name="число отзывов">24</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">1.9</param>
+        <param name="конверсия">1.9</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="18" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/makhar</url>
+        <price from="true">5500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s18</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/makhar-01-optimized-B4URxdOf.webp</picture>
+        <description>Дикая Карачаево-Черкесия: водопады Махар-Су и Гондарай, минеральные источники и нетронутая природа.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">25</param>
+        <param name="число отзывов">25</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.0</param>
+        <param name="конверсия">2.0</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="19" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/baduk-lakes</url>
+        <price from="true">4500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s19</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/baduk-lakes-01-D2FwW_w-.jpg</picture>
+        <description>Экологический треккинг по Тебердинскому заповеднику: три высокогорных озера с хрустальной ледниковой водой среди вековых пихт.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">36</param>
+        <param name="число отзывов">36</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.3</param>
+        <param name="конверсия">2.3</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="20" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/suvorovskie</url>
+        <price from="true">2500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s20</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/suvorovskie-01-optimized-DOB4c5FZ.webp</picture>
+        <description>Купание в целебных термальных бассейнах с природной щелочной минеральной водой различной температуры.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">49</param>
+        <param name="число отзывов">49</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.5</param>
+        <param name="конверсия">2.5</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="21" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/pearl</url>
+        <price from="true">3000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s21</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/pearl-01-optimized-DQudLvDJ.webp</picture>
+        <description>Современный оздоровительный спа-комплекс: 8 термальных бассейнов с минеральной водой, сауны, хамам и гидромассажи.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">40</param>
+        <param name="число отзывов">40</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.4</param>
+        <param name="конверсия">2.4</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="22" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/geduko</url>
+        <price from="true">3000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s22</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/geduko-01-optimized-BModUekY.webp</picture>
+        <description>Горячие термальные источники в Баксанском районе: контрастные и релакс-бассейны, водные горки и зоны отдыха.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">33</param>
+        <param name="число отзывов">33</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.2</param>
+        <param name="конверсия">2.2</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="23" available="true">
+        <name>Эльдар (Khasaut Tour)</name>
+        <url>https://khasaut-kmv.ru/detail/aushiger</url>
+        <price from="true">3500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s23</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/aushiger-01-optimized-5-e_x06u.webp</picture>
+        <description>Природные горячие источники из скважины глубиной 4000 м, богатые минералами для оздоровления суставов и кожи.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">27</param>
+        <param name="число отзывов">27</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.1</param>
+        <param name="конверсия">2.1</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="101" available="true">
+        <name>Khasaut Tour (Эльдар)</name>
+        <url>https://khasaut-kmv.ru/</url>
+        <price from="true">2500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s_home</set-ids>
+        <picture>https://khasaut-kmv.ru/og-image.jpg</picture>
+        <description>Организация индивидуальных и групповых джип-туров по Северному Кавказу из Кисловодска, Пятигорска, Ессентуков на внедорожниках Toyota Land Cruiser и УАЗ Патриот.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">68</param>
+        <param name="число отзывов">68</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">3.1</param>
+        <param name="конверсия">3.1</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="102" available="true">
+        <name>Khasaut Tour (Эльдар)</name>
+        <url>https://khasaut-kmv.ru/excursions</url>
+        <price from="true">2500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s_excursions</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/about-mountain-engraving-T9QU0ALg.webp</picture>
+        <description>Более 20 авторских маршрутов на внедорожниках: Джилы-Су, Бермамыт, Эльбрус, Домбай, Архыз, озера, перевалы и водопады.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">54</param>
+        <param name="число отзывов">54</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.8</param>
+        <param name="конверсия">2.8</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="103" available="true">
+        <name>Khasaut Tour (Эльдар)</name>
+        <url>https://khasaut-kmv.ru/prices</url>
+        <price from="true">2500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s_prices</set-ids>
+        <picture>https://khasaut-kmv.ru/khasaut-price-list-2026.webp</picture>
+        <description>Прозрачные цены на поездки в горы от 2 500 ₽ за место. В стоимость входит трансфер от отеля, опытный гид-водитель, страховка.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">47</param>
+        <param name="число отзывов">47</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.6</param>
+        <param name="конверсия">2.6</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="104" available="true">
+        <name>Khasaut Tour (Эльдар)</name>
+        <url>https://khasaut-kmv.ru/routes</url>
+        <price from="true">3000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s_routes</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/excursion-aktoprak-CntcuZvh.jpg</picture>
+        <description>Составление персональных программ джип-туров любой сложности под ваши даты, пожелания и состав группы.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">38</param>
+        <param name="число отзывов">38</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.4</param>
+        <param name="конверсия">2.4</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="105" available="true">
+        <name>Khasaut Tour (Эльдар)</name>
+        <url>https://khasaut-kmv.ru/thermal-springs</url>
+        <price from="true">2500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s_thermal</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/thermal-suvorovskie-optimized-DSh9uM6N.webp</picture>
+        <description>Оздоровительные туры из Кисловодска на термальные источники: Суворовские №1, Жемчужина Кавказа, Гедуко, Аушигер.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">43</param>
+        <param name="число отзывов">43</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.5</param>
+        <param name="конверсия">2.5</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="106" available="true">
+        <name>Khasaut Tour (Эльдар)</name>
+        <url>https://khasaut-kmv.ru/horse-rides</url>
+        <price from="true">2000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s_horse</set-ids>
+        <picture>https://khasaut-kmv.ru/assets/horse-hero-optimized-B9qOQduY.webp</picture>
+        <description>Прогулки верхом на карачаевских лошадях по живописным ущельям и перевалам для новичков и опытных всадников.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">36</param>
+        <param name="число отзывов">36</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.3</param>
+        <param name="конверсия">2.3</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="107" available="true">
+        <name>Khasaut Tour (Эльдар)</name>
+        <url>https://khasaut-kmv.ru/about</url>
+        <price from="true">3500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s_about</set-ids>
+        <picture>https://khasaut-kmv.ru/apple-touch-icon.png</picture>
+        <description>Команда местных сертифицированных гидов с опытом более 8 лет. Надежные внедорожники 4x4, знание тайных видовых локаций.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">50</param>
+        <param name="число отзывов">50</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.7</param>
+        <param name="конверсия">2.7</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+      <offer id="108" available="true">
+        <name>Khasaut Tour (Эльдар)</name>
+        <url>https://khasaut-kmv.ru/contact</url>
+        <price from="true">2500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>25</categoryId>
+        <set-ids>s_contact</set-ids>
+        <picture>https://khasaut-kmv.ru/favicon-512x512.png</picture>
+        <description>Связь с гидом напрямую через WhatsApp, Telegram или по телефону. Подача машины к отелю в Кисловодске и городах КМВ.</description>
+        <param name="Рейтинг">5.0</param>
+        <param name="рейтинг">5.0</param>
+        <param name="Число отзывов">45</param>
+        <param name="число отзывов">45</param>
+        <param name="Годы опыта">8</param>
+        <param name="годы опыта">8</param>
+        <param name="Регион">Кисловодск</param>
+        <param name="регион">Кисловодск</param>
+        <param name="Конверсия">2.6</param>
+        <param name="конверсия">2.6</param>
+        <param name="Ссылка на телефон">tel:+79283405788</param>
+        <param name="Ссылка на чат">https://wa.me/79283405788</param>
+        <param name="Выезд на дом">да</param>
+        <param name="Бригада">да</param>
+        <param name="Исполнитель проверен">true</param>
+        <param name="Наличный расчет">да</param>
+        <param name="Безналичный расчет">да</param>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>

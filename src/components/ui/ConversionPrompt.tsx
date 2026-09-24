@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { buildEstimatePath, buildWhatsAppBookingUrl, type BookingSelection } from '../../data/booking'
 import { departureCities, formatRubles, getPriceRoute, getRoutePrice } from '../../data/prices'
 import { track } from '../../lib/analytics'
+import { Icon } from './Icon'
 
 export function ConversionPrompt() {
   const dialog = useRef<HTMLDialogElement>(null)
@@ -55,7 +56,9 @@ export function ConversionPrompt() {
   return <dialog ref={dialog} className="trip-finder conversion-prompt" aria-labelledby="conversion-title" onClose={() => { setSelection(null); track('conversion_prompt_dismiss') }} onClick={event => { if(event.target===dialog.current) close() }}>
     <div className="trip-finder__sheet"><button className="trip-finder__close" type="button" aria-label="Закрыть предложение" onClick={close}>×</button><span className="section-kicker">Можно решить позже</span><h2 id="conversion-title">Ваш маршрут уже собран</h2><p>Сохраните ссылку на расчёт или отправьте её попутчикам. Маршрут, дата и число гостей останутся в ссылке.</p>
     <div className="conversion-prompt__ticket"><strong>{getPriceRoute(selection.routeKey)?.title}</strong><span>{departureCities.find(city=>city.id===selection.city)?.label} · {selection.guests} чел.{selection.date ? ` · ${new Date(`${selection.date}T12:00:00`).toLocaleDateString('ru-RU')}` : ''}</span><b>{total ? `${formatRubles(total)} за всех` : 'Стоимость уточним'}</b><small>Ориентир по действующему прайсу. Дополнительные расходы отдельно.</small></div>
-    <button className="conversion-prompt__primary" type="button" onClick={copy}>{copyState==='copied' ? 'Ссылка скопирована ✓' : 'Сохранить ссылку на расчёт'}</button>
+    <button className="conversion-prompt__primary" type="button" onClick={copy}>
+      {copyState==='copied' ? (<>Ссылка скопирована <Icon name="check" size={16} /></>) : 'Сохранить ссылку на расчёт'}
+    </button>
     {copyState!=='idle' && <label className="conversion-prompt__copy" role="status">{copyState==='copied' ? 'Можно отправить её попутчикам.' : 'Скопируйте ссылку из поля.'}<input aria-label="Ссылка на ваш расчёт" value={url} readOnly onFocus={event=>event.target.select()} /></label>}
     <a className="conversion-prompt__contact" href={buildWhatsAppBookingUrl(selection)} target="_blank" rel="noreferrer" onClick={() => track('conversion_cta_click',{source:'exit',action:'whatsapp',route:selection.routeKey})}>Обсудить эту поездку в WhatsApp ↗</a><button className="trip-finder__back" type="button" onClick={close}>Продолжить просмотр</button></div>
   </dialog>

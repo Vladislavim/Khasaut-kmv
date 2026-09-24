@@ -22,6 +22,7 @@
     "agentation": "^3.0.2",
     "oxlint": "^1.75.0",
     "playwright": "^1.62.1",
+    "sharp": "^0.35.4",
     "typescript": "~6.0.2",
     "vite": "^8.2.0"
   }

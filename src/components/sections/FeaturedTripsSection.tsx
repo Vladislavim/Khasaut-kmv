@@ -24,7 +24,26 @@ export function FeaturedTripsSection() {
         <div className="featured-trips-grid">
           {featuredTrips.map((trip, index) => (
             <Reveal key={trip.title} delay={index * 70} className="featured-trip-wrap">
-              <article className="featured-trip-card">
+              <article
+                className="featured-trip-card"
+                onClick={(e) => {
+                  const target = e.target as HTMLElement
+                  if (target.closest('button, .featured-trip-card__actions a')) return
+                  track('route_detail_open', { route: trip.priceKey })
+                  window.location.href = trip.href
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    const target = e.target as HTMLElement
+                    if (!target.closest('button, a')) {
+                      track('route_detail_open', { route: trip.priceKey })
+                      window.location.href = trip.href
+                    }
+                  }
+                }}
+                tabIndex={0}
+                style={{ cursor: 'pointer' }}
+              >
                 <a className="featured-trip-card__media" href={trip.href} onClick={() => track('route_detail_open', { route: trip.priceKey })}>
                   <img src={trip.image} alt={trip.alt} loading={index < 2 ? 'eager' : 'lazy'} />
                   <span className="featured-trip-card__veil" aria-hidden="true" />
@@ -36,7 +55,7 @@ export function FeaturedTripsSection() {
                   <p>{trip.blurb}</p>
                   <PriceBadge priceKey={trip.priceKey} />
                   <div className="featured-trip-card__actions">
-                    <button className="inner-button inner-button--solid" type="button" onClick={() => setQuickRouteKey(trip.priceKey)}>Рассчитать <Icon name="arrow" size={14} /></button>
+                    <button className="inner-button inner-button--solid" type="button" onClick={(e) => { e.stopPropagation(); setQuickRouteKey(trip.priceKey) }}>Рассчитать <Icon name="arrow" size={14} /></button>
                     <a className="inner-button inner-button--outline" href={trip.href} onClick={() => track('route_detail_open', { route: trip.priceKey })}>Подробнее <Icon name="arrow" size={14} /></a>
                   </div>
                 </div>

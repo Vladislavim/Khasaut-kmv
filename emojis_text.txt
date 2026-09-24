@@ -1,0 +1,29 @@
+src\components\inner\RoutePracticalSection.tsx:95 ['0x2713'] <span className="route-practical__card-badge route-practical__card-badge--green">✓ Включено</span>
+src\components\inner\RoutePracticalSection.tsx:101 ['0x2714'] <span className="route-practical__bullet" aria-hidden="true">✔</span>
+src\components\inner\RoutePracticalSection.tsx:139 ['0x1f392'] <span className="route-practical__advice-icon" aria-hidden="true">🎒</span>
+src\components\inner\RoutePracticalSection.tsx:145 ['0x2713'] <span className="route-practical__check-icon" aria-hidden="true">✓</span>
+src\components\inner\RoutePracticalSection.tsx:156 ['0x1f6e1'] <span className="route-practical__advice-icon" aria-hidden="true">🛡</span>
+src\components\pricing\PriceConfigurator.tsx:146 ['0x2b50'] { id: 'dzhily-su-bermamyt', label: 'Джилы-Суу', icon: '⭐' },
+src\components\pricing\PriceConfigurator.tsx:147 ['0x1f305'] { id: 'rassvet-bermamyt', label: 'Рассвет Бермамыт', icon: '🌅' },
+src\components\pricing\PriceConfigurator.tsx:148 ['0x1f3d4'] { id: 'dombay-elbrus-aktoprak', label: 'Домбай / Эльбрус', icon: '🏔' },
+src\components\pricing\PriceConfigurator.tsx:149 ['0x1f3f0'] { id: 'ullu-tau-kanjol-balkaria', label: 'Балкария', icon: '🏰' },
+src\components\pricing\PriceConfigurator.tsx:150 ['0x1f332'] { id: 'arkhyz', label: 'Архыз', icon: '🌲' },
+src\components\pricing\PriceConfigurator.tsx:151 ['0x1f4a7'] { id: 'suvorovskie', label: 'Термы', icon: '💧' },
+src\components\pricing\PriceConfigurator.tsx:252 ['0x1f465'] icon: '👥',
+src\components\pricing\PriceConfigurator.tsx:260 ['0x1f699'] icon: '🚙',
+src\components\pricing\PriceConfigurator.tsx:268 ['0x1f690'] icon: '🚐',
+src\components\pricing\PriceConfigurator.tsx:453 ['0x1f464'] <span key={i} className="guest-icon-dot">👤</span>
+src\components\pricing\PriceConfigurator.tsx:462 ['0x2139'] ℹ️ Через «/» указаны разные маршруты с единым тарифом. Точную локацию согласуем при подтверждении.
+src\components\pricing\PriceConfigurator.tsx:472 ['0x2b50'] ⭐ <strong>Индивидуальный джип по той же цене!</strong> Нажмите, чтобы выбрать индивидуальный формат без других попутчиков →
+src\components\pricing\PriceConfigurator.tsx:479 ['0x1f699'] <span className="inclusions-strip__icon">🚙</span>
+src\components\pricing\PriceConfigurator.tsx:483 ['0x1f4cd'] <span className="inclusions-strip__icon">📍</span>
+src\components\pricing\PriceConfigurator.tsx:487 ['0x1f4f8'] <span className="inclusions-strip__icon">📸</span>
+src\components\pricing\PriceConfigurator.tsx:491 ['0x1f512'] <span className="inclusions-strip__icon">🔒</span>
+src\components\pricing\PriceConfigurator.tsx:531 ['0x1f465'] <span>👥 {guests} {guests === 1 ? 'гость' : guests < 5 ? 'гостя' : 'гостей'}</span>
+src\components\pricing\PriceConfigurator.tsx:533 ['0x1f4c5'] 📅 {validDate ? new Date(`${validDate}T12:00:00`).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' }) : 'Дату подберём'}
+src\components\pricing\PriceConfigurator.tsx:535 ['0x1f3f7', '0x1f699'] <span>{current.format === 'group' ? '🏷 Мини-группа' : '🚙 Индивидуально'}</span>
+src\components\pricing\PriceConfigurator.tsx:563 ['0x2713'] <span className="perk-check">✓</span>
+src\components\pricing\PriceConfigurator.tsx:567 ['0x2713'] <span className="perk-check">✓</span>
+src\components\pricing\PriceConfigurator.tsx:571 ['0x2713'] <span className="perk-check">✓</span>
+src\components\pricing\PriceConfigurator.tsx:607 ['0x2713', '0x1f517'] {copied ? '✓ Ссылка скопирована!' : '🔗 Скопировать ссылку на расчёт'}
+src\components\ui\ConversionPrompt.tsx:58 ['0x2713'] <button className="conversion-prompt__primary" type="button" onClick={copy}>{copyState==='copied' ? 'Ссылка скопирована ✓' : 'Сохранить ссылку на расчёт'}</button>

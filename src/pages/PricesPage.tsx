@@ -1,113 +1,129 @@
-import { useEffect, useState } from 'react'
 import { pricesMeta } from '../data/pricesMeta'
-import {
-  departureCities,
-  getStoredDepartureCity,
-  priceRoutes,
-  type DepartureCity,
-  type PriceRouteKey,
-  type TripFormat,
-} from '../data/prices'
+import { innerContacts } from '../data/innerContacts'
 import { InnerPageShell } from '../components/inner/InnerPageShell'
-import { PriceConfigurator, type PriceSelection } from '../components/pricing/PriceConfigurator'
-import { PriceRoutePanel } from '../components/pricing/PriceRoutePanel'
-import { BookingTerms } from '../components/pricing/BookingTerms'
-import { priceDate } from '../data/prices'
-import { PriceFaq } from '../components/pricing/PriceFaq'
-
-
-const isCity = (value: string | null): value is DepartureCity => departureCities.some((city) => city.id === value)
-const isFormat = (value: string | null): value is TripFormat => ['group', 'private1to4', 'private5to6'].includes(value ?? '')
-const isPriceRoute = (value: string | null): value is PriceRouteKey => priceRoutes.some((route) => route.id === value)
-
-function getInitialState() {
-  const params = new URLSearchParams(typeof window === 'undefined' ? '' : window.location.search)
-  const route = isPriceRoute(params.get('route')) ? params.get('route') as PriceRouteKey : 'dzhily-su-bermamyt'
-  const city = isCity(params.get('city')) ? params.get('city') as DepartureCity : getStoredDepartureCity()
-  const format = isFormat(params.get('format')) ? params.get('format') as TripFormat : 'group'
-  return { route, city, format }
-}
+import { BookingTerms, TripRequirements } from '../components/pricing/BookingTerms'
+import { Icon } from '../components/ui/Icon'
+import { Reveal } from '../components/ui/Reveal'
+import { TripCallToAction } from '../components/ui/TripCallToAction'
 
 export function PricesPage() {
-  const initial = getInitialState()
-  const [selectedRoute, setSelectedRoute] = useState<PriceRouteKey>(initial.route)
-  const [selectedCity, setSelectedCity] = useState<DepartureCity>(initial.city)
-  const [selectedFormat, setSelectedFormat] = useState<TripFormat>(initial.format)
-  const [compareCities, setCompareCities] = useState(false)
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    params.set('route', selectedRoute)
-    params.set('city', selectedCity)
-    params.set('format', selectedFormat)
-    const query = params.toString()
-    window.history.replaceState(null, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`)
-  }, [selectedRoute, selectedCity, selectedFormat])
-
-  const calculatorSelection: PriceSelection = { routeKey: selectedRoute, city: selectedCity, format: selectedFormat }
-
-  const handleSelectionChange = (selection: PriceSelection) => {
-    setSelectedRoute(selection.routeKey)
-    setSelectedCity(selection.city)
-    setSelectedFormat(selection.format)
-  }
-
   return (
-    <InnerPageShell meta={pricesMeta} className="inner-page--prices">
+    <InnerPageShell meta={pricesMeta} className="inner-page--prices" showHero={false}>
       <main id="inner-main" className="inner-main">
-        <section className="inner-section price-page-intro" aria-labelledby="prices-calculator-title">
+        {/* Главная секция прайс-листа */}
+        <section id="price-table" className="inner-section prices-sheet-section" aria-labelledby="prices-title">
           <div className="container">
-            <PriceConfigurator id="prices-calculator" titleId="prices-calculator-title" heading="Спланируйте день в горах" selection={calculatorSelection} onSelectionChange={handleSelectionChange} showBookingTerms={false} showAllPricesLink={false} compact />
+            <div className="prices-sheet-header">
+              <Reveal>
+                <span className="inner-kicker">Официальный прайс-лист 2026</span>
+                <h1 id="prices-title">Таблица стоимости всех маршрутов</h1>
+                <p>
+                  Фиксированные цены для всех направлений Кавказа и городов КМВ.
+                  Стоимость указана за место в мини-группе (до 8 человек) и за индивидуальный внедорожник (1–4 или 5–6 человек).
+                </p>
+              </Reveal>
+
+              <Reveal delay={80} className="prices-sheet-actions">
+                <a
+                  className="inner-button inner-button--solid prices-download-btn"
+                  href="/khasaut-price-list-2026.pdf"
+                  download="khasaut-tour-prices-2026.pdf"
+                >
+                  <Icon name="download" size={18} /> Скачать прайс-лист (PDF)
+                </a>
+                <a
+                  className="inner-button inner-button--outline prices-whatsapp-btn"
+                  href={innerContacts.whatsapp.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Icon name="whatsapp" size={18} /> Написать в WhatsApp
+                </a>
+              </Reveal>
+            </div>
+
+            {/* Карточка прайс-листа */}
+            <Reveal delay={120} className="prices-sheet-card">
+              <a
+                href="/khasaut-price-list-2026.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="prices-sheet-card__link"
+                title="Нажмите, чтобы открыть официальный PDF в новой вкладке"
+              >
+                <img
+                  src="/khasaut-price-list-2026.webp"
+                  alt="Официальный прайс-лист Khasaut Tour 2026: цены на джип-туры и экскурсии из Кисловодска, Ессентуков, Пятигорска, Железноводска и Минеральных Вод"
+                  className="prices-sheet-card__image"
+                  loading="eager"
+                  fetchPriority="high"
+                />
+                <span className="prices-sheet-card__zoom-hint">
+                  <Icon name="arrow" size={15} /> Открыть официальный PDF в новой вкладке
+                </span>
+              </a>
+            </Reveal>
+
+            {/* Блок скидок и условий из таблицы */}
+            <div className="prices-discounts-grid">
+              <Reveal delay={140}>
+                <div className="prices-discount-card">
+                  <span className="prices-discount-card__tag">Детям до 7 лет</span>
+                  <h3>Скидка 300 ₽</h3>
+                  <p>Для семей с детьми до 7 лет скидка 300 ₽ за каждого ребёнка на место в мини-группе.</p>
+                </div>
+              </Reveal>
+
+              <Reveal delay={180}>
+                <div className="prices-discount-card">
+                  <span className="prices-discount-card__tag">Группам от 10 чел</span>
+                  <h3>Скидка 500 ₽ / чел</h3>
+                  <p>При заказе на компанию от 10 человек действует специальная скидка 500 ₽ за каждого гостя.</p>
+                </div>
+              </Reveal>
+
+              <Reveal delay={220}>
+                <div className="prices-discount-card">
+                  <span className="prices-discount-card__tag">Организаторам</span>
+                  <h3>Бесплатный тур</h3>
+                  <p>Для больших групп от 18 человек организатор поездки едет полностью бесплатно.</p>
+                </div>
+              </Reveal>
+
+              <Reveal delay={260}>
+                <div className="prices-discount-card">
+                  <span className="prices-discount-card__tag">Сервис Khasaut</span>
+                  <h3>Трансфер от адреса</h3>
+                  <p>Забираем от места проживания и привозим обратно. Автомобиль и темп подбираем под маршрут.</p>
+                </div>
+              </Reveal>
+            </div>
           </div>
         </section>
 
-        <section className="inner-section price-list-section" aria-labelledby="price-list-title">
-          <div className="container">
-            <div className="price-list-heading">
-              <div>
-                <span className="inner-kicker">Актуально на {priceDate}</span>
-                <h2 id="price-list-title">Все цены</h2>
-              </div>
-            </div>
-
-            <div className="price-filters" aria-label="Выбор города">
-              <div className="price-city-filters" role="group" aria-label="Город отправления">
-                {departureCities.map((city) => (
-                  <button className={selectedCity === city.id ? 'is-active' : ''} type="button" key={city.id} onClick={() => setSelectedCity(city.id)} aria-pressed={selectedCity === city.id}>
-                    {city.label}
-                  </button>
-                ))}
-              </div>
-              <label className="price-city-mobile-select">
-                <span>Город отправления</span>
-                <select name="mobile-price-city" value={selectedCity} onChange={(event) => setSelectedCity(event.target.value as DepartureCity)}>
-                  {departureCities.map((city) => <option value={city.id} key={city.id}>{city.label}</option>)}
-                </select>
-              </label>
-            </div>
-
-            <button className="price-compare-toggle" type="button" aria-expanded={compareCities} onClick={() => setCompareCities((value) => !value)}>
-              {compareCities ? 'Скрыть сравнение' : 'Сравнить города'} <span aria-hidden="true">{compareCities ? '−' : '+'}</span>
-            </button>
-
-            <div className={`price-routes-list ${compareCities ? 'is-comparing' : ''}`}>
-              {priceRoutes.map((route) => <PriceRoutePanel key={route.id} route={route} selectedCity={selectedCity} compareCities={compareCities} defaultOpen={route.id === selectedRoute} />)}
-            </div>
+        {/* Блок условий перед поездкой */}
+        <section className="inner-section inner-detail-practical" aria-labelledby="detail-practical-title">
+          <div className="container inner-detail-practical__grid">
+            <Reveal>
+              <span className="inner-kicker">Перед выездом</span>
+              <h2 id="detail-practical-title">Условия бронирования</h2>
+              <a className="inner-button inner-button--solid" href={innerContacts.whatsapp.href} target="_blank" rel="noreferrer">
+                Обсудить даты в WhatsApp <Icon name="arrow" size={16} />
+              </a>
+            </Reveal>
+            <Reveal className="inner-detail-facts" delay={120}>
+              <div className="inner-detail-fact"><span>Выезд</span><strong>Заберём от места проживания.</strong></div>
+              <div className="inner-detail-fact"><span>Транспорт</span><strong>Автомобиль подбираем под маршрут.</strong></div>
+              <TripRequirements />
+              <BookingTerms />
+              <a className="inner-detail-fact__phone" href={innerContacts.primaryPhone.href}>
+                <Icon name="phone" size={18} />{innerContacts.primaryPhone.label}
+              </a>
+            </Reveal>
           </div>
         </section>
 
-        <PriceFaq />
-        <section className="inner-section price-conditions-section" aria-labelledby="price-conditions-title">
-          <div className="container price-conditions">
-              <div>
-                <span className="inner-kicker">Перед поездкой</span>
-                <h2 id="price-conditions-title">Бронирование</h2>
-              </div>
-              <div className="price-conditions__content">
-                <BookingTerms />
-              </div>
-          </div>
-        </section>
+        <TripCallToAction />
       </main>
     </InnerPageShell>
   )

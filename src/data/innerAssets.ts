@@ -7,9 +7,11 @@ import excursionDombay from '../../design-reference/khasaut/assets/inner/excursi
 import excursionDzhilySu from '../../design-reference/khasaut/assets/inner/excursion-dzhily-su.jpg'
 import excursionElbrus from '../../design-reference/khasaut/assets/inner/excursion-elbrus-optimized.webp'
 import excursionGrozny from '../../design-reference/khasaut/assets/inner/excursion-grozny-optimized.webp'
+import excursionHoney from '../../design-reference/khasaut/assets/inner-web/honey-01-optimized.webp'
 import excursionIngushetia from '../../design-reference/khasaut/assets/inner/excursion-ingushetia-optimized.webp'
 import excursionNarzanValley from '../../design-reference/khasaut/assets/inner/excursion-narzan-valley.jpg'
 import excursionOssetia from '../../design-reference/khasaut/assets/inner/excursion-ossetia.jpg'
+import excursionVosmerka from '../../design-reference/khasaut/assets/inner/excursion-vosmerka-optimized.webp'
 import horseForest from '../../design-reference/khasaut/assets/inner/horse-forest.jpg'
 import horseHero from '../../design-reference/khasaut/assets/inner/horse-hero-optimized.webp'
 import horseMeadow from '../../design-reference/khasaut/assets/inner/horse-meadow.jpg'
@@ -33,9 +35,11 @@ export const innerAssets = {
   excursionDzhilySu,
   excursionElbrus,
   excursionGrozny,
+  excursionHoney,
   excursionIngushetia,
   excursionNarzanValley,
   excursionOssetia,
+  excursionVosmerka,
   horseForest,
   horseHero,
   horseMeadow,

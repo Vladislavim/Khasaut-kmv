@@ -1,16 +1,155 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="120x120" href="/favicon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Экскурсии и джип-туры из Кисловодска и городов КМВ: Джилы-Су, Бермамыт, Домбай, Архыз. Рассчитайте стоимость для своей компании и обсудите поездку с Khasaut Tour." />
+    <title>Джип-туры и джиппинг в Кисловодске 2026 — экскурсии по горам Кавказа: цены от 4 000 ₽ | Khasaut Tour</title>
+    <meta name="description" content="Индивидуальные джип-туры и джиппинг из Кисловодска по горам Кавказа в 2026 году: Джилы-Су, Бермамыт, Эльбрус, Домбай, Архыз. Комфортные внедорожники, опытные гиды, честные цены от 4 000 руб." />
+    <meta name="keywords" content="джип туры кисловодск, джиппинг кисловодск, экскурсии из кисловодска, джилы су из кисловодска, плато бермамыт рассвет, экскурсия домбай архыз, джип туры кмв, туры по кавказу 2026" />
+    <link rel="canonical" href="https://khasaut-kmv.ru/" />
+    <meta name="theme-color" content="#1b3d2b" />
+
+    <!-- Гео-привязка для регионального ранжирования (КМВ / Ставропольский край) -->
+    <meta name="geo.region" content="RU-STA" />
+    <meta name="geo.placename" content="Кисловодск" />
+    <meta name="geo.position" content="43.9056;42.7161" />
+    <meta name="ICBM" content="43.9056, 42.7161" />
+
+    <!-- OpenGraph (для соцсетей, Telegram, WhatsApp) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Khasaut Tour" />
+    <meta property="og:title" content="Экскурсии и джип-туры из Кисловодска и городов КМВ | Khasaut Tour" />
+    <meta property="og:description" content="Индивидуальные джип-туры в горы Кавказа: Джилы-Су, Бермамыт, Эльбрус, Домбай, Архыз. Комфортные внедорожники, проверенные маршруты." />
+    <meta property="og:url" content="https://khasaut-kmv.ru/" />
+    <meta property="og:image" content="https://khasaut-kmv.ru/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Джип-туры Khasaut Tour по Кавказу" />
+    <meta property="og:locale" content="ru_RU" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Экскурсии и джип-туры из Кисловодска и городов КМВ | Khasaut Tour" />
+    <meta name="twitter:description" content="Индивидуальные джип-туры в горы Кавказа: Джилы-Су, Бермамыт, Эльбрус, Домбай, Архыз." />
+    <meta name="twitter:image" content="https://khasaut-kmv.ru/og-image.jpg" />
+
+    <!-- Предзагрузка ключевых шрифтов -->
     <link rel="preload" href="/fonts/CormorantGaramond-Variable-Cyrillic.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/Spectral-Regular-Cyrillic.woff2" as="font" type="font/woff2" crossorigin />
-    <title>Экскурсии и джип-туры из Кисловодска и КМВ | Khasaut Tour</title>
+
+    <!-- Микроразметка Schema.org (JSON-LD) для расширенных сниппетов в Яндексе и Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["TravelAgency", "TouristInformationCenter"],
+          "@id": "https://khasaut-kmv.ru/#organization",
+          "name": "Khasaut Tour",
+          "alternateName": "Хасаут Тур",
+          "url": "https://khasaut-kmv.ru/",
+          "logo": "https://khasaut-kmv.ru/favicon.svg",
+          "image": "https://khasaut-kmv.ru/og-image.jpg",
+          "description": "Индивидуальные джип-туры и авторские экскурсии из Кисловодска и городов КМВ: Джилы-Су, Бермамыт, Домбай, Архыз, Эльбрус.",
+          "telephone": ["+7-928-009-88-81", "+7-925-760-09-09"],
+          "email": "Eldar090807@yandex.ru",
+          "priceRange": "3500 - 25000 RUB",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Кисловодск",
+            "addressRegion": "Ставропольский край",
+            "addressCountry": "RU"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "43.9056",
+            "longitude": "42.7161"
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Кисловодск" },
+            { "@type": "City", "name": "Пятигорск" },
+            { "@type": "City", "name": "Ессентуки" },
+            { "@type": "City", "name": "Железноводск" },
+            { "@type": "City", "name": "Минеральные Воды" }
+          ],
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "06:00",
+            "closes": "23:00"
+          }
+        },
+        {
+          "@type": "OfferCatalog",
+          "@id": "https://khasaut-kmv.ru/#catalog",
+          "name": "Экскурсии и джип-туры по Кавказу",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "TouristTrip",
+                "name": "Джилы-Су: водопады и термальные ванны у подножия Эльбруса",
+                "description": "Поездка к северному склону Эльбруса, водопады Султан и Каракая-Су, Долина Замков и тёплые нарзаны."
+              },
+              "price": "4500",
+              "priceCurrency": "RUB"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "TouristTrip",
+                "name": "Плато Бермамыт: рассвет и панорама Эльбруса",
+                "description": "Захватывающий джип-тур на высоту 2592 метра со скалами-амфитеатрами и видом на Большой Кавказ."
+              },
+              "price": "4000",
+              "priceCurrency": "RUB"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "TouristTrip",
+                "name": "Эльбрус и Приэльбрусье",
+                "description": "Баксанское ущелье, поляна Азау, подъём на канатной дороге до станции Гарабаши (3847 м) и поляна Чегет."
+              },
+              "price": "4500",
+              "priceCurrency": "RUB"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112941764', 'ym');
+
+        ym(112941764, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/112941764" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Семантический каркас для поисковых ботов до гидратации JS -->
+      <noscript>
+        <header>
+          <h1>Khasaut Tour — Экскурсии и джип-туры из Кисловодска и городов КМВ</h1>
+          <p>Индивидуальные джип-туры в горы Кавказа: Джилы-Су, Бермамыт, Эльбрус, Домбай, Архыз, Чегемские водопады, Верхняя Балкария, Горная Осетия и Ингушетия.</p>
+          <p>Телефон для бронирования: <a href="tel:+79280098881">+7 (928) 009-88-81</a>, <a href="tel:+79257600909">+7 (925) 760-09-09</a></p>
+        </header>
+      </noscript>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -43,7 +43,24 @@ export function InnerCatalogPage({ meta, cards, sectionTitle, sectionIntro, note
                     const detailHref = detailPage ? `/detail/${detailPage.slug}` : '/contact'
                     const priceKey = detailPage ? getPriceKeyForRouteSlug(detailPage.slug) : undefined
                     return (
-                  <article className="inner-route-card">
+                  <article
+                    className="inner-route-card"
+                    onClick={(e) => {
+                      const target = e.target as HTMLElement
+                      if (target.closest('button, .inner-route-card__actions a')) return
+                      window.location.href = detailHref
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        const target = e.target as HTMLElement
+                        if (!target.closest('button, a')) {
+                          window.location.href = detailHref
+                        }
+                      }
+                    }}
+                    tabIndex={0}
+                    style={{ cursor: 'pointer' }}
+                  >
                     <figure className="inner-route-card__media">
                       <img src={detailPage?.image ?? card.image} alt={card.alt} loading={index < 3 ? 'eager' : 'lazy'} />
                       <span className="inner-route-card__number">{String(index + 1).padStart(2, '0')}</span>
@@ -55,11 +72,11 @@ export function InnerCatalogPage({ meta, cards, sectionTitle, sectionIntro, note
                       <PriceBadge priceKey={priceKey} />
                       <div className="inner-route-card__actions">
                         {priceKey ? (
-                          <button className="inner-button inner-button--solid" type="button" onClick={() => setQuickRouteKey(priceKey)}>
+                          <button className="inner-button inner-button--solid" type="button" onClick={(e) => { e.stopPropagation(); setQuickRouteKey(priceKey) }}>
                             Рассчитать <Icon name="arrow" size={14} />
                           </button>
                         ) : (
-                          <a className="inner-button inner-button--outline" href="/contact">Уточнить <Icon name="arrow" size={14} /></a>
+                          <a className="inner-button inner-button--outline" href="/contact" onClick={(e) => e.stopPropagation()}>Уточнить <Icon name="arrow" size={14} /></a>
                         )}
                       </div>
                       <a className="inner-route-card__detail-link" href={detailHref}>

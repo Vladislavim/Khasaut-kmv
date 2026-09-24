@@ -1070,29 +1070,39 @@
   .inner-catalog-more-toggle {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.65rem;
-    margin-top: 1.35rem;
-    padding: 0.4rem 0;
-    border: 0;
-    border-bottom: 1px solid currentColor;
-    color: var(--paper);
-    background: transparent;
+    margin-top: 1.5rem;
+    padding: 13px 20px;
+    border: 1px solid rgba(25, 62, 45, 0.28);
+    border-radius: 8px;
+    color: var(--forest);
+    background: #ffffff;
     cursor: pointer;
     font: inherit;
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: 0.84rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(16, 46, 33, 0.05);
     touch-action: manipulation;
+    transition: background 180ms ease, border-color 180ms ease;
+  }
+
+  .inner-catalog-more-toggle:active {
+    background: #f4efe6;
   }
 
   .inner-catalog-more-toggle span {
     color: var(--sand);
-    font-size: 1rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1;
   }
 
   .inner-catalog-more-toggle:focus-visible {
-    outline: 2px solid var(--sand);
-    outline-offset: 4px;
+    outline: 2px solid var(--forest);
+    outline-offset: 3px;
   }
 }
 
@@ -2460,3 +2470,913 @@
     margin-bottom: 0;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ROUTE ITINERARY TIMELINE (Программа экскурсии по часам и остановкам)
+   ═══════════════════════════════════════════════════════════════════════════ */
+.route-itinerary {
+  background: var(--forest-deep, #102e21) !important;
+  color: #fffaf0 !important;
+  padding-block: clamp(48px, 6vw, 84px) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.route-itinerary__header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto clamp(36px, 5vw, 56px);
+}
+
+.route-itinerary__kicker {
+  color: #c5a059 !important;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.route-itinerary__title {
+  font-family: var(--serif-display);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.06;
+  color: #fffaf0 !important;
+  margin: 0.4rem 0 0.8rem;
+  text-wrap: balance;
+}
+
+.route-itinerary__intro {
+  font-size: clamp(0.96rem, 1.4vw, 1.12rem);
+  line-height: 1.65;
+  color: rgba(255, 250, 240, 0.82) !important;
+  margin: 0 auto;
+  max-width: 640px;
+  text-wrap: pretty;
+}
+
+/* Timeline container */
+.route-itinerary__timeline {
+  position: relative;
+  max-width: 1040px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Center timeline track line (desktop) */
+.route-itinerary__track {
+  position: absolute;
+  left: 50%;
+  top: 24px;
+  bottom: 24px;
+  width: 2px;
+  background: linear-gradient(180deg, #c5a059 0%, rgba(197, 160, 89, 0.35) 50%, #c5a059 100%);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* Timeline Item (Desktop Grid: 1fr 64px 1fr) */
+.route-itinerary__item {
+  display: grid;
+  grid-template-columns: 1fr 64px 1fr;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Center Number Badge */
+.route-itinerary__marker {
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.route-itinerary__number {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #fffaf0;
+  color: var(--forest-deep, #102e21);
+  font-family: var(--serif-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  border: 3px solid #c5a059;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.route-itinerary__item:hover .route-itinerary__number {
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(197, 160, 89, 0.45);
+}
+
+/* Card Content Box */
+.route-itinerary__card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: clamp(18px, 2.5vw, 26px);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  transition: border-color 200ms ease, transform 200ms ease, background 200ms ease;
+}
+
+.route-itinerary__card:hover {
+  border-color: rgba(197, 160, 89, 0.45);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.route-itinerary__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.route-itinerary__time {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(197, 160, 89, 0.2);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  color: #f6e6bb;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.route-itinerary__badge {
+  color: rgba(255, 250, 240, 0.5);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.route-itinerary__step-title {
+  font-family: var(--serif-display);
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: #fffaf0;
+  margin: 0 0 8px;
+}
+
+.route-itinerary__step-desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: rgba(255, 250, 240, 0.8);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* Odd items (Left aligned card) */
+.route-itinerary__item--odd .route-itinerary__content {
+  grid-column: 1;
+  padding-right: 28px;
+  text-align: right;
+}
+
+.route-itinerary__item--odd .route-itinerary__meta {
+  justify-content: flex-end;
+}
+
+.route-itinerary__item--odd .route-itinerary__spacer {
+  grid-column: 3;
+}
+
+/* Even items (Right aligned card) */
+.route-itinerary__item--even .route-itinerary__content {
+  grid-column: 3;
+  padding-left: 28px;
+  text-align: left;
+}
+
+.route-itinerary__item--even .route-itinerary__meta {
+  justify-content: flex-start;
+}
+
+.route-itinerary__item--even .route-itinerary__spacer {
+  grid-column: 1;
+}
+
+/* Footer disclaimer note */
+.route-itinerary__footer-note {
+  max-width: 680px;
+  margin: 40px auto 0;
+  text-align: center;
+  color: rgba(255, 250, 240, 0.65);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.route-itinerary__footer-note p {
+  margin: 0;
+}
+
+/* Responsive Itinerary for Mobile & Tablet (< 860px) */
+@media (max-width: 859px) {
+  .route-itinerary__timeline {
+    padding-left: 20px;
+    gap: 20px;
+  }
+
+  .route-itinerary__track {
+    left: 20px;
+    transform: none;
+  }
+
+  .route-itinerary__item {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    padding-left: 36px;
+  }
+
+  .route-itinerary__marker {
+    position: absolute;
+    left: 0;
+    top: 14px;
+    transform: translateX(-50%);
+  }
+
+  .route-itinerary__number {
+    width: 38px;
+    height: 38px;
+    font-size: 0.98rem;
+    border-width: 2.5px;
+  }
+
+  .route-itinerary__content {
+    width: 100% !important;
+    padding: 0 !important;
+    text-align: left !important;
+  }
+
+  .route-itinerary__meta {
+    justify-content: flex-start !important;
+  }
+
+  .route-itinerary__spacer {
+    display: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ROUTE PRACTICAL INFO (Детали и организация поездки)
+   ═══════════════════════════════════════════════════════════════════════════ */
+.route-practical {
+  background: var(--paper, #f7f4ed);
+  padding-block: clamp(48px, 6vw, 80px) !important;
+}
+
+.route-practical__header {
+  max-width: 760px;
+  margin-bottom: clamp(32px, 4.5vw, 48px);
+}
+
+.route-practical__title {
+  font-family: var(--serif-display);
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  line-height: 1.08;
+  color: var(--forest-deep, #102e21);
+  margin: 0.4rem 0 0.8rem;
+}
+
+.route-practical__intro {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--forest-muted, #495a4f);
+  margin: 0;
+}
+
+/* Chips Grid */
+.route-practical__chips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.route-practical__chip {
+  background: #fffdf9;
+  border: 1px solid rgba(16, 46, 33, 0.12);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  box-shadow: 0 4px 14px rgba(16, 46, 33, 0.03);
+}
+
+.route-practical__chip-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.route-practical__chip strong {
+  display: block;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #798a7e;
+  margin-bottom: 2px;
+}
+
+.route-practical__chip span {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--forest-deep, #102e21);
+  line-height: 1.35;
+}
+
+/* Costs Comparison Grid (Included vs Extra) */
+.route-practical__costs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.route-practical__card {
+  background: #fffdf9;
+  border: 1px solid rgba(16, 46, 33, 0.12);
+  border-radius: 16px;
+  padding: clamp(22px, 3.2vw, 34px);
+  box-shadow: 0 8px 24px rgba(16, 46, 33, 0.04);
+}
+
+.route-practical__card-header {
+  margin-bottom: 20px;
+}
+
+.route-practical__card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.route-practical__card-badge--green {
+  background: #e6f2eb;
+  color: #1a5634;
+  border: 1px solid rgba(26, 86, 52, 0.2);
+}
+
+.route-practical__card-badge--amber {
+  background: #fff6e5;
+  color: #936014;
+  border: 1px solid rgba(147, 96, 20, 0.2);
+}
+
+.route-practical__card h3 {
+  font-family: var(--serif-display);
+  font-size: clamp(1.3rem, 2vw, 1.65rem);
+  font-weight: 500;
+  color: var(--forest-deep, #102e21);
+  margin: 0;
+}
+
+.route-practical__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.route-practical__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.94rem;
+  line-height: 1.55;
+  color: #34473b;
+}
+
+.route-practical__bullet {
+  color: #1a5634;
+  font-weight: 700;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  margin-top: 3px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Extra Costs List Specifics */
+.route-practical__list--extra li {
+  display: block;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(16, 46, 33, 0.08);
+}
+
+.route-practical__list--extra li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.route-practical__extra-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.route-practical__extra-head strong {
+  font-size: 0.96rem;
+  color: var(--forest-deep, #102e21);
+}
+
+.route-practical__extra-price {
+  font-weight: 600;
+  font-size: 0.96rem;
+  color: #8c5b16;
+  white-space: nowrap;
+}
+
+.route-practical__extra-note {
+  font-size: 0.84rem;
+  color: #6d7d72;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.route-practical__empty-extra {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #5d7063;
+  margin: 0;
+}
+
+/* Advice & Gear Grid */
+.route-practical__advice-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.route-practical__advice-card {
+  background: #fffdf9;
+  border: 1px solid rgba(16, 46, 33, 0.12);
+  border-radius: 14px;
+  padding: clamp(20px, 2.5vw, 28px);
+}
+
+.route-practical__advice-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.route-practical__advice-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--forest-deep, #102e21);
+}
+
+.route-practical__advice-header h4 {
+  font-family: var(--serif-display);
+  font-size: 1.22rem;
+  font-weight: 500;
+  color: var(--forest-deep, #102e21);
+  margin: 0;
+}
+
+.route-practical__checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.route-practical__checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #384d40;
+}
+
+.route-practical__check-icon {
+  color: #1a5634;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 3px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.route-practical__rules-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.route-practical__rules-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #55685c;
+}
+
+.route-practical__rule-dot {
+  color: #c5a059;
+  font-size: 1.2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* Responsive Practical Info (< 920px) */
+@media (max-width: 919px) {
+  .route-practical__costs-grid,
+  .route-practical__advice-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   INNER INTEREST PICKER (Подобрать маршрут по интересам)
+   ═══════════════════════════════════════════════════════════════════════════ */
+.inner-interest-picker {
+  padding-block: clamp(48px, 6vw, 80px) !important;
+  border-top: 1px solid rgba(16, 46, 33, 0.08);
+}
+
+.inner-interest-picker__header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto clamp(28px, 4vw, 42px);
+}
+
+.inner-interest-picker__title {
+  font-family: var(--serif-display);
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  line-height: 1.08;
+  color: var(--forest-deep, #102e21);
+  margin: 0.35rem 0 0.75rem;
+  text-wrap: balance;
+}
+
+.inner-interest-picker__intro {
+  font-size: clamp(0.95rem, 1.3vw, 1.08rem);
+  line-height: 1.6;
+  color: var(--muted-ink);
+  margin: 0 auto;
+}
+
+/* Category Tabs */
+.inner-interest-picker__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.inner-interest-picker__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(16, 46, 33, 0.16);
+  background: #ffffff;
+  color: var(--forest-deep, #102e21);
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 180ms ease;
+  box-shadow: 0 1px 3px rgba(16, 46, 33, 0.04);
+}
+
+.inner-interest-picker__tab:hover {
+  border-color: var(--forest-deep, #102e21);
+  background: #f7f9f6;
+  transform: translateY(-1px);
+}
+
+.inner-interest-picker__tab.is-active {
+  background: var(--forest-deep, #102e21);
+  color: #fffaf0;
+  border-color: var(--forest-deep, #102e21);
+  box-shadow: 0 4px 14px rgba(16, 46, 33, 0.18);
+}
+
+.inner-interest-picker__tab-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+/* Category Highlight Banner */
+.inner-interest-picker__highlight {
+  background: linear-gradient(135deg, rgba(16, 46, 33, 0.05) 0%, rgba(197, 160, 89, 0.08) 100%);
+  border-left: 3px solid #c5a059;
+  border-radius: 4px 14px 14px 4px;
+  padding: 16px 24px;
+  margin-bottom: 28px;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inner-interest-picker__highlight-kicker {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #a17830;
+  margin-bottom: 3px;
+}
+
+.inner-interest-picker__highlight-head {
+  font-family: var(--serif-display);
+  font-size: 1.25rem;
+  color: var(--forest-deep, #102e21);
+  margin: 0 0 4px;
+}
+
+.inner-interest-picker__highlight-desc {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--muted-ink);
+}
+
+/* Route Cards Grid */
+.inner-interest-picker__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.inner-interest-picker__card {
+  background: #ffffff;
+  border: 1px solid rgba(16, 46, 33, 0.1);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+  box-shadow: 0 4px 16px rgba(16, 46, 33, 0.04);
+}
+
+.inner-interest-picker__card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(16, 46, 33, 0.22);
+  box-shadow: 0 14px 32px rgba(16, 46, 33, 0.1);
+}
+
+.inner-interest-picker__card-media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #e9ece6;
+}
+
+.inner-interest-picker__card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 450ms ease;
+}
+
+.inner-interest-picker__card:hover .inner-interest-picker__card-media img {
+  transform: scale(1.05);
+}
+
+.inner-interest-picker__card-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(16, 46, 33, 0.88);
+  backdrop-filter: blur(6px);
+  color: #fffaf0;
+  font-size: 0.76rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.inner-interest-picker__card-body {
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.inner-interest-picker__card-title {
+  font-family: var(--serif-display);
+  font-size: 1.3rem;
+  line-height: 1.25;
+  margin: 0 0 10px;
+}
+
+.inner-interest-picker__card-title a {
+  color: var(--forest-deep, #102e21);
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.inner-interest-picker__card-title a:hover {
+  color: #a17830;
+}
+
+.inner-interest-picker__card-intro {
+  margin: 0 0 16px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--muted-ink);
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.inner-interest-picker__card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid rgba(16, 46, 33, 0.08);
+  padding-top: 14px;
+  margin-top: auto;
+}
+
+.inner-interest-picker__card-price small {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted-ink);
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.inner-interest-picker__card-price strong {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--forest-deep, #102e21);
+}
+
+.inner-interest-picker__card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inner-interest-picker__btn-detail {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--forest-deep, #102e21);
+  text-decoration: none;
+  padding: 7px 13px;
+  border-radius: 8px;
+  background: rgba(16, 46, 33, 0.06);
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.inner-interest-picker__btn-detail:hover {
+  background: rgba(16, 46, 33, 0.12);
+}
+
+.inner-interest-picker__btn-wa {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #25d366;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.inner-interest-picker__btn-wa:hover {
+  transform: scale(1.08);
+  filter: brightness(1.05);
+}
+
+/* Consult Custom Banner */
+.inner-interest-picker__consult {
+  margin-top: 36px;
+  background: #ffffff;
+  border: 1px dashed rgba(197, 160, 89, 0.55);
+  border-radius: 18px;
+  padding: clamp(20px, 3vw, 28px) clamp(22px, 3.5vw, 36px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 1160px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.inner-interest-picker__consult-copy strong {
+  display: block;
+  font-family: var(--serif-display);
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+  color: var(--forest-deep, #102e21);
+  margin-bottom: 5px;
+}
+
+.inner-interest-picker__consult-copy p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--muted-ink);
+  max-width: 620px;
+}
+
+.inner-interest-picker__consult-btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+  gap: 8px;
+}
+
+/* Responsive Adaptive */
+@media (max-width: 980px) {
+  .inner-interest-picker__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .inner-interest-picker__consult {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .inner-interest-picker__consult-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 680px) {
+  .inner-interest-picker__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inner-interest-picker__tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .inner-interest-picker__tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .inner-interest-picker__tab {
+    flex-shrink: 0;
+    padding: 8px 15px;
+    font-size: 0.86rem;
+  }
+}
+

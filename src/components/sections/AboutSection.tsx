@@ -16,7 +16,7 @@ export function AboutSection() {
             <h2>Познакомим с Кавказом</h2>
             <p>Мы организуем поездки по Северному Кавказу уже 4 года и открываем гостям красоту гор, традиций и культуры региона.</p>
             <p>До поездки обсудим дорогу, пешие участки, формат и дополнительные расходы. Дату и места подтверждаем лично.</p>
-            <a className="about-more" href="/about/">О команде и поездках <span aria-hidden="true">→</span></a>
+            <a className="about-more" href="/about">О команде и поездках <span aria-hidden="true">→</span></a>
           </Reveal>
         </div>
       </Container>

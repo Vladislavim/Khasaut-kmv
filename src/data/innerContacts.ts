@@ -4,8 +4,8 @@ export const innerContacts = {
     href: 'tel:+79187477212',
   },
   secondaryPhone: {
-    label: '+7 938 333-77-50',
-    href: 'tel:+79383337750',
+    label: '+7 925 760-09-09',
+    href: 'tel:+79257600909',
   },
   whatsapp: {
     label: 'Написать в WhatsApp',

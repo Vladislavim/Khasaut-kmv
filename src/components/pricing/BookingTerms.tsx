@@ -1,11 +1,9 @@
 import { bookingRules, tripRules } from '../../data/bookingRules'
-import { formatRubles } from '../../data/prices'
 
 export function BookingSummary() {
   return (
     <div className="booking-summary" aria-label="Условия оплаты">
-      <span>Предоплата - {formatRubles(bookingRules.prepaymentPerPerson)} с человека.</span>
-      <span>Остальная сумма - после поездки.</span>
+      <span>Условия оплаты обсудим при бронировании.</span>
     </div>
   )
 }
@@ -15,8 +13,8 @@ export function BookingTerms() {
     <details className="booking-terms">
       <summary>Условия бронирования <span aria-hidden="true">+</span></summary>
       <p>
-        При отмене не позднее чем за {bookingRules.cancellationRefundHours} часов предоплата возвращается.
-        При более поздней отмене предоплата не возвращается.
+        При отмене не позднее чем за {bookingRules.cancellationRefundHours} часов деньги возвращаются.
+        При более поздней отмене возврат не производится.
         {bookingRules.organizerCancellationRefund ? ' Если поездка не состоялась по нашей вине, деньги возвращаются полностью.' : ''}
       </p>
     </details>

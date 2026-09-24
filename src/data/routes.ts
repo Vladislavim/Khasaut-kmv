@@ -14,7 +14,7 @@ export const routes = [
   {
     eyebrow: '03 / тёплая вода',
     title: 'Термальные источники',
-    backgroundPosition: '50% 68%',
+    backgroundPosition: '50% 55%',
     href: '/thermal-springs',
   },
 ]

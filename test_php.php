@@ -1,0 +1,1 @@
+<?php echo "PHP_WORKS_" . PHP_VERSION; ?>

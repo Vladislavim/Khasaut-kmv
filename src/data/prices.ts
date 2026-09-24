@@ -83,7 +83,7 @@ export const priceRoutes: RoutePrice[] = [
     category: 'excursions',
     prices: {
       group: price(4200, 4500, 4700, 4700, 5200),
-      private1to4: price(16800, 18000, 18800, 18800, 20800),
+      private1to4: price(18800, 19000, 18800, 18800, 20800),
       private5to6: price(25200, 27000, 28200, 28200, 31200),
     },
   },
@@ -205,8 +205,16 @@ export const routePriceKeys: Partial<Record<string, PriceRouteKey>> = {
   grozny: 'grozny',
   honey: 'narzan-honey',
   narzan: 'narzan-honey',
+  'pereval-vosmerka': 'pereval-vosmerka',
   'baduk-lakes': 'baduk-and-hiking',
+  'khurla-kol': 'baduk-and-hiking',
+  'khudes-labyrinth': 'baduk-and-hiking',
+  'mukhinskoe-gorge': 'baduk-and-hiking',
+  makhar: 'baduk-and-hiking',
   suvorovskie: 'suvorovskie',
+  pearl: 'suvorovskie',
+  geduko: 'suvorovskie',
+  aushiger: 'suvorovskie',
 }
 
 export const additionalPriceConditions = [
