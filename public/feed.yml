@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-09-24 14:49">
+<yml_catalog date="2026-09-24 16:47">
   <shop>
     <name>Khasaut Tour</name>
     <company>Khasaut Tour</company>
@@ -9,9 +9,11 @@
     </currencies>
     <categories>
       <category id="1">Экскурсии и активный отдых</category>
-      <category id="2" parentId="1">Джип-туры по Кавказу</category>
-      <category id="3" parentId="1">Термальные источники</category>
-      <category id="4" parentId="1">Конные прогулки</category>
+      <category id="2" parentId="1">Джип-туры в горы</category>
+      <category id="3" parentId="1">Туры по республикам Кавказа</category>
+      <category id="4" parentId="1">Горный треккинг и пешие маршруты</category>
+      <category id="5" parentId="1">Термальные комплексы и источники</category>
+      <category id="6" parentId="1">Конные прогулки</category>
     </categories>
     <offers>
       <offer id="1" available="true">
@@ -21,12 +23,13 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://khasaut-kmv.ru/assets/dzhily-su-01-optimized-bDKggXql.webp</picture>
-        <description>Однодневный джип-тур в урочище Джилы-Су к подножию Эльбруса. Водопады Султан и Каракая-Су, Долина Замков, скалы Аватары и теплые минеральные нарзанные ванны.</description>
+        <description>Однодневный джип-тур в урочище Джилы-Су к северному подножию Эльбруса. Водопады Султан и Каракая-Су, Долина Замков, скалы Аватары и природные теплые нарзанные ванны.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Внедорожник 4х4</param>
         <param name="Длительность">1 день (8-9 часов)</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="2" available="true">
         <name>Джип-тур на плато Бермамыт на рассвете</name>
@@ -35,12 +38,13 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://khasaut-kmv.ru/assets/photo-01-bermamyt-target-generated-DP82XBwg.webp</picture>
-        <description>Встреча рассвета на высоте 2592 метра: скалы-амфитеатры, скалы Два Монаха и грандиозный вид на двуглавый Эльбрус с лучшей смотровой площадки Кавказа.</description>
+        <description>Поездка на внедорожнике к плато Бермамыт на высоте 2592 метра: скалы-амфитеатры, скалы Два Монаха и панорамный вид на Эльбрус на рассвете.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Внедорожник 4х4</param>
         <param name="Длительность">8-9 часов</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="3" available="true">
         <name>Комбо джип-тур: Джилы-Су и плато Бермамыт за 1 день</name>
@@ -49,12 +53,13 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://khasaut-kmv.ru/assets/dzhily-su-bermamyt-01-z85UzSOU.jpg</picture>
-        <description>Максимальный внедорожный маршрут: два главных символа Северного Кавказа за один выезд на подготовленном джипе с опытным гидом-водителем.</description>
+        <description>Внедорожный маршрут на 1 день: плато Бермамыт и урочище Джилы-Су за один выезд на подготовленном джипе 4х4 с опытным водителем.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Подготовленный внедорожник 4х4</param>
         <param name="Длительность">1 день (11-12 часов)</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="4" available="true">
         <name>Экскурсия в Домбай на внедорожнике из Кисловодска</name>
@@ -63,12 +68,13 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://khasaut-kmv.ru/assets/dombay-01-optimized-Cr7GHhew.webp</picture>
-        <description>Высокогорный курорт Домбай: перевал Гум-Баши с видом на Эльбрус, ущелье Гоначхир, озеро Туманлы-Кёль, канатные дороги на высоту 3200 м и пик Мусса-Ачитара.</description>
+        <description>Горный курорт Домбай: перевал Гум-Баши с панорамой Эльбруса, ущелье Гоначхир, озеро Туманлы-Кёль, канатные дороги на высоту 3200 м и вершина Мусса-Ачитара.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Внедорожник / микроавтобус</param>
         <param name="Длительность">1 день (12 часов)</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="5" available="true">
         <name>Экскурсия на Эльбрус и поляну Азау из Кисловодска</name>
@@ -77,12 +83,13 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://khasaut-kmv.ru/assets/elbrus-01-optimized-BbN8cyvU.webp</picture>
-        <description>Баксанское ущелье, поляна Азау и поляна Чегет. Подъём на канатной дороге до станции Гарабаши на высоту 3847 метров к вечным ледникам Эльбруса.</description>
+        <description>Баксанское ущелье, поляна Азау и поляна Чегет. Подъём на канатной дороге до станции Гарабаши на высоту 3847 метров к ледникам Эльбруса.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Внедорожник / минивэн</param>
         <param name="Длительность">1 день (12-13 часов)</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="6" available="true">
         <name>Джип-тур через перевал Актопрак и Чегемские водопады</name>
@@ -91,12 +98,13 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://khasaut-kmv.ru/assets/aktoprak-01-optimized-dbMaRQTh.webp</picture>
-        <description>Древний караванный путь через глиняные каньоны Актопрак, средневековый город мёртвых Эльтюбю, Чегемская теснина и высокогорное бирюзовое озеро Гижгит.</description>
+        <description>Маршрут через каньоны перевала Актопрак, средневековый комплекс Эльтюбю, Чегемская теснина с водопадами и высокогорное озеро Гижгит.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Внедорожник 4х4</param>
         <param name="Длительность">1 день (10-11 часов)</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="7" available="true">
         <name>Джип-тур в Верхнюю Балкарию и Черекскую теснину</name>
@@ -105,12 +113,13 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://khasaut-kmv.ru/assets/balkaria-01-optimized-CNPcno1R.webp</picture>
-        <description>Винный замок Шато-Эркен, головокружительная Черекская теснина, скала Язык Дракона, древние башни Амирхановых и карстовые Голубые озёра.</description>
+        <description>Винный замок Шато-Эркен, Черекская теснина, скальный выступ Язык Дракона, средневековые башни Амирхановых и карстовые Голубые озёра.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Внедорожник 4х4</param>
         <param name="Длительность">1 день (11-12 часов)</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="8" available="true">
         <name>Джип-тур в Архыз к Софийским водопадам и храмам</name>
@@ -119,54 +128,13 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://khasaut-kmv.ru/assets/arkhyz-01-optimized-BF8QUYiH.webp</picture>
-        <description>Софийская поляна, ледниковые водопады, древнейшие аланские христианские храмы X века и крупнейшая астрофизическая обсерватория САО РАН.</description>
+        <description>Софийская поляна, ледниковые водопады, аланские христианские храмы X века Нижне-Архызского городища и территория обсерватории САО РАН.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Внедорожник 4х4</param>
         <param name="Длительность">1 день (12 часов)</param>
         <param name="Формат">В мини-группе и индивидуально</param>
-      </offer>
-      <offer id="9" available="true">
-        <name>Экскурсия в горную Северную Осетию: Куртатинское ущелье</name>
-        <url>https://khasaut-kmv.ru/detail/ossetia/</url>
-        <price>5500</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>2</categoryId>
-        <picture>https://khasaut-kmv.ru/assets/ossetia-01-CtrV4MsY.jpg</picture>
-        <description>Кармадонское ущелье, древний некрополь Даргавс (Город мёртвых), высокогорный Фиагдонский монастырь и арт-объект осетинская буква «АЕ».</description>
-        <vendor>Khasaut Tour</vendor>
-        <param name="Город отправления">Кисловодск</param>
-        <param name="Транспорт">Комфортный внедорожник</param>
-        <param name="Длительность">1 день (13-14 часов)</param>
-        <param name="Формат">В мини-группе и индивидуально</param>
-      </offer>
-      <offer id="10" available="true">
-        <name>Экскурсия в горную Ингушетию: страна башен и Вовнушки</name>
-        <url>https://khasaut-kmv.ru/detail/ingushetia/</url>
-        <price>5500</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>2</categoryId>
-        <picture>https://khasaut-kmv.ru/assets/ingushetia-01-optimized-as0BT9gE.webp</picture>
-        <description>Джейрахское ущелье, средневековый башенный комплекс Эгикал, Таргим и легендарный замок-крепость Вовнушки на Великом шёлковом пути.</description>
-        <vendor>Khasaut Tour</vendor>
-        <param name="Город отправления">Кисловодск</param>
-        <param name="Транспорт">Внедорожник / минивэн</param>
-        <param name="Длительность">1 день (13-14 часов)</param>
-        <param name="Формат">В мини-группе и индивидуально</param>
-      </offer>
-      <offer id="11" available="true">
-        <name>Экскурсия в Грозный и Аргунское ущелье</name>
-        <url>https://khasaut-kmv.ru/detail/grozny/</url>
-        <price>6000</price>
-        <currencyId>RUR</currencyId>
-        <categoryId>2</categoryId>
-        <picture>https://khasaut-kmv.ru/assets/grozny-01-hTrKGHbR.jpg</picture>
-        <description>Мечеть «Сердце Чечни», небоскрёбы Грозный-Сити, смотровая площадка, старинные Ушкалойские башни-близнецы и Нихалойские водопады.</description>
-        <vendor>Khasaut Tour</vendor>
-        <param name="Город отправления">Кисловодск</param>
-        <param name="Транспорт">Комфортабельный транспорт</param>
-        <param name="Длительность">1 день (14 часов)</param>
-        <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="12" available="true">
         <name>Джип-тур на перевал Восьмёрка и плато Шаджатмаз</name>
@@ -175,12 +143,13 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://khasaut-kmv.ru/assets/excursion-vosmerka-optimized-DumTLoOl.webp</picture>
-        <description>Панорамный джип-тур над Кисловодском на высоту 2100 м с открытым видом на Эльбрус, живописные серпантины перевала Восьмёрка и альпийские луга.</description>
+        <description>Панорамный джип-тур над Кисловодском на высоту 2100 м с видом на Эльбрус, горные серпантины перевала Восьмёрка и субальпийские луга.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Внедорожник 4х4</param>
         <param name="Длительность">5-6 часов</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="13" available="true">
         <name>Экскурсия на Медовые водопады и гору Кольцо</name>
@@ -189,12 +158,13 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://khasaut-kmv.ru/assets/honey-01-optimized-CtFZGUCo.webp</picture>
-        <description>Каскад из 5 Медовых водопадов в каньоне реки Аликоновка, природная скала Кольцо из романа Лермонтова, Чайный домик с дегустацией варенья и мёда.</description>
+        <description>Группа из 5 Медовых водопадов в каньоне реки Аликоновка, природная скала Кольцо и Чайный домик с дегустацией горного чая и мёда.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Минивэн / внедорожник</param>
         <param name="Длительность">4-5 часов</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="14" available="true">
         <name>Экскурсия в Долину Нарзанов из Кисловодска</name>
@@ -203,26 +173,28 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://khasaut-kmv.ru/assets/narzan-01-OO92hk-U.jpg</picture>
-        <description>Живописная долина в ущелье реки Хасаут с 11 природными источниками минеральной воды, старинный охотничий замок и первозданная кавказская природа.</description>
+        <description>Долина в ущелье реки Хасаут с 11 природными источниками минеральной воды нарзанного типа, старинный охотничий замок и горные пейзажи.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Внедорожник 4х4</param>
         <param name="Длительность">4-5 часов</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="15" available="true">
-        <name>Джип-тур на реликтовое озеро Хурла-Кёль</name>
+        <name>Джип-тур на высокогорное озеро Хурла-Кёль</name>
         <url>https://khasaut-kmv.ru/detail/khurla-kol/</url>
         <price>5500</price>
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://khasaut-kmv.ru/assets/khurla-kol-01-optimized-DdzraTSH.webp</picture>
-        <description>Тайное горное озеро на высоте 2000 м в окружении реликтового хвойного леса, чистейшая вода, первозданная тишина и отсутствие туристических толп.</description>
+        <description>Труднодоступное озеро на высоте 2000 м в окружении хвойного леса, прозрачная горная вода и спокойная природная атмосфера без плотного потока туристов.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Подготовленный внедорожник 4х4</param>
         <param name="Длительность">1 день (10 часов)</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="16" available="true">
         <name>Джип-тур в Худесский лабиринт и Каменные грибы</name>
@@ -231,12 +203,13 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://khasaut-kmv.ru/assets/khudes-labyrinth-01-optimized-aUukeFj9.webp</picture>
-        <description>Уникальные природные песчаные лабиринты, причудливые скалы-останцы выветривания и дикие малоизведанные пейзажи урочища Худес.</description>
+        <description>Природные песчаные лабиринты, причудливые скалы-останцы выветривания и дикие горные панорамы урочища Худес.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Подготовленный внедорожник 4х4</param>
         <param name="Длительность">1 день (9-10 часов)</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="17" available="true">
         <name>Джип-тур в Мухинское ущелье и перевал Муху (2764 м)</name>
@@ -245,110 +218,163 @@
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://khasaut-kmv.ru/assets/mukhinskoe-gorge-01-7vjgo_d6.jpeg</picture>
-        <description>Настоящий высокогорный оффроуд над Тебердой: альпийские луга, панорама Главного Кавказского хребта и спуск к высокогорным озёрам.</description>
+        <description>Высокогорный оффроуд-маршрут над Тебердой: альпийские луга, панорама Главного Кавказского хребта и спуск к высокогорным озёрам.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Подготовленный внедорожник 4х4</param>
         <param name="Длительность">1 день (10-11 часов)</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="18" available="true">
-        <name>Джип-тур в ущелье Махар: первозданные водопады и нарзаны</name>
+        <name>Джип-тур в ущелье Махар к водопадам и нарзанам</name>
         <url>https://khasaut-kmv.ru/detail/makhar/</url>
         <price>5500</price>
         <currencyId>RUR</currencyId>
         <categoryId>2</categoryId>
         <picture>https://khasaut-kmv.ru/assets/makhar-01-optimized-B4URxdOf.webp</picture>
-        <description>Дикая первозданная Карачаево-Черкесия: мощные водопады Махар-Су и Гондарай, минеральные нарзанные источники и реликтовые хвойные леса.</description>
+        <description>Ущелье реки Махар в Карачаево-Черкесии: водопады Махар-Су и Гондарай, минеральные нарзанные выходы и хвойные лесные массивы.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Подготовленный внедорожник 4х4</param>
         <param name="Длительность">1 день (10-11 часов)</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
+      </offer>
+      <offer id="9" available="true">
+        <name>Экскурсия в горную Северную Осетию: Куртатинское ущелье</name>
+        <url>https://khasaut-kmv.ru/detail/ossetia/</url>
+        <price>5500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://khasaut-kmv.ru/assets/ossetia-01-CtrV4MsY.jpg</picture>
+        <description>Кармадонское ущелье, средневековый некрополь Даргавс (Город мёртвых), высокогорный Аланский Успенский монастырь и арт-объект осетинская буква «АЕ».</description>
+        <vendor>Khasaut Tour</vendor>
+        <param name="Город отправления">Кисловодск</param>
+        <param name="Транспорт">Комфортный внедорожник</param>
+        <param name="Длительность">1 день (13-14 часов)</param>
+        <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
+      </offer>
+      <offer id="10" available="true">
+        <name>Экскурсия в горную Ингушетию: страна башен и Вовнушки</name>
+        <url>https://khasaut-kmv.ru/detail/ingushetia/</url>
+        <price>5500</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://khasaut-kmv.ru/assets/ingushetia-01-optimized-as0BT9gE.webp</picture>
+        <description>Джейрахское ущелье, башенные комплексы Эгикал и Таргим, старинный башенный замок Вовнушки и виды на Цей-Лоамский перевал.</description>
+        <vendor>Khasaut Tour</vendor>
+        <param name="Город отправления">Кисловодск</param>
+        <param name="Транспорт">Внедорожник / минивэн</param>
+        <param name="Длительность">1 день (13-14 часов)</param>
+        <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
+      </offer>
+      <offer id="11" available="true">
+        <name>Экскурсия в Грозный и Аргунское ущелье</name>
+        <url>https://khasaut-kmv.ru/detail/grozny/</url>
+        <price>6000</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>3</categoryId>
+        <picture>https://khasaut-kmv.ru/assets/grozny-01-hTrKGHbR.jpg</picture>
+        <description>Мечеть «Сердце Чечни», высотный комплекс Грозный-Сити со смотровой площадкой, Ушкалойские башни в Аргунском ущелье и Нихалойские водопады.</description>
+        <vendor>Khasaut Tour</vendor>
+        <param name="Город отправления">Кисловодск</param>
+        <param name="Транспорт">Комфортабельный транспорт</param>
+        <param name="Длительность">1 день (14 часов)</param>
+        <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="19" available="true">
-        <name>Треккинг на Бадукские озёра в Тебердинском заповеднике</name>
+        <name>Треккинг на Бадукские озёра в Тебердинском национальном парке</name>
         <url>https://khasaut-kmv.ru/detail/baduk-lakes/</url>
         <price>5500</price>
         <currencyId>RUR</currencyId>
-        <categoryId>2</categoryId>
+        <categoryId>4</categoryId>
         <picture>https://khasaut-kmv.ru/assets/baduk-lakes-01-D2FwW_w-.jpg</picture>
-        <description>Экологический треккинг по Тебердинскому заповеднику: каскад из трёх высокогорных озёр с хрустальной бирюзовой водой среди вековых пихт.</description>
+        <description>Пеший экотреккинг по Тебердинскому национальному парку: каскад из трёх высокогорных озёр с бирюзовой водой среди пихтового леса.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Внедорожник + пеший треккинг</param>
         <param name="Длительность">1 день (10 часов)</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="20" available="true">
         <name>Поездка на Суворовские термальные источники №1</name>
         <url>https://khasaut-kmv.ru/detail/suvorovskie/</url>
         <price>900</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>5</categoryId>
         <picture>https://khasaut-kmv.ru/assets/suvorovskie-01-optimized-DOB4c5FZ.webp</picture>
-        <description>Купание в целебных термальных бассейнах с природной щелочной минеральной водой различной температуры от +34 °C до +42 °C.</description>
+        <description>Купание в оборудованных термальных бассейнах с природной минеральной водой различной температуры от +34 °C до +42 °C.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Минивэн / авто</param>
         <param name="Длительность">4 часа</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="21" available="true">
         <name>Поездка в термальный спа-комплекс «Жемчужина Кавказа»</name>
         <url>https://khasaut-kmv.ru/detail/pearl/</url>
         <price>900</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>5</categoryId>
         <picture>https://khasaut-kmv.ru/assets/pearl-01-optimized-DQudLvDJ.webp</picture>
-        <description>Современный оздоровительный спа-комплекс: 8 термальных бассейнов с минеральной водой, сауны, хамам и зоны гидромассажа.</description>
+        <description>Оздоровительный спа-комплекс: 8 термальных бассейнов с минеральной водой, сауны, хамам и зоны гидромассажа.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Минивэн / авто</param>
         <param name="Длительность">4-5 часов</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="22" available="true">
-        <name>Поездка на горячие термальные источники «Гедуко»</name>
+        <name>Поездка на термальные источники «Гедуко»</name>
         <url>https://khasaut-kmv.ru/detail/geduko/</url>
         <price>900</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>5</categoryId>
         <picture>https://khasaut-kmv.ru/assets/geduko-01-optimized-BModUekY.webp</picture>
-        <description>Горячие термальные источники в Баксанском районе: контрастные и релакс-бассейны с минеральной водой, водные горки и зоны отдыха.</description>
+        <description>Термальный комплекс в Баксанском районе: контрастные и релакс-бассейны с минеральной водой, водные аттракционы и зоны отдыха.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Минивэн / авто</param>
         <param name="Длительность">5 часов</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="23" available="true">
-        <name>Поездка на азотно-термальные источники Аушигер</name>
+        <name>Поездка на термальные источники Аушигер</name>
         <url>https://khasaut-kmv.ru/detail/aushiger/</url>
         <price>900</price>
         <currencyId>RUR</currencyId>
-        <categoryId>3</categoryId>
+        <categoryId>5</categoryId>
         <picture>https://khasaut-kmv.ru/assets/aushiger-01-optimized-5-e_x06u.webp</picture>
-        <description>Природные горячие источники из скважины глубиной 4000 м с уникальным составом солей и минералов для оздоровления суставов и кожи.</description>
+        <description>Природные горячие источники из глубокой скважины с минеральным составом солей для релаксации и купания в открытых бассейнах.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Минивэн / авто</param>
         <param name="Длительность">5-6 часов</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
       <offer id="24" available="true">
         <name>Конные прогулки в горах Кисловодска</name>
         <url>https://khasaut-kmv.ru/horse-rides/</url>
         <price>2000</price>
         <currencyId>RUR</currencyId>
-        <categoryId>4</categoryId>
+        <categoryId>6</categoryId>
         <picture>https://khasaut-kmv.ru/assets/horse-hero-optimized-B9qOQduY.webp</picture>
-        <description>Прогулки верхом на породистых карачаевских лошадях по горным перевалам, ущельям и альпийским лугам в сопровождении опытного инструктора.</description>
+        <description>Верховые прогулки на карачаевских лошадях по горным перевалам, лесным тропам и лугам в сопровождении инструктора.</description>
         <vendor>Khasaut Tour</vendor>
         <param name="Город отправления">Кисловодск</param>
         <param name="Транспорт">Верховая езда</param>
         <param name="Длительность">1-2 часа / полдня</param>
         <param name="Формат">В мини-группе и индивидуально</param>
+        <param name="Тип цены">От (за человека в мини-группе)</param>
       </offer>
     </offers>
   </shop>
