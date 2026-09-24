@@ -122,9 +122,9 @@ export function InnerPageShell({ meta, className = '', heroRight, showHero = tru
                   </a>
                 )}
                 <div className="inner-hero-trust-badges inner-hero-trust-badges--desktop" aria-label="Преимущества бронирования">
-                  <span>✓ Без предоплаты</span>
+                  <span>✓ Предоплата всего 1 500 ₽</span>
                   <span>✓ Заберём от отеля</span>
-                  <span>⭐ 5.0 (50+ отзывов)</span>
+                  <span>⭐ 5.0 (1000+ отзывов)</span>
                 </div>
               </div>
             </div>
@@ -158,9 +158,9 @@ export function InnerPageShell({ meta, className = '', heroRight, showHero = tru
               )}
             </div>
             <div className="inner-hero-trust-badges inner-hero-trust-badges--mobile" aria-label="Преимущества бронирования">
-              <span>✓ Без предоплаты</span>
+              <span>✓ Бронь 1 500 ₽</span>
               <span>✓ От отеля</span>
-              <span>⭐ 5.0</span>
+              <span>⭐ 5.0 (1000+)</span>
             </div>
           </div>
         </section>

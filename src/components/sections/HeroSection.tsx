@@ -288,9 +288,9 @@ export function HeroSection() {
               </a>
             </div>
             <div className="hero-trust-badges" aria-label="Преимущества бронирования">
-              <span><Icon name="check" size={13} /> Без предоплаты</span>
+              <span><Icon name="check" size={13} /> Предоплата всего 1 500 ₽</span>
               <span><Icon name="check" size={13} /> Заберём от отеля</span>
-              <span>⭐ 5.0 (50+ отзывов)</span>
+              <span>⭐ 5.0 (1000+ отзывов)</span>
             </div>
           </div>
 

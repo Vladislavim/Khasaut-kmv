@@ -39,7 +39,7 @@ export function TripCallToAction({ route }: { route?: string }) {
         <button type="button" onClick={handleFinder}>
           Подобрать по интересам <span aria-hidden="true">→</span>
         </button>
-        <small>Без предоплаты • Ответим за 5 минут • Подтвердит Эльдар лично</small>
+        <small>Предоплата всего 1 500 ₽ • Остаток гиду в день выезда • Ответим за 5 минут</small>
       </div>
     </section>
   )
