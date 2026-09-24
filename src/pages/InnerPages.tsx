@@ -8,6 +8,7 @@ import { Reveal } from '../components/ui/Reveal'
 import { InnerCatalogPage } from '../components/inner/InnerCatalogPage'
 import { InnerPageShell } from '../components/inner/InnerPageShell'
 import { ContactPhotoSlider } from '../components/inner/ContactPhotoSlider'
+import { track } from '../lib/analytics'
 
 export function ExcursionsPage() {
   return (
@@ -183,50 +184,99 @@ export function HorseRidesPage() {
 export function AboutPage() {
   return (
     <InnerPageShell
-      meta={{
-        ...aboutPage,
-        heroImages: [
-          innerWebAssets.elbrus[0],
-          innerWebAssets.bermamyt[0],
-          innerWebAssets.dombay[0],
-          innerWebAssets.balkaria[0],
-        ],
-      }}
+      meta={aboutPage}
       className="inner-page--about"
+      showHero={false}
     >
       <main id="inner-main" className="inner-main">
 
-        {/* Story: фото-коллаж + текст */}
+        {/* Story: двухрядный зигзаг-коллаж + расширенная история команды */}
         <section className="inner-section inner-section--about-story" aria-labelledby="about-story-title">
-          <div className="container inner-about-layout">
-            <div className="inner-about-layout__art inner-about-art--collage">
-              <img
-                src={innerWebAssets.elbrus[0]}
-                alt="Горное озеро у подножия Эльбруса"
-                loading="lazy"
-                className="inner-about-art__main"
-              />
-              <img
-                src={innerWebAssets.bermamyt[1]}
-                alt="Плато Бермамыт на рассвете"
-                loading="lazy"
-                className="inner-about-art__float inner-about-art__float--top"
-              />
-              <img
-                src={innerWebAssets['dzhily-su'][2]}
-                alt="Водопады Джилы-Су в ущелье"
-                loading="lazy"
-                className="inner-about-art__float inner-about-art__float--bottom"
-              />
-              <span>Северный Кавказ</span>
+          <div className="container inner-about-story-zigzag">
+
+            {/* Ряд 1: Фотоколлаж слева + Начало истории справа */}
+            <div className="inner-about-zigzag-row inner-about-zigzag-row--1">
+              <div className="inner-about-layout__art inner-about-art--collage">
+                <img
+                  src={innerWebAssets.elbrus[0]}
+                  alt="Горное озеро у подножия Эльбруса"
+                  loading="lazy"
+                  className="inner-about-art__main"
+                />
+                <img
+                  src={innerWebAssets.bermamyt[1]}
+                  alt="Плато Бермамыт на рассвете"
+                  loading="lazy"
+                  className="inner-about-art__float inner-about-art__float--top"
+                />
+                <img
+                  src={innerWebAssets['dzhily-su'][2]}
+                  alt="Водопады Джилы-Су в ущелье"
+                  loading="lazy"
+                  className="inner-about-art__float inner-about-art__float--bottom"
+                />
+                <span>Северный Кавказ</span>
+              </div>
+
+              <Reveal className="inner-about-layout__copy">
+                <span className="inner-kicker">О нас · Наша история</span>
+                <h1 id="about-story-title">Северный Кавказ по-настоящему</h1>
+                <p>Мы — команда, влюблённая в Северный Кавказ и своё дело. Уже более 4 лет мы организуем авторские джип-туры и экспедиции, открывая гостям первозданную красоту неприступных вершин, древних перевалов и диких ущелий региона.</p>
+                <p>За это время с нами отправились в путешествие более 5000 довольных клиентов — и для нас это не просто цифра, а доверие, которое мы ценим и оправдываем в каждой поездке.</p>
+                <p>Мы не работаем по шаблонным путеводителям на скорую руку. Каждый маршрут продуман до мелочей: от панорамных смотровых площадок без толп туристов до надёжных внедорожников и тёплой атмосферы, в которой вы чувствуете себя спокойно и уверенно. С нами вы не просто смотрите на горы — вы проживаете каждое мгновение.</p>
+              </Reveal>
             </div>
-            <Reveal className="inner-about-layout__copy">
-              <span className="inner-kicker">Наша история</span>
-              <h2 id="about-story-title">Северный Кавказ по-настоящему</h2>
-              <p>Мы — команда, влюблённая в Северный Кавказ и своё дело. Уже более 4 лет мы организуем экскурсии, открывая нашим гостям первозданную красоту гор, традиций и культуры региона.</p>
-              <p>За это время с нами отправились в путешествие более 5000 довольных клиентов — и для нас это не просто цифра, а доверие, которое мы ценим и оправдываем в каждой поездке.</p>
-              <p>Мы не работаем по шаблонам. Каждый маршрут продуман до мелочей: от живописных локаций и комфортных внедорожников до атмосферы, в которой вы чувствуете себя спокойно и уверенно. С нами вы не просто смотрите — вы проживаете каждое место.</p>
-            </Reveal>
+
+            {/* Ряд 2: Продолжение истории слева + Второй фотоколлаж справа */}
+            <div className="inner-about-zigzag-row inner-about-zigzag-row--2">
+              <Reveal className="inner-about-layout__copy">
+                <span className="inner-kicker">Наш подход и принципы</span>
+                <h2>Живые маршруты и люди, знающие горы с детства</h2>
+                <p>Эльдар и наши гиды выросли среди этих перевалов. Мы знаем каждый каменистый брод, каждую неприметную тропу и точное время на Бермамыте, Джилы-Су или в Махаре, когда вершины открываются во всём величии в лучах чистого рассветного солнца.</p>
+                <p>В нашем распоряжении собственный автопарк подготовленных японских внедорожников повышенной проходимости. Никакой экономии на техническом регламенте: машины проходят строгий осмотр перед каждым выездом, оснащены рациями, аптечками и всем необходимым снаряжением для высокогорья.</p>
+                <p>Мы путешествуем душевно и без спешки: останавливаемся в самых впечатляющих местах, варим кофе и горный травяной чай с видом на ледники Эльбруса и делимся подлинными историями края. Поездка с нами — это не формальная экскурсия по расписанию, а день приключений в кругу близких по духу людей.</p>
+
+                <div className="inner-about-story-actions">
+                  <a
+                    className="inner-button inner-button--solid"
+                    href={innerContacts.whatsapp.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => track('contact_click', { source: 'about_story_cta' })}
+                  >
+                    Подобрать тур в WhatsApp <Icon name="arrow" size={16} />
+                  </a>
+                  <div className="inner-hero-trust-badges" aria-label="Преимущества бронирования">
+                    <span>✓ Предоплата всего 1 500 ₽</span>
+                    <span>✓ Заберём прямо от отеля</span>
+                    <span>⭐ 4.98 (1000+ отзывов)</span>
+                  </div>
+                </div>
+              </Reveal>
+
+              <div className="inner-about-layout__art inner-about-art--collage inner-about-art--collage-secondary">
+                <img
+                  src={assets.photoJeep}
+                  alt="Внедорожник Khasaut Tour на краю скального обрыва"
+                  loading="lazy"
+                  className="inner-about-art__main"
+                />
+                <img
+                  src={innerWebAssets.makhar[0]}
+                  alt="Заповедная долина Махар"
+                  loading="lazy"
+                  className="inner-about-art__float inner-about-art__float--top"
+                />
+                <img
+                  src={innerWebAssets.balkaria[0]}
+                  alt="Башни и ущелья Верхней Балкарии"
+                  loading="lazy"
+                  className="inner-about-art__float inner-about-art__float--bottom"
+                />
+                <span>Khasaut Tour</span>
+              </div>
+            </div>
+
           </div>
         </section>
 

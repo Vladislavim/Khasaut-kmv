@@ -13,6 +13,7 @@
     <meta name="keywords" content="джип туры кисловодск, джиппинг кисловодск, экскурсии из кисловодска, джилы су из кисловодска, плато бермамыт рассвет, экскурсия домбай архыз, джип туры кмв, туры по кавказу 2026" />
     <link rel="canonical" href="https://khasaut-kmv.ru/" />
     <meta name="theme-color" content="#1b3d2b" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
     <!-- Гео-привязка для регионального ранжирования (КМВ / Ставропольский край) -->
     <meta name="geo.region" content="RU-STA" />
@@ -58,7 +59,7 @@
           "description": "Индивидуальные джип-туры и авторские экскурсии из Кисловодска и городов КМВ: Джилы-Су, Бермамыт, Домбай, Архыз, Эльбрус.",
           "telephone": ["+7-928-009-88-81", "+7-925-760-09-09"],
           "email": "Eldar090807@yandex.ru",
-          "priceRange": "3500 - 25000 RUB",
+          "priceRange": "4000 - 25000 RUB",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Кисловодск",
@@ -82,7 +83,77 @@
             "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
             "opens": "06:00",
             "closes": "23:00"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.98",
+            "bestRating": "5",
+            "worstRating": "1",
+            "ratingCount": 1040,
+            "reviewCount": 1040
           }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://khasaut-kmv.ru/#website",
+          "name": "Khasaut Tour",
+          "url": "https://khasaut-kmv.ru/",
+          "inLanguage": "ru-RU",
+          "publisher": { "@id": "https://khasaut-kmv.ru/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://khasaut-kmv.ru/excursions/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://khasaut-kmv.ru/#sitelinks",
+          "name": "Быстрые ссылки Khasaut Tour",
+          "itemListElement": [
+            {
+              "@type": "SiteNavigationElement",
+              "position": 1,
+              "name": "Экскурсии и джип-туры",
+              "description": "Каталог маршрутов по горам Кавказа из Кисловодска",
+              "url": "https://khasaut-kmv.ru/excursions/"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 2,
+              "name": "Цены и прайс-лист 2026",
+              "description": "Стоимость поездок в мини-группах и индивидуально от 4 000 ₽",
+              "url": "https://khasaut-kmv.ru/prices/"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 3,
+              "name": "Плато Бермамыт на рассвете",
+              "description": "Джип-тур на высоту 2592 м с панорамой Эльбруса от 4 000 ₽",
+              "url": "https://khasaut-kmv.ru/detail/bermamyt/"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 4,
+              "name": "Урочище Джилы-Су",
+              "description": "Водопады, термальные источники и Долина Замков от 4 500 ₽",
+              "url": "https://khasaut-kmv.ru/detail/dzhily-su/"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 5,
+              "name": "О компании и гидах",
+              "description": "История Khasaut Tour, подготовленные внедорожники и отзывы 4.98",
+              "url": "https://khasaut-kmv.ru/about/"
+            },
+            {
+              "@type": "SiteNavigationElement",
+              "position": 6,
+              "name": "Контакты и бронь",
+              "description": "Прямая связь с организатором в WhatsApp и по телефону",
+              "url": "https://khasaut-kmv.ru/contact/"
+            }
+          ]
         },
         {
           "@type": "OfferCatalog",
@@ -92,7 +163,7 @@
             {
               "@type": "Offer",
               "itemOffered": {
-                "@type": "TouristTrip",
+                "@type": ["Product", "TouristTrip"],
                 "name": "Джилы-Су: водопады и термальные ванны у подножия Эльбруса",
                 "description": "Поездка к северному склону Эльбруса, водопады Султан и Каракая-Су, Долина Замков и тёплые нарзаны."
               },
@@ -102,7 +173,7 @@
             {
               "@type": "Offer",
               "itemOffered": {
-                "@type": "TouristTrip",
+                "@type": ["Product", "TouristTrip"],
                 "name": "Плато Бермамыт: рассвет и панорама Эльбруса",
                 "description": "Захватывающий джип-тур на высоту 2592 метра со скалами-амфитеатрами и видом на Большой Кавказ."
               },
@@ -112,7 +183,7 @@
             {
               "@type": "Offer",
               "itemOffered": {
-                "@type": "TouristTrip",
+                "@type": ["Product", "TouristTrip"],
                 "name": "Эльбрус и Приэльбрусье",
                 "description": "Баксанское ущелье, поляна Азау, подъём на канатной дороге до станции Гарабаши (3847 м) и поляна Чегет."
               },

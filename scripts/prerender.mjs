@@ -82,6 +82,14 @@ try {
           dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
           opens: '06:00',
           closes: '23:00'
+        },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.98',
+          bestRating: '5',
+          worstRating: '1',
+          ratingCount: 1040,
+          reviewCount: 1040
         }
       },
       {
@@ -90,7 +98,12 @@ try {
         name: 'Khasaut Tour',
         url: `${origin}/`,
         inLanguage: 'ru-RU',
-        publisher: { '@id': `${origin}/#organization` }
+        publisher: { '@id': `${origin}/#organization` },
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: `${origin}/excursions/?q={search_term_string}`,
+          'query-input': 'required name=search_term_string'
+        }
       },
       {
         '@type': 'WebPage',
@@ -103,14 +116,30 @@ try {
       },
       ...(entry.path === '/' || entry.path === '/404' ? [] : [{
         '@type': 'BreadcrumbList',
-        itemListElement: [
+        itemListElement: entry.slug ? [
           { '@type': 'ListItem', position: 1, name: 'Главная', item: `${origin}/` },
-          { '@type': 'ListItem', position: 2, name: entry.title.split(' | ')[0], item: canonical }
+          { '@type': 'ListItem', position: 2, name: 'Экскурсии', item: `${origin}/excursions/` },
+          { '@type': 'ListItem', position: 3, name: entry.pageTitle, item: canonical }
+        ] : [
+          { '@type': 'ListItem', position: 1, name: 'Главная', item: `${origin}/` },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: entry.path === '/prices' ? 'Цены и прайс-лист'
+              : entry.path === '/about' ? 'О компании'
+              : entry.path === '/contact' ? 'Контакты'
+              : entry.path === '/routes' ? 'Необычные маршруты'
+              : entry.path === '/thermal-springs' ? 'Термальные источники'
+              : entry.path === '/horse-rides' ? 'Конные прогулки'
+              : entry.path === '/excursions' ? 'Экскурсии'
+              : entry.title.split(' — ')[0].split(' | ')[0],
+            item: canonical
+          }
         ]
       }])
     ]
 
-    // Homepage Schema additions: FAQPage for rich accordion snippets in Yandex & Google
+    // Homepage Schema additions: FAQPage and SiteNavigationElement (Sitelinks / быстрые ссылки)
     if (entry.path === '/') {
       graph.push({
         '@type': 'FAQPage',
@@ -124,26 +153,92 @@ try {
           }
         }))
       })
+
+      graph.push({
+        '@type': 'ItemList',
+        '@id': `${origin}/#sitelinks`,
+        name: 'Быстрые ссылки Khasaut Tour',
+        itemListElement: [
+          {
+            '@type': 'SiteNavigationElement',
+            position: 1,
+            name: 'Экскурсии и джип-туры',
+            description: 'Каталог маршрутов по горам Кавказа из Кисловодска',
+            url: `${origin}/excursions/`
+          },
+          {
+            '@type': 'SiteNavigationElement',
+            position: 2,
+            name: 'Цены и прайс-лист 2026',
+            description: 'Стоимость поездок в мини-группах и индивидуально от 4 000 ₽',
+            url: `${origin}/prices/`
+          },
+          {
+            '@type': 'SiteNavigationElement',
+            position: 3,
+            name: 'Плато Бермамыт на рассвете',
+            description: 'Джип-тур на высоту 2592 м с панорамой Эльбруса от 4 000 ₽',
+            url: `${origin}/detail/bermamyt/`
+          },
+          {
+            '@type': 'SiteNavigationElement',
+            position: 4,
+            name: 'Урочище Джилы-Су',
+            description: 'Водопады, термальные источники и Долина Замков от 4 500 ₽',
+            url: `${origin}/detail/dzhily-su/`
+          },
+          {
+            '@type': 'SiteNavigationElement',
+            position: 5,
+            name: 'О компании и гидах',
+            description: 'История Khasaut Tour, подготовленные внедорожники и отзывы 4.98',
+            url: `${origin}/about/`
+          },
+          {
+            '@type': 'SiteNavigationElement',
+            position: 6,
+            name: 'Контакты и бронь',
+            description: 'Прямая связь с организатором в WhatsApp и по телефону',
+            url: `${origin}/contact/`
+          }
+        ]
+      })
     }
 
-    // Detail page additions: TouristTrip and Offer schemas for prices
+    // Detail page additions: TouristTrip and Product schemas with Offer prices & AggregateRating
     if (entry.slug) {
       const priceKey = getPriceKeyForRouteSlug(entry.slug)
       const minPrice = getMinimumGroupPrice(priceKey)
       graph.push({
-        '@type': 'TouristTrip',
+        '@type': ['Product', 'TouristTrip'],
         '@id': `${canonical}#trip`,
-        name: entry.pageTitle,
+        name: `${entry.pageTitle} — джип-тур из Кисловодска`,
         description: entry.intro,
+        image: `${origin}${asset(entry.image)}`,
+        category: 'Джип-туры и экскурсии по Кавказу',
         touristType: ['AdventureTourism', 'CulturalTourism'],
         provider: { '@id': `${origin}/#organization` },
+        brand: {
+          '@type': 'Brand',
+          name: 'Khasaut Tour'
+        },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.98',
+          bestRating: '5',
+          worstRating: '1',
+          ratingCount: 1040,
+          reviewCount: 1040
+        },
         ...(minPrice ? {
           offers: {
             '@type': 'Offer',
             price: minPrice,
             priceCurrency: 'RUB',
+            priceValidUntil: '2026-12-31',
             availability: 'https://schema.org/InStock',
-            url: canonical
+            url: canonical,
+            seller: { '@id': `${origin}/#organization` }
           }
         } : {})
       })
@@ -166,8 +261,8 @@ try {
       `<meta name="twitter:title" content="${escape(entry.title)}" />`,
       `<meta name="twitter:description" content="${escape(entry.description)}" />`,
       `<meta name="twitter:image" content="${origin}${asset(entry.image)}" />`,
-      `<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, '\\u003c')}</script>`,
-      entry.path === '/404' ? '<meta name="robots" content="noindex,follow" />' : ''
+      `<meta name="robots" content="${entry.path === '/404' ? 'noindex,follow' : 'index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1'}" />`,
+      `<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, '\\u003c')}</script>`
     ].filter(Boolean).join('\n    ')
 
     const html = cleanTemplate

@@ -2059,6 +2059,116 @@ img { -webkit-tap-highlight-color: transparent; }
   text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
 }
 
+.inner-about-art--collage .inner-about-art__float--top {
+  transform: rotate(2deg);
+}
+
+.inner-about-art--collage .inner-about-art__float--bottom {
+  transform: rotate(-2.5deg);
+}
+
+/* ── About Page Zig-Zag Story Layout ──────────────────────────────────────── */
+.inner-page--about .inner-section--about-story {
+  padding-top: clamp(2.5rem, 5vw, 4.5rem);
+  padding-bottom: clamp(3.5rem, 6vw, 6rem);
+}
+
+.inner-about-story-zigzag {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3.5rem, 6vw, 6.5rem);
+}
+
+.inner-about-zigzag-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 6rem);
+}
+
+.inner-about-zigzag-row--2 {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+}
+
+.inner-about-zigzag-row .inner-about-layout__copy {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.inner-principles-grid .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.inner-about-zigzag-row .inner-about-layout__copy h1,
+.inner-about-zigzag-row .inner-about-layout__copy h2 {
+  color: var(--forest-deep);
+  font-family: var(--serif-display);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  margin: 0.6rem 0 1.2rem;
+}
+
+.inner-about-zigzag-row .inner-about-layout__copy h1 {
+  font-size: clamp(2.4rem, 4.4vw, 3.8rem);
+}
+
+.inner-about-zigzag-row .inner-about-layout__copy h2 {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+}
+
+.inner-about-zigzag-row .inner-about-layout__copy p {
+  color: var(--muted-ink);
+  font-size: clamp(0.96rem, 1.1vw, 1.08rem);
+  line-height: 1.65;
+  margin-bottom: 1.1rem;
+}
+
+.inner-about-story-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.8rem;
+  margin-top: 1.6rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(25, 62, 45, 0.12);
+}
+
+.inner-about-story-actions .inner-button {
+  white-space: nowrap;
+}
+
+.inner-about-story-actions .inner-hero-trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+/* Secondary collage: mirrored floats & text */
+.inner-about-art--collage-secondary .inner-about-art__float--top {
+  top: 0;
+  left: 0;
+  right: auto !important;
+  transform: rotate(-2deg);
+}
+
+.inner-about-art--collage-secondary .inner-about-art__float--bottom {
+  bottom: 0;
+  right: 0;
+  left: auto !important;
+  transform: rotate(2.5deg);
+}
+
+.inner-about-art--collage-secondary span {
+  left: 18px;
+  right: auto !important;
+  bottom: 12px;
+}
+
 /* Horse duo art */
 .inner-about-layout__art--duo {
   position: relative;
@@ -2161,22 +2271,68 @@ img { -webkit-tap-highlight-color: transparent; }
   line-height: 1.5;
 }
 
+@media (max-width: 960px) {
+  .inner-about-zigzag-row,
+  .inner-about-zigzag-row--2 {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+  }
+  .inner-about-zigzag-row--2 .inner-about-layout__art {
+    order: -1;
+  }
+}
+
 @media (max-width: 719px) {
   .inner-about-art--collage {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    height: 250px;
     min-height: auto;
-    display: block;
-    margin-bottom: 1.5rem;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .inner-about-art--collage .inner-about-art__main {
-    width: 100% !important;
-    height: 240px !important;
+    width: 80% !important;
+    height: 210px !important;
+    min-height: auto !important;
     border-radius: 10px;
   }
   .inner-about-art--collage .inner-about-art__float {
-    display: none !important;
+    display: block !important;
+    position: absolute;
+    width: 40% !important;
+    height: 82px !important;
+    min-height: auto !important;
+    border-radius: 6px;
+    border: 3px solid var(--paper);
+    box-shadow: 0 6px 16px rgba(16, 46, 33, 0.16);
+    z-index: 2;
+  }
+  .inner-about-art--collage .inner-about-art__float--top {
+    top: 2px;
+    right: 0;
+  }
+  .inner-about-art--collage .inner-about-art__float--bottom {
+    bottom: 2px;
+    left: 0;
+  }
+  .inner-about-art--collage-secondary .inner-about-art__float--top {
+    top: 2px;
+    left: 0;
+    right: auto !important;
+  }
+  .inner-about-art--collage-secondary .inner-about-art__float--bottom {
+    bottom: 2px;
+    right: 0;
+    left: auto !important;
   }
   .inner-about-art--collage span {
-    display: none !important;
+    display: block !important;
+    font-size: 1.1rem;
+    bottom: 8px;
   }
 
   .inner-about-layout__art--duo {
