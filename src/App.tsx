@@ -12,7 +12,6 @@ import { AboutPage, ContactPage, ExcursionsPage, HorseRidesPage, NotFoundPage, R
 import { InnerDetailPage } from './pages/InnerDetailPage'
 import { PricesPage } from './pages/PricesPage'
 import { detailPages } from './data/innerPages'
-import { MobileStickyBar } from './components/ui/MobileStickyBar'
 import { FloatingMessengerWidget } from './components/ui/FloatingMessengerWidget'
 
 import { trackHit } from './utils/metrika'
@@ -57,7 +56,6 @@ function App({ path }: { path?: string } = {}) {
   return (
     <>
       {renderContent()}
-      <MobileStickyBar pathname={pathname} />
       <FloatingMessengerWidget />
     </>
   )

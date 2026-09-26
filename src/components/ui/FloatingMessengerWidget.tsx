@@ -4,110 +4,85 @@ import { innerContacts } from '../../data/innerContacts'
 import { track } from '../../lib/analytics'
 
 export function FloatingMessengerWidget() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [hasScrolled, setHasScrolled] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
+  const [isPromptOpen, setIsPromptOpen] = useState(false)
+  const [dismissed, setDismissed] = useState(false)
   const widgetRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setHasScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    handleScroll()
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    // 1. WhatsApp button drops into its corner with a smooth spring after 800ms
+    const enterTimer = window.setTimeout(() => {
+      setIsVisible(true)
+    }, 800)
 
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (widgetRef.current && !widgetRef.current.contains(e.target as Node)) {
-        setIsOpen(false)
-      }
-    }
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsOpen(false)
-    }
+    // 2. Prompt bubble drops down towards WhatsApp anchor with a natural delay at 2.2s
+    const promptTimer = window.setTimeout(() => {
+      setIsPromptOpen(true)
+    }, 2200)
 
-    if (isOpen) {
-      document.addEventListener('pointerdown', handleClickOutside)
-      document.addEventListener('keydown', handleKeyDown)
-    }
     return () => {
-      document.removeEventListener('pointerdown', handleClickOutside)
-      document.removeEventListener('keydown', handleKeyDown)
+      window.clearTimeout(enterTimer)
+      window.clearTimeout(promptTimer)
     }
-  }, [isOpen])
+  }, [])
 
   const whatsappHref =
     'https://wa.me/79187477212?text=' +
-    encodeURIComponent('Здравствуйте! Хочу узнать подробнее про экскурсии из Кисловодска')
+    encodeURIComponent('Здравствуйте! Хочу узнать свободные даты на экскурсии из Кисловодска')
 
   return (
     <div
       ref={widgetRef}
-      className={`floating-messenger ${hasScrolled ? 'has-scrolled' : ''} ${isOpen ? 'is-open' : ''}`}
-      aria-label="Быстрая связь с гидом"
+      className={`floating-messenger ${isVisible ? 'is-visible' : ''}`}
+      aria-label="Связь с организатором"
     >
-      {/* Pop-up menu with WhatsApp and Phone */}
-      <div className="floating-messenger__menu" aria-hidden={!isOpen}>
-        <div className="floating-messenger__status">
-          <span className="floating-messenger__status-dot" aria-hidden="true" />
-          <span>Эльдар на связи • КМВ</span>
+      {/* Prompt bubble that drops down with delay to where WhatsApp is anchored */}
+      {isPromptOpen && !dismissed && (
+        <div className="floating-messenger__drop-bubble" role="dialog" aria-label="Быстрая связь">
+          <button
+            type="button"
+            className="floating-messenger__drop-close"
+            onClick={() => setDismissed(true)}
+            aria-label="Закрыть"
+          >
+            ×
+          </button>
+          <p className="floating-messenger__drop-text">Подсказать по свободным датам и маршрутам?</p>
+          <div className="floating-messenger__drop-actions">
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              className="floating-messenger__drop-btn floating-messenger__drop-btn--wa"
+              onClick={() => track('contact_click', { channel: 'whatsapp', source: 'drop_bubble' })}
+            >
+              <Icon name="whatsapp" size={16} />
+              <span>WhatsApp</span>
+            </a>
+            <a
+              href={innerContacts.primaryPhone.href}
+              className="floating-messenger__drop-btn floating-messenger__drop-btn--phone"
+              onClick={() => track('contact_click', { channel: 'phone', source: 'drop_bubble' })}
+            >
+              <Icon name="phone" size={14} />
+              <span>Позвонить</span>
+            </a>
+          </div>
         </div>
+      )}
 
-        <a
-          href={whatsappHref}
-          target="_blank"
-          rel="noreferrer"
-          className="floating-messenger__action floating-messenger__action--whatsapp"
-          onClick={() => {
-            track('contact_click', { channel: 'whatsapp', source: 'floating_widget' })
-            setIsOpen(false)
-          }}
-        >
-          <span className="floating-messenger__icon-wrap">
-            <Icon name="whatsapp" size={22} />
-          </span>
-          <div className="floating-messenger__action-text">
-            <strong>Написать в WhatsApp</strong>
-            <small>Отвечаем за 2–5 минут</small>
-          </div>
-        </a>
-
-        <a
-          href={innerContacts.primaryPhone.href}
-          className="floating-messenger__action floating-messenger__action--phone"
-          onClick={() => {
-            track('contact_click', { channel: 'phone', source: 'floating_widget' })
-            setIsOpen(false)
-          }}
-        >
-          <span className="floating-messenger__icon-wrap">
-            <Icon name="phone" size={20} />
-          </span>
-          <div className="floating-messenger__action-text">
-            <strong>Позвонить Эльдару</strong>
-            <small>+7 (918) 747-72-12</small>
-          </div>
-        </a>
-      </div>
-
-      {/* Main Floating Trigger Button */}
-      <button
-        type="button"
-        className="floating-messenger__btn"
-        aria-expanded={isOpen}
-        aria-label={isOpen ? 'Закрыть контакты' : 'Быстрая связь в WhatsApp и по телефону'}
-        onClick={() => setIsOpen((prev) => !prev)}
+      {/* Main WhatsApp Button */}
+      <a
+        href={whatsappHref}
+        target="_blank"
+        rel="noreferrer"
+        className="floating-messenger__main-btn"
+        aria-label="Написать в WhatsApp"
+        onClick={() => track('contact_click', { channel: 'whatsapp', source: 'floating_btn' })}
       >
-        <span className="floating-messenger__ring" aria-hidden="true" />
-        <span className="floating-messenger__ring floating-messenger__ring--delayed" aria-hidden="true" />
-        
-        {isOpen ? (
-          <Icon name="close" size={24} className="floating-messenger__icon floating-messenger__icon--close" />
-        ) : (
-          <Icon name="whatsapp" size={30} className="floating-messenger__icon floating-messenger__icon--wa" />
-        )}
-      </button>
+        <span className="floating-messenger__ping" aria-hidden="true" />
+        <Icon name="whatsapp" size={32} className="floating-messenger__wa-icon" />
+      </a>
     </div>
   )
 }

@@ -277,35 +277,19 @@ export function HeroSection() {
             </div>
             <a className="hero-location" href="/routes">
               <Icon name="location" size={33} />
-              <span>Трансфер от дверей отеля или санатория:<br />Кисловодск, Ессентуки, Пятигорск, Железноводск</span>
+              <span>Минеральные Воды, Кисловодск,<br />Пятигорск, Ессентуки, Железноводск</span>
             </a>
-
-            <div className="hero-tariff-tier" aria-label="Форматы туров и стоимость">
-              <span className="hero-tariff-tier__tag">ТАРИФЫ 2026</span>
-              <div className="hero-tariff-tier__list">
-                <span className="hero-tariff-tier__item">В сборной группе: <strong>от 3 500 ₽</strong> <small>/ чел</small></span>
-                <span className="hero-tariff-tier__sep" aria-hidden="true">•</span>
-                <span className="hero-tariff-tier__item">Индивидуальный джип: <strong>от 18 000 ₽</strong></span>
-              </div>
-            </div>
-
             <div className="hero-actions">
               <a className="hero-cta" href="#home-price-calculator" onClick={() => track('hero_price_click')}>
-                Рассчитать поездку <Icon name="arrow" size={16} />
+                Узнать стоимость <Icon name="arrow" size={16} />
               </a>
               <a className="hero-cta hero-cta--secondary" href="/excursions" onClick={() => track('catalog_open')}>
-                Все экскурсии <Icon name="arrow" size={16} />
+                Смотреть экскурсии <Icon name="arrow" size={16} />
               </a>
             </div>
-
-            <div className="hero-season-pill" aria-label="Сезонные условия">
-              <span className="hero-season-pill__icon" aria-hidden="true">☕</span>
-              <span><strong>Осень и зима в горах:</strong> тёплые авто с печками, чай на травах в термосах и пледы на смотровых.</span>
-            </div>
-
             <div className="hero-trust-badges" aria-label="Преимущества бронирования">
-              <span><Icon name="check" size={13} /> Предоплата всего 1 500 ₽ (остаток в авто)</span>
-              <span><Icon name="check" size={13} /> Заберём от порога отеля</span>
+              <span><Icon name="check" size={13} /> Предоплата всего 1 500 ₽</span>
+              <span><Icon name="check" size={13} /> Заберём от отеля</span>
               <span>⭐ 4.98 (1000+ отзывов)</span>
             </div>
           </div>
