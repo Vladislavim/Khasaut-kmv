@@ -105,10 +105,7 @@ export function FloatingMessengerWidget() {
         {isOpen ? (
           <Icon name="close" size={24} className="floating-messenger__icon floating-messenger__icon--close" />
         ) : (
-          <div className="floating-messenger__icons">
-            <Icon name="whatsapp" size={26} className="floating-messenger__icon floating-messenger__icon--wa" />
-            <Icon name="phone" size={22} className="floating-messenger__icon floating-messenger__icon--tel" />
-          </div>
+          <Icon name="whatsapp" size={30} className="floating-messenger__icon floating-messenger__icon--wa" />
         )}
       </button>
     </div>
