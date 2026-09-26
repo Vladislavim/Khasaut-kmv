@@ -15,6 +15,7 @@ import { detailPages } from './data/innerPages'
 import { FloatingMessengerWidget } from './components/ui/FloatingMessengerWidget'
 
 import { trackHit } from './utils/metrika'
+import { scrollTo } from './lib/lenis'
 
 function getPathname() {
   const path = (typeof window === 'undefined' ? '/' : window.location.pathname).replace(/\/+$/, '')
@@ -25,11 +26,17 @@ function App({ path }: { path?: string } = {}) {
   const pathname = path ?? getPathname()
   useEffect(() => {
     trackHit()
-    if (!window.location.hash) return
+    if (!window.location.hash) {
+      scrollTo(0, { immediate: true })
+      return
+    }
     const frame = requestAnimationFrame(() => {
       let id = window.location.hash.slice(1)
       try { id = decodeURIComponent(id) } catch { /* Keep malformed fragments harmless. */ }
-      document.getElementById(id)?.scrollIntoView({ behavior: 'instant' })
+      const el = document.getElementById(id)
+      if (el) {
+        scrollTo(el, { offset: -70 })
+      }
     })
     return () => cancelAnimationFrame(frame)
   }, [pathname])

@@ -11,6 +11,24 @@ html {
   scrollbar-width: thin;
 }
 
+/* ── Lenis Smooth Scroll Integration ──────────────────────────────────────── */
+html.lenis,
+html.lenis body {
+  height: auto;
+  scroll-behavior: auto !important;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis [data-lenis-prevent],
+.lenis [data-lenis-prevent-wheel],
+.lenis [data-lenis-prevent-touch] {
+  overscroll-behavior: contain;
+}
+
+
 ::-webkit-scrollbar {
   width: 12px;
   height: 12px;

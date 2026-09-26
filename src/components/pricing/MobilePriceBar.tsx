@@ -86,7 +86,7 @@ export function MobilePriceBar({ routeKey }: MobilePriceBarProps) {
         <strong>{minimum ? formatRubles(minimum) : 'по запросу'}</strong>
       </div>
       <button type="button" onClick={scrollToPrice} tabIndex={isHidden ? -1 : 0}>
-        Рассчитать <Icon name="arrow" size={15} />
+        Забронировать <Icon name="arrow" size={15} />
       </button>
     </div>
   )

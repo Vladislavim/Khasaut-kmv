@@ -6,9 +6,11 @@ import { TripFinder } from './components/ui/TripFinder'
 import { ConversionPrompt } from './components/ui/ConversionPrompt'
 
 import { initMetrikaTracking } from './utils/metrika'
+import { initLenis } from './lib/lenis'
 
 document.documentElement.classList.add('js')
 initMetrikaTracking()
+initLenis()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

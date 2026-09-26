@@ -141,13 +141,13 @@ export function InnerPageShell({ meta, className = '', heroRight, showHero = tru
               <div className="inner-hero__buttons inner-hero__buttons--desktop">
                 <a
                   className="inner-button inner-button--solid"
-                  href={meta.heroPrimaryHref ?? (meta.priceKey ? '#detail-price' : '/contact')}
-                  target={meta.heroPrimaryHref?.startsWith('http') ? '_blank' : undefined}
-                  rel={meta.heroPrimaryHref?.startsWith('http') ? 'noreferrer' : undefined}
-                  onClick={() => track(meta.priceKey ? 'hero_price_click' : 'contact_click', { route: meta.priceKey, source: 'inner-hero' })}
+                  href={meta.heroPrimaryHref ?? `https://wa.me/79187477212?text=${encodeURIComponent(`Здравствуйте! Хочу забронировать поездку «${meta.title}». Подскажите свободные даты.`)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => track('booking_click', { route: meta.title, source: 'inner-hero' })}
                 >
-                  {meta.heroPrimaryLabel ?? (meta.priceKey ? 'Рассчитать стоимость' : 'Подобрать тур в WhatsApp')}{' '}
-                  <Icon name={meta.heroPrimaryIcon ?? 'arrow'} size={16} />
+                  {meta.heroPrimaryLabel ?? 'Забронировать в WhatsApp'}{' '}
+                  <Icon name={meta.heroPrimaryIcon ?? 'whatsapp'} size={16} />
                 </a>
                 {meta.heroSecondaryLabel !== null && meta.heroSecondaryLabel && (
                   <a className="inner-button inner-button--quiet" href={meta.heroSecondaryHref ?? '#inner-main'}>
@@ -177,13 +177,13 @@ export function InnerPageShell({ meta, className = '', heroRight, showHero = tru
             <div className="inner-hero__buttons inner-hero__buttons--mobile">
               <a
                 className="inner-button inner-button--solid"
-                href={meta.heroPrimaryHref ?? (meta.priceKey ? '#detail-price' : '/contact')}
-                target={meta.heroPrimaryHref?.startsWith('http') ? '_blank' : undefined}
-                rel={meta.heroPrimaryHref?.startsWith('http') ? 'noreferrer' : undefined}
-                onClick={() => track(meta.priceKey ? 'hero_price_click' : 'contact_click', { route: meta.priceKey, source: 'inner-hero' })}
+                href={meta.heroPrimaryHref ?? `https://wa.me/79187477212?text=${encodeURIComponent(`Здравствуйте! Хочу забронировать поездку «${meta.title}». Подскажите свободные даты.`)}`}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => track('booking_click', { route: meta.title, source: 'inner-hero' })}
               >
-                {meta.heroPrimaryLabel ?? (meta.priceKey ? 'Рассчитать стоимость' : 'Подобрать тур в WhatsApp')}{' '}
-                <Icon name={meta.heroPrimaryIcon ?? 'arrow'} size={16} />
+                {meta.heroPrimaryLabel ?? 'Забронировать в WhatsApp'}{' '}
+                <Icon name={meta.heroPrimaryIcon ?? 'whatsapp'} size={16} />
               </a>
               {meta.heroSecondaryLabel !== null && meta.heroSecondaryLabel && (
                 <a className="inner-button inner-button--quiet" href={meta.heroSecondaryHref ?? '#inner-main'}>

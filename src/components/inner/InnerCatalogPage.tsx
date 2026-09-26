@@ -74,7 +74,7 @@ export function InnerCatalogPage({ meta, cards, sectionTitle, sectionIntro, note
                       <div className="inner-route-card__actions">
                         {priceKey ? (
                           <button className="inner-button inner-button--solid" type="button" onClick={(e) => { e.stopPropagation(); setQuickRouteKey(priceKey) }}>
-                            Рассчитать тур <Icon name="arrow" size={14} />
+                            Забронировать тур <Icon name="arrow" size={14} />
                           </button>
                         ) : (
                           <a className="inner-button inner-button--outline" href="/contact" onClick={(e) => e.stopPropagation()}>Свободные даты <Icon name="arrow" size={14} /></a>
