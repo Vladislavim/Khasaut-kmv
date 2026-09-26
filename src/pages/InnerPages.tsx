@@ -1,4 +1,5 @@
 import { assets } from '../data/assets'
+import { ParallaxPattern } from '../components/ui/ParallaxPattern'
 import { innerContacts } from '../data/innerContacts'
 import { innerWebAssets } from '../data/innerWebAssets'
 import { innerAssets } from '../data/innerAssets'
@@ -310,17 +311,17 @@ export function AboutPage() {
 
         {/* Principles: карточки с визуальным акцентом */}
         <section className="inner-section inner-section--principles" aria-labelledby="principles-title">
-          <img
-            className="section-pattern section-pattern--compass about-principles-pattern-left"
-            src={assets.compassPattern}
-            alt=""
-            aria-hidden="true"
+          <ParallaxPattern
+            className="about-principles-pattern-left section-pattern--caucasus-peak"
+            src={assets.patterns.caucasusPeak}
+            rotate={-3}
+            distance={50}
           />
-          <img
-            className="section-pattern section-pattern--botanical-right about-principles-pattern-right"
-            src={assets.botanicalRightPattern}
-            alt=""
-            aria-hidden="true"
+          <ParallaxPattern
+            className="about-principles-pattern-right section-pattern--wildflower"
+            src={assets.patterns.wildflower}
+            rotate={6}
+            distance={-40}
           />
           <div className="container">
             <div className="inner-section__intro inner-section__intro--compact">
@@ -398,17 +399,17 @@ export function ContactPage() {
     <InnerPageShell meta={contactMeta} heroRight={contactCard} className="inner-page--contact">
       <main id="inner-main" className="inner-main">
         <section className="inner-section inner-section--contact-info" aria-label="Важная информация перед поездкой">
-          <img
-            className="section-pattern section-pattern--compass contact-info-pattern-left"
-            src={assets.compassPattern}
-            alt=""
-            aria-hidden="true"
+          <ParallaxPattern
+            className="contact-info-pattern-left section-pattern--horse"
+            src={assets.patterns.horse}
+            rotate={-5}
+            distance={40}
           />
-          <img
-            className="section-pattern section-pattern--botanical-right contact-info-pattern-right"
-            src={assets.botanicalRightPattern}
-            alt=""
-            aria-hidden="true"
+          <ParallaxPattern
+            className="contact-info-pattern-right section-pattern--ridge"
+            src={assets.patterns.ridge}
+            rotate={2}
+            distance={-35}
           />
           <div className="container">
             <div className="contact-info-grid">

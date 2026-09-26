@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { homeFaqItems, type FaqItem } from '../../data/homeFaqData'
 import { assets } from '../../data/assets'
+import { ParallaxPattern } from '../ui/ParallaxPattern'
 
 type HomeFaqSectionProps = {
   kicker?: string
@@ -36,17 +37,17 @@ export function HomeFaqSection({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <img
-        className="section-pattern section-pattern--compass home-faq-pattern-left"
-        src={assets.compassPattern}
-        alt=""
-        aria-hidden="true"
+      <ParallaxPattern
+        className="home-faq-pattern-left section-pattern--campfire"
+        src={assets.patterns.campfire}
+        rotate={-6}
+        distance={35}
       />
-      <img
-        className="section-pattern section-pattern--botanical-right home-faq-pattern-right"
-        src={assets.botanicalRightPattern}
-        alt=""
-        aria-hidden="true"
+      <ParallaxPattern
+        className="home-faq-pattern-right section-pattern--compass"
+        src={assets.patterns.compass}
+        rotate={10}
+        distance={-45}
       />
       <div className="container">
         <header className="home-faq-section__header">

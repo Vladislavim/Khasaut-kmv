@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="#1b3d2b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Left Barrel -->
+  <path d="M 50,45 L 68,45 L 75,115 L 85,145 L 45,145 L 53,115 Z"/>
+  <ellipse cx="65" cy="152" rx="20" ry="8" stroke-width="2.5"/>
+  <ellipse cx="59" cy="42" rx="9" ry="4" stroke-width="2"/>
+  
+  <!-- Right Barrel -->
+  <path d="M 150,45 L 132,45 L 125,115 L 115,145 L 155,145 L 147,115 Z"/>
+  <ellipse cx="135" cy="152" rx="20" ry="8" stroke-width="2.5"/>
+  <ellipse cx="141" cy="42" rx="9" ry="4" stroke-width="2"/>
+  
+  <!-- Central Bridge and Focus Wheel -->
+  <rect x="92" y="70" width="16" height="30" rx="3" stroke-width="2"/>
+  <line x1="92" y1="80" x2="108" y2="80" stroke-width="1.5"/>
+  <line x1="92" y1="90" x2="108" y2="90" stroke-width="1.5"/>
+  <line x1="72" y1="85" x2="92" y2="85" stroke-width="3"/>
+  <line x1="108" y1="85" x2="128" y2="85" stroke-width="3"/>
+  <line x1="68" y1="52" x2="132" y2="52" stroke-width="2.5"/>
+
+  <!-- Optical lens reflections -->
+  <path d="M 55,152 A 12 4 0 0 1 72,154" stroke-width="1.5"/>
+  <path d="M 125,152 A 12 4 0 0 1 142,154" stroke-width="1.5"/>
+</svg>

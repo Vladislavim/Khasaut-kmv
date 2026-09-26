@@ -40,4 +40,18 @@ export const assets = {
   botanicalRightPattern,
   botanicalLeftPattern,
   mountainDividerPattern,
+  patterns: {
+    jeep: '/assets/patterns/pattern-jeep.webp',
+    peaks: '/assets/patterns/pattern-peaks.webp',
+    horse: '/assets/patterns/pattern-horse.webp',
+    thermal: '/assets/patterns/pattern-thermal.webp',
+    wildflower: '/assets/patterns/pattern-wildflower.webp',
+    ridge: '/assets/patterns/pattern-ridge-single.webp',
+    caucasusPeak: '/assets/patterns/pattern-caucasus-peak.webp',
+    topography: '/assets/patterns/pattern-topography.svg',
+    campfire: '/assets/patterns/pattern-campfire.svg',
+    binoculars: '/assets/patterns/pattern-binoculars.svg',
+    compass: '/assets/patterns/pattern-compass.webp',
+    botanical: '/assets/patterns/pattern-botanical.webp',
+  },
 }

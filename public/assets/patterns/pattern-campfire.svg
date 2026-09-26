@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" stroke="#1b3d2b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Crossing firewood logs -->
+  <line x1="30" y1="165" x2="170" y2="165" stroke-width="4"/>
+  <line x1="45" y1="175" x2="155" y2="155" stroke-width="3.5"/>
+  <line x1="45" y1="155" x2="155" y2="175" stroke-width="3.5"/>
+  
+  <!-- Outer flame -->
+  <path d="M 100,30 C 85,65 60,95 60,135 C 60,155 75,165 100,165 C 125,165 140,155 140,135 C 140,95 115,65 100,30 Z" stroke-width="3"/>
+  
+  <!-- Inner flame -->
+  <path d="M 100,75 C 90,95 80,115 80,138 C 80,152 90,160 100,160 C 110,160 120,152 120,138 C 120,115 110,95 100,75 Z" stroke-width="2"/>
+  
+  <!-- Core flame tongue -->
+  <path d="M 100,110 C 95,125 90,135 90,148 C 90,155 95,158 100,158 C 105,158 110,155 110,148 C 110,135 105,125 100,110 Z" stroke-width="1.8" fill="#1b3d2b" fill-opacity="0.15"/>
+  
+  <!-- Rising embers / sparks -->
+  <circle cx="100" cy="18" r="2.5" fill="#1b3d2b"/>
+  <circle cx="82" cy="40" r="2" fill="#1b3d2b"/>
+  <circle cx="122" cy="35" r="2.2" fill="#1b3d2b"/>
+  <circle cx="135" cy="55" r="1.5" fill="#1b3d2b"/>
+</svg>

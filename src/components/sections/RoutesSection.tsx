@@ -5,6 +5,7 @@ import { Icon } from '../ui/Icon'
 import { routes } from '../../data/routes'
 import { assets } from '../../data/assets'
 import { PriceBadge } from '../pricing/PriceBadge'
+import { ParallaxPattern } from '../ui/ParallaxPattern'
 
 export function RoutesSection() {
   return (
@@ -41,17 +42,17 @@ export function RoutesSection() {
           ))}
         </div>
       </Container>
-      <img
-        className="section-pattern section-pattern--compass routes-pattern-left"
-        src={assets.compassPattern}
-        alt=""
-        aria-hidden="true"
+      <ParallaxPattern
+        className="routes-pattern-left section-pattern--peaks"
+        src={assets.patterns.peaks}
+        rotate={-4}
+        distance={45}
       />
-      <img
-        className="section-pattern section-pattern--botanical-right routes-pattern-right"
-        src={assets.botanicalRightPattern}
-        alt=""
-        aria-hidden="true"
+      <ParallaxPattern
+        className="routes-pattern-right section-pattern--binoculars"
+        src={assets.patterns.binoculars}
+        rotate={8}
+        distance={-40}
       />
     </Section>
   )
