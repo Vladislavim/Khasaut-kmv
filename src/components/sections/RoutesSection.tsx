@@ -46,13 +46,17 @@ export function RoutesSection() {
         className="routes-pattern-left section-pattern--peaks"
         src={assets.patterns.peaks}
         rotate={-4}
-        distance={45}
+        distance={140}
+        tilt={6}
+        horizontalDistance={18}
       />
       <ParallaxPattern
         className="routes-pattern-right section-pattern--binoculars"
         src={assets.patterns.binoculars}
         rotate={8}
-        distance={-40}
+        distance={-125}
+        tilt={-7}
+        horizontalDistance={-16}
       />
     </Section>
   )

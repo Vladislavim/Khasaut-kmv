@@ -7,7 +7,7 @@ export interface ParallaxPatternProps {
   /**
    * Distance in pixels that the pattern travels across viewport transit.
    * Positive drifts upwards as you scroll down; negative drifts downwards.
-   * Default: 45
+   * Default: 110
    */
   distance?: number
   /**
@@ -16,6 +16,16 @@ export interface ParallaxPatternProps {
    */
   rotate?: number
   /**
+   * Dynamic tilt range in degrees as the pattern travels during scroll.
+   * Default: 6
+   */
+  tilt?: number
+  /**
+   * Horizontal drift in pixels across viewport transit.
+   * Default: 0
+   */
+  horizontalDistance?: number
+  /**
    * Custom styles if needed.
    */
   style?: React.CSSProperties
@@ -23,14 +33,16 @@ export interface ParallaxPatternProps {
 
 /**
  * ParallaxPattern renders an atmospheric watermark graphic in the section background
- * and applies a hardware-accelerated parallax drift during smooth scrolling.
+ * and applies a hardware-accelerated parallax drift and organic tilt during smooth scrolling.
  */
 export function ParallaxPattern({
   src,
   className = '',
   alt = '',
-  distance = 45,
+  distance = 110,
   rotate = 0,
+  tilt = 6,
+  horizontalDistance = 0,
   style,
 }: ParallaxPatternProps) {
   const ref = useRef<HTMLImageElement>(null)
@@ -51,12 +63,20 @@ export function ParallaxPattern({
       const windowHeight = window.innerHeight
 
       // Only calculate if parent section is in or near viewport buffer
-      if (rect.bottom > -120 && rect.top < windowHeight + 120) {
+      if (rect.bottom > -150 && rect.top < windowHeight + 150) {
         const totalDistance = windowHeight + rect.height
-        const progress = (windowHeight - rect.top) / totalDistance
-        // Offset is 0 when the section is centered in the viewport
-        const offset = (progress - 0.5) * distance
-        el.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0) rotate(${rotate}deg)`
+        const progress = Math.max(0, Math.min(1, (windowHeight - rect.top) / totalDistance))
+        const centered = progress - 0.5 // -0.5 to +0.5
+
+        // Responsive factor: maintain pleasant motion on small screens
+        const isMobile = window.innerWidth <= 768
+        const distFactor = isMobile ? 0.65 : 1.0
+
+        const yOffset = centered * distance * distFactor
+        const xOffset = centered * horizontalDistance * distFactor
+        const currentRotate = rotate + centered * tilt
+
+        el.style.transform = `translate3d(${xOffset.toFixed(1)}px, ${yOffset.toFixed(1)}px, 0) rotate(${currentRotate.toFixed(1)}deg)`
       }
     }
 
@@ -79,7 +99,7 @@ export function ParallaxPattern({
       window.removeEventListener('resize', onScroll)
       if (rafId !== null) cancelAnimationFrame(rafId)
     }
-  }, [distance, rotate])
+  }, [distance, rotate, tilt, horizontalDistance])
 
   return (
     <img

@@ -4144,9 +4144,9 @@ img { -webkit-tap-highlight-color: transparent; }
   z-index: 0;
   display: block;
   object-fit: contain;
-  opacity: 0.18;
+  opacity: 0.35;
   mix-blend-mode: multiply;
-  filter: saturate(0.75);
+  filter: contrast(1.15) saturate(0.9);
   user-select: none;
   will-change: transform;
   transition: opacity 0.3s ease;
@@ -4154,50 +4154,60 @@ img { -webkit-tap-highlight-color: transparent; }
 
 /* Specific Pattern Motif Dimensions */
 .section-pattern--jeep {
-  width: clamp(160px, 16vw, 240px);
+  width: clamp(170px, 17vw, 255px);
   height: auto;
+  opacity: 0.38;
 }
 .section-pattern--topography {
-  width: clamp(190px, 19vw, 290px);
+  width: clamp(210px, 22vw, 320px);
   height: auto;
-  opacity: 0.22;
+  opacity: 0.40;
 }
 .section-pattern--peaks {
-  width: clamp(160px, 16vw, 240px);
+  width: clamp(175px, 17vw, 255px);
   height: auto;
+  opacity: 0.36;
 }
 .section-pattern--binoculars {
-  width: clamp(130px, 12vw, 180px);
+  width: clamp(140px, 14vw, 200px);
   height: auto;
+  opacity: 0.36;
 }
 .section-pattern--campfire {
-  width: clamp(130px, 12vw, 180px);
+  width: clamp(140px, 14vw, 200px);
   height: auto;
+  opacity: 0.38;
 }
 .section-pattern--compass {
-  width: clamp(140px, 14vw, 210px);
+  width: clamp(155px, 15vw, 225px);
   height: auto;
+  opacity: 0.38;
 }
 .section-pattern--caucasus-peak {
-  width: clamp(200px, 20vw, 300px);
+  width: clamp(220px, 22vw, 330px);
   height: auto;
+  opacity: 0.36;
 }
 .section-pattern--wildflower {
-  width: clamp(130px, 12vw, 180px);
+  width: clamp(140px, 14vw, 195px);
   height: auto;
+  opacity: 0.35;
 }
 .section-pattern--horse {
-  width: clamp(150px, 15vw, 220px);
+  width: clamp(165px, 16.5vw, 240px);
   height: auto;
+  opacity: 0.38;
 }
 .section-pattern--ridge {
-  width: clamp(190px, 19vw, 280px);
+  width: clamp(210px, 21vw, 305px);
   height: auto;
+  opacity: 0.36;
 }
 .section-pattern--botanical-right,
 .section-pattern--botanical-left {
-  width: clamp(130px, 12vw, 185px);
+  width: clamp(135px, 13vw, 195px);
   height: auto;
+  opacity: 0.36;
 }
 
 /* Ensure foreground content always renders cleanly on top of watermark patterns */
@@ -4218,12 +4228,12 @@ img { -webkit-tap-highlight-color: transparent; }
   overflow: hidden;
 }
 .quick-calc-pattern-left {
-  top: 38%;
-  left: clamp(15px, 3.5vw, 65px);
+  top: 36%;
+  left: clamp(12px, 3.5vw, 65px);
 }
 .quick-calc-pattern-right {
-  top: 32%;
-  right: clamp(15px, 3.5vw, 65px);
+  top: 28%;
+  right: clamp(12px, 3.5vw, 65px);
 }
 
 /* Home FAQ Section */
@@ -4282,15 +4292,22 @@ img { -webkit-tap-highlight-color: transparent; }
   right: clamp(16px, 3vw, 55px);
 }
 
-/* Responsive: soften watermark opacity on tablet and hide on small mobile */
+/* Responsive: Keep watermark visible on tablet and mobile with safe sizing */
 @media (max-width: 900px) {
   .section-pattern {
-    opacity: 0.1 !important;
+    opacity: 0.28 !important;
   }
 }
 @media (max-width: 640px) {
   .section-pattern {
-    display: none !important;
+    opacity: 0.24 !important;
+    max-width: 125px !important;
+  }
+}
+@media (max-width: 420px) {
+  .section-pattern {
+    opacity: 0.20 !important;
+    max-width: 100px !important;
   }
 }
 

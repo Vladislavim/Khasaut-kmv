@@ -42,13 +42,17 @@ export function QuickPriceCalculator({ id = 'home-price-calculator' }: { id?: st
         className="quick-calc-pattern-left section-pattern--jeep"
         src={assets.patterns.jeep}
         rotate={-6}
-        distance={45}
+        distance={135}
+        tilt={7}
+        horizontalDistance={18}
       />
       <ParallaxPattern
         className="quick-calc-pattern-right section-pattern--topography"
         src={assets.patterns.topography}
         rotate={4}
-        distance={-40}
+        distance={-120}
+        tilt={-6}
+        horizontalDistance={-18}
       />
       <div className="container">
         <div className="quick-calc-card">

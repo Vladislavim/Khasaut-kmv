@@ -315,13 +315,17 @@ export function AboutPage() {
             className="about-principles-pattern-left section-pattern--caucasus-peak"
             src={assets.patterns.caucasusPeak}
             rotate={-3}
-            distance={50}
+            distance={140}
+            tilt={6}
+            horizontalDistance={20}
           />
           <ParallaxPattern
             className="about-principles-pattern-right section-pattern--wildflower"
             src={assets.patterns.wildflower}
             rotate={6}
-            distance={-40}
+            distance={-120}
+            tilt={-7}
+            horizontalDistance={-16}
           />
           <div className="container">
             <div className="inner-section__intro inner-section__intro--compact">
@@ -403,13 +407,17 @@ export function ContactPage() {
             className="contact-info-pattern-left section-pattern--horse"
             src={assets.patterns.horse}
             rotate={-5}
-            distance={40}
+            distance={135}
+            tilt={7}
+            horizontalDistance={18}
           />
           <ParallaxPattern
             className="contact-info-pattern-right section-pattern--ridge"
             src={assets.patterns.ridge}
             rotate={2}
-            distance={-35}
+            distance={-120}
+            tilt={-6}
+            horizontalDistance={-18}
           />
           <div className="container">
             <div className="contact-info-grid">

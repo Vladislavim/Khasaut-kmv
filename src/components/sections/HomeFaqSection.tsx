@@ -41,13 +41,17 @@ export function HomeFaqSection({
         className="home-faq-pattern-left section-pattern--campfire"
         src={assets.patterns.campfire}
         rotate={-6}
-        distance={35}
+        distance={130}
+        tilt={6}
+        horizontalDistance={16}
       />
       <ParallaxPattern
         className="home-faq-pattern-right section-pattern--compass"
         src={assets.patterns.compass}
         rotate={10}
-        distance={-45}
+        distance={-140}
+        tilt={-8}
+        horizontalDistance={-20}
       />
       <div className="container">
         <header className="home-faq-section__header">

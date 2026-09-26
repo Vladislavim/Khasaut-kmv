@@ -5,6 +5,7 @@ import { Icon } from '../ui/Icon'
 import { TornDivider } from '../ui/TornDivider'
 import { services } from '../../data/services'
 import { assets } from '../../data/assets'
+import { ParallaxPattern } from '../ui/ParallaxPattern'
 
 export function ServicesSection() {
   return (
@@ -28,8 +29,22 @@ export function ServicesSection() {
           ))}
         </div>
       </Container>
-      <img className="services-compass" src={assets.compassPattern} alt="" aria-hidden="true" />
-      <img className="services-botanical" src={assets.botanicalLeftPattern} alt="" aria-hidden="true" />
+      <ParallaxPattern
+        className="services-compass"
+        src={assets.compassPattern}
+        rotate={-8}
+        distance={125}
+        tilt={7}
+        horizontalDistance={14}
+      />
+      <ParallaxPattern
+        className="services-botanical"
+        src={assets.botanicalLeftPattern}
+        rotate={2}
+        distance={-115}
+        tilt={-6}
+        horizontalDistance={-14}
+      />
     </Section>
   )
 }
