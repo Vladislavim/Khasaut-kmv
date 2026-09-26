@@ -2874,52 +2874,65 @@ img { -webkit-tap-highlight-color: transparent; }
   font-weight: 500;
 }
 
-/* ── Mobile & Tablet Hero Atmosphere Wash for 100% Text Legibility ─────────── */
+/* ── Mobile & Tablet Hero Atmosphere: organic alpine vignette, mountain stays crisp & dramatic ── */
 @media (max-width: 900px) {
   .hero-atmosphere {
     background:
-      linear-gradient(180deg,
-        rgba(246, 239, 224, 0.98) 0%,
-        rgba(246, 239, 224, 0.96) 420px,
-        rgba(246, 239, 224, 0.88) 540px,
-        rgba(246, 239, 224, 0.45) 750px,
-        transparent 100%
-      ),
-      linear-gradient(90deg,
-        rgba(246, 239, 224, 0.98) 0%,
-        rgba(246, 239, 224, 0.94) 70%,
-        rgba(246, 239, 224, 0.75) 100%
-      ) !important;
+      radial-gradient(ellipse 95% 65% at 20% 18%, rgba(246, 239, 224, 0.68) 0%, rgba(246, 239, 224, 0.35) 50%, transparent 85%),
+      linear-gradient(180deg, rgba(246, 239, 224, 0.45) 0%, rgba(246, 239, 224, 0.18) 220px, transparent 420px) !important;
   }
 }
 
 @media (max-width: 719px) {
   .hero-atmosphere {
     background:
-      linear-gradient(180deg,
-        rgba(246, 239, 224, 0.98) 0%,
-        rgba(246, 239, 224, 0.97) 360px,
-        rgba(246, 239, 224, 0.90) 480px,
-        rgba(246, 239, 224, 0.4) 100%
-      ) !important;
+      radial-gradient(ellipse 95% 65% at 20% 18%, rgba(246, 239, 224, 0.72) 0%, rgba(246, 239, 224, 0.38) 50%, transparent 85%),
+      linear-gradient(180deg, rgba(246, 239, 224, 0.48) 0%, rgba(246, 239, 224, 0.20) 220px, transparent 420px) !important;
   }
 
   .hero-copy h1 {
     color: var(--forest, #1b3d2b) !important;
-    text-shadow: 0 1px 2px rgba(246, 239, 224, 0.8);
+  }
+
+  .hero-heading__mobile {
+    text-shadow: 0 1px 3px rgba(246, 239, 224, 0.95), 0 0 14px rgba(246, 239, 224, 0.8) !important;
   }
 
   .hero-description {
-    color: #1b3d2b !important;
-    font-weight: 500;
+    color: #102e21 !important;
+    font-weight: 500 !important;
+    text-shadow: 0 1px 2px rgba(246, 239, 224, 0.95), 0 0 10px rgba(246, 239, 224, 0.8) !important;
   }
 
   .hero-actions .hero-cta--secondary {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    background: rgba(246, 239, 224, 0.88) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    padding: 0.48rem 0.95rem !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(27, 61, 43, 0.2) !important;
     color: #1b3d2b !important;
-    font-weight: 600;
-    text-decoration: underline;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  .hero-trust-badges span {
+    background: rgba(246, 239, 224, 0.88) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    padding: 0.24rem 0.6rem !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(27, 61, 43, 0.15) !important;
+    color: #1b3d2b !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05) !important;
   }
 }
+
 
 
 
