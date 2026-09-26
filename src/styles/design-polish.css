@@ -3033,9 +3033,9 @@ img { -webkit-tap-highlight-color: transparent; }
   align-items: flex-end;
   pointer-events: none;
   opacity: 0;
-  transform: translateY(22px) scale(0.9);
-  /* Smooth spring physics when returning to anchor position */
-  transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1),
+  transform: translateY(24px) scale(0.9);
+  /* Smooth spring physics when jumping down to anchor position */
+  transition: transform 0.52s cubic-bezier(0.34, 1.56, 0.64, 1),
               opacity 0.4s ease;
 }
 
@@ -3045,21 +3045,16 @@ img { -webkit-tap-highlight-color: transparent; }
   pointer-events: auto;
 }
 
-/* While scrolling: dips slightly down and dims, so it never freezes rigidly ("не застывает от скролла") */
-.floating-messenger.is-scrolling {
-  transform: translateY(42px) scale(0.86) !important;
-  opacity: 0.32 !important;
-  transition: transform 0.22s ease-out, opacity 0.22s ease-out !important;
-  pointer-events: none !important;
+/* While scrolling DOWN: lags behind, holds back slightly higher */
+.floating-messenger.is-lagging {
+  transform: translateY(-42px) scale(0.96) !important;
+  transition: transform 0.14s ease-out !important;
 }
 
-/* When scroll stops: returns with a delay to its original anchor with spring bounce! */
-.floating-messenger.is-visible:not(.is-scrolling) {
-  transform: translateY(0) scale(1);
-  opacity: 1;
-  pointer-events: auto;
-  transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1),
-              opacity 0.35s ease;
+/* When scrolling DOWN stops: leaps / springs DOWN to its home spot! */
+.floating-messenger.is-visible:not(.is-lagging) {
+  transform: translateY(0) scale(1) !important;
+  transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
 
 @media (max-width: 768px) {
@@ -3068,39 +3063,45 @@ img { -webkit-tap-highlight-color: transparent; }
     bottom: max(18px, env(safe-area-inset-bottom));
   }
 
-  .floating-messenger.is-scrolling {
-    transform: translateY(48px) scale(0.84) !important;
-    opacity: 0.28 !important;
+  .floating-messenger.is-lagging {
+    transform: translateY(-46px) scale(0.95) !important;
+    transition: transform 0.14s ease-out !important;
   }
 }
 
 /* Main Trigger Button */
-.floating-messenger__btn {
+.floating-messenger__main-btn {
   position: relative;
   width: 58px;
   height: 58px;
   border-radius: 50%;
-  border: none;
   background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   box-shadow: 0 6px 22px rgba(37, 211, 102, 0.45), 0 2px 8px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  text-decoration: none;
   transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease;
-  padding: 0;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
 }
 
-.floating-messenger__btn:hover {
+.floating-messenger__main-btn:hover {
   transform: scale(1.08);
   box-shadow: 0 10px 28px rgba(37, 211, 102, 0.55), 0 3px 10px rgba(0, 0, 0, 0.16);
 }
 
-.floating-messenger__btn:active {
+.floating-messenger__main-btn:active {
   transform: scale(0.94);
+}
+
+.floating-messenger__wa-icon {
+  width: 32px;
+  height: 32px;
+  color: #ffffff;
+  display: block;
 }
 
 /* ── Continuous Pulsating Radar Rings (As requested: "пульсирующий норм тема была") ── */
@@ -3129,159 +3130,130 @@ img { -webkit-tap-highlight-color: transparent; }
   }
 }
 
-.floating-messenger__icons {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.floating-messenger__icon--wa {
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.floating-messenger__icon--tel {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-  width: 20px;
-  height: 20px;
-  background: #102e21;
-  color: #f7f3eb;
-  border-radius: 50%;
-  border: 1.5px solid #25d366;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.floating-messenger__icon--close {
-  color: #ffffff;
-}
-
-/* ── Pop-up Menu (Authentic & Direct, Zero Corporate AI Fluff) ── */
-.floating-messenger__menu {
+/* ── Drop-in Prompt Bubble ("с задержкой сваливается к тому месту") ── */
+.floating-messenger__drop-bubble {
   position: absolute;
   bottom: calc(100% + 14px);
   right: 0;
-  min-width: 260px;
-  background: rgba(16, 46, 33, 0.98);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  border-radius: 18px;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
-  padding: 0.85rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-  transform: translateY(12px) scale(0.92);
-  opacity: 0;
-  pointer-events: none;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  width: 260px;
+  max-width: calc(100vw - 32px);
+  background: #ffffff;
+  border: 1px solid rgba(23, 61, 43, 0.14);
+  border-radius: 16px;
+  box-shadow: 0 12px 36px rgba(18, 38, 28, 0.18), 0 3px 10px rgba(0, 0, 0, 0.06);
+  padding: 0.75rem 0.85rem;
+  color: #1b3d2b;
   transform-origin: bottom right;
+  animation: drop-to-anchor 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  z-index: 10;
 }
 
-.floating-messenger.is-open .floating-messenger__menu {
-  transform: translateY(0) scale(1);
-  opacity: 1;
-  pointer-events: auto;
+/* Little downward triangular tail pointing at WhatsApp button */
+.floating-messenger__drop-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  right: 22px;
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  border-right: 1px solid rgba(23, 61, 43, 0.14);
+  border-bottom: 1px solid rgba(23, 61, 43, 0.14);
+  transform: rotate(45deg);
 }
 
-.floating-messenger__menu-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.1rem 0.3rem 0.35rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+@keyframes drop-to-anchor {
+  0% {
+    opacity: 0;
+    transform: translateY(-38px) scale(0.88);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(4px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
-.floating-messenger__menu-title {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #c5a059;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.floating-messenger__menu-close {
-  background: transparent;
+.floating-messenger__drop-close {
+  position: absolute;
+  top: 7px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
   border: none;
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 1.15rem;
+  background: transparent;
+  color: #7a8a81;
+  font-size: 1.2rem;
   line-height: 1;
   cursor: pointer;
-  padding: 0;
-  transition: color 0.15s;
-}
-
-.floating-messenger__menu-close:hover {
-  color: #ffffff;
-}
-
-.floating-messenger__action {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  padding: 0.65rem 0.85rem;
-  border-radius: 12px;
-  text-decoration: none;
-  transition: transform 0.15s ease, filter 0.15s ease;
-  user-select: none;
-}
-
-.floating-messenger__action:active {
-  transform: scale(0.97);
-}
-
-.floating-messenger__action--whatsapp {
-  background: #25d366;
-  color: #072314;
-  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.32);
-}
-
-.floating-messenger__action--whatsapp:hover {
-  filter: brightness(1.05);
-}
-
-.floating-messenger__action--phone {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  color: #f5efe6;
-}
-
-.floating-messenger__action--phone:hover {
-  background: rgba(255, 255, 255, 0.13);
-}
-
-.floating-messenger__icon-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  border-radius: 50%;
+  transition: color 0.15s, background-color 0.15s;
+  padding: 0;
 }
 
-.floating-messenger__action-text {
+.floating-messenger__drop-close:hover {
+  color: #1b3d2b;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.floating-messenger__drop-text {
+  font-size: 0.8rem;
+  line-height: 1.3;
+  font-weight: 500;
+  color: #1b3d2b;
+  margin: 0 18px 0.55rem 0;
+}
+
+.floating-messenger__drop-actions {
   display: flex;
-  flex-direction: column;
-  line-height: 1.2;
+  flex-direction: row;
+  gap: 0.45rem;
 }
 
-.floating-messenger__action-text strong {
-  font-size: 0.88rem;
-  font-weight: 700;
+.floating-messenger__drop-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.46rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.15s ease, filter 0.15s ease;
+  user-select: none;
+  white-space: nowrap;
 }
 
-.floating-messenger__action-text small {
-  font-size: 0.72rem;
-  opacity: 0.82;
-  margin-top: 0.1rem;
+.floating-messenger__drop-btn:active {
+  transform: scale(0.97);
+}
+
+.floating-messenger__drop-btn--wa {
+  background: #25d366;
+  color: #072514;
+  box-shadow: 0 3px 10px rgba(37, 211, 102, 0.28);
+}
+
+.floating-messenger__drop-btn--wa:hover {
+  filter: brightness(1.05);
+}
+
+.floating-messenger__drop-btn--phone {
+  background: #f4ede2;
+  color: #1b3d2b;
+  border: 1px solid rgba(27, 61, 43, 0.15);
+}
+
+.floating-messenger__drop-btn--phone:hover {
+  background: #eae2d3;
 }
 
 /* ── Mobile Header & Hero Compact Rhythm ────────────────────────────────── */
