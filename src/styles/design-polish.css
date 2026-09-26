@@ -3230,8 +3230,10 @@ img { -webkit-tap-highlight-color: transparent; }
 }
 
 @media (max-width: 719px) {
+  .hero-background-picture,
+  .hero-background-picture img,
   .hero-background {
-    object-position: center top !important;
+    object-position: center 18% !important;
     object-fit: cover !important;
   }
 

@@ -231,7 +231,10 @@ export function HeroSection() {
   return (
     <header id="top" className="hero-section">
       <a className="inner-skip" href="#home-main">К содержанию</a>
-      <img className="hero-background" src={assets.heroBackground} alt="" width="1600" height="901" fetchPriority="high" decoding="async" />
+      <picture className="hero-background-picture">
+        <source media="(max-width: 719px)" srcSet={assets.heroBackgroundMobile} />
+        <img className="hero-background" src={assets.heroBackground} alt="" width="1600" height="901" fetchPriority="high" decoding="async" />
+      </picture>
       <div className="hero-atmosphere" aria-hidden="true" />
       <Container className="hero-container">
         <div className="site-header">

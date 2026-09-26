@@ -1,4 +1,5 @@
 import heroBackground from '../../design-reference/khasaut/assets/hero/hero-background-caucasus-optimized.webp'
+import heroBackgroundMobile from '../../design-reference/khasaut/assets/hero/hero-background-mobile.webp'
 import heroTag from '../../design-reference/khasaut/assets/hero/khasaut-hanging-tag.webp'
 import heroRealMountain from '../../design-reference/khasaut/assets/hero/real/hero-real-01-bermamyt-optimized.webp'
 import heroRealPlateau from '../../design-reference/khasaut/assets/hero/real/hero-real-02-plateau-optimized.webp'
@@ -22,6 +23,7 @@ import mountainDividerPattern from '../../design-reference/khasaut/assets/attach
 
 export const assets = {
   heroBackground,
+  heroBackgroundMobile,
   heroTag,
   photoElbrus: heroRealMountain,
   photoArch: heroRealPlateau,
