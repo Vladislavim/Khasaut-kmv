@@ -389,17 +389,17 @@ export function ContactPage() {
           <div className="container">
             <div className="contact-info-grid">
               <Reveal className="contact-info-card" delay={40}>
-                <div className="contact-info-card__icon"><Icon name="location" size={22} /></div>
+                <div className="contact-info-card__icon"><Icon name="location" size={26} /></div>
                 <h3>Откуда забираем</h3>
                 <p>Кисловодск, Пятигорск, Ессентуки, Железноводск и Минеральные Воды. Заберём прямо от вашего отеля или апартаментов и доставим обратно.</p>
               </Reveal>
               <Reveal className="contact-info-card" delay={100}>
-                <div className="contact-info-card__icon"><Icon name="shield" size={22} /></div>
+                <div className="contact-info-card__icon"><Icon name="shield" size={26} /></div>
                 <h3>Бронирование и оплата</h3>
                 <p>Фиксация даты поездки по предоплате всего 1 500 ₽ за бронь. Оставшаяся сумма оплачивается гиду в день выезда наличными или переводом.</p>
               </Reveal>
               <Reveal className="contact-info-card" delay={160}>
-                <div className="contact-info-card__icon"><Icon name="whatsapp" size={22} /></div>
+                <div className="contact-info-card__icon"><Icon name="whatsapp" size={26} /></div>
                 <h3>Режим связи</h3>
                 <p>Пишите в WhatsApp в любое удобное время. Эльдар и команда на связи ежедневно с 8:00 до 22:00 — подскажем по погоде и поможем выбрать тур.</p>
               </Reveal>

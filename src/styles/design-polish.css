@@ -687,14 +687,22 @@ img { -webkit-tap-highlight-color: transparent; }
 }
 
 .contact-info-card__icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: rgba(25, 62, 45, 0.08);
-  color: var(--forest);
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--forest-deep, #102e21);
+  color: #f7f2ea;
   display: grid;
   place-items: center;
-  margin-bottom: 1.15rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 4px 14px rgba(16, 46, 33, 0.22);
+  transition: transform 250ms var(--ease-soft), background 250ms var(--ease-soft), box-shadow 250ms var(--ease-soft);
+}
+
+.contact-info-card:hover .contact-info-card__icon {
+  transform: scale(1.06);
+  background: #174230;
+  box-shadow: 0 6px 18px rgba(16, 46, 33, 0.3);
 }
 
 .contact-info-card h3 {
