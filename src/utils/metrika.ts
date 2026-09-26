@@ -34,6 +34,15 @@ export function trackHit(url?: string) {
   }
 }
 
+export function getAttributionSource(): string | null {
+  if (typeof window === 'undefined') return null
+  try {
+    return sessionStorage.getItem('khasaut_utm_source') || null
+  } catch {
+    return null
+  }
+}
+
 let initialized = false
 
 /**
@@ -48,6 +57,27 @@ let initialized = false
 export function initMetrikaTracking() {
   if (typeof window === 'undefined' || initialized) return
   initialized = true
+
+  // 0. Отслеживание перехода по QR-коду из брошюры/буклета
+  try {
+    const params = new URLSearchParams(window.location.search)
+    const utmSource = params.get('utm_source')
+    const utmCampaign = params.get('utm_campaign')
+    const utmMedium = params.get('utm_medium')
+
+    if (utmSource) {
+      sessionStorage.setItem('khasaut_utm_source', utmSource)
+      if (utmSource === 'brochure' || utmSource === 'booklet') {
+        reachGoal('brochure_qr_scan', {
+          utm_source: utmSource,
+          utm_campaign: utmCampaign || 'kmv_hotels_2026',
+          utm_medium: utmMedium || 'print',
+        })
+      }
+    }
+  } catch {
+    // sessionStorage might be restricted in private browsing
+  }
 
   document.addEventListener('click', (event) => {
     const target = event.target as HTMLElement | null
@@ -73,7 +103,8 @@ export function initMetrikaTracking() {
       }
 
       if (href.includes('wa.me') || href.includes('whatsapp.com')) {
-        reachGoal('whatsapp_click')
+        const source = getAttributionSource()
+        reachGoal('whatsapp_click', source ? { source } : undefined)
         return
       }
 
