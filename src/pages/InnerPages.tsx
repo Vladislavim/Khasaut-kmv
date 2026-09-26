@@ -17,11 +17,20 @@ export function ExcursionsPage() {
         ...excursionsPage,
         heroImages: [
           innerWebAssets.bermamyt[0],
-          innerWebAssets['dzhily-su'][0],
+          innerWebAssets['dzhily-su'][1],
           innerWebAssets.dombay[0],
+          innerWebAssets.elbrus[0],
           innerWebAssets.balkaria[0],
           innerWebAssets.arkhyz[0],
           innerWebAssets.aktoprak[0],
+          innerWebAssets.ossetia[0],
+          innerWebAssets.ingushetia[0],
+          innerWebAssets.grozny[0],
+          innerWebAssets.bermamyt[2],
+          innerWebAssets['dzhily-su'][3],
+          innerWebAssets.dombay[2],
+          innerWebAssets.aktoprak[3],
+          innerWebAssets.balkaria[3],
         ],
       }}
       cards={excursions}
@@ -45,6 +54,16 @@ export function RoutesPage() {
           innerWebAssets['baduk-lakes'][0],
           innerWebAssets['khudes-labyrinth'][0],
           innerWebAssets['mukhinskoe-gorge'][0],
+          innerWebAssets.makhar[1],
+          innerWebAssets['khurla-kol'][1],
+          innerWebAssets['baduk-lakes'][1],
+          innerWebAssets['khudes-labyrinth'][1],
+          innerWebAssets.makhar[3],
+          innerWebAssets['khurla-kol'][2],
+          innerWebAssets['baduk-lakes'][3],
+          innerWebAssets['khudes-labyrinth'][3],
+          innerWebAssets.makhar[5],
+          innerWebAssets['khurla-kol'][4],
         ],
       }}
       cards={unusualRoutes}
@@ -66,6 +85,15 @@ export function ThermalSpringsPage() {
           innerWebAssets.pearl[0],
           innerWebAssets.geduko[0],
           innerWebAssets.aushiger[0],
+          innerWebAssets.suvorovskie[1],
+          innerWebAssets.pearl[1],
+          innerWebAssets.geduko[1],
+          innerWebAssets.aushiger[1],
+          innerWebAssets.suvorovskie[2],
+          innerWebAssets.pearl[2],
+          innerWebAssets.geduko[2],
+          innerWebAssets.aushiger[2],
+          innerWebAssets.suvorovskie[0],
         ],
       }}
       cards={thermalSources}
@@ -314,6 +342,9 @@ export function AboutPage() {
           </div>
         </section>
 
+        {/* Интерактивный фотоархив путешествий с миниатюрами */}
+        <ContactPhotoSlider />
+
       </main>
     </InnerPageShell>
   )
@@ -354,8 +385,7 @@ export function ContactPage() {
   return (
     <InnerPageShell meta={contactMeta} heroRight={contactCard} className="inner-page--contact">
       <main id="inner-main" className="inner-main">
-        {/* Слайдер со всеми реальными фотографиями из ассетов сайта */}
-        <ContactPhotoSlider />
+        {/* Контакты оформлены чистой карточкой без лишних слайдеров */}
       </main>
     </InnerPageShell>
   )

@@ -132,14 +132,6 @@ export function InnerPageShell({ meta, className = '', heroRight, showHero = tru
 
       {showHero && (
         <section className={`inner-hero ${meta.heroVariant ? `inner-hero--${meta.heroVariant}` : ''}`.trim()} aria-labelledby="inner-page-title">
-          <div className="inner-hero__image-wrap">
-            {meta.heroImages && meta.heroImages.length > 1 ? (
-              <InnerHeroSlider images={meta.heroImages} alt={meta.heroAlt} />
-            ) : (
-              <img className="inner-hero__image" src={meta.heroImage} alt={meta.heroAlt} fetchPriority="high" />
-            )}
-          </div>
-          <div className="inner-hero__wash" aria-hidden="true" />
           <div className="container inner-hero__content">
             <div className="inner-hero__copy">
               <span className="inner-kicker">{meta.eyebrow}</span>
@@ -171,14 +163,15 @@ export function InnerPageShell({ meta, className = '', heroRight, showHero = tru
             </div>
             {heroRight ? (
               <div className="inner-hero__right">{heroRight}</div>
-            ) : (
-              <div className="inner-hero__stamp" aria-hidden="true">
-                <span>Северный</span>
-                <strong>Кавказ</strong>
-                <i />
-                <small>Khasaut Tour</small>
+            ) : (meta.heroImages && meta.heroImages.length > 0) || meta.heroImage ? (
+              <div className="inner-hero__slider-wrap">
+                {meta.heroImages && meta.heroImages.length > 1 ? (
+                  <InnerHeroSlider images={meta.heroImages} alt={meta.heroAlt} />
+                ) : (
+                  <img className="inner-hero__image" src={meta.heroImage} alt={meta.heroAlt} fetchPriority="high" />
+                )}
               </div>
-            )}
+            ) : null}
           </div>
           <div className="container inner-hero__mobile-action">
             <div className="inner-hero__buttons inner-hero__buttons--mobile">

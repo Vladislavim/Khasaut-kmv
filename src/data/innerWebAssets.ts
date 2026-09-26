@@ -133,31 +133,157 @@ import horseWeb03 from '../../design-reference/khasaut/assets/inner-web/horse-we
 import horseWeb04 from '../../design-reference/khasaut/assets/inner-web/horse-web-04-optimized.webp'
 import horseWeb05 from '../../design-reference/khasaut/assets/inner-web/horse-web-05-optimized.webp'
 
+import balancingRock from '../../design-reference/khasaut/assets/inner-web/balancing-rock-optimized.webp'
+import { innerAssets } from './innerAssets'
+
 export type InnerWebAssetSet = readonly [string, string, string, ...string[]]
 
 export const innerWebAssets: Record<string, InnerWebAssetSet> = {
-  'dzhily-su': [dzhilySu01, dzhilySu02, dzhilySu03, dzhilySu04, dzhilySu05, dzhilySu06],
-  'dzhily-su-bermamyt': [dzhilySuBermamyt01, dzhilySuBermamyt02, dzhilySuBermamyt03, dzhilySuBermamyt04, dzhilySuBermamyt05, dzhilySuBermamyt06],
-  bermamyt: [bermamyt01, bermamyt02, bermamyt03, bermamyt04, bermamyt05, bermamyt06],
-  dombay: [dombay01, dombay02, dombay03, dombay04, dombay05, dombay06],
-  arkhyz: [arkhyz01, arkhyz02, arkhyz03, arkhyz04, arkhyz05, arkhyz06],
-  elbrus: [elbrus01, elbrus02, elbrus03],
-  aktoprak: [aktoprak01, aktoprak02, aktoprak03, aktoprak04, aktoprak05, aktoprak06],
-  balkaria: [balkaria01, balkaria02, balkaria03, balkaria04, balkaria05, balkaria06],
-  ossetia: [ossetia01, ossetia02, ossetia03, ossetia04, ossetia05, ossetia06],
-  ingushetia: [ingushetia01, ingushetia02, ingushetia03],
-  grozny: [grozny01, grozny02, grozny03, grozny04, grozny05, grozny06],
-  honey: [honey01, honey02, honey03],
-  narzan: [narzan01, narzan02, narzan03],
-  'pereval-vosmerka': [dzhilySuBermamyt04, dzhilySuBermamyt05, dzhilySuBermamyt06],
-  'khurla-kol': [khurlaKol01, khurlaKol02, khurlaKol03, khurlaKol04, khurlaKol05, khurlaKol06],
-  'khudes-labyrinth': [khudesLabyrinth01, khudesLabyrinth02, khudesLabyrinth03, khudesLabyrinth04, khudesLabyrinth05, khudesLabyrinth06],
-  'mukhinskoe-gorge': [mukhinskoeGorge01, mukhinskoeGorge02, mukhinskoeGorge03],
-  makhar: [makhar01, makhar02, makhar03, makhar04, makhar05, makhar06, makhar07, makhar08],
-  'baduk-lakes': [badukLakes01, badukLakes02, badukLakes03, badukLakes04, badukLakes05, badukLakes06],
-  suvorovskie: [suvorovskie03, suvorovskie02, suvorovskie01],
-  pearl: [pearl01, pearl02, pearl03],
-  geduko: [geduko01, geduko02, geduko03],
-  aushiger: [aushiger01, aushiger02, aushiger03],
-  'horse-rides': [horseWeb01, horseWeb02, horseWeb03, horseWeb04, horseWeb05],
+  'dzhily-su': [
+    dzhilySu01, dzhilySu02, dzhilySu03, dzhilySu04, dzhilySu05, dzhilySu06,
+    dzhilySuBermamyt01, dzhilySuBermamyt02, dzhilySuBermamyt03,
+    narzan01, narzan02, narzan03,
+    innerAssets.excursionDzhilySu, bermamyt01,
+  ],
+  'dzhily-su-bermamyt': [
+    dzhilySuBermamyt01, dzhilySuBermamyt02, dzhilySuBermamyt03, dzhilySuBermamyt04, dzhilySuBermamyt05, dzhilySuBermamyt06,
+    dzhilySu01, dzhilySu02, dzhilySu03, dzhilySu05,
+    bermamyt01, bermamyt02, bermamyt03, bermamyt05,
+    innerAssets.excursionBermamytDzhilySu,
+  ],
+  bermamyt: [
+    bermamyt01, bermamyt02, bermamyt03, bermamyt04, bermamyt05, bermamyt06,
+    dzhilySuBermamyt01, dzhilySuBermamyt02, dzhilySuBermamyt04,
+    dzhilySu01, dzhilySu03, balancingRock,
+    innerAssets.excursionBermamyt, dzhilySuBermamyt05,
+  ],
+  dombay: [
+    dombay01, dombay02, dombay03, dombay04, dombay05, dombay06,
+    mukhinskoeGorge01, mukhinskoeGorge02, mukhinskoeGorge03,
+    badukLakes01, badukLakes02, badukLakes03,
+    innerAssets.excursionDombay, arkhyz01,
+  ],
+  arkhyz: [
+    arkhyz01, arkhyz02, arkhyz03, arkhyz04, arkhyz05, arkhyz06,
+    makhar01, makhar02, makhar03, makhar04, makhar05,
+    dombay01, dombay03, innerAssets.excursionArkhyz,
+  ],
+  elbrus: [
+    elbrus01, elbrus02, elbrus03,
+    aktoprak01, aktoprak02, aktoprak03, aktoprak04, aktoprak05,
+    dzhilySu01, dzhilySu02, dzhilySu05, narzan02,
+    innerAssets.excursionElbrus,
+  ],
+  aktoprak: [
+    aktoprak01, aktoprak02, aktoprak03, aktoprak04, aktoprak05, aktoprak06,
+    elbrus01, elbrus02, elbrus03,
+    balkaria01, balkaria02, balkaria03,
+    innerAssets.excursionAktoprak, narzan01,
+  ],
+  balkaria: [
+    balkaria01, balkaria02, balkaria03, balkaria04, balkaria05, balkaria06,
+    aktoprak01, aktoprak02, aktoprak04,
+    aushiger01, aushiger02, aushiger03,
+    innerAssets.excursionBalkaria, elbrus02,
+  ],
+  ossetia: [
+    ossetia01, ossetia02, ossetia03, ossetia04, ossetia05, ossetia06,
+    ingushetia01, ingushetia02, ingushetia03,
+    grozny01, grozny02, grozny03,
+    innerAssets.excursionOssetia, balkaria01,
+  ],
+  ingushetia: [
+    ingushetia01, ingushetia02, ingushetia03,
+    ossetia01, ossetia02, ossetia03, ossetia04, ossetia05,
+    grozny01, grozny02, grozny04,
+    innerAssets.excursionIngushetia, balkaria03,
+  ],
+  grozny: [
+    grozny01, grozny02, grozny03, grozny04, grozny05, grozny06,
+    ingushetia01, ingushetia02, ingushetia03,
+    ossetia01, ossetia02, ossetia05,
+    innerAssets.excursionGrozny,
+  ],
+  honey: [
+    honey01, honey02, honey03,
+    horseWeb01, horseWeb02, horseWeb03, horseWeb04,
+    narzan01, narzan02, narzan03,
+    dzhilySu02, dzhilySu03, innerAssets.excursionHoney, bermamyt02,
+  ],
+  narzan: [
+    narzan01, narzan02, narzan03,
+    dzhilySu01, dzhilySu02, dzhilySu03, dzhilySu04, dzhilySu05,
+    dzhilySuBermamyt01, dzhilySuBermamyt02, dzhilySuBermamyt04,
+    honey01, innerAssets.excursionNarzanValley, bermamyt03,
+  ],
+  'pereval-vosmerka': [
+    dzhilySuBermamyt04, dzhilySuBermamyt05, dzhilySuBermamyt06,
+    bermamyt01, bermamyt02, bermamyt03, bermamyt04,
+    dzhilySu01, dzhilySu02, dzhilySu03, dzhilySu05,
+    balancingRock, innerAssets.excursionVosmerka, narzan01,
+  ],
+  'khurla-kol': [
+    khurlaKol01, khurlaKol02, khurlaKol03, khurlaKol04, khurlaKol05, khurlaKol06,
+    badukLakes01, badukLakes02, badukLakes03, badukLakes04,
+    makhar01, makhar02, makhar03,
+    innerAssets.routeKhurlaKol,
+  ],
+  'khudes-labyrinth': [
+    khudesLabyrinth01, khudesLabyrinth02, khudesLabyrinth03, khudesLabyrinth04, khudesLabyrinth05, khudesLabyrinth06,
+    bermamyt01, bermamyt02, bermamyt03, bermamyt04,
+    dzhilySuBermamyt01, dzhilySuBermamyt02,
+    balancingRock, innerAssets.routeKhudesLabyrinth,
+  ],
+  'mukhinskoe-gorge': [
+    mukhinskoeGorge01, mukhinskoeGorge02, mukhinskoeGorge03,
+    dombay01, dombay02, dombay03, dombay04, dombay05,
+    badukLakes01, badukLakes02, badukLakes03,
+    arkhyz02, innerAssets.routeMukhinskoe,
+  ],
+  makhar: [
+    makhar01, makhar02, makhar03, makhar04, makhar05, makhar06, makhar07, makhar08,
+    arkhyz01, arkhyz02, arkhyz03, arkhyz04,
+    khurlaKol01, khurlaKol02, innerAssets.routeMakhar,
+  ],
+  'baduk-lakes': [
+    badukLakes01, badukLakes02, badukLakes03, badukLakes04, badukLakes05, badukLakes06,
+    khurlaKol01, khurlaKol02, khurlaKol03, khurlaKol04,
+    dombay01, dombay02, dombay03,
+    innerAssets.routeBadukLakes,
+  ],
+  suvorovskie: [
+    suvorovskie03, suvorovskie02, suvorovskie01,
+    geduko01, geduko02, geduko03,
+    pearl01, pearl02, pearl03,
+    aushiger01, aushiger02, aushiger03,
+    innerAssets.thermalSuvorovskie,
+  ],
+  pearl: [
+    pearl01, pearl02, pearl03,
+    suvorovskie01, suvorovskie02, suvorovskie03,
+    geduko01, geduko02, geduko03,
+    aushiger01, aushiger02, aushiger03,
+    innerAssets.thermalPearl,
+  ],
+  geduko: [
+    geduko01, geduko02, geduko03,
+    suvorovskie01, suvorovskie02, suvorovskie03,
+    pearl01, pearl02, pearl03,
+    aushiger01, aushiger02, aushiger03,
+    innerAssets.thermalGeduko, balkaria01,
+  ],
+  aushiger: [
+    aushiger01, aushiger02, aushiger03,
+    geduko01, geduko02, geduko03,
+    suvorovskie01, suvorovskie02, suvorovskie03,
+    balkaria01, balkaria02, balkaria03,
+    innerAssets.thermalAushiger,
+  ],
+  'horse-rides': [
+    horseWeb01, horseWeb02, horseWeb03, horseWeb04, horseWeb05,
+    innerAssets.horseMeadow, innerAssets.horseForest, innerAssets.horseHero,
+    honey01, honey02, honey03,
+    bermamyt01, bermamyt02, bermamyt03, dzhilySu02,
+  ],
 }
+

@@ -991,17 +991,12 @@ img { -webkit-tap-highlight-color: transparent; }
   mask-size:100% 100%;
 }
 
-@media (min-width:720px) {
-  .inner-hero__image-wrap {
-    clip-path:polygon(5% 0,100% 0,100% 100%,2.2% 100%,2.9% 82%,1.8% 64%,2.6% 47%,1.5% 29%,3.1% 13%);
-  }
+/* Clean rectangular framing for inner hero */
+.inner-hero__image-wrap,
+.inner-hero__slider-wrap {
+  clip-path: none !important;
 }
 
-@media (max-width:719px) {
-  .inner-hero__image-wrap {
-    clip-path:polygon(0 5%,13% 4.1%,29% 4.7%,46% 3.8%,63% 4.5%,79% 3.9%,92% 4.6%,100% 4.1%,100% 100%,0 100%);
-  }
-}
 
 /* Remove legacy fence-shaped clipping from catalog sheets. */
 .inner-section--catalog { clip-path:none; }
@@ -2362,9 +2357,123 @@ img { -webkit-tap-highlight-color: transparent; }
   white-space: nowrap !important;
 }
 
-/* ── Inner Hero Mobile Slider & Action Button Under Slider ─────────────────── */
+/* ── Inner Hero: Desktop 2-Column with Compact Rectangular Slider & Clean Mobile Rhythm ── */
 .inner-hero__mobile-action {
   display: none;
+}
+
+@media (min-width: 720px) {
+  .inner-hero {
+    min-height: auto !important;
+    padding: clamp(2.5rem, 4vw, 3.75rem) 0 clamp(2.5rem, 5vw, 4.25rem) !important;
+    background: var(--paper) !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .inner-hero::after,
+  .inner-hero__wash {
+    display: none !important;
+  }
+
+  .inner-hero__content {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.15fr) minmax(340px, clamp(400px, 42vw, 540px)) !important;
+    align-items: center !important;
+    gap: clamp(2.5rem, 4.5vw, 4.5rem) !important;
+    min-height: auto !important;
+    padding: 0 !important;
+  }
+
+  .inner-hero__copy {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .inner-hero__copy .inner-kicker {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    color: rgba(23, 61, 43, 0.7) !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.4rem !important;
+    display: block !important;
+  }
+
+  .inner-hero__copy h1 {
+    font-family: var(--serif-display, Georgia, serif) !important;
+    font-size: clamp(2.8rem, 4.6vw, 4.4rem) !important;
+    line-height: 0.95 !important;
+    color: var(--forest-deep) !important;
+    letter-spacing: -0.03em !important;
+    margin: 0.35rem 0 0.85rem !important;
+    max-width: 14ch !important;
+  }
+
+  .inner-hero__copy p {
+    font-size: clamp(0.95rem, 1.15vw, 1.08rem) !important;
+    line-height: 1.55 !important;
+    color: rgba(28, 38, 33, 0.85) !important;
+    max-width: 48ch !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .inner-hero__copy .inner-hero__buttons--desktop {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.85rem !important;
+    margin-top: 1.25rem !important;
+  }
+
+  .inner-hero__right {
+    width: 100% !important;
+  }
+
+  /* Compact rectangular hero slider card on desktop */
+  .inner-hero__slider-wrap {
+    position: relative !important;
+    width: 100% !important;
+    aspect-ratio: 4 / 3 !important;
+    max-height: 440px !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    box-shadow: 0 16px 44px rgba(23, 61, 43, 0.14), 0 3px 12px rgba(0, 0, 0, 0.06) !important;
+    border: 1px solid rgba(23, 61, 43, 0.14) !important;
+    background: #0f2c1f !important;
+    clip-path: none !important;
+  }
+
+  .inner-hero__slider-wrap .inner-hero-slider,
+  .inner-hero__slider-wrap .inner-hero-slider__stage {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    inset: auto !important;
+  }
+
+  .inner-hero__slider-wrap .inner-hero-slider__slide {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .inner-hero__slider-wrap .inner-hero-slider__img,
+  .inner-hero__slider-wrap .inner-hero__image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    filter: none !important;
+  }
+
+  .inner-hero__slider-wrap .inner-hero-slider__controls {
+    position: absolute !important;
+    bottom: 1rem !important;
+    right: 1rem !important;
+    z-index: 10 !important;
+  }
 }
 
 @media (max-width: 719px) {
@@ -2373,44 +2482,23 @@ img { -webkit-tap-highlight-color: transparent; }
     display: flex !important;
     flex-direction: column !important;
     min-height: auto !important;
-    padding-top: 0.35rem !important;
-    padding-bottom: 1.25rem !important;
-    background: var(--paper);
+    padding-top: 0.75rem !important;
+    padding-bottom: 1.5rem !important;
+    background: var(--paper) !important;
   }
 
   .inner-hero::after,
-  .inner-page--prices .inner-hero::after {
-    display: none !important;
-  }
-
+  .inner-page--prices .inner-hero::after,
   .inner-hero__wash {
     display: none !important;
   }
 
-  /* 1. Photo slider is FIRST at the top of the mobile screen */
-  .inner-hero__image-wrap,
-  .inner-page--prices .inner-hero__image-wrap {
-    order: 1 !important;
-    position: relative !important;
-    inset: auto !important;
-    width: calc(100% - 1.5rem) !important;
-    height: clamp(240px, 64vw, 290px) !important;
-    margin: 0 auto !important;
-    z-index: 2 !important;
-    overflow: hidden !important;
-    border-radius: 14px !important;
-    clip-path: none !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
-  }
-
-  /* 2. Text copy and presentable price badge below the slider */
   .inner-hero__content,
   .inner-page--prices .inner-hero__content {
-    order: 2 !important;
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
     min-height: auto !important;
-    padding-top: clamp(0.85rem, 3vw, 1.25rem) !important;
-    padding-bottom: 0.25rem !important;
+    padding: 0 !important;
   }
 
   .inner-hero__copy {
@@ -2421,21 +2509,17 @@ img { -webkit-tap-highlight-color: transparent; }
   }
 
   .inner-hero__copy .inner-kicker {
-    order: 1 !important;
     font-size: 0.7rem !important;
     margin-bottom: 0.2rem !important;
   }
 
   .inner-hero__copy h1 {
-    order: 2 !important;
     font-size: clamp(2rem, 8vw, 2.4rem) !important;
     line-height: 1.05 !important;
     margin-bottom: 0.65rem !important;
   }
 
-  /* Presentable luxury price card right below the title */
   .inner-hero__copy .price-badge--hero {
-    order: 3 !important;
     display: grid !important;
     grid-template-columns: 1fr auto !important;
     align-items: center !important;
@@ -2487,7 +2571,6 @@ img { -webkit-tap-highlight-color: transparent; }
   }
 
   .inner-hero__copy p {
-    order: 4 !important;
     font-size: 0.88rem !important;
     line-height: 1.4 !important;
     color: rgba(28, 38, 33, 0.85) !important;
@@ -2498,11 +2581,54 @@ img { -webkit-tap-highlight-color: transparent; }
     display: none !important;
   }
 
-  /* 3. Action buttons and trust badges directly below */
+  /* Compact rectangular slider card on mobile */
+  .inner-hero__slider-wrap {
+    position: relative !important;
+    width: 100% !important;
+    height: clamp(230px, 60vw, 290px) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+    border: 1px solid rgba(23, 61, 43, 0.12) !important;
+    margin: 0.5rem 0 0 !important;
+    clip-path: none !important;
+    background: #0f2c1f !important;
+  }
+
+  .inner-hero__slider-wrap .inner-hero-slider,
+  .inner-hero__slider-wrap .inner-hero-slider__stage {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .inner-hero__slider-wrap .inner-hero-slider__slide {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .inner-hero__slider-wrap .inner-hero-slider__img,
+  .inner-hero__slider-wrap .inner-hero__image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    filter: none !important;
+  }
+
+  .inner-hero__slider-wrap .inner-hero-slider__controls {
+    position: absolute !important;
+    bottom: 0.75rem !important;
+    right: 0.75rem !important;
+    z-index: 10 !important;
+  }
+
+  /* Action buttons and trust badges directly below the slider */
   .inner-hero__mobile-action {
-    order: 3 !important;
     display: block !important;
-    padding-top: 0.2rem !important;
+    padding-top: 0.65rem !important;
   }
 
   .inner-hero__buttons--mobile {
@@ -2512,7 +2638,7 @@ img { -webkit-tap-highlight-color: transparent; }
     justify-content: flex-start !important;
     align-items: center !important;
     gap: 0.65rem !important;
-    margin-top: 0.4rem !important;
+    margin-top: 0.2rem !important;
     margin-bottom: 0 !important;
     width: 100% !important;
   }
