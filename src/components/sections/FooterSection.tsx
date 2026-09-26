@@ -2,6 +2,7 @@ import { Container } from '../layout/Container'
 import { Section } from '../layout/Section'
 import { BrandMark } from '../ui/BrandMark'
 import { Icon } from '../ui/Icon'
+import { DevCreditBadge } from '../common/DevCreditBadge'
 import { assets } from '../../data/assets'
 import { innerContacts } from '../../data/innerContacts'
 
@@ -128,9 +129,7 @@ export function FooterSection() {
         {/* Full-width bottom bar */}
         <div className="footer-bottom-bar">
           <span className="footer-bottom-copy">© {new Date().getFullYear()} Khasaut Tour. Все права защищены.</span>
-          <span className="footer-bottom-dev">
-            Сайт разработан: <a href="https://t.me/vimanakov" target="_blank" rel="noopener noreferrer">imanakov vladislav</a>
-          </span>
+          <DevCreditBadge />
           <span className="footer-bottom-tagline">Путешествия и джип-туры по Северному Кавказу</span>
         </div>
       </Container>
