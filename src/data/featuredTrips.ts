@@ -14,7 +14,7 @@ export type FeaturedTrip = {
 
 export const featuredTrips: FeaturedTrip[] = [
   {
-    kicker: 'Взрыв эмоций',
+    kicker: 'Два символа Кавказа',
     title: 'Джилы-Суу + Бермамыт',
     blurb: 'Два легендарных места силы за один день: водопады и целебные нарзаны Джилы-Суу плюс закатное плато Бермамыт с панорамой Эльбруса.',
     image: innerAssets.excursionBermamytDzhilySu,
@@ -23,7 +23,7 @@ export const featuredTrips: FeaturedTrip[] = [
     priceKey: 'dzhily-su-plus-bermamyt',
   },
   {
-    kicker: 'Перебор эмоций',
+    kicker: 'Ледники и древние храмы',
     title: 'Домбай',
     blurb: 'Панорама с перевала Гум-Баши, Сырные пещеры, тысячелетний Шоанинский храм, серебряная река Уллу-Муруджу и канатные дороги к вечным снегам.',
     image: innerAssets.excursionDombay,
@@ -32,7 +32,7 @@ export const featuredTrips: FeaturedTrip[] = [
     priceKey: 'dombay-elbrus-aktoprak',
   },
   {
-    kicker: 'Отдых душой и телом',
+    kicker: 'Альпийские луга и озера',
     title: 'Архыз',
     blurb: 'Древняя столица Алании с византийскими храмами X века, наскальный Лик Христа, Сырные пещеры и современный курорт Романтик.',
     image: innerWebAssets.arkhyz[1],
@@ -41,7 +41,7 @@ export const featuredTrips: FeaturedTrip[] = [
     priceKey: 'arkhyz',
   },
   {
-    kicker: 'Душа и культура края',
+    kicker: 'Древние башни и ущелья',
     title: 'Северная Осетия',
     blurb: 'Куртатинское ущелье, 60-метровый каньон Кадаргаван, наскальная Дзивгисская крепость, некрополь Даргавс и Кармадонское ущелье.',
     image: innerAssets.excursionOssetia,
@@ -50,3 +50,4 @@ export const featuredTrips: FeaturedTrip[] = [
     priceKey: 'ossetia-ingushetia',
   },
 ]
+

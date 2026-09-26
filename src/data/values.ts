@@ -1,6 +1,7 @@
 export const values = [
-  { icon: 'shield', title: 'безопасность и ответственность' },
-  { icon: 'handshake', title: 'честность и открытость' },
-  { icon: 'culture', title: 'уважение к культуре и традициям' },
-  { icon: 'heart', title: 'искренний сервис без формальностей' },
+  { icon: 'shield', title: 'Подготовленные внедорожники 4×4' },
+  { icon: 'handshake', title: 'Честные цены без скрытых доплат' },
+  { icon: 'culture', title: 'Трансфер от отеля и обратно' },
+  { icon: 'heart', title: 'Маршруты без спешки и давки' },
 ] as const
+

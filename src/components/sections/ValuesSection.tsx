@@ -10,7 +10,7 @@ export function ValuesSection() {
       <Container>
         <div className="values-heading">
           <span className="values-heading__line" aria-hidden="true" />
-          <h2>Мы выбираем</h2>
+          <h2>Наши стандарты в поездках</h2>
           <span className="values-heading__line" aria-hidden="true" />
         </div>
         <div className="values-grid">

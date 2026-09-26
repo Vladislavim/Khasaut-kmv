@@ -113,8 +113,8 @@ export function PricesPage() {
               <p className="prices-cta-micro">Предоплата всего 1 500 ₽ • Остаток в день выезда</p>
             </Reveal>
             <Reveal className="inner-detail-facts" delay={120}>
-              <div className="inner-detail-fact"><span>Выезд</span><strong>Заберём от места проживания.</strong></div>
-              <div className="inner-detail-fact"><span>Транспорт</span><strong>Автомобиль подбираем под маршрут.</strong></div>
+              <div className="inner-detail-fact"><span>Выезд</span><strong>Заберём прямо от крыльца вашего отеля или дома.</strong></div>
+              <div className="inner-detail-fact"><span>Транспорт</span><strong>Рамные внедорожники 4×4: Toyota Land Cruiser Prado и УАЗ Патриот.</strong></div>
               <TripRequirements />
               <BookingTerms />
               <a className="inner-detail-fact__phone" href={innerContacts.primaryPhone.href}>
