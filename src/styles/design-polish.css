@@ -4311,3 +4311,48 @@ img { -webkit-tap-highlight-color: transparent; }
   }
 }
 
+/* ── Desktop Site Header: Glass Capsule Navigation & Top Mountain Atmosphere ── */
+@media (min-width: 720px) {
+  .hero-atmosphere {
+    background:
+      linear-gradient(180deg, rgba(246, 239, 224, 0.94) 0%, rgba(246, 239, 224, 0.62) 80px, rgba(246, 239, 224, 0) 150px),
+      linear-gradient(90deg, rgba(246, 239, 224, 0.97) 0%, rgba(246, 239, 224, 0.88) 22%, rgba(246, 239, 224, 0.45) 38%, rgba(246, 239, 224, 0.08) 55%, transparent 72%),
+      linear-gradient(0deg, rgba(20, 44, 31, 0.18), transparent 32%) !important;
+  }
+
+  .site-header .main-nav {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: clamp(1.1rem, 2vw, 2.2rem) !important;
+    padding: 0.42rem 1.35rem !important;
+    background: rgba(246, 239, 224, 0.92) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(25, 62, 45, 0.16) !important;
+    box-shadow: 0 4px 18px rgba(18, 38, 28, 0.08) !important;
+  }
+
+  .site-header .main-nav a {
+    color: #102e21 !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 0.02em !important;
+    padding: 0.25rem 0.2rem !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6) !important;
+  }
+
+  .site-header .main-nav a:hover,
+  .site-header .main-nav a.is-current {
+    color: var(--forest, #1b3d2b) !important;
+    opacity: 1 !important;
+  }
+
+  .header-contacts .contact-button {
+    background: var(--forest, #1b3d2b) !important;
+    color: var(--paper, #f7f2ea) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 4px 14px rgba(18, 38, 28, 0.25) !important;
+  }
+}
+
