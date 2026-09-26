@@ -10,6 +10,7 @@ import {
 } from '../../data/prices'
 import { Icon } from '../ui/Icon'
 import { track } from '../../lib/analytics'
+import { assets } from '../../data/assets'
 
 const quickRouteChips: { id: PriceRouteKey; label: string }[] = [
   { id: 'dzhily-su-bermamyt', label: 'Джилы-Су' },
@@ -36,6 +37,18 @@ export function QuickPriceCalculator({ id = 'home-price-calculator' }: { id?: st
 
   return (
     <section id={id} className="quick-calc-section" aria-label="Быстрый расчет стоимости">
+      <img
+        className="section-pattern section-pattern--compass quick-calc-pattern-left"
+        src={assets.compassPattern}
+        alt=""
+        aria-hidden="true"
+      />
+      <img
+        className="section-pattern section-pattern--botanical-right quick-calc-pattern-right"
+        src={assets.botanicalRightPattern}
+        alt=""
+        aria-hidden="true"
+      />
       <div className="container">
         <div className="quick-calc-card">
           <div className="quick-calc-header">

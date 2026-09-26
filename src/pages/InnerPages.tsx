@@ -310,6 +310,18 @@ export function AboutPage() {
 
         {/* Principles: карточки с визуальным акцентом */}
         <section className="inner-section inner-section--principles" aria-labelledby="principles-title">
+          <img
+            className="section-pattern section-pattern--compass about-principles-pattern-left"
+            src={assets.compassPattern}
+            alt=""
+            aria-hidden="true"
+          />
+          <img
+            className="section-pattern section-pattern--botanical-right about-principles-pattern-right"
+            src={assets.botanicalRightPattern}
+            alt=""
+            aria-hidden="true"
+          />
           <div className="container">
             <div className="inner-section__intro inner-section__intro--compact">
               <div>
@@ -386,6 +398,18 @@ export function ContactPage() {
     <InnerPageShell meta={contactMeta} heroRight={contactCard} className="inner-page--contact">
       <main id="inner-main" className="inner-main">
         <section className="inner-section inner-section--contact-info" aria-label="Важная информация перед поездкой">
+          <img
+            className="section-pattern section-pattern--compass contact-info-pattern-left"
+            src={assets.compassPattern}
+            alt=""
+            aria-hidden="true"
+          />
+          <img
+            className="section-pattern section-pattern--botanical-right contact-info-pattern-right"
+            src={assets.botanicalRightPattern}
+            alt=""
+            aria-hidden="true"
+          />
           <div className="container">
             <div className="contact-info-grid">
               <Reveal className="contact-info-card" delay={40}>

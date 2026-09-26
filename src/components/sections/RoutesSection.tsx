@@ -41,6 +41,18 @@ export function RoutesSection() {
           ))}
         </div>
       </Container>
+      <img
+        className="section-pattern section-pattern--compass routes-pattern-left"
+        src={assets.compassPattern}
+        alt=""
+        aria-hidden="true"
+      />
+      <img
+        className="section-pattern section-pattern--botanical-right routes-pattern-right"
+        src={assets.botanicalRightPattern}
+        alt=""
+        aria-hidden="true"
+      />
     </Section>
   )
 }

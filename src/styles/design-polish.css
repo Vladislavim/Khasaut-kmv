@@ -4039,3 +4039,116 @@ img { -webkit-tap-highlight-color: transparent; }
     border-radius: 20px 20px 0 0 !important;
   }
 }
+
+/* ── Decorative Vintage Watermark Patterns (Compass & Botanical) ───────────── */
+.section-pattern {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  display: block;
+  object-fit: contain;
+  opacity: 0.2;
+  mix-blend-mode: multiply;
+  filter: saturate(0.65);
+  user-select: none;
+  transition: opacity 0.3s ease;
+}
+
+.section-pattern--compass {
+  width: clamp(140px, 14vw, 210px);
+  height: clamp(140px, 14vw, 210px);
+}
+
+.section-pattern--botanical-right,
+.section-pattern--botanical-left {
+  width: clamp(130px, 12vw, 185px);
+  height: clamp(130px, 12vw, 185px);
+}
+
+/* Quick Price Calculator */
+.quick-calc-section {
+  position: relative;
+  overflow: hidden;
+}
+.quick-calc-pattern-left {
+  top: 50%;
+  left: clamp(20px, 4.5vw, 75px);
+  transform: translateY(-50%) rotate(-12deg);
+}
+.quick-calc-pattern-right {
+  top: 50%;
+  right: clamp(20px, 4.5vw, 75px);
+  transform: translateY(-50%) rotate(8deg);
+}
+
+/* Home FAQ Section */
+.home-faq-section {
+  position: relative;
+  overflow: hidden;
+}
+.home-faq-pattern-left {
+  top: clamp(60px, 8vw, 140px);
+  left: clamp(16px, 3.5vw, 65px);
+  transform: rotate(-14deg);
+}
+.home-faq-pattern-right {
+  top: clamp(90px, 12vw, 180px);
+  right: clamp(16px, 3.5vw, 65px);
+  transform: rotate(6deg);
+}
+
+/* Contact Info Section */
+.inner-section--contact-info {
+  position: relative;
+  overflow: hidden;
+}
+.contact-info-pattern-left {
+  bottom: 20px;
+  left: clamp(16px, 3.5vw, 60px);
+  transform: rotate(-10deg);
+}
+.contact-info-pattern-right {
+  bottom: 25px;
+  right: clamp(16px, 3.5vw, 60px);
+  transform: rotate(6deg);
+}
+
+/* About Principles Section */
+.inner-section--principles {
+  position: relative;
+  overflow: hidden;
+}
+.about-principles-pattern-left {
+  top: 60px;
+  left: clamp(16px, 3.5vw, 60px);
+  transform: rotate(-10deg);
+}
+.about-principles-pattern-right {
+  top: 90px;
+  right: clamp(16px, 3.5vw, 60px);
+  transform: rotate(8deg);
+}
+
+/* Routes Section */
+.routes-section {
+  position: relative;
+  overflow: hidden;
+}
+.routes-pattern-left {
+  top: 25px;
+  left: clamp(16px, 3vw, 55px);
+  transform: rotate(-8deg);
+}
+.routes-pattern-right {
+  top: 35px;
+  right: clamp(16px, 3vw, 55px);
+  transform: rotate(12deg);
+}
+
+/* Responsive: hide decorative margin patterns on narrow viewports */
+@media (max-width: 900px) {
+  .section-pattern {
+    display: none !important;
+  }
+}
+

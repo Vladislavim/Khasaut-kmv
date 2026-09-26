@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { homeFaqItems, type FaqItem } from '../../data/homeFaqData'
+import { assets } from '../../data/assets'
 
 type HomeFaqSectionProps = {
   kicker?: string
@@ -34,6 +35,18 @@ export function HomeFaqSection({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <img
+        className="section-pattern section-pattern--compass home-faq-pattern-left"
+        src={assets.compassPattern}
+        alt=""
+        aria-hidden="true"
+      />
+      <img
+        className="section-pattern section-pattern--botanical-right home-faq-pattern-right"
+        src={assets.botanicalRightPattern}
+        alt=""
+        aria-hidden="true"
       />
       <div className="container">
         <header className="home-faq-section__header">
