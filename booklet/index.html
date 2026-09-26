@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khasaut Tour — Евробуклет (Чистая верстка HTML/CSS)</title>
+  <style>
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      src: url('fonts/CormorantGaramond-Variable-Cyrillic.woff2') format('woff2');
+      font-weight: 400 700;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Spectral';
+      src: url('fonts/Spectral-Regular-Cyrillic.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Spectral';
+      src: url('fonts/Spectral-Medium-Cyrillic.woff2') format('woff2');
+      font-weight: 500;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Spectral';
+      src: url('fonts/Spectral-Bold-Cyrillic.woff2') format('woff2');
+      font-weight: 700;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Marck Script';
+      src: url('fonts/MarckScript-Cyrillic.woff2') format('woff2');
+      font-weight: 400;
+      font-display: swap;
+    }
+
+    :root {
+      --paper: #f5eee2;
+      --paper-warm: #ece2d0;
+      --paper-card: #ffffff;
+      --forest-deep: #102e21;
+      --forest: #173d2b;
+      --forest-light: #23533c;
+      --gold: #c5a059;
+      --gold-dark: #9e7d3b;
+      --ink: #222d25;
+      --muted: #667067;
+      --line: rgba(18, 46, 33, 0.16);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Spectral', Georgia, serif;
+      --font-script: 'Marck Script', cursive;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #1a1e1b;
+      color: var(--ink);
+      font-family: var(--font-body);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 10px;
+      gap: 40px;
+    }
+
+    /* Screen UI Controls */
+    .screen-controls {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: #fff;
+      font-family: sans-serif;
+      font-size: 14px;
+      position: sticky;
+      top: 15px;
+      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .screen-controls button {
+      background: var(--gold);
+      color: var(--forest-deep);
+      border: none;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+    .screen-controls button:hover {
+      transform: scale(1.03);
+    }
+
+    /* Print Page Container: Exactly 297mm x 210mm (A4 Landscape) */
+    .sheet {
+      width: 297mm;
+      height: 210mm;
+      background: var(--paper);
+      background-image: 
+        radial-gradient(#dfd4c0 0.75px, transparent 0.75px),
+        linear-gradient(to bottom, #f7f2ea, #ede3d2);
+      background-size: 16px 16px, 100% 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      display: flex;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    /* Folds: Left Panel is 97mm (tucked in), Middle 100mm, Right 100mm */
+    .sheet-outer .panel-1 { width: 97mm; }
+    .sheet-outer .panel-2 { width: 100mm; }
+    .sheet-outer .panel-3 { width: 100mm; }
+
+    .sheet-inner .panel-4 { width: 100mm; }
+    .sheet-inner .panel-5 { width: 100mm; }
+    .sheet-inner .panel-6 { width: 97mm; }
+
+    .panel {
+      height: 210mm;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 10mm 8mm;
+      border-right: 1px dashed rgba(18, 46, 33, 0.18);
+      overflow: hidden;
+    }
+    .panel:last-child {
+      border-right: none;
+    }
+
+    /* Common typography */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      color: var(--forest-deep);
+      font-weight: 700;
+      line-height: 1.08;
+    }
+    .script-quote {
+      font-family: var(--font-script);
+      color: var(--forest);
+      font-size: 17pt;
+      line-height: 1.1;
+      transform: rotate(-2.5deg);
+      display: inline-block;
+    }
+
+    /* Mountain & Pine Vector Borders */
+    .engraved-mountains-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 38mm;
+      opacity: 0.15;
+      background-image: url('assets/mountain_engraving.webp');
+      background-size: cover;
+      background-position: top center;
+      pointer-events: none;
+    }
+    .engraved-ridge-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 28mm;
+      opacity: 0.18;
+      background-image: url('assets/mountain_ridge.webp');
+      background-size: cover;
+      background-position: bottom center;
+      pointer-events: none;
+    }
+
+    /* ========================================================
+       PANEL 01: BACK COVER (Контакты, QR, Соцсети)
+       ======================================================== */
+    .panel-1 {
+      align-items: center;
+      text-align: center;
+      justify-content: space-between;
+      z-index: 2;
+    }
+    .panel-1 .top-quote {
+      margin-top: 5mm;
+      font-size: 19pt;
+      color: var(--forest-deep);
+    }
+    .contact-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3mm;
+      margin-top: 3mm;
+      width: 100%;
+    }
+    .phone-row, .web-row {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--line);
+      border-radius: 8mm;
+      padding: 2.2mm 4.5mm;
+      width: 90%;
+      text-align: left;
+    }
+    .contact-icon {
+      width: 8mm;
+      height: 8mm;
+      border-radius: 50%;
+      background: var(--forest-deep);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon svg {
+      width: 4.5mm;
+      height: 4.5mm;
+      fill: currentColor;
+    }
+    .contact-text strong {
+      display: block;
+      font-size: 11pt;
+      font-family: sans-serif;
+      font-weight: 700;
+      color: var(--forest-deep);
+      letter-spacing: 0.02em;
+    }
+    .contact-text span {
+      display: block;
+      font-size: 7pt;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .social-row {
+      display: flex;
+      align-items: center;
+      gap: 3.5mm;
+      margin: 2mm 0;
+    }
+    .social-btn {
+      width: 8mm;
+      height: 8mm;
+      border-radius: 50%;
+      background: var(--forest);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .social-btn svg {
+      width: 4.5mm;
+      height: 4.5mm;
+      fill: currentColor;
+    }
+    .social-label {
+      font-size: 7.5pt;
+      color: var(--muted);
+      line-height: 1.2;
+      text-align: left;
+    }
+
+    /* QR Code Card */
+    .qr-card-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3.5mm;
+      width: 100%;
+      margin: 2mm 0;
+    }
+    .qr-card {
+      background: #fff;
+      padding: 2.5mm;
+      border-radius: 4mm;
+      border: 1px solid var(--forest-deep);
+      box-shadow: 0 4mm 10mm rgba(18, 46, 33, 0.12);
+      width: 32mm;
+      height: 32mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qr-card img, .qr-card svg {
+      width: 100%;
+      height: 100%;
+    }
+    .qr-annotation {
+      text-align: left;
+      font-family: var(--font-script);
+      font-size: 13pt;
+      line-height: 1.15;
+      color: var(--forest-deep);
+      max-width: 36mm;
+    }
+
+    /* KMV Cities Footer Card */
+    .cities-card {
+      background: var(--forest-deep);
+      color: #fff;
+      border-radius: 4mm;
+      padding: 3mm 4mm;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+      text-align: left;
+      margin-bottom: 2mm;
+      box-shadow: 0 3mm 8mm rgba(16, 46, 33, 0.25);
+    }
+    .cities-card svg {
+      width: 6mm;
+      height: 6mm;
+      fill: var(--gold);
+      flex-shrink: 0;
+    }
+    .cities-card p {
+      font-size: 7pt;
+      line-height: 1.3;
+      color: #e4eee7;
+    }
+    .cities-card strong {
+      color: var(--gold);
+      display: block;
+      font-size: 7.5pt;
+      margin-bottom: 0.5mm;
+    }
+
+    /* ========================================================
+       PANEL 02: FIRST FLAP (7 Направлений со значками)
+       ======================================================== */
+    .panel-2 {
+      align-items: center;
+      text-align: center;
+      justify-content: space-between;
+      z-index: 2;
+    }
+    .panel-2-header h2 {
+      font-size: 19pt;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-top: 4mm;
+      color: var(--forest-deep);
+    }
+    .panel-2-header .kicker {
+      font-size: 11pt;
+      font-weight: 700;
+      color: var(--forest);
+      display: block;
+      margin: 1.5mm 0 2mm 0;
+    }
+    .panel-2-header .desc {
+      font-size: 8.5pt;
+      color: var(--muted);
+      max-width: 75mm;
+      margin: 0 auto 4mm auto;
+      line-height: 1.25;
+    }
+
+    .tours-pill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2.2mm;
+      width: 100%;
+    }
+    .tour-pill-item {
+      display: flex;
+      align-items: center;
+      gap: 3.5mm;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid var(--line);
+      border-radius: 6mm;
+      padding: 1.8mm 3mm;
+      transition: transform 0.15s;
+    }
+    .tour-pill-icon {
+      width: 7.5mm;
+      height: 7.5mm;
+      border-radius: 50%;
+      background: var(--forest-deep);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .tour-pill-icon svg {
+      width: 4.2mm;
+      height: 4.2mm;
+      fill: var(--gold);
+    }
+    .tour-pill-name {
+      font-family: var(--font-display);
+      font-size: 11pt;
+      font-weight: 700;
+      color: var(--forest-deep);
+      letter-spacing: 0.02em;
+    }
+
+    .panel-2-footer {
+      margin-bottom: 3mm;
+    }
+
+    /* ========================================================
+       PANEL 03: FRONT COVER (Обложка с логотипом, Эльбрусом и биркой)
+       ======================================================== */
+    .panel-3 {
+      padding: 0;
+      position: relative;
+      background: #112d20;
+    }
+    .cover-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+    }
+    .cover-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(16, 46, 33, 0.85) 0%,
+        rgba(16, 46, 33, 0.15) 35%,
+        rgba(16, 46, 33, 0.1) 60%,
+        rgba(16, 46, 33, 0.92) 100%
+      );
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 8mm 7mm;
+      color: #fff;
+    }
+
+    .cover-top {
+      text-align: center;
+    }
+    .cover-logo-badge {
+      font-family: var(--font-display);
+      font-size: 26pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      line-height: 0.9;
+    }
+    .cover-logo-sub {
+      font-family: var(--font-script);
+      font-size: 18pt;
+      color: var(--gold);
+      display: block;
+      margin-top: 1mm;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+    }
+    .cover-top-tags {
+      font-size: 6.5pt;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.85);
+      margin-top: 2mm;
+    }
+
+    /* Hanging Tag Artwork */
+    .hanging-tag-wrap {
+      align-self: flex-end;
+      width: 44mm;
+      margin-right: -2mm;
+      margin-top: 12mm;
+      filter: drop-shadow(0 6mm 12mm rgba(0,0,0,0.55));
+    }
+    .hanging-tag-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .cover-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 2mm;
+    }
+    .cover-pill-badge {
+      background: var(--forest-deep);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 4mm;
+      padding: 3mm 4mm;
+      max-width: 68mm;
+      box-shadow: 0 3mm 8mm rgba(0,0,0,0.4);
+    }
+    .cover-pill-badge h3 {
+      font-size: 12.5pt;
+      color: #fff;
+      font-weight: 700;
+    }
+    .cover-pill-badge p {
+      font-size: 7.5pt;
+      color: var(--gold);
+      margin-top: 0.5mm;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .cover-script-note {
+      font-family: var(--font-script);
+      font-size: 14pt;
+      color: #fff;
+      text-align: right;
+      margin-top: 1mm;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+    }
+
+    /* ========================================================
+       PANEL 04: OUR DESTINATIONS (6 Photo Cards)
+       ======================================================== */
+    .panel-4 {
+      align-items: center;
+      text-align: center;
+      justify-content: space-between;
+      z-index: 2;
+    }
+    .panel-4-header h2 {
+      font-size: 20pt;
+      text-transform: uppercase;
+      color: var(--forest-deep);
+      margin-top: 2mm;
+    }
+    .panel-4-header p {
+      font-size: 7.8pt;
+      color: var(--muted);
+      max-width: 80mm;
+      margin: 1.5mm auto 3mm auto;
+      line-height: 1.25;
+    }
+
+    .photo-grid-6 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.8mm;
+      width: 100%;
+    }
+    .photo-card {
+      background: #fff;
+      padding: 1.8mm;
+      border-radius: 2.5mm;
+      border: 1px solid var(--line);
+      box-shadow: 0 2mm 6mm rgba(18, 46, 33, 0.08);
+      text-align: center;
+    }
+    .photo-card img {
+      width: 100%;
+      height: 22mm;
+      object-fit: cover;
+      border-radius: 1.8mm;
+      display: block;
+    }
+    .photo-card span {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 9.2pt;
+      font-weight: 700;
+      color: var(--forest-deep);
+      margin-top: 1.5mm;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .panel-4-footer {
+      margin-bottom: 2mm;
+    }
+
+    /* ========================================================
+       PANEL 05: PRICES TABLE (Таблица цен по городам КМВ)
+       ======================================================== */
+    .panel-5 {
+      align-items: center;
+      text-align: center;
+      justify-content: space-between;
+      z-index: 2;
+    }
+    .panel-5-header h2 {
+      font-size: 19pt;
+      text-transform: uppercase;
+      color: var(--forest-deep);
+      margin-top: 1.5mm;
+    }
+    .panel-5-header .table-note {
+      font-size: 7.5pt;
+      color: var(--forest);
+      font-weight: 700;
+      margin: 1mm 0 2.5mm 0;
+    }
+
+    /* Table fixes for 100mm width */
+    .prices-table-wrap {
+      width: 100%;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 2.5mm;
+      overflow: hidden;
+      box-shadow: 0 1.5mm 4mm rgba(18, 46, 33, 0.06);
+    }
+    table.price-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 5.6pt;
+      text-align: center;
+      table-layout: fixed;
+    }
+    table.price-table col.col-dest { width: 33%; }
+    table.price-table col.col-price { width: 13.4%; }
+    table.price-table th {
+      background: var(--forest-deep);
+      color: #fff;
+      font-weight: 700;
+      padding: 1.5mm 0.5mm;
+      font-size: 5.4pt;
+      border-right: 1px solid rgba(255, 255, 255, 0.15);
+      line-height: 1.1;
+    }
+    table.price-table th:first-child {
+      text-align: left;
+      padding-left: 1.5mm;
+    }
+    table.price-table th:last-child {
+      border-right: none;
+    }
+    table.price-table td {
+      padding: 1mm 0.5mm;
+      border-bottom: 1px solid rgba(18, 46, 33, 0.08);
+      border-right: 1px solid rgba(18, 46, 33, 0.08);
+      font-family: sans-serif;
+      font-size: 5.5pt;
+      white-space: nowrap;
+    }
+    table.price-table tr:last-child td {
+      border-bottom: none;
+    }
+    table.price-table td:first-child {
+      text-align: left;
+      font-family: var(--font-body);
+      font-weight: 600;
+      color: var(--forest-deep);
+      padding-left: 1.5mm;
+      font-size: 5.8pt;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    table.price-table td:last-child {
+      border-right: none;
+    }
+    table.price-table tr:nth-child(even) td {
+      background: #faf6ef;
+    }
+
+    /* Benefits row below table */
+    .table-benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5mm;
+      width: 100%;
+      margin: 1.5mm 0 1mm 0;
+    }
+    .table-benefit {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid var(--line);
+      border-radius: 2mm;
+      padding: 1.2mm 1.5mm;
+      display: flex;
+      align-items: center;
+      gap: 1.5mm;
+      text-align: left;
+    }
+    .table-benefit svg {
+      width: 4mm;
+      height: 4mm;
+      fill: var(--forest-deep);
+      flex-shrink: 0;
+    }
+    .table-benefit p {
+      font-size: 5.6pt;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+
+    .table-phone-box {
+      background: rgba(18, 46, 33, 0.06);
+      border: 1px solid var(--line);
+      border-radius: 5mm;
+      padding: 1.5mm 3.5mm;
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+    }
+    .table-phone-box svg {
+      width: 4mm;
+      height: 4mm;
+      fill: var(--forest);
+    }
+    .table-phone-box strong {
+      font-family: sans-serif;
+      font-size: 8.8pt;
+      color: var(--forest-deep);
+      letter-spacing: 0.02em;
+    }
+
+    /* ========================================================
+       PANEL 06: ROUTE MAP & MOUNTAIN LAKE
+       ======================================================== */
+    .panel-6 {
+      padding: 0;
+      position: relative;
+      background: #eee6d9;
+    }
+    .map-full-artwork {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      display: block;
+    }
+
+    /* ========================================================
+       PRINT MEDIA QUERY (Exact 297mm x 210mm)
+       ======================================================== */
+    @media print {
+      @page {
+        size: 297mm 210mm landscape;
+        margin: 0;
+      }
+      body {
+        background: none;
+        padding: 0;
+        gap: 0;
+      }
+      .screen-controls {
+        display: none !important;
+      }
+      .sheet {
+        box-shadow: none;
+        margin: 0;
+        width: 297mm;
+        height: 210mm;
+      }
+      .panel {
+        border-right: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen UI Helper Controls -->
+  <div class="screen-controls">
+    <strong>🌲 KHASAUT TOUR — Евробуклет (Чистая верстка HTML + CSS)</strong>
+    <button onclick="window.print()">🖨 Печать в PDF (A4 297×210мм)</button>
+    <span style="opacity: 0.8;">Размеры: 97мм + 100мм + 100мм</span>
+  </div>
+
+  <!-- SPREAD 1: ВНЕШНЯЯ СТОРОНА (Лист 1) -->
+  <div class="sheet sheet-outer">
+
+    <!-- PANEL 01: ЗАДНЯЯ СТОРОНА (Контакты, QR, Выезд) -->
+    <div class="panel panel-1">
+      <div class="engraved-mountains-top"></div>
+
+      <div class="top-quote script-quote">
+        Горы ближе, чем кажется
+      </div>
+
+      <div class="contact-block">
+        <div class="phone-row">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+          </div>
+          <div class="contact-text">
+            <strong>+7 918 747-72-12</strong>
+            <span>Пишите в WhatsApp, звоните</span>
+          </div>
+        </div>
+
+        <div class="web-row">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm7.93 9h-3.18a15.7 15.7 0 00-1.28-5.06A8.02 8.02 0 0119.93 11zM12 4.04c.83 1.2 1.96 3.6 2.37 6.96H9.63c.41-3.36 1.54-5.76 2.37-6.96zM4.07 13h3.18c.18 1.8.63 3.54 1.28 5.06A8.02 8.02 0 014.07 13zm3.18-2H4.07a8.02 8.02 0 014.46-5.06A15.7 15.7 0 007.25 11zm2.38 2h4.74c-.41 3.36-1.54 5.76-2.37 6.96-.83-1.2-1.96-3.6-2.37-6.96zm6.84 5.06c.65-1.52 1.1-3.26 1.28-5.06h3.18a8.02 8.02 0 01-4.46 5.06z"/></svg>
+          </div>
+          <div class="contact-text">
+            <strong>khasaut-kmv.ru</strong>
+            <span>Официальный сайт</span>
+          </div>
+        </div>
+
+        <div class="social-row">
+          <div class="social-btn">
+            <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm5.8 14.18c-.24.68-1.2 1.24-1.68 1.3-.44.06-.99.1-3.05-.72-2.45-.98-4.05-3.48-4.17-3.64-.12-.16-1-1.33-1-2.54 0-1.21.63-1.8.85-2.04.22-.24.48-.3.64-.3.16 0 .32 0 .46.01.15.01.35-.06.55.42.21.5.71 1.73.77 1.86.06.13.1.28.02.44-.08.16-.12.26-.24.4-.12.14-.25.31-.36.42-.12.12-.24.25-.1.5.14.24.62 1.02 1.33 1.65.91.81 1.68 1.06 1.92 1.18.24.12.38.1.52-.06.14-.16.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.58-.18 1.26z"/></svg>
+          </div>
+          <div class="social-btn">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </div>
+          <div class="social-btn">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+          </div>
+          <div class="social-label">
+            <strong>Мы в соцсетях</strong><br>
+            Следите за новыми маршрутами
+          </div>
+        </div>
+      </div>
+
+      <div class="qr-card-wrap">
+        <div class="qr-card">
+          <img src="assets/qr_code.svg" alt="QR-код на сайт khasaut-kmv.ru">
+        </div>
+        <div class="qr-annotation">
+          Наведи камеру на QR-код и начни своё путешествие! ➔
+        </div>
+      </div>
+
+      <div class="cities-card">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+        <p>
+          <strong>Выезд из всех городов КМВ:</strong>
+          Кисловодск, Ессентуки, Пятигорск, Железноводск, Минеральные Воды
+        </p>
+      </div>
+
+      <div class="engraved-ridge-bottom"></div>
+    </div>
+
+    <!-- PANEL 02: ПЕРВАЯ СТВОРКА (Экскурсии и джип-туры) -->
+    <div class="panel panel-2">
+      <div class="engraved-mountains-top"></div>
+
+      <div class="panel-2-header">
+        <h2>Экскурсии<br>и джип-туры</h2>
+        <span class="kicker">из Кисловодска и КМВ</span>
+        <p class="desc">Выберите маршрут на свой день и откройте настоящий дикий Кавказ</p>
+      </div>
+
+      <div class="tours-pill-list">
+        <div class="tour-pill-item">
+          <div class="tour-pill-icon"><svg viewBox="0 0 24 24"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2L7 10l-6 8h22L14 6z"/></svg></div>
+          <span class="tour-pill-name">Джилы-Су / Бермамыт</span>
+        </div>
+        <div class="tour-pill-item">
+          <div class="tour-pill-icon"><svg viewBox="0 0 24 24"><path d="M4 15h16v2H4zm8-13l3.5 6H8.5L12 2zm-7 9h14v2H5z"/></svg></div>
+          <span class="tour-pill-name">Домбай (вершины и озера)</span>
+        </div>
+        <div class="tour-pill-item">
+          <div class="tour-pill-icon"><svg viewBox="0 0 24 24"><path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2L7 10l-6 8h22L14 6z"/></svg></div>
+          <span class="tour-pill-name">Архыз (Софийские водопады)</span>
+        </div>
+        <div class="tour-pill-item">
+          <div class="tour-pill-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v2h18V5l-9-4zm7 8H5v9h14V9zm-2 7H7v-5h10v5z"/></svg></div>
+          <span class="tour-pill-name">Северная Осетия</span>
+        </div>
+        <div class="tour-pill-item">
+          <div class="tour-pill-icon"><svg viewBox="0 0 24 24"><path d="M12 2l-5 9h10l-5-9zm0 11c-2.7 0-8 1.34-8 4v3h16v-3c0-2.66-5.3-4-8-4z"/></svg></div>
+          <span class="tour-pill-name">Грозный и Шали</span>
+        </div>
+        <div class="tour-pill-item">
+          <div class="tour-pill-icon"><svg viewBox="0 0 24 24"><path d="M20 8l-3-4h-4l-2 3-4-1-3 4 2 2 3-1 2 4 4 1 1 3h3v-4l-1-2 3-1 2-5z"/></svg></div>
+          <span class="tour-pill-name">Конные прогулки в горах</span>
+        </div>
+        <div class="tour-pill-item">
+          <div class="tour-pill-icon"><svg viewBox="0 0 24 24"><path d="M12 2c1.1 0 2 .9 2 2 0 1.5-2 3-2 3s-2-1.5-2-3c0-1.1.9-2 2-2zm-6 9c1.1 0 2 .9 2 2 0 1.5-2 3-2 3s-2-1.5-2-3c0-1.1.9-2 2-2zm12 0c1.1 0 2 .9 2 2 0 1.5-2 3-2 3s-2-1.5-2-3c0-1.1.9-2 2-2zM4 19h16v2H4z"/></svg></div>
+          <span class="tour-pill-name">Суворовские термальные источники</span>
+        </div>
+      </div>
+
+      <div class="panel-2-footer">
+        <span class="script-quote">Новые дороги вдохновляют!</span>
+      </div>
+
+      <div class="engraved-ridge-bottom"></div>
+    </div>
+
+    <!-- PANEL 03: ОБЛОЖКА (Лицо буклета) -->
+    <div class="panel panel-3">
+      <img src="assets/hero_bg.webp" class="cover-bg" alt="Дорога на Джилы-Су и Эльбрус">
+      
+      <div class="cover-overlay">
+        <div class="cover-top">
+          <div class="cover-logo-badge">KHASAUT</div>
+          <div style="font-family: var(--font-display); font-size: 15pt; letter-spacing: 0.25em; color: #fff; margin-top: -1mm;">TOUR</div>
+          <span class="cover-logo-sub">Северный Кавказ</span>
+          <div class="cover-top-tags">ГОРЫ · ЛЮДИ · МАРШРУТЫ · ЭМОЦИИ</div>
+        </div>
+
+        <div class="hanging-tag-wrap">
+          <img src="assets/hanging_tag.webp" alt="Кожаный брелок Khasaut Tour">
+        </div>
+
+        <div class="cover-bottom">
+          <div class="cover-pill-badge">
+            <h3>Экскурсии и джип-туры</h3>
+            <p>Больше, чем путешествие</p>
+          </div>
+          <div class="cover-script-note">
+            Кавказ ближе, чем кажется ♡
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- SPREAD 2: ВНУТРЕННЯЯ СТОРОНА (Лист 2, Полный разворот) -->
+  <div class="sheet sheet-inner">
+
+    <!-- PANEL 04: НАШИ НАПРАВЛЕНИЯ (6 Фотографий с сайта) -->
+    <div class="panel panel-4">
+      <div class="engraved-mountains-top"></div>
+
+      <div class="panel-4-header">
+        <h2>Наши направления</h2>
+        <p>Живописные маршруты, чистый воздух, величественные горы и незабываемые эмоции. Откройте настоящий Кавказ!</p>
+      </div>
+
+      <div class="photo-grid-6">
+        <div class="photo-card">
+          <img src="assets/tour_dzhily_su.webp" alt="Джилы-Су / Бермамыт">
+          <span>Джилы-Су / Бермамыт</span>
+        </div>
+        <div class="photo-card">
+          <img src="assets/tour_dombay.webp" alt="Домбай">
+          <span>Домбай</span>
+        </div>
+        <div class="photo-card">
+          <img src="assets/tour_arkhyz.webp" alt="Архыз">
+          <span>Архыз</span>
+        </div>
+        <div class="photo-card">
+          <img src="assets/tour_ossetia.webp" alt="Северная Осетия">
+          <span>Северная Осетия</span>
+        </div>
+        <div class="photo-card">
+          <img src="assets/tour_grozny.webp" alt="Грозный">
+          <span>Грозный и Шали</span>
+        </div>
+        <div class="photo-card">
+          <img src="assets/tour_thermal.webp" alt="Термальные источники">
+          <span>Термальные источники</span>
+        </div>
+      </div>
+
+      <div class="panel-4-footer">
+        <span class="script-quote">Настоящие места. Настоящие эмоции.</span>
+      </div>
+
+      <div class="engraved-ridge-bottom"></div>
+    </div>
+
+    <!-- PANEL 05: СТОИМОСТЬ ЭКСКУРСИЙ (Реальная таблица цен) -->
+    <div class="panel panel-5">
+      <div class="engraved-mountains-top"></div>
+
+      <div class="panel-5-header">
+        <h2>Стоимость экскурсий</h2>
+        <div class="table-note">Цены за автомобиль (всю группу) · В мини-группе: от 3 000 ₽ / чел</div>
+      </div>
+
+      <div class="prices-table-wrap">
+        <table class="price-table">
+          <colgroup>
+            <col class="col-dest">
+            <col class="col-price">
+            <col class="col-price">
+            <col class="col-price">
+            <col class="col-price">
+            <col class="col-price">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Направление</th>
+              <th>Кисловодск</th>
+              <th>Ессентуки</th>
+              <th>Пятигорск</th>
+              <th>Железноводск</th>
+              <th>Минводы</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Джилы-Су / Бермамыт</td>
+              <td>16 000 ₽</td>
+              <td>16 000 ₽</td>
+              <td>16 000 ₽</td>
+              <td>16 000 ₽</td>
+              <td>18 000 ₽</td>
+            </tr>
+            <tr>
+              <td>Домбай</td>
+              <td>20 000 ₽</td>
+              <td>20 000 ₽</td>
+              <td>20 000 ₽</td>
+              <td>20 000 ₽</td>
+              <td>22 000 ₽</td>
+            </tr>
+            <tr>
+              <td>Архыз (водопады)</td>
+              <td>18 000 ₽</td>
+              <td>18 000 ₽</td>
+              <td>18 000 ₽</td>
+              <td>18 000 ₽</td>
+              <td>20 000 ₽</td>
+            </tr>
+            <tr>
+              <td>Северная Осетия</td>
+              <td>18 000 ₽</td>
+              <td>18 000 ₽</td>
+              <td>18 000 ₽</td>
+              <td>18 000 ₽</td>
+              <td>20 000 ₽</td>
+            </tr>
+            <tr>
+              <td>Грозный / Шали</td>
+              <td>27 000 ₽</td>
+              <td>27 000 ₽</td>
+              <td>27 000 ₽</td>
+              <td>27 000 ₽</td>
+              <td>30 000 ₽</td>
+            </tr>
+            <tr>
+              <td>Приэльбрусье</td>
+              <td>23 000 ₽</td>
+              <td>23 000 ₽</td>
+              <td>23 000 ₽</td>
+              <td>23 000 ₽</td>
+              <td>25 000 ₽</td>
+            </tr>
+            <tr>
+              <td>Озеро Гижгит / Чегем</td>
+              <td>17 000 ₽</td>
+              <td>17 000 ₽</td>
+              <td>17 000 ₽</td>
+              <td>17 000 ₽</td>
+              <td>19 000 ₽</td>
+            </tr>
+            <tr>
+              <td>Пятигорск (обзорная)</td>
+              <td>8 000 ₽</td>
+              <td>8 000 ₽</td>
+              <td>8 000 ₽</td>
+              <td>8 000 ₽</td>
+              <td>9 000 ₽</td>
+            </tr>
+            <tr>
+              <td>Железноводск (обзор)</td>
+              <td>7 000 ₽</td>
+              <td>7 000 ₽</td>
+              <td>7 000 ₽</td>
+              <td>7 000 ₽</td>
+              <td>8 000 ₽</td>
+            </tr>
+            <tr>
+              <td>Суворовские термы</td>
+              <td>8 000 ₽</td>
+              <td>8 000 ₽</td>
+              <td>8 000 ₽</td>
+              <td>8 000 ₽</td>
+              <td>9 000 ₽</td>
+            </tr>
+            <tr>
+              <td>Конные прогулки</td>
+              <td>5 000 ₽</td>
+              <td>5 000 ₽</td>
+              <td>5 000 ₽</td>
+              <td>5 000 ₽</td>
+              <td>6 000 ₽</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-benefits-grid">
+        <div class="table-benefit">
+          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          <p><strong>В стоимость входит:</strong> трансфер, гид, комфортный внедорожник</p>
+        </div>
+        <div class="table-benefit">
+          <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 002 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+          <p><strong>Бронируйте заранее:</strong> в сезон места разбирают за 2-3 дня</p>
+        </div>
+      </div>
+
+      <div class="table-phone-box">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+        <strong>+7 918 747-72-12</strong>
+        <span style="font-size: 7.5pt; color: var(--muted);">(WhatsApp, звонки)</span>
+      </div>
+
+      <span class="script-quote">Новые дороги вдохновляют!</span>
+
+      <div class="engraved-ridge-bottom"></div>
+    </div>
+
+    <!-- PANEL 06: КАРТА МАРШРУТОВ И ГОРНОЕ ОЗЕРО -->
+    <div class="panel panel-6">
+      <img src="assets/panel_06_hq.png" class="map-full-artwork" alt="Карта маршрутов Khasaut Tour">
+    </div>
+
+  </div>
+
+</body>
+</html>

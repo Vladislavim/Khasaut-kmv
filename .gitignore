@@ -36,3 +36,6 @@ GPT_SITE_CONTEXT.md
 "ИНСТРУКЦИЯ_ПО_ЗАГРУЗКЕ.md"
 README_ХОСТИНГ.txt
 .htaccess
+audit/
+scratch/
+
