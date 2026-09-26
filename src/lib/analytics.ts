@@ -13,6 +13,7 @@ export type AnalyticsEvent =
   | 'conversion_prompt_open'
   | 'conversion_prompt_dismiss'
   | 'conversion_cta_click'
+  | 'mobile_sticky_whatsapp_click'
 
 export function track(event: AnalyticsEvent, properties: Record<string, string | number | boolean | undefined> = {}) {
   if (typeof window === 'undefined') return

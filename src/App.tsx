@@ -12,6 +12,7 @@ import { AboutPage, ContactPage, ExcursionsPage, HorseRidesPage, NotFoundPage, R
 import { InnerDetailPage } from './pages/InnerDetailPage'
 import { PricesPage } from './pages/PricesPage'
 import { detailPages } from './data/innerPages'
+import { MobileStickyBar } from './components/ui/MobileStickyBar'
 
 import { trackHit } from './utils/metrika'
 
@@ -33,22 +34,31 @@ function App({ path }: { path?: string } = {}) {
     return () => cancelAnimationFrame(frame)
   }, [pathname])
 
-  if (pathname === '/' || pathname === '/index.html') return <HomePage />
-  if (pathname === '/excursions' || pathname === '/services') return <ExcursionsPage />
-  if (pathname === '/routes') return <RoutesPage />
-  if (pathname === '/horse-rides') return <HorseRidesPage />
-  if (pathname === '/thermal-springs') return <ThermalSpringsPage />
-  if (pathname === '/about') return <AboutPage />
-  if (pathname === '/contact') return <ContactPage />
-  if (pathname === '/prices') return <PricesPage />
+  const renderContent = () => {
+    if (pathname === '/' || pathname === '/index.html') return <HomePage />
+    if (pathname === '/excursions' || pathname === '/services') return <ExcursionsPage />
+    if (pathname === '/routes') return <RoutesPage />
+    if (pathname === '/horse-rides') return <HorseRidesPage />
+    if (pathname === '/thermal-springs') return <ThermalSpringsPage />
+    if (pathname === '/about') return <AboutPage />
+    if (pathname === '/contact') return <ContactPage />
+    if (pathname === '/prices') return <PricesPage />
 
-  if (pathname.startsWith('/detail/')) {
-    const slug = pathname.slice('/detail/'.length)
-    const detailPage = detailPages.find((page) => page.slug === slug)
-    if (detailPage) return <InnerDetailPage page={detailPage} />
+    if (pathname.startsWith('/detail/')) {
+      const slug = pathname.slice('/detail/'.length)
+      const detailPage = detailPages.find((page) => page.slug === slug)
+      if (detailPage) return <InnerDetailPage page={detailPage} />
+    }
+
+    return <NotFoundPage />
   }
 
-  return <NotFoundPage />
+  return (
+    <>
+      {renderContent()}
+      <MobileStickyBar pathname={pathname} />
+    </>
+  )
 }
 
 export default App

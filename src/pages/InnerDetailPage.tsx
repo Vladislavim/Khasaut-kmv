@@ -4,6 +4,7 @@ import { InnerPageShell } from '../components/inner/InnerPageShell'
 import { getPriceKeyForRouteSlug } from '../data/prices'
 import { RouteItinerarySection } from '../components/inner/RouteItinerarySection'
 import { RoutePracticalSection } from '../components/inner/RoutePracticalSection'
+import { HomeFaqSection } from '../components/sections/HomeFaqSection'
 import { InnerInterestPicker } from '../components/inner/InnerInterestPicker'
 import { TripCallToAction } from '../components/ui/TripCallToAction'
 
@@ -60,6 +61,14 @@ export function InnerDetailPage({ page }: InnerDetailPageProps) {
 
         {/* 3. Practical info: inclusions, extra costs, timing, gear & rules */}
         <RoutePracticalSection practical={page.practical} routeTitle={page.title} />
+
+        {/* 3.1 FAQ with Schema.org/FAQPage rich snippet support for search engines */}
+        <HomeFaqSection
+          kicker="Частые вопросы о поездке"
+          title={`Частые вопросы: ${page.title}`}
+          subtitle={`Всё об организации поездки по направлению «${page.title}»: что надеть, во сколько выезд, безопасность и бронирование.`}
+          idPrefix={`detail-faq-${page.slug}`}
+        />
 
         {/* 4. Interactive Interest Matcher Widget */}
         <InnerInterestPicker currentSlug={page.slug} />

@@ -109,7 +109,7 @@ export function FooterSection() {
                 <span>Написать в WhatsApp</span>
               </a>
               <a
-                href="https://www.instagram.com/eldar_e_7212?igsi=MWltZzl1Y2luejN5bw=="
+                href="https://www.instagram.com/khasaut_jeep_tours/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-insta-btn"

@@ -26,21 +26,62 @@ const navItems = [
 const headerContacts = [
   { label: 'Телефон', icon: 'phone', href: innerContacts.primaryPhone.href },
   { label: 'WhatsApp', icon: 'whatsapp', href: innerContacts.whatsapp.href },
-  { label: 'Instagram', icon: 'instagram', href: 'https://www.instagram.com/eldar_e_7212?igsi=MWltZzl1Y2luejN5bw==' },
+  { label: 'Instagram', icon: 'instagram', href: 'https://www.instagram.com/khasaut_jeep_tours/' },
 ] as const
+
+function setMeta(selector: string, attrName: string, attrVal: string, content: string) {
+  let el = document.querySelector(selector) as HTMLMetaElement | null
+  if (!el) {
+    el = document.createElement('meta')
+    el.setAttribute(attrName, attrVal)
+    document.head.appendChild(el)
+  }
+  el.setAttribute('content', content)
+}
+
+function setLink(rel: string, href: string) {
+  let el = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null
+  if (!el) {
+    el = document.createElement('link')
+    el.setAttribute('rel', rel)
+    document.head.appendChild(el)
+  }
+  el.setAttribute('href', href)
+}
 
 export function InnerPageShell({ meta, className = '', heroRight, showHero = true, children }: InnerPageShellProps) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    document.title = meta.seoTitle ?? `${meta.title} - Khasaut Tour`
-    if (meta.seoDescription) {
-      const description = document.querySelector('meta[name="description"]') ?? document.createElement('meta')
-      description.setAttribute('name', 'description')
-      description.setAttribute('content', meta.seoDescription)
-      if (!description.parentElement) document.head.appendChild(description)
+    const pageTitle = meta.seoTitle ?? `${meta.title} — Khasaut Tour`
+    const pageDesc = meta.seoDescription ?? meta.intro
+    const pagePath = typeof window !== 'undefined' ? `https://khasaut-kmv.ru${window.location.pathname}` : 'https://khasaut-kmv.ru/'
+
+    // Resolve absolute image URL for OpenGraph / WhatsApp / Telegram sharing
+    let imageUrl = 'https://khasaut-kmv.ru/og-image.jpg'
+    if (meta.heroImage) {
+      imageUrl = meta.heroImage.startsWith('http')
+        ? meta.heroImage
+        : `https://khasaut-kmv.ru${meta.heroImage.startsWith('/') ? '' : '/'}${meta.heroImage}`
     }
-  }, [meta.seoDescription, meta.seoTitle, meta.title])
+
+    document.title = pageTitle
+    setMeta('meta[name="description"]', 'name', 'description', pageDesc)
+
+    // OpenGraph (WhatsApp, Telegram, VK)
+    setMeta('meta[property="og:title"]', 'property', 'og:title', pageTitle)
+    setMeta('meta[property="og:description"]', 'property', 'og:description', pageDesc)
+    setMeta('meta[property="og:image"]', 'property', 'og:image', imageUrl)
+    setMeta('meta[property="og:url"]', 'property', 'og:url', pagePath)
+
+    // Twitter Card
+    setMeta('meta[name="twitter:title"]', 'name', 'twitter:title', pageTitle)
+    setMeta('meta[name="twitter:description"]', 'name', 'twitter:description', pageDesc)
+    setMeta('meta[name="twitter:image"]', 'name', 'twitter:image', imageUrl)
+
+    // Canonical URL
+    setLink('canonical', pagePath)
+  }, [meta.heroImage, meta.intro, meta.seoDescription, meta.seoTitle, meta.title])
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
