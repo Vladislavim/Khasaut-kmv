@@ -3204,12 +3204,12 @@
 /* Route cards are photographs, not panels: keep only the printed card edge. */
 .route-card {
   border: 0;
-  border-radius: 0;
+  border-radius: 20px;
   background: transparent;
 }
 
 .route-card__media {
-  --route-radius: 8px;
+  --route-radius: 18px;
   background-position: center;
   background-size: cover;
   border-radius: var(--route-radius);
@@ -4563,7 +4563,7 @@
   padding: clamp(4px, 0.45vw, 8px);
   background: rgba(247, 242, 228, 0.96);
   border: 1px solid rgba(255, 253, 245, 0.82);
-  border-radius: 1px;
+  border-radius: 18px;
   --carousel-scale: 0.985;
   --carousel-x: 0px;
   --carousel-y: 0px;

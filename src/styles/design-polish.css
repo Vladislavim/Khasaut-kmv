@@ -27,7 +27,7 @@
 .featured-trip-card {
   border: 1px solid rgba(255, 255, 255, 0.18);
   background: #fbf8f1;
-  border-radius: 8px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
@@ -56,7 +56,7 @@
 .featured-trip-card .price-badge__unit { font-size: 11px; color: #626852; }
 .featured-trip-card .price-badge__label { display: none; }
 .featured-trip-card__actions { gap: 14px; align-items: center; margin-top: 18px; }
-.featured-trip-card__actions .inner-button { min-height: 44px; padding: 10px 18px; font-size: 12px; letter-spacing: .02em; border-radius: 4px; font-weight: 600; }
+.featured-trip-card__actions .inner-button { min-height: 44px; padding: 10px 18px; font-size: 12px; letter-spacing: .02em; border-radius: 12px; font-weight: 600; }
 .featured-trip-card__actions .inner-button--solid {
   background: #c5a059;
   color: #102e21;
@@ -84,7 +84,7 @@
   border-color: #102e21;
 }
 .home-price-configurator { width: calc(100% - 40px); }
-.inner-hero__buttons .inner-button--solid, .inner-detail-practical .inner-button--solid, .inner-contact-layout__intro .inner-button { display: inline-flex; min-height: 48px; padding: 13px 20px; align-items: center; gap: 18px; background: var(--forest); color: #f7efdc; border: 1px solid var(--forest); border-radius: 2px; font-size: 12px; text-decoration:none; }
+.inner-hero__buttons .inner-button--solid, .inner-detail-practical .inner-button--solid, .inner-contact-layout__intro .inner-button { display: inline-flex; min-height: 48px; padding: 13px 20px; align-items: center; gap: 18px; background: var(--forest); color: #f7efdc; border: 1px solid var(--forest); border-radius: 12px; font-size: 12px; text-decoration:none; }
 .inner-hero__buttons .inner-button--solid:hover, .inner-detail-practical .inner-button--solid:hover, .inner-contact-layout__intro .inner-button:hover { background: #315c40; color: #fff8e7; }
 .price-routes-list { gap: 0; border-top: 1px solid #c6c8b4; }
 .price-route-panel { border: 0; border-bottom: 1px solid #c6c8b4; background: transparent; }
@@ -122,9 +122,9 @@
 html:not(.js) .reveal, html:not(.js) .section-reveal { opacity: 1 !important; transform: none !important; visibility: visible !important; }
 html:not(.js) .section-reveal__veil { display: none !important; }
 
-.inner-hero .price-badge--hero { display:flex; width:fit-content; max-width:100%; padding:12px 16px; background:#f6efdf; color:#173d2c; border:1px solid #d9d1bd; border-radius:2px; gap:6px 14px; }
+.inner-hero .price-badge--hero { display:flex; width:fit-content; max-width:100%; padding:12px 16px; background:#f6efdf; color:#173d2c; border:1px solid #d9d1bd; border-radius:12px; gap:6px 14px; }
 .inner-hero .price-badge--hero strong, .inner-hero .price-badge--hero .price-badge__label, .inner-hero .price-badge--hero .price-badge__unit { color:#173d2c; opacity:1; }
-.inner-hero__buttons .inner-button:not(.inner-button--solid) { background:#f6efdf; padding:12px 16px; color:#173d2c; border:1px solid #d9d1bd; border-radius:2px; }
+.inner-hero__buttons .inner-button:not(.inner-button--solid) { background:#f6efdf; padding:12px 16px; color:#173d2c; border:1px solid #d9d1bd; border-radius:12px; }
 
 /* September 16: simplify hierarchy across the existing site. */
 .reveal { transition-duration:280ms; }
@@ -178,7 +178,7 @@ img { -webkit-tap-highlight-color: transparent; }
 .inner-section--catalog .inner-section__intro p { color: rgba(245, 239, 230, 0.82); font-size: 15px; line-height: 1.65; }
 .inner-section--catalog .inner-kicker { color: #c5a059; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; display: inline-block; margin-bottom: 8px; }
 .inner-catalog-grid { gap: 28px; align-items: stretch; }
-.inner-route-card { display: flex; flex-direction: column; height: 100%; min-height: 0; border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 6px; background: #fbf8f1; color: #102e21; overflow: hidden; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease; }
+.inner-route-card { display: flex; flex-direction: column; height: 100%; min-height: 0; border: 1px solid rgba(255, 255, 255, 0.18); border-radius: 20px; background: #fbf8f1; color: #102e21; overflow: hidden; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease; }
 .inner-route-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32); border-color: rgba(255, 255, 255, 0.4); }
 .inner-route-card__media { position: relative; inset: auto; flex-shrink: 0; aspect-ratio: 1.65; height: auto; margin: 0; background: #1a382b; overflow: hidden; }
 .inner-route-card__media::after { display: none; }
@@ -2748,7 +2748,7 @@ img { -webkit-tap-highlight-color: transparent; }
     background: var(--forest) !important;
     color: #f7efdc !important;
     border: 1px solid var(--forest) !important;
-    border-radius: 8px !important;
+    border-radius: 12px !important;
     font-family: var(--serif-body) !important;
     font-size: 12px !important;
     font-weight: 600 !important;
@@ -3839,6 +3839,195 @@ img { -webkit-tap-highlight-color: transparent; }
   opacity: 0.8;
 }
 
+/* ── Unified Modern Border Radius System ─────────────────────────────────── */
+:root {
+  --radius-sm: 10px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-pill: 999px;
+}
 
+/* 1. All Interactive Buttons & CTAs (12px) */
+:is(
+  .inner-button,
+  .inner-button--solid,
+  .inner-button--outline,
+  .inner-button--quiet,
+  .hero-cta,
+  .hero-cta--secondary,
+  .hero-actions .hero-cta,
+  .trip-cta__actions a,
+  .trip-cta__actions button,
+  .footer-wa-btn,
+  .footer-insta-btn,
+  .footer-tg-btn,
+  .trip-finder-launch,
+  .trip-finder button:not(.trip-finder__close):not(.trip-finder-dismiss),
+  .trip-finder-pill,
+  .price-route-panel__calculate,
+  .price-city-filters button,
+  .price-format-options button,
+  .prices-sheet-actions .inner-button,
+  .prices-download-btn,
+  .prices-whatsapp-btn,
+  .quick-calc-sheet button,
+  .quick-calc-whatsapp-btn,
+  .inner-catalog-more-toggle,
+  .inner-interest-picker__btn-detail,
+  .inner-interest-picker__btn-wa,
+  .inner-detail-fact__phone,
+  .calc-btn
+) {
+  border-radius: var(--radius-md, 12px) !important;
+}
 
+/* 2. Form Inputs, Selects & Textareas (12px) */
+:is(
+  .price-field select,
+  .price-filter-select select,
+  .price-city-mobile-select select,
+  .quick-calc-select-wrap select,
+  .trip-ticket__save-note input,
+  .trip-finder input,
+  .trip-finder select,
+  .trip-planner select,
+  .trip-planner input,
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  select,
+  textarea
+) {
+  border-radius: var(--radius-md, 12px) !important;
+}
 
+/* 3. Cards & Modules (20px) */
+:is(
+  .inner-route-card,
+  .route-card,
+  .featured-trip-card,
+  .service-card,
+  .inner-interest-picker__card,
+  .inner-interest-picker__consult,
+  .practical-card,
+  .route-practical__card,
+  .inner-detail-facts,
+  .prices-sheet-card,
+  .prices-discount-card,
+  .contact-info-card,
+  .inner-page--contact .inner-contact-card,
+  .about-banner,
+  .about-intro-card,
+  .about-history-card,
+  .inner-note,
+  .trip-cta,
+  .quick-calc-card,
+  .trip-planner,
+  .contact-slider__frame
+) {
+  border-radius: var(--radius-xl, 20px) !important;
+}
+
+/* 4. Sub-cards, Step Cards & Accordion Items (16px) */
+:is(
+  .itinerary-step,
+  .route-step-card,
+  .route-itinerary__card,
+  .home-faq-item,
+  .faq-item,
+  .inner-interest-picker__highlight,
+  .quick-calc-result,
+  .inner-about-layout__art--duo .inner-about-art__main
+) {
+  border-radius: var(--radius-lg, 16px) !important;
+}
+
+/* 5. Top Card Media Corners (16px 16px 0 0) */
+:is(
+  .inner-route-card__media,
+  .featured-trip-card__media,
+  .route-card__media,
+  .inner-interest-picker__card-media
+) {
+  border-radius: 16px 16px 0 0 !important;
+  overflow: hidden !important;
+}
+
+/* 6. Hero Slider Cards & Frames (20px) */
+:is(
+  .inner-hero__slider-wrap,
+  .hero-media-wrap
+) {
+  border-radius: var(--radius-xl, 20px) !important;
+  overflow: hidden !important;
+}
+
+/* 7. Homepage Hero Photo Collage (18px frame / 14px image) */
+.hero-layer--photo {
+  border-radius: 18px !important;
+  overflow: hidden !important;
+}
+.hero-layer--photo img {
+  border-radius: 14px !important;
+}
+
+/* 8. Price Sheet Image and Link (14px) */
+.prices-sheet-card__link,
+.prices-sheet-card__image {
+  border-radius: 14px !important;
+  overflow: hidden !important;
+}
+
+/* 9. Badges, Chips & Small Tags */
+:is(
+  .price-badge,
+  .price-badge--hero,
+  .route-badge,
+  .service-tag,
+  .price-badge--request,
+  .prices-discount-card__tag
+) {
+  border-radius: var(--radius-md, 12px) !important;
+}
+
+/* Pill Badges & Chips (999px) */
+:is(
+  .quick-calc-chip,
+  .trip-planner__quick-chip,
+  .route-itinerary__time,
+  .route-practical__card-badge,
+  .inner-interest-picker__card-badge,
+  .prices-sheet-card__zoom-hint,
+  .hero-trust-badges span,
+  .filter-chip
+) {
+  border-radius: var(--radius-pill, 999px) !important;
+}
+
+/* Thumbnail Borders (10px) */
+.contact-slider__thumb,
+.inner-about-layout__art--duo .inner-about-art__accent,
+.inner-about-art--collage .inner-about-art__float {
+  border-radius: var(--radius-sm, 10px) !important;
+}
+
+/* Modals & Dialogs (22px) */
+:is(
+  .trip-finder,
+  .quick-calc-modal
+) {
+  border-radius: 22px !important;
+}
+
+/* Mobile Sticky Bars & Sheets (20px top corners) */
+@media (max-width: 719px) {
+  :is(
+    .mobile-price-bar,
+    .quick-calc-sheet,
+    .detail-sticky-bar
+  ) {
+    border-radius: 20px 20px 0 0 !important;
+  }
+}
