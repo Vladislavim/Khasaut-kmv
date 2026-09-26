@@ -23,11 +23,21 @@ export function FloatingMessengerWidget() {
       setIsPromptOpen(true)
     }, 1800)
 
+    // Auto-dismiss prompt bubble so it doesn't permanently obscure cards or buttons
+    const autoDismissTimer = window.setTimeout(() => {
+      setIsPromptOpen(false)
+    }, 7500)
+
     // 3. Scroll tracking physics:
     // "если вниз листаем то чуть задерживаться и прыгать вниз, если наверх то никуда"
     const handleScroll = () => {
       const currentY = window.scrollY
       const delta = currentY - lastScrollY.current
+
+      // If user is actively exploring page, hide speech bubble so it doesn't overlap text
+      if (currentY > 260) {
+        setIsPromptOpen(false)
+      }
 
       if (delta > 3) {
         // Scrolling DOWN: lag behind (displaced upward relative to viewport movement)
@@ -59,6 +69,7 @@ export function FloatingMessengerWidget() {
     return () => {
       window.clearTimeout(enterTimer)
       window.clearTimeout(promptTimer)
+      window.clearTimeout(autoDismissTimer)
       if (scrollTimeoutRef.current) window.clearTimeout(scrollTimeoutRef.current)
       window.removeEventListener('scroll', handleScroll)
     }

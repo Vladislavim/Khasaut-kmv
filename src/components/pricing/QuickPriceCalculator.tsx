@@ -181,7 +181,7 @@ export function QuickPriceCalculator({ id = 'home-price-calculator' }: { id?: st
                 <Icon name="check" size={12} /> Заберём от отеля
               </span>
               <a href="/prices" className="quick-calc-all-link">
-                Полный прайс-лист на 18 маршрутов →
+                <span>Полный прайс-лист</span> <span className="quick-calc-link-tail">на 18 маршрутов&nbsp;→</span>
               </a>
             </div>
           </div>
