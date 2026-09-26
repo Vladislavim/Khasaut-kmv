@@ -2,11 +2,10 @@ import { HeroSection } from '../components/sections/HeroSection'
 import { ServicesSection } from '../components/sections/ServicesSection'
 import { RoutesSection } from '../components/sections/RoutesSection'
 import { FooterSection } from '../components/sections/FooterSection'
-import { PriceConfigurator } from '../components/pricing/PriceConfigurator'
+import { QuickPriceCalculator } from '../components/pricing/QuickPriceCalculator'
 import { FeaturedTripsSection } from '../components/sections/FeaturedTripsSection'
 import { TripCallToAction } from '../components/ui/TripCallToAction'
 import { ContactPhotoSlider } from '../components/inner/ContactPhotoSlider'
-import { HomeSeoArticle } from '../components/sections/HomeSeoArticle'
 import { HomeFaqSection } from '../components/sections/HomeFaqSection'
 
 export function HomePage() {
@@ -17,8 +16,7 @@ export function HomePage() {
         <ServicesSection />
         <FeaturedTripsSection />
         <RoutesSection />
-        <PriceConfigurator id="home-price-calculator" className="home-price-configurator" />
-        <HomeSeoArticle />
+        <QuickPriceCalculator id="home-price-calculator" />
         <HomeFaqSection />
         <ContactPhotoSlider />
         <TripCallToAction />
@@ -27,4 +25,3 @@ export function HomePage() {
     </>
   )
 }
-

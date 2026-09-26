@@ -262,7 +262,11 @@ export function HeroSection() {
 
         <div className="hero-content">
           <div className="hero-copy">
-            <h1>KHASAUT<br />TOUR<span className="sr-only"> — Джип-туры и джиппинг в Кисловодске по горам Кавказа</span></h1>
+            <h1 className="hero-heading">
+              <span className="hero-heading__desktop desktop-only">KHASAUT<br />TOUR</span>
+              <span className="hero-heading__mobile mobile-only">ГДЕ КОНЧАЕТСЯ<br />АСФАЛЬТ</span>
+              <span className="sr-only"> — Джип-туры и джиппинг в Кисловодске по горам Кавказа</span>
+            </h1>
             <p className="hero-script"><img src={assets.generatedCaucasusScript} alt="" /><span className="sr-only">Северный Кавказ</span></p>
             <div className="hero-intro">
               <div className="hero-rule" aria-hidden="true">
