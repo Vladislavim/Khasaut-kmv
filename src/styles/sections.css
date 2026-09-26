@@ -18,8 +18,8 @@
 .hero-background {
   z-index: -3;
   object-fit: cover;
-  object-position: center;
-  filter: saturate(0.95) sepia(0.04) contrast(1.02);
+  object-position: center 42%;
+  filter: none;
 }
 
 .hero-atmosphere {
@@ -1571,8 +1571,8 @@
 
 .hero-background {
   z-index: -2;
-  object-position: center center;
-  filter: saturate(0.82) sepia(0.08) contrast(0.96) brightness(0.94);
+  object-position: center 42%;
+  filter: none;
 }
 
 .hero-atmosphere {
@@ -4702,7 +4702,7 @@
    overlaps remain identical while the orbit gets a little more breathing room. */
 @media (max-width: 719px) {
   .hero-background {
-    object-position: 82% 8%;
+    object-position: center 25%;
   }
 
   .hero-collage {
